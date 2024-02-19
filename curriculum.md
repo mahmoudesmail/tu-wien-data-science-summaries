@@ -2,7 +2,7 @@
 
 > siehe: https://www.tuwien.at/fileadmin/Assets/dienstleister/studienabteilung/MSc-Studienplaene_2023/Masterstudium_Data_Science_2023.pdf
 
-_aufbau des studiums_
+## aufbau des studiums
 
 ```
 insgesamt: 120 ECTS
@@ -25,12 +25,12 @@ insgesamt: 120 ECTS
      - man muss eine diplomarbeit machen
      - man muss “freie wahlfächer und transferable skills” machen – zumindest 4,5 von 9 ECTS müssen aus dem pool sein und den rest kann man sich von anderen kursen anrechnen lassen
 
-_prüfungsfächer_
+## prüfungsfächer
 
 - anhang auf seite 39
 - https://tiss.tuwien.ac.at/curriculum/public/curriculum.xhtml?dswid=1412&dsrid=989&semesterCode=2024S&semester=YEAR&key=67853&viewAcademicYear=true 
 
-_empfohlene semestereinteilung (default)_
+## empfohlene semestereinteilung (default)
 
 1. semester (ws)
      - 4,5 vu advanced methods for regression and classification
@@ -48,7 +48,7 @@ _empfohlene semestereinteilung (default)_
 3. semester (ws)
      - 5,0 pr interdisciplinary project in data science
 
-_empfohlene semestereinteilung (quereinsteiger)_
+## empfohlene semestereinteilung (quereinsteiger)
 
 1. semester (ss)
      - 6,0 vu advanced database systems
