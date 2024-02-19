@@ -1,4 +1,4 @@
-# studienplan (ab okt 2023)
+# studienplan (seit okt 2023)
 
 > siehe: https://www.tuwien.at/fileadmin/Assets/dienstleister/studienabteilung/MSc-Studienplaene_2023/Masterstudium_Data_Science_2023.pdf
 
