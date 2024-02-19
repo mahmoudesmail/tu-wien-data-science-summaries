@@ -1,5 +1,7 @@
 # studienplan
 
+_links_
+
 - https://tiss.tuwien.ac.at/curriculum/public/curriculumSemester.xhtml?dswid=5478&dsrid=480&semesterCode=2024S&le=false&semester=YEAR&key=67853
      - https://www.tuwien.at/fileadmin/Assets/dienstleister/studienabteilung/MSc-Studienplaene_2023/Masterstudium_Data_Science_2023.pdf
      - tritt mit oktober 2023 in kraft
