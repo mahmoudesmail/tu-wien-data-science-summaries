@@ -23,7 +23,7 @@ insgesamt: 120 ECTS
      - pflichtmodule sind verpflichtend
      - man muss mindestens 2 schlüsselbereiche (SB) auswählen die alle aus einem verpflichtenden “core” teil und einem “extension” teil bestehen
      - man muss eine diplomarbeit machen
-     - man muss “freie wahlfächer und transferable skills” machen – zumindest 4,5 ECTS und den rest kann man sich von anderen kursen anrechnen lassen
+     - man muss “freie wahlfächer und transferable skills” machen – zumindest 4,5 von 9 ECTS müssen aus dem pool sein und den rest kann man sich von anderen kursen anrechnen lassen
 
 _prüfungsfächer_
 
