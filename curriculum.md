@@ -32,36 +32,36 @@ _prüfungsfächer_
 
 _empfohlene semestereinteilung (default)_
 
-1. Semester (WS)
-     - 4,5 VU Advanced Methods for Regression and Classification
-     - 3,0 VU Data-oriented Programming Paradigms
-     - 3,0 VU Experiment Design for Data Science
-     - 1,0 VU Interdisciplinary Lecture Series on Data Science
-     - 3,0 VU Semantic Systems
-     - 4,5 VU Machine Learning
-2. Semester (SS)
-     - 6,0 VU Advanced Database Systems
-     - 3,0 VO Cognitive Foundations of Visualization → doesn’t show up in “semesteransicht” on tiss, but is still the right course
-     - 3,0 VU Data-intensive Computing
-     - 3,0 VO Information Visualization
-     - 3,0 VU Statistical Computing
-3. Semester (WS)
-     - 5,0 PR Interdisciplinary Project in Data Science
+1. semester (ws)
+     - 4,5 vu advanced methods for regression and classification
+     - 3,0 vu data-oriented programming paradigms
+     - 3,0 vu experiment design for data science
+     - 1,0 vu interdisciplinary lecture series on data science
+     - 3,0 vu semantic systems
+     - 4,5 vu machine learning
+2. semester (ss)
+     - 6,0 vu advanced database systems
+     - 3,0 vo cognitive foundations of visualization → doesn’t show up in “semesteransicht” on tiss, but is still the right course
+     - 3,0 vu data-intensive computing
+     - 3,0 vo information visualization
+     - 3,0 vu statistical computing
+3. semester (ws)
+     - 5,0 pr interdisciplinary project in data science
 
 _empfohlene semestereinteilung (quereinsteiger)_
 
-1. Semester (SS)
-     - 6,0 VU Advanced Database Systems
-     - 3,0 VO Cognitive Foundations of Visualization
-     - 3,0 VU Data-intensive Computing
-     - 3,0 VO Information Visualization
-     - 3,0 VU Statistical Computing
-2. Semester (WS)
-     - 4,5 VU Advanced Methods for Regression and Classification
-     - 3,0 VU Data-oriented Programming Paradigms
-     - 3,0 VU Experiment Design for Data Science
-     - 1,0 VU Interdisciplinary Lecture Series on Data Science
-     - 3,0 VU Semantic Systems
-     - 4,5 VU Machine Learning
-3. Semester (SS)
-     - 5,0 PR Interdisciplinary Project in Data Science
+1. semester (ss)
+     - 6,0 vu advanced database systems
+     - 3,0 vo cognitive foundations of visualization
+     - 3,0 vu data-intensive computing
+     - 3,0 vo information visualization
+     - 3,0 vu statistical computing
+2. semester (ws)
+     - 4,5 vu advanced methods for regression and classification
+     - 3,0 vu data-oriented programming paradigms
+     - 3,0 vu experiment design for data science
+     - 1,0 vu interdisciplinary lecture series on data science
+     - 3,0 vu semantic systems
+     - 4,5 vu machine learning
+3. semester (ss)
+     - 5,0 pr interdisciplinary project in data science
