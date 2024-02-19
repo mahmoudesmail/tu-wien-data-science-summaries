@@ -1,10 +1,6 @@
-# studienplan
+# studienplan (ab okt 2023)
 
-_links_
-
-- https://tiss.tuwien.ac.at/curriculum/public/curriculumSemester.xhtml?dswid=5478&dsrid=480&semesterCode=2024S&le=false&semester=YEAR&key=67853
-     - https://www.tuwien.at/fileadmin/Assets/dienstleister/studienabteilung/MSc-Studienplaene_2023/Masterstudium_Data_Science_2023.pdf
-     - tritt mit oktober 2023 in kraft
+siehe: https://www.tuwien.at/fileadmin/Assets/dienstleister/studienabteilung/MSc-Studienplaene_2023/Masterstudium_Data_Science_2023.pdf
 
 _inhaltsverzeichnis_
 
@@ -79,7 +75,10 @@ _empfohlene semestereinteilung (quereinsteiger)_
 
 # prüfungsfächer
 
-> siehe: anhang auf seite 39
+siehe:
+
+- anhang auf seite 39
+- https://tiss.tuwien.ac.at/curriculum/public/curriculum.xhtml?dswid=1412&dsrid=989&semesterCode=2024S&semester=YEAR&key=67853&viewAcademicYear=true 
 
 ```
 insgesamt: 120 ECTS
@@ -93,6 +92,7 @@ insgesamt: 120 ECTS
 	freiwahl&transferable: 9 ECTS
 	diplomarbeit: 30 ECTS
 ```
+
 
 _\*/FD: Data Science - Foundations_
 
