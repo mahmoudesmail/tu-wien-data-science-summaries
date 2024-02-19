@@ -4,6 +4,19 @@
 
 _aufbau des studiums_
 
+```
+insgesamt: 120 ECTS
+	pflicht: 45 ECTS
+		- */FD: 36 ECTS
+		- DSA: 9 ECTS
+	wahl: 36 ECTS
+		- mindestens 2 SDs, je: 6-24 ECTS
+			- core: 6 ECTS
+			- ext: max. 18 ECTS
+	freiwahl&transferable: 9 ECTS
+	diplomarbeit: 30 ECTS
+```
+
 - insgesamt 120 ECTS
 - lehrveranstaltung $\in$ modul $\in$ prüfungsfach
      - es gibt pflichtmodule und wahlmodule
@@ -11,6 +24,11 @@ _aufbau des studiums_
      - man muss mindestens 2 schlüsselbereiche (SB) auswählen die alle aus einem verpflichtenden “core” teil und einem “extension” teil bestehen
      - man muss eine diplomarbeit machen
      - man muss “freie wahlfächer und transferable skills” machen – zumindest 4,5 ECTS und den rest kann man sich von anderen kursen anrechnen lassen
+
+_prüfungsfächer_
+
+- anhang auf seite 39
+- https://tiss.tuwien.ac.at/curriculum/public/curriculum.xhtml?dswid=1412&dsrid=989&semesterCode=2024S&semester=YEAR&key=67853&viewAcademicYear=true 
 
 _empfohlene semestereinteilung (default)_
 
@@ -47,20 +65,3 @@ _empfohlene semestereinteilung (quereinsteiger)_
      - 4,5 VU Machine Learning
 3. Semester (SS)
      - 5,0 PR Interdisciplinary Project in Data Science
-
-_prüfungsfächer_
-
-> siehe: anhang auf seite 39 sowie https://tiss.tuwien.ac.at/curriculum/public/curriculum.xhtml?dswid=1412&dsrid=989&semesterCode=2024S&semester=YEAR&key=67853&viewAcademicYear=true 
-
-```
-insgesamt: 120 ECTS
-	pflicht: 45 ECTS
-		- */FD: 36 ECTS
-		- DSA: 9 ECTS
-	wahl: 36 ECTS
-		- mindestens 2 SDs, je: 6-24 ECTS
-			- core: 6 ECTS
-			- ext: max. 18 ECTS
-	freiwahl&transferable: 9 ECTS
-	diplomarbeit: 30 ECTS
-```
