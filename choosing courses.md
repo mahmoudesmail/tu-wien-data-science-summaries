@@ -45,12 +45,12 @@ _diplomarbeit (30,0 ects)_
 
 > requirements: 36 ECTS in total, at least 2 modules
 >
-> 🐦 = bird course
+> ⭐️ = bird course
 
 _fds: fundamentals of data science_
 
 - fds/core (6,0 ects)
-     - 3,0 ects vu data acquisition and survey methods 🐦 
+     - 3,0 ects vu data acquisition and survey methods ⭐️
      - 3,0 ects vo data stewardship
 - fds/extension (0-18,0 ects)
      - 6,0 ects vu advanced cryptography
@@ -69,7 +69,7 @@ _fds: fundamentals of data science_
 _mls: machine learning and statistics_
 
 - mls/core (6,0 ects)
-     - 3,0 ects vu recommender systems 🐦
+     - 3,0 ects vu recommender systems ⭐️
      - 3,0 ects vu statistical simulation and computer intensive methods
 - mls/extension (0-18,0 ects)
      - 3,0 ects vu advanced learning methods
@@ -104,7 +104,7 @@ _bdhpc: big data and high-performance computing_
 
 - bdhpc/core (6,0 ects)
      - 3,0 ects vu basics of parallel computing
-     - 3,0 ects vu efficient programs 🐦
+     - 3,0 ects vu efficient programs ⭐️
 - bdhpc/extension (0-18,0 ects)
      - 4,5 ects vu algorithmic geometry
      - 6,0 ects vu algorithmics
@@ -131,7 +131,7 @@ _vast: visual analytics and semantic technologies_
 
 - vast/core (6,0 ects)
      - 3,0 ects vu advanced information retrieval
-     - 3,0 ects ue design and evaluation of visualisations 🐦
+     - 3,0 ects ue design and evaluation of visualisations ⭐️
 - vast/extension (0-18,0 ects)
      - 3,0 ects vo deductive databases
      - 3,0 ects vu description logics and ontologies
