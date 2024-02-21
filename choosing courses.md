@@ -1,7 +1,7 @@
 > see: https://www.tuwien.at/fileadmin/Assets/dienstleister/studienabteilung/MSc-Studienplaene_2023/Masterstudium_Data_Science_2023.pdf on page 39
 >
 > see: https://tiss.tuwien.ac.at/curriculum/public/curriculum.xhtml?dswid=1412&dsrid=989&semesterCode=2024S&semester=YEAR&key=67853&viewAcademicYear=true
-> 
+
 > 🟢 = project based, no exams
 > 
 > 🟡 = easy exam, open book or very little to memorize
