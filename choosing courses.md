@@ -5,6 +5,8 @@
 > 🟢 = project based, no exams
 > 
 > 🟡 = easy exam, open book or very little to memorize
+>
+> 🛑 = hard course
 
 ## mandatory courses
 
