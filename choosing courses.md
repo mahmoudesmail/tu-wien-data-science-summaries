@@ -108,7 +108,7 @@ _bdhpc: big data and high-performance computing_
 
 - bdhpc/core (6,0 ects)
      - 3,0 ects vu basics of parallel computing
-     - 3,0 ects vu efficient programs ⭐️
+     - 3,0 ects vu efficient programs
 - bdhpc/extension (0-18,0 ects)
      - 4,5 ects vu algorithmic geometry
      - 6,0 ects vu algorithmics
