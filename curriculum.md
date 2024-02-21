@@ -67,142 +67,143 @@ insgesamt: 120 ECTS
 > 
 > siehe: https://tiss.tuwien.ac.at/curriculum/public/curriculum.xhtml?dswid=1412&dsrid=989&semesterCode=2024S&semester=YEAR&key=67853&viewAcademicYear=true 
 
-_\*/FD: Data Science - Foundations_
 
-- FDS/FD – Fundamentals of Data Science - Foundations (9,0 ECTS)
-     - 3,0 ECTS VU Data-oriented Programming Paradigms
-     - 3,0 ECTS VU Experiment Design for Data Science
-     - 3,0 ECTS VU Statistical Computing
-- MLS/FD – Machine Learning and Statistics - Foundations (9,0 ECTS)
-     - 4,5 ECTS VU Advanced Methods for Regression and Classification
-     - 4,5 ECTS VU Machine Learning
-- BDHPC/FD – Big Data and High Performance Computing - Foundations (9,0 ECTS)
-     - 6,0 ECTS VU Advanced Database Systems
-     - 3,0 ECTS VU Data-intensive Computing
-- VAST/FD – Visual Analytics and Semantic Technologies - Foundations (9,0 ECTS)
-     - 3,0 ECTS VO Cognitive Foundations of Visualization
-     - 3,0 ECTS VO Information Visualization
-     - 3,0 ECTS VU Semantic Systems
+_\*/fd: data science - foundations_
 
-_DSA: Domain-Specific Aspects of Data Science_
+- fds/fd – fundamentals of data science - foundations (9,0 ects)
+     - 3,0 ects vu data-oriented programming paradigms
+     - 3,0 ects vu experiment design for data science
+     - 3,0 ects vu statistical computing
+- mls/fd – machine learning and statistics - foundations (9,0 ects)
+     - 4,5 ects vu advanced methods for regression and classification
+     - 4,5 ects vu machine learning
+- bdhpc/fd – big data and high performance computing - foundations (9,0 ects)
+     - 6,0 ects vu advanced database systems
+     - 3,0 ects vu data-intensive computing
+- vast/fd – visual analytics and semantic technologies - foundations (9,0 ects)
+     - 3,0 ects vo cognitive foundations of visualization
+     - 3,0 ects vo information visualization
+     - 3,0 ects vu semantic systems
 
-- DSA – Domain-Specific Aspects of Data Science (9,0 ECTS)
-     - 1,0 ECTS VU Interdisciplinary Lecture Series on Data Science
-     - 5,0 ECTS PR Interdisciplinary Project in Data Science
-     - 3,0 ECTS VO/VU/SE Fachspezifische Lehrveranstaltungen, die aus einer Liste ausgewählt werden, die in Abstimmung mit den Vortragenden der Ringvorlesung erstellt und von der Studienkommission verwaltet wird.
+_dsa: domain-specific aspects of data science_
+
+- dsa – domain-specific aspects of data science (9,0 ects)
+     - 1,0 ects vu interdisciplinary lecture series on data science
+     - 5,0 ects pr interdisciplinary project in data science
+     - 3,0 ects vo/vu/se fachspezifische lehrveranstaltungen, die aus einer liste ausgewählt werden, die in abstimmung mit den vortragenden der ringvorlesung erstellt und von der studienkommission verwaltet wird.
      - requirements (3 of 5:)
-          - 4,5 ECTS VU Advanced Methods for Regression and Classification
-          - 3,0 ECTS VU Data-oriented Programming Paradigms
-          - 3,0 ECTS VU Experiment Design for Data Science
-          - 4,5 ECTS VU Machine Learning
+          - 4,5 ects vu advanced methods for regression and classification
+          - 3,0 ects vu data-oriented programming paradigms
+          - 3,0 ects vu experiment design for data science
+          - 4,5 ects vu machine learning
 
-_FDS: Fundamentals of Data Science - Core and Extension (SB)_
+_fds: fundamentals of data science - core and extension (sb)_
 
-- FDS/CO – Fundamentals of Data Science - Core (6,0 ECTS)
-     - 3,0 ECTS VU Data Acquisition and Survey Methods
-     - 3,0 ECTS VO Data Stewardship
-- FDS/EX – Fundamentals of Data Science - Extension (max 18,0 ECTS)
-     - 6,0 ECTS VU Advanced Cryptography
-     - 3,0 ECTS VU Communicating Data
-     - 3,0 ECTS VU Computational Social Science
-     - 3,0 ECTS VU Data Center Operations
-     - 3,0 ECTS UE Data Stewardship
-     - 3,0 ECTS VU Digital Humanism
-     - 3,0 ECTS VU Internet Security
-     - 3,0 ECTS VU Organizational Aspects of IT-Security
-     - 3,0 ECTS VU Software Security
-     - 6,0 ECTS VU Systems and Applications Security
-     - 3,0 ECTS VU User Research Methods
-     - 3,0 ECTS PR User Research Methods
+- fds/co – fundamentals of data science - core (6,0 ects)
+     - 3,0 ects vu data acquisition and survey methods
+     - 3,0 ects vo data stewardship
+- fds/ex – fundamentals of data science - extension (max 18,0 ects)
+     - 6,0 ects vu advanced cryptography
+     - 3,0 ects vu communicating data
+     - 3,0 ects vu computational social science
+     - 3,0 ects vu data center operations
+     - 3,0 ects ue data stewardship
+     - 3,0 ects vu digital humanism
+     - 3,0 ects vu internet security
+     - 3,0 ects vu organizational aspects of it-security
+     - 3,0 ects vu software security
+     - 6,0 ects vu systems and applications security
+     - 3,0 ects vu user research methods
+     - 3,0 ects pr user research methods
 
-_MLS: Machine Learning and Statistics - Core and Extension (SB)_
+_mls: machine learning and statistics - core and extension (sb)_
 
-- MLS/CO – Machine Learning and Statistics - Core (6,0 ECTS)
-     - 3,0 ECTS VU Recommender Systems
-     - 3,0 ECTS VU Statistical Simulation and Computer Intensive Methods
-- MLS/EX – Machine Learning and Statistics - Extension (max 18,0 ECTS)
-     - 3,0 ECTS VU Advanced Learning Methods
-     - 3,0 ECTS VU Advanced Modeling and Simulation
-     - 4,0 ECTS VU AI/ML in the Era of Climate Change
-     - 6,0 ECTS VU Algorithmic Social Choice
-     - 3,0 ECTS VU Applied Deep Learning
-     - 6,0 ECTS VU AKNUM Reinforcement Learning
-     - 3,0 ECTS VO Bayesian Statistics
-     - 2,0 ECTS UE Bayesian Statistics
-     - 6,0 ECTS VU Business Intelligence
-     - 3,0 ECTS VU Crypto Asset Analytics
-     - 3,0 ECTS VU Deep Learning for Visual Computing
-     - 5,0 ECTS VU General Regression Models (ODER 3,0 ECTS VO General Regression Models UND 2,0 ECTS General Regression Models)
-     - 4,5 ECTS VU Intelligent Audio and Music Analysis
-     - 4,5 ECTS VO Introduction to Statistical Inference
-     - 2,0 ECTS UE Introduction to Statistical Inference
-     - 4,0 ECTS VU Machine Learning for Visual Computing
-     - 3,0 ECTS VU Mathematical Programming
-     - 3,0 ECTS VU Modeling and Simulation
-     - 3,0 ECTS VU Modelling and Simulation in Health Technology Assessment
-     - 4,5 ECTS VO Multivariate Statistics
-     - 1,5 ECTS UE Multivariate Statistics
-     - 3,0 ECTS VU Problem Solving and Search in Artificial Intelligence
-     - 4,5 ECTS VU Self-Organizing Systems
-     - 3,0 ECTS VU Similarity Modelling 1
-     - 3,0 ECTS VU Similarity Modelling 2
-     - 3,0 ECTS VU Social Network Analysis
-     - 3,0 ECTS VU Theoretical Foundations and Research Topics in Machine Learning
+- mls/co – machine learning and statistics - core (6,0 ects)
+     - 3,0 ects vu recommender systems
+     - 3,0 ects vu statistical simulation and computer intensive methods
+- mls/ex – machine learning and statistics - extension (max 18,0 ects)
+     - 3,0 ects vu advanced learning methods
+     - 3,0 ects vu advanced modeling and simulation
+     - 4,0 ects vu ai/ml in the era of climate change
+     - 6,0 ects vu algorithmic social choice
+     - 3,0 ects vu applied deep learning
+     - 6,0 ects vu aknum reinforcement learning
+     - 3,0 ects vo bayesian statistics
+     - 2,0 ects ue bayesian statistics
+     - 6,0 ects vu business intelligence
+     - 3,0 ects vu crypto asset analytics
+     - 3,0 ects vu deep learning for visual computing
+     - 5,0 ects vu general regression models (oder 3,0 ects vo general regression models und 2,0 ects general regression models)
+     - 4,5 ects vu intelligent audio and music analysis
+     - 4,5 ects vo introduction to statistical inference
+     - 2,0 ects ue introduction to statistical inference
+     - 4,0 ects vu machine learning for visual computing
+     - 3,0 ects vu mathematical programming
+     - 3,0 ects vu modeling and simulation
+     - 3,0 ects vu modelling and simulation in health technology assessment
+     - 4,5 ects vo multivariate statistics
+     - 1,5 ects ue multivariate statistics
+     - 3,0 ects vu problem solving and search in artificial intelligence
+     - 4,5 ects vu self-organizing systems
+     - 3,0 ects vu similarity modelling 1
+     - 3,0 ects vu similarity modelling 2
+     - 3,0 ects vu social network analysis
+     - 3,0 ects vu theoretical foundations and research topics in machine learning
 
-_BDHPC: Big Data and High-Performance Computing - Core and Extension (SB)_
+_bdhpc: big data and high-performance computing - core and extension (sb)_
 
-- BDHPC/CO – Big Data and High Performance Computing - Core (6,0 ECTS)
-     - 3,0 ECTS VU Basics of Parallel Computing
-     - 3,0 ECTS VU Efficient Programs
-- BDHPC/EX – Big Data and High Performance Computing - Extension (max 18,0 ECTS)
-     - 4,5 ECTS VU Algorithmic Geometry
-     - 6,0 ECTS VU Algorithmics
-     - 3,0 ECTS VO Analysis 2
-     - 4,5 ECTS UE Analysis 2
-     - 3,0 ECTS VU Approximation Algorithms
-     - 3,0 ECTS VU Complexity Analysis
-     - 3,0 ECTS VU Database Theory
-     - 4,5 ECTS VU Fixed-Parameter Algorithms and Complexity
-     - 3,0 ECTS VU Frontiers of Algorithms and Complexity
-     - 6,0 ECTS VU GPU Architectures and Computing
-     - 3,0 ECTS VU Graph Drawing Algorithms ODER 4,5 ECTS VU Graph Drawing Algorithms
-     - 6,0 ECTS VU Hands on Cloud Native
-     - 4,5 ECTS VU Heuristic Optimization Techniques
-     - 4,5 ECTS VU High Performance Computing
-     - 3,0 ECTS VU Hybrid Classic Quantum Systems
-     - 3,0 ECTS VU Nonlinear Optimization
-     - 3,0 ECTS VU Optimization in Transport and Logistics
-     - 3,0 ECTS VU Structural Decomposition
-     - 3,0 ECTS VU Structural Decompositions and Algorithms
-     - 4,0 ECTS VU Weiterführende Multiprocessor Programmierung
+- bdhpc/co – big data and high performance computing - core (6,0 ects)
+     - 3,0 ects vu basics of parallel computing
+     - 3,0 ects vu efficient programs
+- bdhpc/ex – big data and high performance computing - extension (max 18,0 ects)
+     - 4,5 ects vu algorithmic geometry
+     - 6,0 ects vu algorithmics
+     - 3,0 ects vo analysis 2
+     - 4,5 ects ue analysis 2
+     - 3,0 ects vu approximation algorithms
+     - 3,0 ects vu complexity analysis
+     - 3,0 ects vu database theory
+     - 4,5 ects vu fixed-parameter algorithms and complexity
+     - 3,0 ects vu frontiers of algorithms and complexity
+     - 6,0 ects vu gpu architectures and computing
+     - 3,0 ects vu graph drawing algorithms oder 4,5 ects vu graph drawing algorithms
+     - 6,0 ects vu hands on cloud native
+     - 4,5 ects vu heuristic optimization techniques
+     - 4,5 ects vu high performance computing
+     - 3,0 ects vu hybrid classic quantum systems
+     - 3,0 ects vu nonlinear optimization
+     - 3,0 ects vu optimization in transport and logistics
+     - 3,0 ects vu structural decomposition
+     - 3,0 ects vu structural decompositions and algorithms
+     - 4,0 ects vu weiterführende multiprocessor programmierung
 
-_VAST: Visual Analytics and Semantic Technologies - Core and Extension (SB)_
+_vast: visual analytics and semantic technologies - core and extension (sb)_
 
-- VAST/CO – Visual Analytics and Semantic Technologies - Core (6,0 ECTS)
-     - 3,0 ECTS VU Advanced Information Retrieval
-     - 3,0 ECTS UE Design and Evaluation of Visualisations
-- VAST/EX – Visual Analytics and Semantic Technologies - Extension (max 18,0 ECTS)
-     - 3,0 ECTS VO Deductive Databases
-     - 3,0 ECTS VU Description Logics and Ontologies
-     - 3,0 ECTS VU Document Analysis
-     - 1,5 ECTS UE Information Visualization
-     - 6,0 ECTS VU KBS for Business Informatics
-     - 6,0 ECTS VU Knowledge-based Systems
-     - 3,0 ECTS VU Knowledge Graphs
-     - 3,0 ECTS VO Medical Image Processing
-     - 3,0 ECTS UE Medical Image Processing
-     - 3,0 ECTS VU Natural Language Processing and Information Extraction
-     - 3,0 ECTS VO Processing of Declarative Knowledge
-     - 3,0 ECTS VU Real-time Visualization
-     - 3,0 ECTS VU Semantic Web Technologies
-     - 3,0 ECTS VU Semi-Automatic Information and Knowledge Systems
-     - 3,0 ECTS VU Visual Data Science
-     - 4,5 ECTS VU Visualization 2
+- vast/co – visual analytics and semantic technologies - core (6,0 ects)
+     - 3,0 ects vu advanced information retrieval
+     - 3,0 ects ue design and evaluation of visualisations
+- vast/ex – visual analytics and semantic technologies - extension (max 18,0 ects)
+     - 3,0 ects vo deductive databases
+     - 3,0 ects vu description logics and ontologies
+     - 3,0 ects vu document analysis
+     - 1,5 ects ue information visualization
+     - 6,0 ects vu kbs for business informatics
+     - 6,0 ects vu knowledge-based systems
+     - 3,0 ects vu knowledge graphs
+     - 3,0 ects vo medical image processing
+     - 3,0 ects ue medical image processing
+     - 3,0 ects vu natural language processing and information extraction
+     - 3,0 ects vo processing of declarative knowledge
+     - 3,0 ects vu real-time visualization
+     - 3,0 ects vu semantic web technologies
+     - 3,0 ects vu semi-automatic information and knowledge systems
+     - 3,0 ects vu visual data science
+     - 4,5 ects vu visualization 2
 
-_Freie Wahlfächer und Transferable Skills (9,0 ECTS)_
+_freie wahlfächer und transferable skills (9,0 ects)_
 
-_Diplomarbeit (30,0 ECTS)_
+_diplomarbeit (30,0 ects)_
 
-- Wissenschaftliche Arbeit (Diplomarbeit) (27,0 ECTS)
-- Kommissionellen Abschlussprüfung (1,5 ECTS)
-- „Seminar für Diplomand_innen“ (1,5 ECTS)
+- wissenschaftliche arbeit (diplomarbeit) (27,0 ects)
+- kommissionellen abschlussprüfung (1,5 ects)
+- „seminar für diplomand_innen“ (1,5 ects)
