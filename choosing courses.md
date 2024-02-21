@@ -45,7 +45,7 @@ _diplomarbeit (30,0 ects)_
 
 > requirements: 36 ECTS in total, at least 2 modules
 >
-> ⭐️ = project based, no exam
+> ⭐️ = project based, no exams
 
 _fds: fundamentals of data science_
 
