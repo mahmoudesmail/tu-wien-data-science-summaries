@@ -27,7 +27,7 @@ _dsa: domain-specific aspects of data science_
      - 1,0 ects vu interdisciplinary lecture series on data science
      - 5,0 ects pr interdisciplinary project in data science
      - 3,0 ects vo/vu/se fachspezifische lehrveranstaltungen, die aus einer liste ausgewählt werden, die in abstimmung mit den vortragenden der ringvorlesung erstellt und von der studienkommission verwaltet wird.
-     - requirements (3 of 5:)
+     - requirements (must have done 3 of 5 courses):
           - 4,5 ects vu advanced methods for regression and classification
           - 3,0 ects vu data-oriented programming paradigms
           - 3,0 ects vu experiment design for data science
