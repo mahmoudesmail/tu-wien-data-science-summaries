@@ -1,6 +1,6 @@
 > see: https://www.tuwien.at/fileadmin/Assets/dienstleister/studienabteilung/MSc-Studienplaene_2023/Masterstudium_Data_Science_2023.pdf on page 39
-> 
-> see: https://tiss.tuwien.ac.at/curriculum/public/curriculum.xhtml?dswid=1412&dsrid=989&semesterCode=2024S&semester=YEAR&key=67853&viewAcademicYear=true 
+>
+> see: https://tiss.tuwien.ac.at/curriculum/public/curriculum.xhtml?dswid=1412&dsrid=989&semesterCode=2024S&semester=YEAR&key=67853&viewAcademicYear=true
 
 ## mandatory courses
 
@@ -43,12 +43,12 @@ _diplomarbeit (30,0 ects)_
 
 ## elective courses
 
-_fds: fundamentals of data science - core and extension (sb)_
+_fds: fundamentals of data science_
 
-- fds/co – fundamentals of data science - core (6,0 ects)
+- fds/co – fundamentals of data science (6,0 ects)
      - 3,0 ects vu data acquisition and survey methods
      - 3,0 ects vo data stewardship
-- fds/ex – fundamentals of data science - extension (max 18,0 ects)
+- fds/ex – fundamentals of data science (0,0 - 18,0 ects)
      - 6,0 ects vu advanced cryptography
      - 3,0 ects vu communicating data
      - 3,0 ects vu computational social science
@@ -62,12 +62,12 @@ _fds: fundamentals of data science - core and extension (sb)_
      - 3,0 ects vu user research methods
      - 3,0 ects pr user research methods
 
-_mls: machine learning and statistics - core and extension (sb)_
+_mls: machine learning and statistics_
 
-- mls/co – machine learning and statistics - core (6,0 ects)
+- mls/co – machine learning and statistics (6,0 ects)
      - 3,0 ects vu recommender systems
      - 3,0 ects vu statistical simulation and computer intensive methods
-- mls/ex – machine learning and statistics - extension (max 18,0 ects)
+- mls/ex – machine learning and statistics (0,0 - 18,0 ects)
      - 3,0 ects vu advanced learning methods
      - 3,0 ects vu advanced modeling and simulation
      - 4,0 ects vu ai/ml in the era of climate change
@@ -96,12 +96,12 @@ _mls: machine learning and statistics - core and extension (sb)_
      - 3,0 ects vu social network analysis
      - 3,0 ects vu theoretical foundations and research topics in machine learning
 
-_bdhpc: big data and high-performance computing - core and extension (sb)_
+_bdhpc: big data and high-performance computing_
 
-- bdhpc/co – big data and high performance computing - core (6,0 ects)
+- bdhpc/co – big data and high performance computing (6,0 ects)
      - 3,0 ects vu basics of parallel computing
      - 3,0 ects vu efficient programs
-- bdhpc/ex – big data and high performance computing - extension (max 18,0 ects)
+- bdhpc/ex – big data and high performance computing (0,0 - 18,0 ects)
      - 4,5 ects vu algorithmic geometry
      - 6,0 ects vu algorithmics
      - 3,0 ects vo analysis 2
@@ -123,12 +123,12 @@ _bdhpc: big data and high-performance computing - core and extension (sb)_
      - 3,0 ects vu structural decompositions and algorithms
      - 4,0 ects vu weiterführende multiprocessor programmierung
 
-_vast: visual analytics and semantic technologies - core and extension (sb)_
+_vast: visual analytics and semantic technologies_
 
-- vast/co – visual analytics and semantic technologies - core (6,0 ects)
+- vast/co – visual analytics and semantic technologies (6,0 ects)
      - 3,0 ects vu advanced information retrieval
      - 3,0 ects ue design and evaluation of visualisations
-- vast/ex – visual analytics and semantic technologies - extension (max 18,0 ects)
+- vast/ex – visual analytics and semantic technologies (0,0 - 18,0 ects)
      - 3,0 ects vo deductive databases
      - 3,0 ects vu description logics and ontologies
      - 3,0 ects vu document analysis
