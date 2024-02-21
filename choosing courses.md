@@ -2,6 +2,8 @@
 > 
 > see: https://tiss.tuwien.ac.at/curriculum/public/curriculum.xhtml?dswid=1412&dsrid=989&semesterCode=2024S&semester=YEAR&key=67853&viewAcademicYear=true 
 
+## mandatory courses
+
 _\*/fd: data science - foundations_
 
 - fds/fd – fundamentals of data science - foundations (9,0 ects)
@@ -30,6 +32,16 @@ _dsa: domain-specific aspects of data science_
           - 3,0 ects vu data-oriented programming paradigms
           - 3,0 ects vu experiment design for data science
           - 4,5 ects vu machine learning
+
+_freie wahlfächer und transferable skills (9,0 ects)_
+
+_diplomarbeit (30,0 ects)_
+
+- wissenschaftliche arbeit (diplomarbeit) (27,0 ects)
+- kommissionellen abschlussprüfung (1,5 ects)
+- „seminar für diplomand_innen“ (1,5 ects)
+
+## elective courses
 
 _fds: fundamentals of data science - core and extension (sb)_
 
@@ -133,11 +145,3 @@ _vast: visual analytics and semantic technologies - core and extension (sb)_
      - 3,0 ects vu semi-automatic information and knowledge systems
      - 3,0 ects vu visual data science
      - 4,5 ects vu visualization 2
-
-_freie wahlfächer und transferable skills (9,0 ects)_
-
-_diplomarbeit (30,0 ects)_
-
-- wissenschaftliche arbeit (diplomarbeit) (27,0 ects)
-- kommissionellen abschlussprüfung (1,5 ects)
-- „seminar für diplomand_innen“ (1,5 ects)
