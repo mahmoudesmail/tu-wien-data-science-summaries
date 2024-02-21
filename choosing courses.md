@@ -1,9 +1,6 @@
-sources:
-
-- https://www.tuwien.at/fileadmin/Assets/dienstleister/studienabteilung/MSc-Studienplaene_2023/Masterstudium_Data_Science_2023.pdf on page 39
-- https://tiss.tuwien.ac.at/curriculum/public/curriculum.xhtml?dswid=1412&dsrid=989&semesterCode=2024S&semester=YEAR&key=67853&viewAcademicYear=true
-
-for the electives you must choose 36 ects in total and at least 2 modules.
+> see: https://www.tuwien.at/fileadmin/Assets/dienstleister/studienabteilung/MSc-Studienplaene_2023/Masterstudium_Data_Science_2023.pdf on page 39
+>
+> see: https://tiss.tuwien.ac.at/curriculum/public/curriculum.xhtml?dswid=1412&dsrid=989&semesterCode=2024S&semester=YEAR&key=67853&viewAcademicYear=true
 
 ## mandatory courses
 
@@ -45,6 +42,8 @@ _diplomarbeit (30,0 ects)_
 - „seminar für diplomand_innen“ (1,5 ects)
 
 ## elective courses
+
+> requirements: 36 ECTS in total, at least 2 modules
 
 _fds: fundamentals of data science_
 
