@@ -1,6 +1,6 @@
 > see: https://discord.com/channels/763081377867366401/1158360840064487514/1164527453860003850
 >
-> this is just a report from a recent discussion a student had with dr. huemer. do your own research.
+> this is just a report from a recent discussion a student had with prof. huemer. do your own research.
 
 _general info:_
 
