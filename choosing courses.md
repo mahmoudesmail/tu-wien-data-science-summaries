@@ -43,11 +43,7 @@ _diplomarbeit (30,0 ects)_
 
 ## elective courses
 
-> requirements:
-> 
-> - 36 ECTS in total
-> - at least 2 modules
-> - 6 ECTS core courses + 0-18 ECTS extension courses in each module
+> requirements: 36 ECTS in total, at least 2 modules
 
 _fds: fundamentals of data science_
 
