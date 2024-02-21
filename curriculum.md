@@ -1,29 +1,29 @@
 # studienplan
 
-> siehe: https://www.tuwien.at/fileadmin/assets/dienstleister/studienabteilung/msc-studienplaene_2023/masterstudium_data_science_2023.pdf (gültig seit okt 2023)
+> siehe: https://www.tuwien.at/fileadmin/Assets/dienstleister/studienabteilung/MSc-Studienplaene_2023/Masterstudium_Data_Science_2023.pdf (gültig seit okt 2023)
 
 ## aufbau des studiums
 
 ```
-insgesamt: 120 ects
-	pflicht: 45 ects
-		- */fd: 36 ects
-		- dsa: 9 ects
-	wahl: 36 ects
-		- mindestens 2 sds, je: 6-24 ects
-			- core: 6 ects
-			- ext: max. 18 ects
-	freiwahl&transferable: 9 ects
-	diplomarbeit: 30 ects
+insgesamt: 120 ECTS
+	pflicht: 45 ECTS
+		- */FD: 36 ECTS
+		- DSA: 9 ECTS
+	wahl: 36 ECTS
+		- mindestens 2 SDs, je: 6-24 ECTS
+			- core: 6 ECTS
+			- ext: max. 18 ECTS
+	freiwahl&transferable: 9 ECTS
+	diplomarbeit: 30 ECTS
 ```
 
-- insgesamt 120 ects
+- insgesamt 120 ECTS
 - lehrveranstaltung $\in$ modul $\in$ prüfungsfach
      - es gibt pflichtmodule und wahlmodule
      - pflichtmodule sind verpflichtend
-     - man muss mindestens 2 schlüsselbereiche (sb) auswählen die alle aus einem verpflichtenden “core” teil und einem “extension” teil bestehen
+     - man muss mindestens 2 schlüsselbereiche (SB) auswählen die alle aus einem verpflichtenden “core” teil und einem “extension” teil bestehen
      - man muss eine diplomarbeit machen
-     - man muss “freie wahlfächer und transferable skills” machen – zumindest 4,5 von 9 ects müssen aus dem pool sein und den rest kann man sich von anderen kursen anrechnen lassen
+     - man muss “freie wahlfächer und transferable skills” machen – zumindest 4,5 von 9 ECTS müssen aus dem pool sein und den rest kann man sich von anderen kursen anrechnen lassen
 
 ## empfohlene semestereinteilung (default)
 
@@ -65,7 +65,7 @@ insgesamt: 120 ects
 
 > siehe: anhang auf seite 39
 > 
-> siehe: https://tiss.tuwien.ac.at/curriculum/public/curriculum.xhtml?dswid=1412&dsrid=989&semestercode=2024s&semester=year&key=67853&viewacademicyear=true 
+> siehe: https://tiss.tuwien.ac.at/curriculum/public/curriculum.xhtml?dswid=1412&dsrid=989&semesterCode=2024S&semester=YEAR&key=67853&viewAcademicYear=true 
 
 _\*/fd: data science - foundations_
 
