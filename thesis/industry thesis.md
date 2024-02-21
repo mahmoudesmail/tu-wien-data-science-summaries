@@ -2,7 +2,7 @@
 >
 > this is just a report from a recent discussion a student had with dr. huemer. do your own research.
 
-_general info_
+_general info:_
 
 - the tu and the company sign a cooperation contract.
 - the student is not allowed to have any other contract of employment with the tu (except most likely being tutor for a course).
