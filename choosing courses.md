@@ -48,7 +48,7 @@ _fds: fundamentals of data science_
 - fds/co – fundamentals of data science (6,0 ects)
      - 3,0 ects vu data acquisition and survey methods
      - 3,0 ects vo data stewardship
-- fds/ex – fundamentals of data science (0,0 - 18,0 ects)
+- fds/ex – fundamentals of data science (0-18,0 ects)
      - 6,0 ects vu advanced cryptography
      - 3,0 ects vu communicating data
      - 3,0 ects vu computational social science
@@ -67,7 +67,7 @@ _mls: machine learning and statistics_
 - mls/co – machine learning and statistics (6,0 ects)
      - 3,0 ects vu recommender systems
      - 3,0 ects vu statistical simulation and computer intensive methods
-- mls/ex – machine learning and statistics (0,0 - 18,0 ects)
+- mls/ex – machine learning and statistics (0-18,0 ects)
      - 3,0 ects vu advanced learning methods
      - 3,0 ects vu advanced modeling and simulation
      - 4,0 ects vu ai/ml in the era of climate change
@@ -101,7 +101,7 @@ _bdhpc: big data and high-performance computing_
 - bdhpc/co – big data and high performance computing (6,0 ects)
      - 3,0 ects vu basics of parallel computing
      - 3,0 ects vu efficient programs
-- bdhpc/ex – big data and high performance computing (0,0 - 18,0 ects)
+- bdhpc/ex – big data and high performance computing (0-18,0 ects)
      - 4,5 ects vu algorithmic geometry
      - 6,0 ects vu algorithmics
      - 3,0 ects vo analysis 2
@@ -128,7 +128,7 @@ _vast: visual analytics and semantic technologies_
 - vast/co – visual analytics and semantic technologies (6,0 ects)
      - 3,0 ects vu advanced information retrieval
      - 3,0 ects ue design and evaluation of visualisations
-- vast/ex – visual analytics and semantic technologies (0,0 - 18,0 ects)
+- vast/ex – visual analytics and semantic technologies (0-18,0 ects)
      - 3,0 ects vo deductive databases
      - 3,0 ects vu description logics and ontologies
      - 3,0 ects vu document analysis
