@@ -2,17 +2,19 @@
 >
 > see: https://tiss.tuwien.ac.at/curriculum/public/curriculum.xhtml?dswid=1412&dsrid=989&semesterCode=2024S&semester=YEAR&key=67853&viewAcademicYear=true
 
+> ⭐️ = project based, no exams
+
 ## mandatory courses
 
 _\*/fd: data science - foundations_
 
 - fds/fd – fundamentals of data science - foundations (9,0 ects)
-     - 3,0 ects vu data-oriented programming paradigms
-     - 3,0 ects vu experiment design for data science
-     - 3,0 ects vu statistical computing
+     - 3,0 ects vu data-oriented programming paradigms ⭐️
+     - 3,0 ects vu experiment design for data science ⭐️
+     - 3,0 ects vu statistical computing ⭐️
 - mls/fd – machine learning and statistics - foundations (9,0 ects)
      - 4,5 ects vu advanced methods for regression and classification
-     - 4,5 ects vu machine learning
+     - 4,5 ects vu machine learning ⭐️
 - bdhpc/fd – big data and high performance computing - foundations (9,0 ects)
      - 6,0 ects vu advanced database systems
      - 3,0 ects vu data-intensive computing
@@ -44,8 +46,6 @@ _diplomarbeit (30,0 ects)_
 ## elective courses
 
 > requirements: 36 ECTS in total, at least 2 modules
->
-> ⭐️ = project based, no exams
 
 _fds: fundamentals of data science_
 
