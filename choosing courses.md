@@ -2,9 +2,9 @@
 >
 > see: https://tiss.tuwien.ac.at/curriculum/public/curriculum.xhtml?dswid=1412&dsrid=989&semesterCode=2024S&semester=YEAR&key=67853&viewAcademicYear=true
 > 
-> 🛠️ = project based, no exams
+> 🟢 = project based, no exams
 > 
-> 📚 = easy exam, open book or very little to memorize
+> 🟡 = easy exam, open book or very little to memorize
 
 ## mandatory courses
 
