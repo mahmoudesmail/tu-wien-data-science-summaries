@@ -61,12 +61,11 @@ insgesamt: 120 ECTS
 3. semester (ss)
      - 5,0 pr interdisciplinary project in data science
 
-# prüfungsfächer
+# alle module
 
 > siehe: anhang auf seite 39
 > 
 > siehe: https://tiss.tuwien.ac.at/curriculum/public/curriculum.xhtml?dswid=1412&dsrid=989&semesterCode=2024S&semester=YEAR&key=67853&viewAcademicYear=true 
-
 
 _\*/fd: data science - foundations_
 
