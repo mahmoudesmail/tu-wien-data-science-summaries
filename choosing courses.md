@@ -100,8 +100,8 @@ _mls: machine learning and statistics_
      - 1,5 ects ue multivariate statistics
      - 3,0 ects vu problem solving and search in artificial intelligence
      - 4,5 ects vu self-organizing systems
-     - 3,0 ects vu similarity modelling 1 🟢 (exams optional)
-     - 3,0 ects vu similarity modelling 2 🟢 (exams optional)
+     - 3,0 ects vu similarity modelling 1 🟢
+     - 3,0 ects vu similarity modelling 2 🟢
      - 3,0 ects vu social network analysis
      - 3,0 ects vu theoretical foundations and research topics in machine learning
 
