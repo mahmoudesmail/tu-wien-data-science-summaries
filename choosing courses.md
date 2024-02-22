@@ -1,3 +1,5 @@
+# options
+
 > see: https://www.tuwien.at/fileadmin/Assets/dienstleister/studienabteilung/MSc-Studienplaene_2023/Masterstudium_Data_Science_2023.pdf on page 39
 >
 > see: https://tiss.tuwien.ac.at/curriculum/public/curriculum.xhtml?dswid=1412&dsrid=989&semesterCode=2024S&semester=YEAR&key=67853&viewAcademicYear=true
@@ -44,8 +46,6 @@ _diplomarbeit (30,0 ects)_
 ## elective courses
 
 > requirements: 36 ECTS in total, at least 2 modules
->
-> the easiest way: pick 2 modules with easiest core courses, then do a bunch of projects from both modules, worth 24 ECTS
 
 > 🟢 = project based, no exams
 > 
@@ -159,3 +159,11 @@ _vast: visual analytics and semantic technologies_
      - 3,0 ects vu semi-automatic information and knowledge systems
      - 3,0 ects vu visual data science 🟢
      - 4,5 ects vu visualization 2
+
+# my choices
+
+the easiest way to pick your electives:
+
+1. pick 2 modules with easy core-courses
+2. then from both modules combined, pick extension-courses worth 24 ECTS
+
