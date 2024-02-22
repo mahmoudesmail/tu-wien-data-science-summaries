@@ -111,7 +111,7 @@ _mls: machine learning and statistics_
 _bdhpc: big data and high-performance computing_
 
 - bdhpc/core (6,0 ects)
-     - 3,0 ects vu basics of parallel computing
+     - 3,0 ects vu basics of parallel computing 🟡 (basically parcomp from undergrads)
      - 3,0 ects vu efficient programs 🟢
 - bdhpc/extension (0-18,0 ects)
      - 4,5 ects vu algorithmic geometry
@@ -159,24 +159,3 @@ _vast: visual analytics and semantic technologies_
      - 3,0 ects vu semi-automatic information and knowledge systems
      - 3,0 ects vu visual data science 🟢
      - 4,5 ects vu visualization 2
-
-# my choices
-
-the easiest way to pick your electives:
-
-1. pick 2 modules with easy core-courses
-2. then from both modules combined, pick extension-courses worth 24 ECTS
-
-here are all the core-corses:
- 
-- mls/core (6,0 ects)
-     - 3,0 ects vu recommender systems
-     - 3,0 ects vu statistical simulation and computer intensive methods
-
-- bdhpc/core (6,0 ects)
-     - 3,0 ects vu basics of parallel computing
-     - 3,0 ects vu efficient programs 🟢
-
-- vast/core (6,0 ects)
-     - 3,0 ects vu advanced information retrieval
-     - 3,0 ects ue design and evaluation of visualisations 🟢
