@@ -17,7 +17,7 @@ _\*/fd: data science - foundations_
      - 3,0 ects vu experiment design for data science
      - 3,0 ects vu statistical computing
 - mls/fd – machine learning and statistics - foundations (9,0 ects)
-     - 4,5 ects vu advanced methods for regression and classification 🔴
+     - 4,5 ects vu advanced methods for regression and classification
      - 4,5 ects vu machine learning
 - bdhpc/fd – big data and high performance computing - foundations (9,0 ects)
      - 6,0 ects vu advanced database systems
@@ -75,7 +75,7 @@ _mls: machine learning and statistics_
 
 - mls/core (6,0 ects)
      - 3,0 ects vu recommender systems
-     - 3,0 ects vu statistical simulation and computer intensive methods 🟢
+     - 3,0 ects vu statistical simulation and computer intensive methods
 - mls/extension (0-18,0 ects)
      - 3,0 ects vu advanced learning methods
      - 3,0 ects vu advanced modeling and simulation
