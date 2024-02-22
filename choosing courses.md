@@ -49,15 +49,15 @@ _diplomarbeit (30,0 ects)_
 
 > 🟢 = project based, no exams
 > 
-> 🟡 = easy exam, very little to memorize
+> 🟡 = easy exam, open book, very little to memorize
 >
-> 🛑 = hard course
+> 🛑 = hard exam, closed book, lots of memorization
 
 _fds: fundamentals of data science_
 
 - fds/core (6,0 ects)
      - 3,0 ects vu data acquisition and survey methods 🟢
-     - 3,0 ects vo data stewardship
+     - 3,0 ects vo data stewardship 🛑 
 - fds/extension (0-18,0 ects)
      - 6,0 ects vu advanced cryptography
      - 3,0 ects vu communicating data
@@ -76,8 +76,8 @@ _fds: fundamentals of data science_
 _mls: machine learning and statistics_
 
 - mls/core (6,0 ects)
-     - 3,0 ects vu recommender systems
-     - 3,0 ects vu statistical simulation and computer intensive methods
+     - 3,0 ects vu recommender systems 🟡 
+     - 3,0 ects vu statistical simulation and computer intensive methods 🟢
 - mls/extension (0-18,0 ects)
      - 3,0 ects vu advanced learning methods
      - 3,0 ects vu advanced modeling and simulation
@@ -166,3 +166,17 @@ the easiest way to pick your electives:
 
 1. pick 2 modules with easy core-courses
 2. then from both modules combined, pick extension-courses worth 24 ECTS
+
+here are all the core-corses:
+ 
+- mls/core (6,0 ects)
+     - 3,0 ects vu recommender systems
+     - 3,0 ects vu statistical simulation and computer intensive methods
+
+- bdhpc/core (6,0 ects)
+     - 3,0 ects vu basics of parallel computing
+     - 3,0 ects vu efficient programs 🟢
+
+- vast/core (6,0 ects)
+     - 3,0 ects vu advanced information retrieval
+     - 3,0 ects ue design and evaluation of visualisations 🟢
