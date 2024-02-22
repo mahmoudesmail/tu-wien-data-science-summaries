@@ -4,7 +4,7 @@
 
 > 🟢 = project based, no exams
 > 
-> 🟡 = easy exam, open book or very little to memorize
+> 🟡 = easy exam or very little to memorize
 >
 > 🛑 = hard course
 
@@ -17,7 +17,7 @@ _\*/fd: data science - foundations_
      - 3,0 ects vu experiment design for data science
      - 3,0 ects vu statistical computing
 - mls/fd – machine learning and statistics - foundations (9,0 ects)
-     - 4,5 ects vu advanced methods for regression and classification
+     - 4,5 ects vu advanced methods for regression and classification 🔴
      - 4,5 ects vu machine learning
 - bdhpc/fd – big data and high performance computing - foundations (9,0 ects)
      - 6,0 ects vu advanced database systems
@@ -69,18 +69,19 @@ _fds: fundamentals of data science_
      - 6,0 ects vu systems and applications security
      - 3,0 ects vu user research methods
      - 3,0 ects pr user research methods
+     - 3,0 ects vu sustainability in computer science 🟢
 
 _mls: machine learning and statistics_
 
 - mls/core (6,0 ects)
      - 3,0 ects vu recommender systems
-     - 3,0 ects vu statistical simulation and computer intensive methods
+     - 3,0 ects vu statistical simulation and computer intensive methods 🟢
 - mls/extension (0-18,0 ects)
      - 3,0 ects vu advanced learning methods
      - 3,0 ects vu advanced modeling and simulation
      - 4,0 ects vu ai/ml in the era of climate change
      - 6,0 ects vu algorithmic social choice
-     - 3,0 ects vu applied deep learning
+     - 3,0 ects vu applied deep learning 🟢
      - 6,0 ects vu aknum reinforcement learning
      - 3,0 ects vo bayesian statistics
      - 2,0 ects ue bayesian statistics
@@ -99,8 +100,8 @@ _mls: machine learning and statistics_
      - 1,5 ects ue multivariate statistics
      - 3,0 ects vu problem solving and search in artificial intelligence
      - 4,5 ects vu self-organizing systems
-     - 3,0 ects vu similarity modelling 1
-     - 3,0 ects vu similarity modelling 2
+     - 3,0 ects vu similarity modelling 1 🟢 (exams optional)
+     - 3,0 ects vu similarity modelling 2 🟢 (exams optional)
      - 3,0 ects vu social network analysis
      - 3,0 ects vu theoretical foundations and research topics in machine learning
 
@@ -121,7 +122,7 @@ _bdhpc: big data and high-performance computing_
      - 3,0 ects vu frontiers of algorithms and complexity
      - 6,0 ects vu gpu architectures and computing
      - 3,0 ects vu graph drawing algorithms oder 4,5 ects vu graph drawing algorithms
-     - 6,0 ects vu hands on cloud native
+     - 6,0 ects vu hands on cloud native 🟡
      - 4,5 ects vu heuristic optimization techniques
      - 4,5 ects vu high performance computing
      - 3,0 ects vu hybrid classic quantum systems
@@ -143,13 +144,13 @@ _vast: visual analytics and semantic technologies_
      - 1,5 ects ue information visualization
      - 6,0 ects vu kbs for business informatics
      - 6,0 ects vu knowledge-based systems
-     - 3,0 ects vu knowledge graphs
+     - 3,0 ects vu knowledge graphs 🟢
      - 3,0 ects vo medical image processing
      - 3,0 ects ue medical image processing
-     - 3,0 ects vu natural language processing and information extraction
+     - 3,0 ects vu natural language processing and information extraction 🟢
      - 3,0 ects vo processing of declarative knowledge
      - 3,0 ects vu real-time visualization
      - 3,0 ects vu semantic web technologies
      - 3,0 ects vu semi-automatic information and knowledge systems
-     - 3,0 ects vu visual data science
+     - 3,0 ects vu visual data science 🟢
      - 4,5 ects vu visualization 2
