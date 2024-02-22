@@ -49,13 +49,13 @@ _diplomarbeit (30,0 ects)_
 > 
 > 🟡 = easy exam, open book, very little to memorize
 >
-> 🛑 = hard exam, closed book, lots of memorization
+> 🔴 = hard exam, closed book, lots of memorization
 
 _fds: fundamentals of data science_
 
 - fds/core (6,0 ects)
      - 3,0 ects vu data acquisition and survey methods 🟢
-     - 3,0 ects vo data stewardship 🛑
+     - 3,0 ects vo data stewardship 🔴
 - fds/extension (0-18,0 ects)
      - 6,0 ects vu advanced cryptography
      - 3,0 ects vu communicating data
