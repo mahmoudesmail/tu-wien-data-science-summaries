@@ -1,5 +1,3 @@
-# overview
-
 > see: https://www.tuwien.at/fileadmin/Assets/dienstleister/studienabteilung/MSc-Studienplaene_2023/Masterstudium_Data_Science_2023.pdf on page 39
 >
 > see: https://tiss.tuwien.ac.at/curriculum/public/curriculum.xhtml?dswid=1412&dsrid=989&semesterCode=2024S&semester=YEAR&key=67853&viewAcademicYear=true
@@ -57,7 +55,7 @@ _fds: fundamentals of data science_
 
 - fds/core (6,0 ects)
      - 3,0 ects vu data acquisition and survey methods 🟢
-     - 3,0 ects vo data stewardship 🛑 
+     - 3,0 ects vo data stewardship 🛑
 - fds/extension (0-18,0 ects)
      - 6,0 ects vu advanced cryptography
      - 3,0 ects vu communicating data
@@ -76,7 +74,7 @@ _fds: fundamentals of data science_
 _mls: machine learning and statistics_
 
 - mls/core (6,0 ects)
-     - 3,0 ects vu recommender systems 🟡 
+     - 3,0 ects vu recommender systems 🟡 (open book)
      - 3,0 ects vu statistical simulation and computer intensive methods 🟢
 - mls/extension (0-18,0 ects)
      - 3,0 ects vu advanced learning methods
@@ -111,7 +109,7 @@ _mls: machine learning and statistics_
 _bdhpc: big data and high-performance computing_
 
 - bdhpc/core (6,0 ects)
-     - 3,0 ects vu basics of parallel computing 🟡 (basically parcomp from undergrads)
+     - 3,0 ects vu basics of parallel computing 🟡 (basically just parcomp)
      - 3,0 ects vu efficient programs 🟢
 - bdhpc/extension (0-18,0 ects)
      - 4,5 ects vu algorithmic geometry
@@ -139,7 +137,7 @@ _bdhpc: big data and high-performance computing_
 _vast: visual analytics and semantic technologies_
 
 - vast/core (6,0 ects)
-     - 3,0 ects vu advanced information retrieval
+     - 3,0 ects vu advanced information retrieval 🟡 (remote and well taught)
      - 3,0 ects ue design and evaluation of visualisations 🟢
 - vast/extension (0-18,0 ects)
      - 3,0 ects vo deductive databases
