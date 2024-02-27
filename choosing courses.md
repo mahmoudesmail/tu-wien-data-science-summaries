@@ -43,7 +43,7 @@ _diplomarbeit (30,0 ects)_
 
 ## elective courses
 
-> 🟢 = project based, no exams
+> 🟢 = no exam, project based
 > 
 > 🟡 = easy exam, open book, very little to memorize
 >
