@@ -2,6 +2,8 @@
 >
 > see: https://tiss.tuwien.ac.at/curriculum/public/curriculum.xhtml?dswid=1412&dsrid=989&semesterCode=2024S&semester=YEAR&key=67853&viewAcademicYear=true
 
+# overview
+
 ## mandatory courses
 
 _\*/fd: data science - foundations_
@@ -157,3 +159,7 @@ _vast: visual analytics and semantic technologies_
      - 3,0 ects vu semi-automatic information and knowledge systems
      - 3,0 ects vu visual data science 🟢
      - 4,5 ects vu visualization 2
+
+# picking the right electives
+
+...
