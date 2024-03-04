@@ -64,7 +64,7 @@ _diplomarbeit (30,0 ects)_
 - kommissionellen abschlussprüfung (1,5 ects)
 - „seminar für diplomand_innen“ (1,5 ects)
 
-## empfohlene semestereinteilung für pflichtmodule (default)
+## semestereinteilung für pflichtmodule
 
 1. semester (ws)
      - 4,5 vu advanced methods for regression and classification
@@ -82,7 +82,7 @@ _diplomarbeit (30,0 ects)_
 3. semester (ws)
      - 5,0 pr interdisciplinary project in data science
 
-## empfohlene semestereinteilung für pflichtmodule (quereinsteiger)
+## semestereinteilung für pflichtmodule (quereinsteiger)
 
 1. semester (ss)
      - 6,0 vu advanced database systems
