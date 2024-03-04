@@ -48,6 +48,8 @@ _diplomarbeit (30,0 ects)_
 > 🟡 = easy exam, open book, very little to memorize
 >
 > 🔴 = hard exam, closed book, lots of memorization
+>
+> vo = lecture, a single exam at the end of the course which can also be taken during holidays
 
 _fds: fundamentals of data science_
 
