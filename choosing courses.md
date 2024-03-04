@@ -86,7 +86,7 @@ _mls: machine learning and statistics_
      - 6,0 ects vu business intelligence
      - 3,0 ects vu crypto asset analytics 🟢
      - 3,0 ects vu deep learning for visual computing
-     - 5,0 ects vu general regression models (oder 3,0 ects vo general regression models und 2,0 ects general regression models)
+     - 5,0 ects vu general regression models (or 3,0 ects vo general regression models und 2,0 ects general regression models)
      - 4,5 ects vu intelligent audio and music analysis
      - 4,5 ects vo introduction to statistical inference
      - 2,0 ects ue introduction to statistical inference
