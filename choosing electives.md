@@ -119,6 +119,6 @@ _vast: visual analytics and semantic technologies_
      - 3,0 ects vu visual data science 🟢
      - 4,5 ects vu visualization 2
 
-# comparing core courses for each module
+# comparing modules
 
 ...
