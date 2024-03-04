@@ -25,7 +25,46 @@ insgesamt: 120 ECTS
      - man muss eine diplomarbeit machen
      - man muss “freie wahlfächer und transferable skills” machen – zumindest 4,5 von 9 ECTS müssen aus dem pool sein und den rest kann man sich von anderen kursen anrechnen lassen
 
-## empfohlene semestereinteilung (default)
+## pflichtmodule
+
+_\*/fd: data science - foundations_
+
+- fds/fd – fundamentals of data science - foundations (9,0 ects)
+     - 3,0 ects vu data-oriented programming paradigms
+     - 3,0 ects vu experiment design for data science
+     - 3,0 ects vu statistical computing
+- mls/fd – machine learning and statistics - foundations (9,0 ects)
+     - 4,5 ects vu advanced methods for regression and classification
+     - 4,5 ects vu machine learning
+- bdhpc/fd – big data and high performance computing - foundations (9,0 ects)
+     - 6,0 ects vu advanced database systems
+     - 3,0 ects vu data-intensive computing
+- vast/fd – visual analytics and semantic technologies - foundations (9,0 ects)
+     - 3,0 ects vo cognitive foundations of visualization
+     - 3,0 ects vo information visualization
+     - 3,0 ects vu semantic systems
+
+_dsa: domain-specific aspects of data science_
+
+- dsa – domain-specific aspects of data science (9,0 ects)
+     - 1,0 ects vu interdisciplinary lecture series on data science
+     - 5,0 ects pr interdisciplinary project in data science
+     - 3,0 ects vo/vu/se fachspezifische lehrveranstaltungen, die aus einer liste ausgewählt werden, die in abstimmung mit den vortragenden der ringvorlesung erstellt und von der studienkommission verwaltet wird.
+     - requirements (must have done 3 of 5 courses):
+          - 4,5 ects vu advanced methods for regression and classification
+          - 3,0 ects vu data-oriented programming paradigms
+          - 3,0 ects vu experiment design for data science
+          - 4,5 ects vu machine learning
+
+_freie wahlfächer und transferable skills (9,0 ects)_
+
+_diplomarbeit (30,0 ects)_
+
+- wissenschaftliche arbeit (diplomarbeit) (27,0 ects)
+- kommissionellen abschlussprüfung (1,5 ects)
+- „seminar für diplomand_innen“ (1,5 ects)
+
+## empfohlene semestereinteilung für pflichtmodule (default)
 
 1. semester (ws)
      - 4,5 vu advanced methods for regression and classification
@@ -43,7 +82,7 @@ insgesamt: 120 ECTS
 3. semester (ws)
      - 5,0 pr interdisciplinary project in data science
 
-## empfohlene semestereinteilung (quereinsteiger)
+## empfohlene semestereinteilung für pflichtmodule (quereinsteiger)
 
 1. semester (ss)
      - 6,0 vu advanced database systems
