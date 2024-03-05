@@ -121,7 +121,7 @@ _vast: visual analytics and semantic technologies_
 
 # comparing modules
 
-> conclusion: pick core/mls, core/vast. also pick core/bdhpc if you know how to write c++ code. but avoid core/fds.
+> conclusion: definitely pick core/mls and core/vast. also pick core/bdhpc if you know how to write c++ code. but avoid core/fds.
 
 _fds: fundamentals of data science_
 
