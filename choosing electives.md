@@ -164,7 +164,7 @@ _mls: machine learning and statistics_
 
 _bdhpc: big data and high-performance computing_
 
-> conclusion: probably too much effort if you don't know c/c++
+> conclusion: too much effort if you don't know c/c++
 
 - bdhpc/core
 	- basics of parallel computing
