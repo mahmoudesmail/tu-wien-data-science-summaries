@@ -147,7 +147,7 @@ _mls: machine learning and statistics_
 
 - mls/core
 	- recommender systems
-		- ✓ open book exam, aimed at understanding
+		- 𝙓 written exam aimed at understanding
 		- ✓ fully remote
 		- ✓ interesting exercises: 4 python assignments and a group project
 	- statistical simulation and computer intensive methods
@@ -164,7 +164,7 @@ _bdhpc: big data and high-performance computing_
 
 - bdhpc/core
 	- basics of parallel computing
-		- ✓ open book exam
+		- 𝙓 written exam
 		- ✓ fully remote: slides are self explanatory
 		- ✓ repetitive content: identical to parcomp from cs bachelors, but with 10% less material
 	- efficient programs
@@ -180,7 +180,7 @@ _vast: visual analytics and semantic technologies_
 
 - vast/core
 	- advanced information retrieval
-		- ✓ open book exam, aimed at understanding
+		- 𝙓 written exam: open book, aimed at understanding
 		- ✓ no real prerequisites
 		- ✓ fully remote, got "best distance learning" award
 	- design and evaluation of visualisations
