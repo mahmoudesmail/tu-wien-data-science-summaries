@@ -123,7 +123,7 @@ _vast: visual analytics and semantic technologies_
 
 _fds: fundamentals of data science_
 
-> note: avoid this module. the "data stewardship" course is too boring and useless for how much effort it is.
+> conclusion: avoid this. the "data stewardship" course is too boring and useless for how much effort it is.
 
 - fds/core
 	- data acquisition and survey methods
@@ -145,7 +145,7 @@ _fds: fundamentals of data science_
 
 _mls: machine learning and statistics_
 
-> note: this is probably the most interesting module. it’s very popular among students.
+> conclusion: the most interesting module. highly recommended.
 
 - mls/core
 	- recommender systems
@@ -164,7 +164,7 @@ _mls: machine learning and statistics_
 
 _bdhpc: big data and high-performance computing_
 
-> note: probably too much effort if you haven't done parcomp
+> conclusion: too much effort if you haven't done parcomp
 
 - bdhpc/core
 	- basics of parallel computing
@@ -181,7 +181,7 @@ _bdhpc: big data and high-performance computing_
 
 _vast: visual analytics and semantic technologies_
 
-> note: this is probably the easiest module. it’s very popular among students.
+> conclusion: the easiest module. highly recommended.
 
 - vast/core
 	- advanced information retrieval
