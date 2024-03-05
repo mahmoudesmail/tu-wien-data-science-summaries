@@ -195,3 +195,4 @@ _vast: visual analytics and semantic technologies_
 - vast/extension
 	- +7 project based courses
 	- 3 vo based courses
+ 	- access to hci courses
