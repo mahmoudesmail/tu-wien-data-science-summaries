@@ -70,7 +70,7 @@ _mls: machine learning and statistics_
 _bdhpc: big data and high-performance computing_
 
 - bdhpc/core (6,0 ects)
-     - 3,0 ects vu basics of parallel computing 🟡 (basically just parcomp)
+     - 3,0 ects vu basics of parallel computing 🟢 (basically just parcomp)
      - 3,0 ects vu efficient programs 🟢
 - bdhpc/extension (0-18,0 ects)
      - 4,5 ects vu algorithmic geometry
@@ -164,7 +164,7 @@ _bdhpc: big data and high-performance computing_
 
 - bdhpc/core
 	- basics of parallel computing
-		- ✓ open book exam
+		- ✓ project based (used to have an exam)
 		- ✓ fully remote: slides are self explanatory
 		- ✓ repetitive content: identical to parcomp from cs bachelors, but with 10% less material
 	- efficient programs
