@@ -164,6 +164,8 @@ _mls: machine learning and statistics_
 
 _bdhpc: big data and high-performance computing_
 
+> note: probably too much effort if you haven't done parcomp
+
 - bdhpc/core
 	- basics of parallel computing
 		- ✓ open book exam
