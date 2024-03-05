@@ -123,23 +123,73 @@ _vast: visual analytics and semantic technologies_
 
 _fds: fundamentals of data science_
 
-> conclusion: avoid this module. the "data stewardship" course is too boring and useless for how much effort it is.
+> note: avoid this module. the "data stewardship" course is too boring and useless for how much effort it is.
 
 - fds/core
 	- data acquisition and survey methods
 		- ✓ project based
 		- ✓ fully remote
-		- ✓ very easy exercises
-			- 7 datacamp courses about web scraping, data wrangling, data visualization.
-			- 1 solo assignment where you scrape weather data.
-			- 1 group assignment where you have to gather data from other students through surveys and present your findings.
+		- ✓ easy exercises
+			- 7 datacamp R courses about web scraping, data wrangling, data visualization
+			- 1 solo assignment where you scrape weather data
+			- 1 group assignment where you have to gather data from other students through surveys and present your findings
 	- data stewardship
-		- ✓ vo course (with exams during holidays).
-		- 𝙓 lectures aren’t recorded, the slides aren’t self-explanatory.
-		- 𝙓 written exam (might be oral if there are fewer participants), closed book, many abbreviations to memorize.
-		- 𝙓 very boring: the management and legal aspects of data in large companies.
+		- ✓ vo course (with exams during holidays)
+		- 𝙓 lectures aren’t recorded, the slides aren’t self-explanatory
+		- 𝙓 written exam (might be oral if there are fewer participants), closed book, many abbreviations to memorize
+		- 𝙓 very boring: the management and legal aspects of data in large companies
 - fds/extension
 	- +5 project based courses
 	- 0 vo courses
 	- very few courses to pick from
 
+_mls: machine learning and statistics_
+
+> note: this is probably the most interesting module. it’s very popular among students.
+
+- mls/core
+	- recommender systems
+		- ✓ open book exam, aimed at understanding
+		- ✓ fully remote
+		- 〜 4 python assignments and a group project
+	- statistical simulation and computer intensive methods
+		- ✓ project based
+		- ✓ fully remote, lectures are recorded
+		- ✓ easy exercises, 9 exercises in R
+		- 𝙓 slides and exercises are messy: you’ll need to spend some time relearning statistics basics
+- mls/extension
+	- +5 project based courses
+	- 4 vo based courses
+	- most courses to pick from, compared to all modules
+
+_bdhpc: big data and high-performance computing_
+
+- bdhpc/core
+	- basics of parallel computing
+		- ✓ open book exam
+		- ✓ identical to parcomp from cs bachelors, but with 10% less material
+	- efficient programs
+		- ✓ project based
+		- ✓ fully remote
+		- 〜 assumes c/c++ knowledge, you’ll have to optimize a given program and present it
+- bdhpc/extension
+	- +8 project based courses
+	- 2 vo based courses
+	- access to cloud and gpu courses
+
+_vast: visual analytics and semantic technologies_
+
+> note: this is probably the easiest module. it’s very popular among students.
+
+- vast/core
+	- advanced information retrieval
+		- ✓ open book exam, aimed at understanding
+		- ✓ no real prerequisites
+		- ✓ fully remote, got "best distance learning" award
+	- design and evaluation of visualisations
+		- ✓ project based
+		- ✓ easy exercises about hci
+		- 𝙓 requires class participation for quizzes and discussing papers
+- vast/extension
+	- +7 project based courses
+	- 3 vo based courses
