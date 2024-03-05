@@ -123,7 +123,7 @@ _vast: visual analytics and semantic technologies_
 
 _fds: fundamentals of data science_
 
-> conclusion: avoid this module. the "data stewardship" course is too boring for how much effort it is.
+> conclusion: avoid this module. the "data stewardship" course is too boring and useless for how much effort it is.
 
 - fds/core
 	- data acquisition and survey methods
