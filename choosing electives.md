@@ -121,9 +121,9 @@ _vast: visual analytics and semantic technologies_
 
 # comparing modules
 
-_fds: fundamentals of data science_
+> conclusion: pick core/mls, core/vast and also core/bdhpc if you know how to write c++ code. avoid core/fds.
 
-> conclusion: avoid this. the "data stewardship" course is too boring and useless for how much effort it is.
+_fds: fundamentals of data science_
 
 - fds/core
 	- data acquisition and survey methods
@@ -145,8 +145,6 @@ _fds: fundamentals of data science_
 
 _mls: machine learning and statistics_
 
-> conclusion: the most interesting module. highly recommended.
-
 - mls/core
 	- recommender systems
 		- ✓ open book exam, aimed at understanding
@@ -164,8 +162,6 @@ _mls: machine learning and statistics_
 
 _bdhpc: big data and high-performance computing_
 
-> conclusion: too much effort if you don't know c/c++
-
 - bdhpc/core
 	- basics of parallel computing
 		- ✓ open book exam
@@ -180,8 +176,6 @@ _bdhpc: big data and high-performance computing_
 	- access to cloud and gpu courses
 
 _vast: visual analytics and semantic technologies_
-
-> conclusion: the easiest module. highly recommended.
 
 - vast/core
 	- advanced information retrieval
