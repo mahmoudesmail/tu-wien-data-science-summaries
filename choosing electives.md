@@ -121,4 +121,25 @@ _vast: visual analytics and semantic technologies_
 
 # comparing modules
 
-...
+_fds: fundamentals of data science_
+
+> conclusion: avoid this module. the "data stewardship" course is too boring for how much effort it is.
+
+- fds/core
+	- data acquisition and survey methods
+		- ✓ project based
+		- ✓ fully remote
+		- ✓ very easy exercises
+			- 7 datacamp courses about web scraping, data wrangling, data visualization.
+			- 1 solo assignment where you scrape weather data.
+			- 1 group assignment where you have to gather data from other students through surveys and present your findings.
+	- data stewardship
+		- ✓ vo course (with exams during holidays).
+		- 𝙓 lectures aren’t recorded, the slides aren’t self-explanatory.
+		- 𝙓 written exam (might be oral if there are fewer participants), closed book, many abbreviations to memorize.
+		- 𝙓 very boring: the management and legal aspects of data in large companies.
+- fds/extension
+	- +5 project based courses
+	- 0 vo courses
+	- very few courses to pick from
+
