@@ -151,7 +151,7 @@ _mls: machine learning and statistics_
 	- recommender systems
 		- ✓ open book exam, aimed at understanding
 		- ✓ fully remote
-		- 〜 4 python assignments and a group project
+		- 4 python assignments and a group project
 	- statistical simulation and computer intensive methods
 		- ✓ project based
 		- ✓ fully remote, lectures are recorded
@@ -173,7 +173,7 @@ _bdhpc: big data and high-performance computing_
 	- efficient programs
 		- ✓ project based
 		- ✓ fully remote
-		- 〜 assumes c/c++ knowledge, you’ll have to optimize a given program and present it
+		- assumes c/c++ knowledge, you’ll have to optimize a given program and present it
 - bdhpc/extension
 	- +8 project based courses
 	- 2 vo based courses
