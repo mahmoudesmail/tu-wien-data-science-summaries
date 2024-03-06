@@ -4,7 +4,7 @@
 >
 > the actual landscape of courses is constantly changing while the "verordnungstext" (the source of this page) only gets updated every couple of years.
 >
-> the most up to date source is the tiss page on: https://tiss.tuwien.ac.at/curriculum/public/curriculum.xhtml?dswid=1412&dsrid=989&semesterCode=2024S&semester=YEAR&key=67853&viewAcademicYear=true
+> the most up to date source is the tiss page on: https://tiss.tuwien.ac.at/curriculum/public/curriculum.xhtml?key=67853
 
 # overview
 
