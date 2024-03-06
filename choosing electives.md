@@ -2,6 +2,12 @@
 >
 > see: https://tiss.tuwien.ac.at/curriculum/public/curriculum.xhtml?dswid=1412&dsrid=989&semesterCode=2024S&semester=YEAR&key=67853&viewAcademicYear=true
 
+> [!CAUTION]
+> 
+> this page is both **incomplete** and **incorrect**.
+>
+> the actual landscape of courses is constantly changing while the "verordnungstext" (the source) only gets updated every couple of years
+
 # overview
 
 > 🟢 = no exam, project based
