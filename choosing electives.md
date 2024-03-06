@@ -2,7 +2,7 @@
 > 
 > this page is both *incomplete* and *incorrect*. it should just serve as a starting point.
 >
-> the actual landscape of courses is constantly changing while the "verordnungstext" (the source) only gets updated every couple of years.
+> the actual landscape of courses is constantly changing while the "verordnungstext" (the source of this page) only gets updated every couple of years.
 >
 > the most up to date source is: https://tiss.tuwien.ac.at/curriculum/public/curriculum.xhtml?dswid=1412&dsrid=989&semesterCode=2024S&semester=YEAR&key=67853&viewAcademicYear=true
 
