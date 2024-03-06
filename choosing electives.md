@@ -1,6 +1,6 @@
 > [!CAUTION]
 > 
-> this page is both **incomplete** and **incorrect**.
+> this page is both **incomplete** and **incorrect**. it should just serve as an initial starting point.
 >
 > the actual landscape of courses is constantly changing while the "verordnungstext" (the source) only gets updated every couple of years.
 >
