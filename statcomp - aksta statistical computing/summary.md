@@ -1,4 +1,4 @@
-## basics
+# basics
 
 _about R lang_
 
@@ -39,7 +39,7 @@ r
 > demo("query")
 ```
 
-## reproducability
+# reproducability
 
 _definition_
 
@@ -66,7 +66,7 @@ rscript -e "install.packages('rmarkdown')"
 rscript -e "rmarkdown::render('file.rmd')"
 ```
 
-## performance
+# performance
 
 _readable code_
 
@@ -97,7 +97,7 @@ _debugging_
 - antibugging: using assert statements called `stopifnot()`
 - debugging functions in R: `browser`, `debug`/`undebug`, `debugger`, `dump.frames`, `recover`, `trace`/`untrace`
 
-## data wrangling
+# data wrangling
 
 _tidy data_
 
