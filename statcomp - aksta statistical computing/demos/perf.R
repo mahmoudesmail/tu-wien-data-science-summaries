@@ -117,6 +117,7 @@ fx <- function(nstart) kmeans(Boston, 4, nstart=nstart)
 microbenchmark(lapply(starts, fx), mclapply(starts, fx, mc.cores=numCores))
 
 # demo 2
+# slow because of multiprocessing, not multithreading -> too many forks
 registerDoParallel(2)
 getDoParWorkers()
 microbenchmark(
