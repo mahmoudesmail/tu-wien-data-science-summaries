@@ -1,4 +1,4 @@
-> [!CAUTION]
+> Caution!
 > 
 > this page is both *incomplete* and *incorrect*. it should just serve as a starting point.
 >
