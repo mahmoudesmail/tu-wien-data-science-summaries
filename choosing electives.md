@@ -184,7 +184,7 @@ _vast: visual analytics and semantic technologies_
 
 - vast/core
 	- advanced information retrieval
-		- 𝙓 written exam: aimed at understanding
+		- 𝙓 written exam: closed book, aimed at understanding
 		- ✓ no real prerequisites
 		- ✓ fully remote, got "best distance learning" award
 	- design and evaluation of visualisations
