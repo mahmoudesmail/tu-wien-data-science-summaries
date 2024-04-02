@@ -75,7 +75,7 @@ _diplomarbeit (30,0 ects)_
      - 4,5 vu machine learning
 2. semester (ss)
      - 6,0 vu advanced database systems
-     - 3,0 vo cognitive foundations of visualization → doesn’t show up in “semesteransicht” on tiss, but is still the right course
+     - 3,0 vo cognitive foundations of visualization → fehlt in der “semesteransicht” auf tiss, aber ist verpflichtend
      - 3,0 vu data-intensive computing
      - 3,0 vo information visualization
      - 3,0 vu statistical computing
