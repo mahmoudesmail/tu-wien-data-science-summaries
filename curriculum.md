@@ -39,7 +39,7 @@
 | … pick from modules: FDS, MLS, BDHPC, VAST. each 6-24 ECTS            | 36.0   |
 | ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––        | Σ 36.0 |
 | **Free electives, transferable skills**                               |        |
-| … pick from course pool                                               | 9.0    |
+| … pick from course catalogue                                          | 9.0    |
 | ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––        | Σ 9.0  |
 | **Thesis**                                                            |        |
 | SE Seminar for Master Students in Data Science                        | 1.5    |
