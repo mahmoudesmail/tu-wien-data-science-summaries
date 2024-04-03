@@ -29,11 +29,11 @@
 | VU Advanced Database Systems (bdhpc/fd)                               | 6.0    |
 | VU Data-intensive Computing (bdhpc/fd)                                | 3.0    |
 | VO Information Visualization (vast/fd)                                | 3.0    |
-| VO Cognitive Foundations of Visualization (vast/fd - missing in tiss) | 3.0    |
+| VO Cognitive Foundations of Visualization (vast/fd)                   | 3.0    |
 | ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––        | Σ 18.0 |
 | **Semester 3**                                                        |        |
 | PR Interdisciplinary Project in Data Science (dsa)                    | 5.0    |
-| VU Domain-Specific Lectures in Data Science (dsa - missing in tiss)   | 3.0    |
+| VU Domain-Specific Lectures in Data Science (dsa)                     | 3.0    |
 | ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––        | Σ 8.0  |
 | **Electives**                                                         |        |
 | … pick from modules: FDS, MLS, BDHPC, VAST. each 6-24 ECTS            | 36.0   |
