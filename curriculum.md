@@ -55,6 +55,8 @@ _about the curriculum_
 | Final exam Final board exam                                           | 1.5    |
 | ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––        | Σ 30.0 |
 
+<br><br>
+
 # some recommended electives
 
 these are mainly project based courses – but lectures (vorlesungen) can also be nice, since some of them offer exam dates during breaks.
