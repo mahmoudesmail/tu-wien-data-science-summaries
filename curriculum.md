@@ -80,19 +80,19 @@ _mls_
 
 _bdhpc_
 
-- 4,5 ects ue analysis 2
-- 4,5 ects vu fixed-parameter algorithms and complexity (exam optional)
+- 4.5 ects ue analysis 2
+- 4.5 ects vu fixed-parameter algorithms and complexity (exam optional)
 - 6.0 ects vu gpu architectures and computing
 - 6.0 ects vu hands on cloud native (practical exam)
-- 4,5 ects vu heuristic optimization techniques
-- 4,5 ects vu high performance computing
+- 4.5 ects vu heuristic optimization techniques
+- 4.5 ects vu high performance computing
 - 3.0 ects ue nonlinear optimization / programming
 - 3.0 ects vu structural decompositions and algorithms
 
 _vast_
 
 - 3.0 ects vu description logics and ontologies (exam optional)
-- 1,5 ects ue information visualization
+- 1.5 ects ue information visualization
 - 3.0 ects vu knowledge graphs
 - 3.0 ects ue medical image processing 
 - 3.0 ects vu natural language processing and information extraction
