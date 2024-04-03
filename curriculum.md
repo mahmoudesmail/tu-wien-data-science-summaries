@@ -1,5 +1,6 @@
 # curriculum
 
+- tiss page (most up to date): https://tiss.tuwien.ac.at/curriculum/public/curriculum.xhtml?&key=67853&locale=en (most up to date)
 - regulatory legal document (in force since october 2023): https://www.tuwien.at/fileadmin/Assets/dienstleister/studienabteilung/MSc-Studienplaene_2023/Masterstudium_Data_Science_2023.pdf
 	- 120 ECTS in total
 	- lehrveranstaltung $\in$ modul $\in$ prüfungsfach
@@ -10,7 +11,6 @@
 		     - the 'core' part has 2 courses, with 6 ECTS in total, that you must do completely in order to get credits and be allowed to do the extension part
 		     - 'extension' part has arbitrary many courses, but you're allowed to do 18 ECTS from them at most
 	     - this means that in total each specialization can consist of 6-24 ECTS
-- tiss page: https://tiss.tuwien.ac.at/curriculum/public/curriculum.xhtml?&key=67853&locale=en (most up to date)
 
 <br>
 
