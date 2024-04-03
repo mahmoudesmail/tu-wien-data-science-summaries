@@ -1,3 +1,5 @@
+# curriculum
+
 - legal doc: https://www.tuwien.at/fileadmin/Assets/dienstleister/studienabteilung/MSc-Studienplaene_2023/Masterstudium_Data_Science_2023.pdf (regulatory legal document in force since october 2023)
 	- 120 ECTS in total
 	- lehrveranstaltung $\in$ modul $\in$ prüfungsfach
@@ -9,6 +11,8 @@
 		     - 'extension' part has arbitrary many courses, but you're allowed to do 18 ECTS from them at most
 	     - this means that in total each specialization can consist of 6-24 ECTS
 - tiss page: https://tiss.tuwien.ac.at/curriculum/public/curriculum.xhtml?&key=67853&locale=en (most up to date)
+
+<br><br>
 
 | **Semester 1**                                                                                                      | ECTS   |
 | :------------------------------------------------------------------------------------------------------------------ | :----- |
@@ -29,17 +33,17 @@
 | **Semester 3**                                                                                                      |        |
 | PR Interdisciplinary Project in Data Science (dsa)                                                                  | 5.0    |
 | VU Domain-Specific Lectures in Data Science (dsa - missing in tiss)                                                 | 3.0    |
+| ––––––––––––––––––––––––                                                                                            |        |
+| **Electives**                                                                                                       |        |
+| … pick from modules: FDS, MLS, BDHPC, VAST.<br><br>min. 2 modules, each: 6-24 ECTS (core: 6 ECTS,ext: max. 18 ECTS) | 36.0   |
+|                                                                                                                     | Σ 36.0 |
+| ––––––––––––––––––––––––                                                                                            |        |
+| **Free electives, transferable skills**                                                                             |        |
+| … pick from course pool                                                                                             | 9.0    |
+|                                                                                                                     | Σ 9.0  |
 | ––––––––––––––––––––––––                                                                                            | Σ 8.0  |
 | **Thesis**                                                                                                          |        |
 | SE Seminar for Master Students in Data Science                                                                      | 1.5    |
 | Thesis Diploma thesis                                                                                               | 27.0   |
 | Final exam Final board exam                                                                                         | 1.5    |
 |                                                                                                                     | Σ 30.0 |
-| ––––––––––––––––––––––––                                                                                            |        |
-| **Free electives, transferable skills**                                                                             |        |
-| … pick from course pool                                                                                             | 9.0    |
-|                                                                                                                     | Σ 9.0  |
-| ––––––––––––––––––––––––                                                                                            |        |
-| **Electives**                                                                                                       |        |
-| … pick from modules: FDS, MLS, BDHPC, VAST.<br><br>min. 2 modules, each: 6-24 ECTS (core: 6 ECTS,ext: max. 18 ECTS) | 36.0   |
-|                                                                                                                     | Σ 36.0 |
