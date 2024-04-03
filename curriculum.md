@@ -67,7 +67,7 @@ _diplomarbeit (30,0 ects)_
 ## semestereinteilung für pflichtmodule
 
 | **Semester 1**                                                      | ECTS   |
-| ------------------------------------------------------------------- | ------ |
+| :------------------------------------------------------------------- | :------ |
 | VU Data-oriented Programming Paradigms                              | 3.0    |
 | VU Experiment Design for Data Science                               | 3.0    |
 | VU Advanced Methods for Regression and Classification               | 4.5    |
