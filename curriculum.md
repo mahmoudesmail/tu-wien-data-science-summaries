@@ -60,7 +60,7 @@ these are mainly project based courses, but lectures (vorlesungen) can also be n
 
 _fds_
 
-- _note:_ make sure you like the prerequisite course "data stewardship" before commiting to this module
+- **note:** make sure you like the prerequisite course "data stewardship" before commiting to this module
 - 3,0 ects ue data stewardship
 - 3,0 ects vu digital humanism
 - 3,0 ects vu sustainability in computer science
