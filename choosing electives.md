@@ -123,8 +123,6 @@ _vast: visual analytics and semantic technologies_
 
 # comparing modules
 
-> my recommendation: the best options are core/mls and core/vast. also pick core/bdhpc if you're passionate about performance and know some C/C++. but avoid core/fds.
-
 _fds: fundamentals of data science_
 
 - fds/core
@@ -193,3 +191,7 @@ _vast: visual analytics and semantic technologies_
 	- +7 project based courses
 	- 3 vo based courses
  	- access to hci courses
+
+# conclusion
+
+my recommendation: the best options are core/mls and core/vast. also pick core/bdhpc if you're passionate about performance and know some C/C++. but avoid core/fds.
