@@ -67,7 +67,7 @@ _diplomarbeit (30,0 ects)_
 ## semestereinteilung für pflichtmodule
 
 | **Semester 1**                                                      | ECTS   |
-| :------------------------------------------------------------------- | :------ |
+| :------------------------------------------------------------------ | :----- |
 | VU Data-oriented Programming Paradigms                              | 3.0    |
 | VU Experiment Design for Data Science                               | 3.0    |
 | VU Advanced Methods for Regression and Classification               | 4.5    |
@@ -75,7 +75,7 @@ _diplomarbeit (30,0 ects)_
 | VU Semantic Systems                                                 | 3.0    |
 | VU Interdisciplinary Lecture Series on Data Science                 | 1.0    |
 |                                                                     | Σ 19.0 |
-|                                                                     |        |
+| ---                                                                 |        |
 | **Semester 2**                                                      | ECTS   |
 | VU Statistical Computing                                            | 3.0    |
 | VU Advanced Database Systems                                        | 6.0    |
@@ -83,7 +83,7 @@ _diplomarbeit (30,0 ects)_
 | VO Information Visualization                                        | 3.0    |
 | VO Cognitive Foundations of Visualization (note: missing from tiss) | 3.0    |
 |                                                                     | Σ 18.0 |
-|                                                                     |        |
+| ---                                                                 |        |
 | **Semester 3**                                                      |        |
 | PR Interdisciplinary Project in Data Science                        | 5.0    |
 |                                                                     | Σ 5.0  |
