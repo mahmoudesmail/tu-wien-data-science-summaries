@@ -1,6 +1,6 @@
 # curriculum
 
-- legal doc: https://www.tuwien.at/fileadmin/Assets/dienstleister/studienabteilung/MSc-Studienplaene_2023/Masterstudium_Data_Science_2023.pdf (regulatory legal document in force since october 2023)
+- regulatory legal document (in force since october 2023): https://www.tuwien.at/fileadmin/Assets/dienstleister/studienabteilung/MSc-Studienplaene_2023/Masterstudium_Data_Science_2023.pdf
 	- 120 ECTS in total
 	- lehrveranstaltung $\in$ modul $\in$ prüfungsfach
 	- a modul can either be a 'pflichtmodul' (mandatory) or a 'wahlmodul' (elective)
