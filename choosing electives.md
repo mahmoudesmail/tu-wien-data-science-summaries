@@ -194,4 +194,8 @@ _vast: visual analytics and semantic technologies_
 
 # conclusion
 
-my recommendation: the best options are core/mls and core/vast. also pick core/bdhpc if you're passionate about performance and know some C/C++. but avoid core/fds.
+the best options seem to be core/mls and core/vast.
+
+also pick core/bdhpc if you're passionate about performance and know some C/C++.
+
+but definitely avoid core/fds.
