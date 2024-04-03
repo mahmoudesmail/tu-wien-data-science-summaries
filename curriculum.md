@@ -13,7 +13,7 @@ _about the curriculum_
 - wahlmodul:
      - courses must be chosen from 'schlüsselbereiche SB' (specialization areas)
      - each specialization can have 6-24 ECTS
-     - you should pick at least 2 specializations, each made of a 'core' and an 'extension' part:
+     - you must pick at least 2 specializations, each made of a 'core' and an 'extension' part:
 	     - the 'core' part has 2 courses (6 ECTS in total) that you must do together, to gain access to the 'extension' part
 	     - the 'extension' part has an arbitrary number of courses, that you're allowed to do 18 ECTS from at most
 
