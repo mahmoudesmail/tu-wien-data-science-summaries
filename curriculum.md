@@ -33,7 +33,7 @@
 | **Semester 3**                                                                                                      |        |
 | PR Interdisciplinary Project in Data Science (dsa)                                                                  | 5.0    |
 | VU Domain-Specific Lectures in Data Science (dsa - missing in tiss)                                                 | 3.0    |
-| ––––––––––––––––––––––––                                                                                            |        |
+| ––––––––––––––––––––––––                                                                                            | Σ 8.0  |
 | **Electives**                                                                                                       |        |
 | … pick from modules: FDS, MLS, BDHPC, VAST.<br><br>min. 2 modules, each: 6-24 ECTS (core: 6 ECTS,ext: max. 18 ECTS) | 36.0   |
 |                                                                                                                     | Σ 36.0 |
@@ -41,7 +41,7 @@
 | **Free electives, transferable skills**                                                                             |        |
 | … pick from course pool                                                                                             | 9.0    |
 |                                                                                                                     | Σ 9.0  |
-| ––––––––––––––––––––––––                                                                                            | Σ 8.0  |
+| ––––––––––––––––––––––––                                                                                            |        |
 | **Thesis**                                                                                                          |        |
 | SE Seminar for Master Students in Data Science                                                                      | 1.5    |
 | Thesis Diploma thesis                                                                                               | 27.0   |
