@@ -56,12 +56,11 @@ _about the curriculum_
 
 # recommended electives
 
-> these are mainly project based courses, but lectures (vorlesungen) can also be nice if they offer exam dates during breaks.
->
-> i don't recommend doing the fds module, because i'm not a fan of the prerequisite course "data stewardship".
+these are mainly project based courses, but lectures (vorlesungen) can also be nice if they offer exam dates during breaks.
 
 _fds_
 
+- note: make sure you like the prerequisite course "data stewardship" before commiting to this module
 - 3,0 ects ue data stewardship
 - 3,0 ects vu digital humanism
 - 3,0 ects vu sustainability in computer science
