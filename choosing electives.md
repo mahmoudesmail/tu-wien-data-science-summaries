@@ -159,7 +159,7 @@ _mls: machine learning and statistics_
 		- 𝙓 slides and exercises are messy: you’ll need to spend some time relearning statistics basics
 - mls/extension
 	- +5 project based courses
-	- 4 vo based courses
+	- +4 vo based courses
 	- most courses to pick from, compared to all modules
 
 _bdhpc: big data and high-performance computing_
@@ -175,7 +175,7 @@ _bdhpc: big data and high-performance computing_
 		- 〜 assumes c/c++ knowledge: you’ll have to optimize a given program and present it
 - bdhpc/extension
 	- +8 project based courses
-	- 2 vo based courses
+	- +2 vo based courses
 	- access to cloud and gpu courses
 
 _vast: visual analytics and semantic technologies_
@@ -191,6 +191,6 @@ _vast: visual analytics and semantic technologies_
 		- 𝙓 not remote: requires class participation for quizzes and discussing papers
 - vast/extension
 	- +7 project based courses
-	- 3 vo based courses
+	- +3 vo based courses
  	- access to hci courses
 
