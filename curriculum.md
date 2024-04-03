@@ -57,7 +57,7 @@ _about the curriculum_
 
 <br><br>
 
-# some recommended electives
+## some recommended electives
 
 these are mainly project based courses – but lectures (vorlesungen) can also be nice, since some of them offer exam dates during breaks.
 
