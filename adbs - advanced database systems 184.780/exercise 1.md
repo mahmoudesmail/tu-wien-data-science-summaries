@@ -53,12 +53,12 @@ Hash Join
 
 assume we want to equi join: $R \bowtie_{\text{A}=\text{B}} S$
 
-- 1. partition phase:
+- i. partition phase:
     - find a hash function that can map values in the join columns to a buffer frame index between $[1;B\text{-}1]$. → the buffer frames we map the rows to are called "buckets" and the 1 remaining buffer frame is used to read new pages in.
     - read each page $p_R$ of $R$ to memory. then hash the join value of each row to find the right bucket to store a pointer in. → if buffer frames overflow, write them back to disk.
     - repeat for $p_S$ of $S$.
     - total cost: $2 \cdot (b_R + b_S)$ → factor of 2 because of initial reading and writing back the potentially full buckets to disk.
-- 2. probing phase:
+- ii. probing phase:
     - assuming $R_i$ and $S_i$ are all rows in the $i$th-bucket (and $R_i$ is the smaller one of them): read $R_i$ to $B\text-2$ buffer frames. → if not possible, either hash recursively or try another algorithm. the 2 remaining buffer frames are used to read new $S_i$ pages in and store the final result.
     - read each page of $S_i$ into memory. then check each row for matches with $R_i$.
     - if a matching row is found, write it into the buffer frame dedicated to results.
@@ -77,13 +77,13 @@ assume we want to equi join: $R \bowtie_{\text{A}=\text{B}} S$
   - num of allocated tracks: 1000kB track size / 1kB block = 1000 blocks per track → for $n$ blocks we need $n$/1000 tracks → we would change tracks ($n$/1000-1) times
   - **random access**: $n$ * 4.002ms
   - **sequential access**: $t_s$ + $t_r$ + $n \cdot t_{tr}$ + track changes \* $t_{t2t}$ = 1ms + 3ms + $n$ \* 0.002ms + ($n$/1000-1) \* 1ms
-- 1. $Item$
+- i. $Item$
     - total num of blocks: (50,000 records * 10 kB record size) / 1kB block size = 500,000 blocks
     - sequential access of 500,000 blocks: **1503ms**
-- 2. $Supplier$
+- ii. $Supplier$
     - total num of blocks: (200 records * 50 kB record size) / 1kB block size = 10,000 blocks
     - sequential access of 10,000 blocks: **33ms**
-- 3. total access time for hash join
+- iii. total access time for hash join
     - $3 \cdot (b_{Item} + b_{Supplier})$ = 3 * (1503ms + 33ms) = **4608ms**
 
 *access time: ssd*
@@ -92,13 +92,13 @@ assume we want to equi join: $R \bowtie_{\text{A}=\text{B}} S$
   - $t_{tr}$ - transfer time: 3000MB/s = 10kB/3333.3 ns
 - access time for $n$ blocks:
   - **sequential / random access**: $n$ * 3333.3ns
-- 1. $Item$
+- i. $Item$
     - total num of blocks: (50,000 records * 10 kB record size) / 10kB block size = 50,000 blocks
     - sequential access of 50,000 blocks: **166.665ms**
-- 2. $Supplier$
+- ii. $Supplier$
     - total num of blocks: (200 records * 50 kB record size) / 10kB block size = 1000 blocks
     - sequential access of 1000 blocks: **3.3333ms**
-- 3. total access time for hash join
+- iii. total access time for hash join
     - $3 \cdot (b_{Item} + b_{Supplier})$ = 3 * (166.665ms + 3.3333ms) = **509.9949ms**
 
 ## b) index nested loops join
@@ -140,21 +140,21 @@ details:
 
 *access time: magnetic disk*
 
-- 1. $Item$
+- i. $Item$
     - total num of blocks: (20 records * 10 kB record size) / 1kB block size = 200 blocks
     - random access of 200 blocks: **800.4ms**
-- 2. $Supplier$
+- ii. $Supplier$
     - sequential access of 10,000 blocks: **33ms** (same as previous example)
-- 3. total: **833.4 ms**
+- iii. total: **833.4 ms**
 
 *access time: ssd*
 
-- 1. $Item$
+- i. $Item$
     - total num of blocks: (20 records * 10 kB record size) / 10kB block size = 20 blocks
     - random access of 20 blocks: **0.066666ms**
-- 2. $Supplier$
+- ii. $Supplier$
     - sequential access of 1000 blocks: **3.3333ms** (same as previous example)
-- 3. total: **3.399966ms**
+- iii. total: **3.399966ms**
 
 # execise 2: selectivity
 
