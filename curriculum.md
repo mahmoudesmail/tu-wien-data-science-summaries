@@ -6,6 +6,8 @@
 > 
 > regulatory legal document (in force since october 2023): https://www.tuwien.at/fileadmin/Assets/dienstleister/studienabteilung/MSc-Studienplaene_2023/Masterstudium_Data_Science_2023.pdf
 
+<br>
+
 _about the curriculum_
 
 - 120 ECTS in total
