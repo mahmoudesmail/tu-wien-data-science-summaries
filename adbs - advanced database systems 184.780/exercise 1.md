@@ -268,17 +268,17 @@ INNER JOIN user u ON u.id = rep.owner
 
 *optimizations*
 
-- 0. replacing $\times$ and $\sigma$ with $\bowtie$
+- replacing $\times$ and $\sigma$ with $\bowtie$
     - i replaced the selection `WHERE rep.owner = u.id AND rel.repo = rep.id` after the cartesian product with 2 joins.
     - this will eliminate rows without a foreign key.
-- 1. ordering joins
+- ordering joins
     - see: https://www.postgresql.org/docs/current/explicit-joins.html
     - `rep.owner` has 20,000 distinct values while `rel.repo` has 50,000 distinct values. therefore we have to join `repository` and `release` first.
     - this will eliminate even more rows without a foreign key.
     - but modern database query optimizers are so sophisticated that they often analyze table statistics and indexes to determine the best join order regardless of the way you write the query.
-- 2. applying $\sigma, \pi$ as early as possible
+- applying $\sigma, \pi$ as early as possible
     - we filter as many rows as possible before joining with the third table.
-- 3. applying the stronger filters first
+- applying the stronger filters first
     - i reversed the order of predicates `(rel.name = 'v2' OR rel.version = 2)` so an integer based short circuit can happen before potential string comparisions.
     - i filtered by `rep.commits` before filtering by `rep.contributors` because `.commits` have more distinct values to filter and also the predicate `> 105` is already in the last equi-depth histogram bucket, while the predicate `>11` isn’t.
 
