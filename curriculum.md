@@ -15,8 +15,8 @@ _about the curriculum_
 - a 'modul' can either be a 'pflichtmodul' (mandatory) or a 'wahlmodul' (elective)
 - wahlmodul:
      - courses must be chosen from schlüsselbereiche SB (specialization areas)
-     - you should pick at least 2 specializations, each consisting of a 'core' and an 'extension' part
-	     - the 'core' part has 2 courses, with 6 ECTS in total, that you must do completely in order to get credits and be allowed to do the extension part
+     - you should pick at least 2 specializations, each made of a 'core' and an 'extension' part
+	     - the 'core' part has 2 courses (6 ECTS in total) that you must do together, to gain access to the extension part
 	     - 'extension' part has arbitrary many courses, but you're allowed to do 18 ECTS from them at most
      - this means that in total each specialization can consist of 6-24 ECTS
 
