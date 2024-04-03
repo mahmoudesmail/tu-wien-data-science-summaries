@@ -12,7 +12,7 @@
 	     - this means that in total each specialization can consist of 6-24 ECTS
 - tiss page: https://tiss.tuwien.ac.at/curriculum/public/curriculum.xhtml?&key=67853&locale=en (most up to date)
 
-<br><br>
+<br>
 
 |                                                                       | ECTS   |
 | :-------------------------------------------------------------------- | :----- |
