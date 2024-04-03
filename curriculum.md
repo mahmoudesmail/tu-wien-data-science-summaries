@@ -66,36 +66,24 @@ _diplomarbeit (30,0 ects)_
 
 ## semestereinteilung für pflichtmodule
 
-1. semester (ws)
-     - 4,5 vu advanced methods for regression and classification
-     - 3,0 vu data-oriented programming paradigms
-     - 3,0 vu experiment design for data science
-     - 1,0 vu interdisciplinary lecture series on data science
-     - 3,0 vu semantic systems
-     - 4,5 vu machine learning
-2. semester (ss)
-     - 6,0 vu advanced database systems
-     - 3,0 vo cognitive foundations of visualization → fehlt in der “semesteransicht” auf tiss, aber ist verpflichtend
-     - 3,0 vu data-intensive computing
-     - 3,0 vo information visualization
-     - 3,0 vu statistical computing
-3. semester (ws)
-     - 5,0 pr interdisciplinary project in data science
-
-## semestereinteilung für pflichtmodule (quereinsteiger)
-
-1. semester (ss)
-     - 6,0 vu advanced database systems
-     - 3,0 vo cognitive foundations of visualization
-     - 3,0 vu data-intensive computing
-     - 3,0 vo information visualization
-     - 3,0 vu statistical computing
-2. semester (ws)
-     - 4,5 vu advanced methods for regression and classification
-     - 3,0 vu data-oriented programming paradigms
-     - 3,0 vu experiment design for data science
-     - 1,0 vu interdisciplinary lecture series on data science
-     - 3,0 vu semantic systems
-     - 4,5 vu machine learning
-3. semester (ss)
-     - 5,0 pr interdisciplinary project in data science
+| **Semester 1**                                                      | ECTS   |
+| ------------------------------------------------------------------- | ------ |
+| VU Data-oriented Programming Paradigms                              | 3.0    |
+| VU Experiment Design for Data Science                               | 3.0    |
+| VU Advanced Methods for Regression and Classification               | 4.5    |
+| VU Machine Learning                                                 | 4.5    |
+| VU Semantic Systems                                                 | 3.0    |
+| VU Interdisciplinary Lecture Series on Data Science                 | 1.0    |
+|                                                                     | Σ 19.0 |
+|                                                                     |        |
+| **Semester 2**                                                      | ECTS   |
+| VU Statistical Computing                                            | 3.0    |
+| VU Advanced Database Systems                                        | 6.0    |
+| VU Data-intensive Computing                                         | 3.0    |
+| VO Information Visualization                                        | 3.0    |
+| VO Cognitive Foundations of Visualization (note: missing from tiss) | 3.0    |
+|                                                                     | Σ 18.0 |
+|                                                                     |        |
+| **Semester 3**                                                      |        |
+| PR Interdisciplinary Project in Data Science                        | 5.0    |
+|                                                                     | Σ 5.0  |
