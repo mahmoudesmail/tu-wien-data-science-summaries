@@ -23,7 +23,7 @@
 
 ---
 
-also worth checking out: postgres
+postgres also started following up with many similar features:
 
 - https://www.crunchydata.com/blog/hnsw-indexes-with-postgres-and-pgvector
 - https://neon.tech/blog/pg-embedding-extension-for-vector-search
