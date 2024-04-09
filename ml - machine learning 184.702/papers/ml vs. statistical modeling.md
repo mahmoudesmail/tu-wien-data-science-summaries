@@ -23,7 +23,7 @@ _culture 2: machine learning community / algorithmic modeling culture_
 
 ## the problem
 
-here’s what people from culture-1 get wrong about people from culture-2.
+here’s what people from culture1 get wrong about people from culture2.
 
 occam’s razor often gets interpreted as simpler is better. but prediction, accuracy and simplicity (interpretability) are conflicting goals. 
 
