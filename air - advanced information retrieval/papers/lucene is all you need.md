@@ -1,6 +1,4 @@
-> source: Xian, Jasper, et al. "Vector search with OpenAI embeddings: Lucene is all you need." Proceedings of the 17th ACM International Conference on Web Search and Data Mining. 2024.
->
-> source: https://arxiv.org/abs/2308.14963
+> Xian, Jasper, et al. "Vector search with OpenAI embeddings: Lucene is all you need." Proceedings of the 17th ACM International Conference on Web Search and Data Mining. 2024.
 > 
 > critique: https://news.ycombinator.com/item?id=37373635
 
