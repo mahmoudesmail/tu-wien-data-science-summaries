@@ -1,7 +1,5 @@
 > Tsalapatis, Emil, et al. "The Aurora operating system: revisiting the single level store." Proceedings of the Workshop on Hot Topics in Operating Systems. 2021.
 
-aurora operating system: https://rcs.uwaterloo.ca/aurora/
-
 _single level storage (SLS) systems_
 
 - applications solely use the memory and the operating system persists this state to disk.
