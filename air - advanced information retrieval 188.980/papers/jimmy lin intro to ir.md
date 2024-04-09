@@ -55,7 +55,7 @@ _example: BM25_
 - query encoder: hot-vector.
 - comparison function: top-k retrieval from a probabilistic model of how frequent words occur.
 
-## references
+## source
 
 - https://github.com/castorini/anserini/blob/master/docs/start-here.md
 - https://github.com/castorini/anserini/blob/master/docs/reproducibility.md
