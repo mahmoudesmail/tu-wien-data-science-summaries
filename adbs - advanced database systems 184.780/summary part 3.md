@@ -69,7 +69,7 @@
 - i = isolation → lock on access: a new transaction, waits until the previous one finishes, before it starts operation
 - d = durability → persistence even on failure
 
-*BASE
+*BASE*
 
 - https://aws.amazon.com/compare/the-difference-between-acid-and-base-database/
 - ba = basically available → little downtime
