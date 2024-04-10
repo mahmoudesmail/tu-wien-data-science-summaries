@@ -10,11 +10,11 @@ the hadoop landscape is mostly written in jvm languages.
 *hdfs*
 
 - https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/FileSystemShell.html
-- user space file system: files have to be written back and forth between FS and HDFS
+- user space file system: data has to be written back and forth between FS and HDFS
 - blocks = default size is 128mb, replicated 3 times
 - namenode = master, maintains system tree, file metadata, usually multiple active/standby nodes for higher availability
 - datanode = worker, reads/writes data
-	- one of the 3 replicas syncs itself up with the others on each update
+	- 1 of 3 replicas syncs itself up with the 2 others on each update
 
 *hive*
 
@@ -30,13 +30,13 @@ the hadoop landscape is mostly written in jvm languages.
 	- faster alternative to mapreduce
 	- written in scala, lazy eval
 	- let's you customize number of partitions/replicas based on key/value pairs of RDDs
-	- can run on hadoop and access any hadoop data sources: HDFS, amazon s3, hive, hbase, etc.
+	- can run on hadoop and access any of the hadoop data sources: HDFS, amazon s3, hive, hbase, etc.
 - **node types**:
 	- driver program = master, launches parallel programs on cluster, contains the 'sparkcontext', manages DAG of data-dependencies between jobs assigned to worker nodes
-		- narrow dependency: each parent partition has ≤1 children. no interdependence between partitions
-		- wide dependency: arbitrary many data-dependent dependencies between parent and child partitions. requires shuffling (repartitioning, redistributing) data across nodes
-	- worker node = contains executor that runs tasks/jobs, each executor is an independent jvm
+		- narrow dependency: each parent partition has ≤1 children. no interdependence between partitions.
+		- wide dependency: arbitrary many data-dependent dependencies between parent and child partitions. requires shuffling (repartitioning, redistributing) data across nodes.
+	- worker node = contains executor that runs tasks/jobs. each executor is an independent jvm
 - **data types**:
 	- resilient distributed dataset rdd = immutable collection of objects, default datastructure in spark, supports unstructured data
-	- dataframes = has a schema, elements are of type row (you can't type check for columns), can be created from rdd, allows you to use spark-sql api
+	- dataframes = has a schema. elements are of type row (you can't type check for columns), can be created from rdd. allows you to use spark-sql api
 	- dataset = strongly typed jvm classes with compile time safety
