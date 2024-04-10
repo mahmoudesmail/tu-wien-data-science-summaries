@@ -12,7 +12,7 @@ the hadoop landscape is mostly written in jvm languages.
 - blocks = default size is 128mb, replicated 3 times
 - namenode = master, maintains system tree, file metadata, usually multiple active/standby nodes for higher availability
 - datanode = worker, reads/writes data
-	- one of tree replicas syncs itself up with the 2 others on each update
+	- one of the 3 replicas syncs itself up with the 2 others on each update
 
 *hive*
 
