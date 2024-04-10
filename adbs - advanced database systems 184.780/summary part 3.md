@@ -12,9 +12,8 @@
 
 - break relation into smaller fragments, stored at different sites
 - requires completeness, non-redundancy of data
-- requires local view: fragments should be identifiable without needing to read the entire dataset
-- on allocation, fragments get distributed
-- types:
+- requires local view: fragments should be identifiable without needing to see the entire dataset
+- on allocation, fragments get distributed among nodes:
 	- horizontal fragmentation/**sharding**: share subsets of rows
 	- vertical fragmentation: share subsets of columns
 	- mixed/hybrid fragmentation
@@ -39,13 +38,13 @@
 
 *fault tolerance*
 
-- = distributed recovery.
+- = distributed recovery
 - surviving failures of servers, links, messages, network (partition tolerance)
 - recognize failures, minimze downtime
 
 *transparency*
 
-- = abstraction over distributed nature of data.
+- = abstraction over distributed nature of data
 
 *efficiency*
 
@@ -59,29 +58,29 @@
 	- often traded off for more performance/throughput
 - eventual consistency:
 	- if no more updates arrive, system will at some point be consistent again
-- casual consistency:
+- causal consistency:
 	- nodes will agree on operation-order based on their causal relations - ie. a read before a right is considered a potential cause of the write
 
 *ACID*
 
-- a = atomicity → all steps in a single database transaction are either fully-completed or reverted to their original state
-- c = consistency → data meets integrity constraints
-- i = isolation → lock on access: a new transaction, waits until the previous one finishes, before it starts operation
-- d = durability → persistence even on failure
+- A = atomicity → all steps in a single database transaction are either fully-completed or reverted to their original state
+- C = consistency → data meets integrity constraints
+- I = isolation → lock on access: a new transaction, waits until the previous one finishes, before it starts operation
+- D = durability → persistence even on failure
 
 *BASE*
 
 - https://aws.amazon.com/compare/the-difference-between-acid-and-base-database/
-- ba = basically available → little downtime
-- s = soft state → system doesn't have to be in consistent state all the time
-- e = eventually consistent → if no more updates arrive, system will at some point be consistent again
+- BA = basically available → little downtime
+- S = soft state → system doesn't have to be in consistent state all the time
+- E = eventually consistent → if no more updates arrive, system will at some point be consistent again
 
 *CAP theorem*
 
-- c = single copy consistency → system behaves as if operations were processed one at a time on a single copy
-- a = availability → every request received by a non-failing node in the cluster must result in a response
-- p = partition tolerance → the system continues to operate despite dropped or delayed messages between the distributed nodes
-- cap theorem = In a cluster, you can have at most 2 of the 3 properties (Seth Gilbert and Nancy Lynch, MIT)
+- C = single copy consistency → system behaves as if operations were processed one at a time on a single copy
+- A = availability → every request received by a non-failing node in the cluster must result in a response
+- P = partition tolerance → the system continues to operate despite dropped or delayed messages between the distributed nodes
+- cap theorem = in a cluster, you can have at most 2 of the 3 properties (Seth Gilbert and Nancy Lynch, MIT)
 	- C vs. A: network partitions can not be excluded
 	- AP > CP: prefer availability over consistency
 	- CA: impractical, would mean complete shutdown during a partition
@@ -99,10 +98,10 @@
 
 *logical clocks*
 
-- lamport clock, scalar clock
-	- we increment on special events
+- lamport clock, scalar clock:
+	- we increment a counter on special events
 	- no total order: 2 processes can have the same number/time
-- vector clock
+- vector clock:
 	- we keep a vector containing clocks of all nodes
 
 # noSQL
@@ -130,7 +129,7 @@
 *key-value store*
 
 - = indexed by key
-- data stored in arbitrary data structure, data type is only known to the application
+- data stored in arbitrary data structure, data type is only known to the application. hard to maintain [^mickens]
 - doesn't allow complex queries
 - no locks: write-write conflicts are rare but may happen. a process scans for conflict.
 - bucket (key, value, metadata) = logical entity, namespace for keys
@@ -170,3 +169,5 @@
 - most of information is stored in relationships between id's of aggregates, optimized for graph traversal queries
 - not suitable for sharding, but 'clusters' inside database can be cached by bringing some of their parts into the ram
 - ie. neo4j (network exploration and optimization for java), tigergraph
+
+[^mickens]: https://youtu.be/7Nj9ZjwOdFQ?si=6IQNB6Adw1NuDThX&t=513
