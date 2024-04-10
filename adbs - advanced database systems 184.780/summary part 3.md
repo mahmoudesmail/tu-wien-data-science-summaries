@@ -129,7 +129,7 @@
 *key-value store*
 
 - = indexed by key
-- data stored in arbitrary data structure, data type is only known to the application. hard to maintain [^mickens]
+- data stored in arbitrary data structure, data type is only known to the application
 - doesn't allow complex queries
 - no locks: write-write conflicts are rare but may happen. a process scans for conflict.
 - bucket (key, value, metadata) = logical entity, namespace for keys
@@ -142,23 +142,23 @@
 - = can understand formats like json, xml
 - arbitrary document structure
 - allows advanced queries, but not joins (for performance reasons)
-- ie. mongodb, couchdb
+- ie. mongodb [^mickens], couchdb
 
 *column oriented databases*
 
-- = a) columnar database
+- = columnar database
 	- data stored in columns
 	- technically not considered nosql
 	- arbitrary combination of columns
 	- better cache locality than fetching rows, fast vectorized operations (simd)
 	- can use virtual ids: memory offset to find data, as long as it's fixed length or compressed
-	- compression: makes sense because cpu time is cheaper than io time (run length encoding, bit vector encoding, dictionary encoding, null suppression for sparse data, lempel-ziv, huffman coding) – some operations can be done on compressed data directly
+	- compression: makes sense because compute takes longer than memory access (run length encoding, bit vector encoding, dictionary encoding, null suppression for sparse data, lempel-ziv, huffman coding) – some operations can be done on compressed data directly
 	- late materialization: combine columns as late as possible to avoid having to keep intermediate results in memory
 	- ie. monetdb, apache kudu (on hadoop), druid (apache), vertica, sybaseIq
-- = b) column family store/wide column store
+- = column family store/wide column store
 	- indexing by id and then column name
 	- is considered nosql
-	- sorted strings table sst: immutable file format to store logs and data files, key/value string pairs sorted by key
+	- sorted strings table sst: immutable file format to store logs and data files. key/value string pairs sorted by key
 	- ie. google file system gfs, hbase, bigtable, cassandra
 
 *graph database*
