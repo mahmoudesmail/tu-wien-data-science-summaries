@@ -2,15 +2,11 @@
 
 - NameNode: stores all metadata and block locations in memory
 - DataNodes: stores and fetches blocks for client or nameNode
-
-jobs (jar files) without YARN (yet another resource negotiator):
-
-- master node: JobTracker
-- worker node: TaskTracker, storage of intermediate data
+- jobs (jar files) without YARN (yet another resource negotiator):
+    - master node: JobTracker
+    - worker node: TaskTracker, storage of intermediate data
 
 *mapreduce pattern*
-
-pseudo code:
 
 ```
 def map(docid a, doc d):
@@ -27,8 +23,6 @@ def reduce(word w, list<count> counts):
         result += v
     emit(w, result)
 ```
-
-mapreduce flow:
 
 - map:
      - `[(k, v)] -> [(k', v')]`
