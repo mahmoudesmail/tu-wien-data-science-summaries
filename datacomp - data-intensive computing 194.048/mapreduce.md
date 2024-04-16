@@ -8,7 +8,7 @@
 
 *mapreduce pattern*
 
-```
+```python
 def map(docid a, doc d):
     for each word w in doc d:
         emit_intermediate(w, 1)
