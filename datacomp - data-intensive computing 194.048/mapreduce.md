@@ -10,8 +10,8 @@
 
 ```python
 def map(docid a, doc d):
-    for each word w in doc d:
-        emit_intermediate(w, 1)
+    for word in d:
+        emit_intermediate(word, 1)
 
 def combine(word w, list<count> counts):
     # do more local processing before passing to reduce
@@ -19,7 +19,7 @@ def combine(word w, list<count> counts):
 
 def reduce(word w, list<count> counts):
     int result = 0
-    for each v in counts:
+    for v in counts:
         result += v
     emit(w, result)
 ```
