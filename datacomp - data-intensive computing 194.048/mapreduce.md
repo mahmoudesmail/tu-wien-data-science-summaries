@@ -1,3 +1,5 @@
+# mapreduce pattern
+
 ```
 def map(docid a, doc d):
     for word in d:
