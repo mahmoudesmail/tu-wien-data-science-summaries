@@ -12,9 +12,12 @@ the hadoop landscape is mostly written in jvm languages.
 - https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/FileSystemShell.html
 - user space file system: data has to be written back and forth between FS and HDFS
 - blocks = default size is 128mb, replicated 3 times
-- namenode = master, maintains system tree, file metadata, usually multiple active/standby nodes for higher availability
-- datanode = worker, reads/writes data
+- namenode = master, maintains system tree (where blocks are stored), file metadata, usually multiple active/standby nodes for higher availability
+- datanode = worker, reads/writes data based on client or namenode instructions
 	- 1 of 3 replicas syncs itself up with the 2 others on each update
+- jobs = tasks as jar files.
+    - jobtracker = master
+    - tasktracker = worker, stores of intermediate data
 
 *hive*
 
