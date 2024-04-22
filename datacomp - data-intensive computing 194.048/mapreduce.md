@@ -1,4 +1,4 @@
-# mapreduce pattern
+# mapreduce
 
 ```
 def map(docid a, doc d):
@@ -18,6 +18,8 @@ def reduce(word w, list<count> counts):
 
 - map:
      - `[(k, v)] -> [(k', v')]`
+     - input: list of key values
+     - output: 
      - process one key-value pair at a time, return a list of key-value pairs
      - ingest data
 - shuffle & sort:
