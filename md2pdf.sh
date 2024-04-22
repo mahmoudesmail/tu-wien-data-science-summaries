@@ -34,8 +34,5 @@ pandoc \
 sudo tlmgr install collection-fontsrecommended
 sudo tlmgr install adjustbox babel-german background bidi collectbox csquotes everypage filehook footmisc footnotebackref framed fvextra letltxmacro ly1 mdframed mweights needspace pagecolor sourcecodepro sourcesanspro titling ucharcat ulem unicode-math upquote xecjk xurl zref
 
-pandoc \
-    --read=markdown --write=latex --output=test.pdf \
-    --pdf-engine=xelatex \
-    --template="./eisvogel.tex" \
-    test.md
+# run
+pandoc --read=markdown --write=latex --pdf-engine=xelatex --variable geometry:margin=20mm --variable documentclass:extarticle --variable fontsize:8pt --output=test.pdf test.md
