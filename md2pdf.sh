@@ -3,7 +3,7 @@ brew tap homebrew/cask
 brew install --cask basictex
 eval "$(/usr/libexec/path_helper)"
 
-# update $PATH to include `/usr/local/texlive/2022basic/bin/universal-darwin`
+# update $PATH to include path
 export PATH=$PATH:/usr/local/texlive/2022basic/bin/universal-darwin
 
 # check if successfully added to $PATH
