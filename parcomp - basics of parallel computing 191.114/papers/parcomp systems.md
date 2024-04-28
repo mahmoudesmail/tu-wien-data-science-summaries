@@ -1,8 +1,8 @@
 > “Processor Architecture and Technology Trends” from the book: T. Rauber and G. Rünger. Parallel Programming - for Multicore and Cluster Systems, Third Edition. Springer, 2023. isbn: 978-3-031-28923-1. → Section 2.1
 
-# 2.1 processor architecture and technology trends
+*chapter 2.1*: processor architecture and technology trends
 
-chapter 2 of the book "parallel computer architecture" discusses processor architecture and technology trends, focusing on how these trends have influenced the performance of computer systems. 
+discusses processor architecture and technology trends, focusing on how these trends have influenced the performance of computer systems. 
 
 the chapter highlights two main factors that have historically contributed to performance increases: clock frequency and the number of transistors on a chip. 
 
