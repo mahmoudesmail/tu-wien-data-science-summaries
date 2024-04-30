@@ -17,7 +17,7 @@ _culture 2: machine learning ML / algorithmic modeling culture_
 
 the author thinks that SM people misunderstand ML people.
 
-occam’s razor often gets interpreted as "simpler is better".
+occam's razor often gets interpreted as "simpler is better".
 
 but "simpler" (higher interpretability) usually always means lower accuracy. accuracy and simplicity are conflicting goals.
 
