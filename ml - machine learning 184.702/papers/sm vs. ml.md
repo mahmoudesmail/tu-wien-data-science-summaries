@@ -23,4 +23,4 @@ in essence: "an algorithmic model can produce more and more reliable information
 
 there are actually many counter examples of what has been said here: [“A systematic review shows no performance benefit of machine learning over logistic regression for clinical prediction models”](https://pubmed.ncbi.nlm.nih.gov/30763612/)
 
-just because something is more complicated it isn't necessarily more accurate. you just have to find the right tool for the job.
+just because something is more complicated it isn't necessarily more accurate. ideally you'd want both.
