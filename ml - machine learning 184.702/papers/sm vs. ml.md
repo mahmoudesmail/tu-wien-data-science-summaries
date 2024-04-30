@@ -21,6 +21,4 @@ in essence: "an algorithmic model can produce more and more reliable information
 
 ## footnotes
 
-i found this paper through this video: https://www.youtube.com/watch?v=ObbTLep4Hxo
-
 around 2001 when this paper was published, very few people did machine learning so it was a hot take. but there are many other counter examples of what has been said here: [“A systematic review shows no performance benefit of machine learning over logistic regression for clinical prediction models”](https://pubmed.ncbi.nlm.nih.gov/30763612/)
