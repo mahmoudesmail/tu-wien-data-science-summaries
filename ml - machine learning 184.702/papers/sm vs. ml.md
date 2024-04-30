@@ -21,6 +21,8 @@ in essence: "an algorithmic model can produce more and more reliable information
 
 ## critique
 
+simpler models aren't necessarily less accurate.
+
 there are actually many counter examples of what has been said here: [“A systematic review shows no performance benefit of machine learning over logistic regression for clinical prediction models”](https://pubmed.ncbi.nlm.nih.gov/30763612/)
 
-just because something is more complicated it isn't necessarily more accurate.
+i have no idea what the takeaway point from this paper is.
