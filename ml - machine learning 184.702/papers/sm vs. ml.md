@@ -17,13 +17,11 @@ _culture 2: machine learning ML / algorithmic modeling culture_
 
 the author thinks that SM people misunderstand ML people.
 
-occam’s razor often gets interpreted as "simpler is better" - but accuracy and simplicity (interpretability) are conflicting goals.
+occam’s razor often gets interpreted as "simpler is better".
 
-it's natural for models to become more intransparent as they grow more complex.
+but "simpler" (higher interpretability) usually always means lower accuracy. accuracy and simplicity are conflicting goals.
 
-the goal should not be interpretability but accuracy.
-
-in essence: "an algorithmic model can produce more and more reliable information about the structure of the relationship between inputs and outputs than data models" and this is all that matters to the author.
+in essence: "an algorithmic model can produce more and more reliable information about the structure of the relationship between inputs and outputs than data models".
 
 ## footnotes
 
