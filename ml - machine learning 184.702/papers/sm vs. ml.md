@@ -1,6 +1,6 @@
 > Breiman, Leo. "Statistical modeling: The two cultures (with comments and a rejoinder by the author)." Statistical science 16.3 (2001): 199-231.
 
-the paper is about how machine learning ML has higher accuracy than statistical modeling SM. in essence: “an algorithmic model can produce more and more reliable information about the structure of the relationship between inputs and outputs than data models”.
+the paper is about how machine learning ML has higher accuracy than statistical modeling SM. in essence: "an algorithmic model can produce more and more reliable information about the structure of the relationship between inputs and outputs than data models".
 
 the goal is to get information from data, then maybe use that information to make predictions.
 
