@@ -15,14 +15,14 @@ _culture 2: machine learning ML / algorithmic modeling culture_
 - we try to find a function, which is an algorithm that operates on the input data with neural nets / decision trees and tries to predict the response.
 - model validation: measured by predictive accuracy.
 
-the author thinks that SM people misunderstand ML people: occam's razor often gets interpreted as "simpler is better". but "simpler" (higher interpretability) usually always means lower accuracy. accuracy and simplicity are conflicting goals.
+the author thinks that SM people misunderstand ML people: occam's razor often gets interpreted as "simpler is better". but accuracy (higher interpretability) and simplicity are conflicting goals.
 
 in essence: "an algorithmic model can produce more and more reliable information about the structure of the relationship between inputs and outputs than data models".
 
 ## critique
 
-simpler models aren't necessarily less accurate.
+machine learning models aren't necessarily more accurate.
 
-there are actually many counter examples of what has been said here: [“A systematic review shows no performance benefit of machine learning over logistic regression for clinical prediction models”](https://pubmed.ncbi.nlm.nih.gov/30763612/)
+one counter example: [“A systematic review shows no performance benefit of machine learning over logistic regression for clinical prediction models”](https://pubmed.ncbi.nlm.nih.gov/30763612/)
 
-i have no idea what the takeaway point from this paper is.
+i'm not sure what the takeaway from this paper is.
