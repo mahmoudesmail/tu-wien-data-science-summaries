@@ -23,6 +23,8 @@ in essence: "an algorithmic model can produce more and more reliable information
 
 machine learning models aren't necessarily more accurate.
 
-one counter example: Christodoulou, E., Ma, J., Collins, G. S., Steyerberg, E. W., Verbakel, J. Y., & Van Calster, B. (2019). A systematic review shows no performance benefit of machine learning over logistic regression for clinical prediction models. Journal of clinical epidemiology, 110, 12-22. (https://pubmed.ncbi.nlm.nih.gov/30763612/)
+one counter example:
+
+> Christodoulou, E., Ma, J., Collins, G. S., Steyerberg, E. W., Verbakel, J. Y., & Van Calster, B. (2019). A systematic review shows no performance benefit of machine learning over logistic regression for clinical prediction models. Journal of clinical epidemiology, 110, 12-22. (https://pubmed.ncbi.nlm.nih.gov/30763612/)
 
 i'm not sure what the takeaway from this paper is.
