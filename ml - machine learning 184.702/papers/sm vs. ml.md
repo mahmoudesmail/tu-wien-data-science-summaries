@@ -15,10 +15,13 @@ _culture 2: machine learning ML / algorithmic modeling culture_
 - we try to find a function, which is an algorithm that operates on the input data with neural nets / decision trees and tries to predict the response.
 - model validation: measured by predictive accuracy.
 
-_problem: SM people misunderstand ML people_
+the author thinks that SM people misunderstand ML people.
 
-- occam’s razor often gets interpreted as "simpler is better" - but accuracy and simplicity / interpretability are conflicting goals. it's natural for models to become more intransparent as they grow more complex.
-- the goal should not be interpretability but accuracy.
+occam’s razor often gets interpreted as "simpler is better" - but accuracy and simplicity / interpretability are conflicting goals.
+
+it's natural for models to become more intransparent as they grow more complex.
+
+the goal should not be interpretability but accuracy.
 
 in essence: "an algorithmic model can produce more and more reliable information about the structure of the relationship between inputs and outputs than data models" and this is all that matters to the author.
 
