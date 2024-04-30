@@ -19,16 +19,12 @@ _culture 2: ML, algorithmic modeling culture_
 - we try to find a function, which is an algorithm that operates on the input data with neural nets / decision trees and tries to predict the response.
 - model validation: measured by predictive accuracy.
 
-_the problem_
+_the problem: SM people misunderstand ML people_
 
-here’s what people from culture1 get wrong about people from culture2.
-
-occam’s razor often gets interpreted as simpler is better. but prediction, accuracy and simplicity (interpretability) are conflicting goals. 
-
-they argue that machine learning models lack accuracy and interpretability because they are so complex. but in reality:
-
-- the goal is not interpretability, but accurate information.
-- we have to focus on the problem and on the data.
+- occam’s razor often gets interpreted as simpler is better. but prediction, accuracy and simplicity (interpretability) are conflicting goals. 
+- they argue that machine learning models lack accuracy and interpretability because they are so complex. but in reality:
+  - the goal is not interpretability, but accurate information.
+  - we have to focus on the problem and on the data.
 
 ## footnotes
 
