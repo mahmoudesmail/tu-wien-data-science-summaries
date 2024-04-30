@@ -11,7 +11,7 @@ _culture 1: statistical modeling SM / data modeling culture_
 
 _culture 2: machine learning ML / algorithmic modeling culture_
 
-- asssumption: data mechanism is unknown.
+- assumption: data mechanism is unknown.
 - we try to find a function, which is an algorithm that operates on the input data with neural nets / decision trees and tries to predict the response.
 - model validation: measured by predictive accuracy.
 
