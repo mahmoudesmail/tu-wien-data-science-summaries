@@ -32,7 +32,7 @@ they argue that machine learning models lack accuracy and interpretability becau
 - the goal is not interpretability, but accurate information.
 - we have to focus on the problem and on the data.
 
-## footer
+## footnotes
 
 i found this paper through this video: https://www.youtube.com/watch?v=ObbTLep4Hxo
 
