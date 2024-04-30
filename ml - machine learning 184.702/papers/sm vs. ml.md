@@ -19,6 +19,8 @@ the author thinks that SM people misunderstand ML people: occam's razor often ge
 
 in essence: "an algorithmic model can produce more and more reliable information about the structure of the relationship between inputs and outputs than data models".
 
-## footnotes
+## critique
 
-around 2001 when this paper was published, very few people did machine learning so it was a hot take. but there are many other counter examples of what has been said here: [“A systematic review shows no performance benefit of machine learning over logistic regression for clinical prediction models”](https://pubmed.ncbi.nlm.nih.gov/30763612/)
+there are actually many counter examples of what has been said here: [“A systematic review shows no performance benefit of machine learning over logistic regression for clinical prediction models”](https://pubmed.ncbi.nlm.nih.gov/30763612/)
+
+just because something is more complicated it isn't necessarily more accurate. you just have to find the right tool for the job.
