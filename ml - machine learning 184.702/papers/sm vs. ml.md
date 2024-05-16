@@ -28,3 +28,5 @@ one counter example:
 > Christodoulou, E., Ma, J., Collins, G. S., Steyerberg, E. W., Verbakel, J. Y., & Van Calster, B. (2019). A systematic review shows no performance benefit of machine learning over logistic regression for clinical prediction models. Journal of clinical epidemiology, 110, 12-22. (https://pubmed.ncbi.nlm.nih.gov/30763612/)
 
 i'm not sure what the takeaway from this paper is.
+
+here are more takes on stackexchange: https://stats.stackexchange.com/questions/6/the-two-cultures-statistics-vs-machine-learning
