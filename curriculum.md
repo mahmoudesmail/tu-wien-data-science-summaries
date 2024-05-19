@@ -58,7 +58,7 @@ _about the curriculum_
 
 this list isn't complete.
 
-these are just some project-based courses, but lecture-based (vorlesungen) courses can also be a nice if they offer their exam dates during holidays.
+these are just some project-based courses, but lecture-based (vorlesungen) courses can also be a nice if they offer their exam dates during holidays / school breaks.
 
 _fds_ →
 
