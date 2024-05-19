@@ -56,9 +56,11 @@ _about the curriculum_
 
 # recommended electives
 
-these are mainly project based courses, but lectures (vorlesungen) can also be nice if they offer exam dates during breaks.
+this list isn't complete.
 
-_fds_
+these are just some project-based courses, but lecture-based (vorlesungen) courses can also be a nice if they offer their exam dates during holidays.
+
+_fds_ →
 
 - **note:** make sure you like the prerequisite course "data stewardship" before commiting to this module
 - 3.0 ects ue data stewardship
