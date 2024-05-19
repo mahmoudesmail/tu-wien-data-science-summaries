@@ -60,7 +60,7 @@ this list isn't complete.
 
 these are just some project-based courses, but lecture-based (vorlesungen) courses can also be a nice if they offer their exam dates during holidays / school breaks.
 
-_fds_ → check out the "data stewardship" course before commiting to this module.
+_fds_ → check out the "data stewardship" course first before commiting to this module.
 
 - 3.0 ects ue data stewardship
 - 3.0 ects vu digital humanism
