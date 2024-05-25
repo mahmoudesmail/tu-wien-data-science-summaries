@@ -23,16 +23,10 @@ sudo tlmgr install enumitem
 sudo tlmgr install rsfs
 sudo tlmgr install geometry
 
-# pandoc \
-#     --read=markdown --write=latex --output=test.pdf \
-#     --pdf-engine=xelatex \
-#     --variable geometry:margin=20mm \
-#     --variable fontsize=6pt \
-#     test.md
-
-# alternatively use a template: https://github.com/Wandmalfarbe/pandoc-latex-template/
-# sudo tlmgr install collection-fontsrecommended
-# sudo tlmgr install adjustbox babel-german background bidi collectbox csquotes everypage filehook footmisc footnotebackref framed fvextra letltxmacro ly1 mdframed mweights needspace pagecolor sourcecodepro sourcesanspro titling ucharcat ulem unicode-math upquote xecjk xurl zref
-
 # run
-pandoc --read=markdown --write=latex --pdf-engine=xelatex --variable geometry:margin=10mm --variable documentclass:extarticle --variable fontsize:11pt --variable papersize:a4 --output=report.pdf report.md
+pandoc --read=markdown --write=latex --pdf-engine=xelatex \
+  --variable geometry:margin=10mm \
+  --variable documentclass:extarticle \
+  --variable fontsize:11pt \
+  --variable papersize:a4 \
+  --output=report.pdf report.md
