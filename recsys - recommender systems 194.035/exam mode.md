@@ -11,7 +11,7 @@ see: https://tuwel.tuwien.ac.at/mod/page/view.php?id=2265740
 - Open Questions (50% of the total points)
 - The total score of the exam must be >= 50% to receive a passing grade.
 
-*exam mode in previous terms (based on students)*
+*exam mode in previous terms (based on student reports)*
 
 - vowi: 
 	- Exam: About 4-5 open questions, to be answered in 1-2 sentences or with a mathematical formula. Those aim mostly at understanding, i.e. they ask about some of the concepts covered (e.g. similarity between items, ...) but give different examples for applying them. Additionally, for about 2-3 different topics, about 2-5 True/False statementes each.
