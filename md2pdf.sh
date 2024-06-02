@@ -1,13 +1,5 @@
+brew install --verbose --debug mactex
 brew install pandoc
-brew tap homebrew/cask
-brew install --cask basictex
-eval "$(/usr/libexec/path_helper)"
-
-# update $PATH to include path
-export PATH=$PATH:/usr/local/texlive/2022basic/bin/universal-darwin
-
-# check if successfully added to $PATH
-echo $PATH | grep -q "/usr/local/texlive/2022basic/bin/universal-darwin" && echo "found" || echo "not found"
 
 sudo tlmgr update --self
 sudo tlmgr install texliveonfly
