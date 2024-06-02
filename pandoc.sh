@@ -19,8 +19,7 @@ sudo tlmgr install geometry
 
 # run
 pandoc --read=markdown --write=latex --pdf-engine=xelatex \
-  --variable geometry:margin=10mm \
-  --variable documentclass:extarticle \
-  --variable fontsize:11pt \
+  --variable geometry:margin=5mm \
+  --variable fontsize:10pt \
   --variable papersize:a4 \
-  --output=file.pdf file.md
+  --output=output.pdf input.md
