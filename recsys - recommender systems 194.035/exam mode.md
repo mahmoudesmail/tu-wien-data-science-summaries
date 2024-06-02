@@ -1,9 +1,7 @@
 *exam mode 2024SS*
 
-see: https://tuwel.tuwien.ac.at/mod/forum/discuss.php?d=438029
-
-see: https://tuwel.tuwien.ac.at/mod/page/view.php?id=2265740
-
+- see: https://tuwel.tuwien.ac.at/mod/forum/discuss.php?d=438029
+- see: https://tuwel.tuwien.ac.at/mod/page/view.php?id=2265740
 - Please keep in mind that the exam will be held as a closed-book exam.
 - You are allowed to use a **non-programmable calculator** (check if the calculator is able to work with log2, in case you need that during the exam).
 - Note that your understanding of the implications of the concepts and definitions, as well as their broader contexts, and your ability to apply them in different scenarios, may be assessed.
