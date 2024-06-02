@@ -23,4 +23,4 @@ pandoc --read=markdown --write=latex --pdf-engine=xelatex \
   --variable documentclass:extarticle \
   --variable fontsize:11pt \
   --variable papersize:a4 \
-  --output=report.pdf report.md
+  --output=file.pdf file.md
