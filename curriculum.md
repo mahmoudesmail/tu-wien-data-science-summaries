@@ -58,7 +58,7 @@ _about the curriculum_
 
 # recommended electives
 
-this list isn't complete.
+this list is incomplete.
 
 these are just some project-based courses, but lecture-based (vorlesungen) courses can also be a nice if they offer their exam dates during holidays / school breaks.
 
