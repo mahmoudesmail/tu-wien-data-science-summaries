@@ -1,5 +1,7 @@
 > most of these are from mattermost
 
+<br><br>
+
 # 2023
 
 question: Recall and nDCG are typically measured at a lower cutoff than MAP and MRR (you don't have to know the exact formula)
@@ -18,6 +20,8 @@ answer: True
 
 - this question is referring to the pooling-process in labeling ie. with mechanical turk where you're creating a cutoff-set to reduce the labor required to label your data.
 - "… if we use a diverse pool of different systems, we can then even reuse those pool candidates and this gives us confidence that we have at least some of the relevant results in those pooling results. It allows us to drastically reduce the annotation time compared to conducting millions of annotations by hand." → see: https://github.com/sebastian-hofstaetter/teaching/blob/master/advanced-information-retrieval/Lecture%203%20-%20Closed%20Captions.md#26-pooling-in-information-retrieval
+
+<br><br>
 
 # 2022
 
@@ -79,6 +83,8 @@ key words students used when discussing other questions:
 	- ColBERT
 	- see: https://discovery.ucl.ac.uk/id/eprint/10119400/1/Mitigating_the_Position_Bias_of_Transformer_Based_Contextualization_for_Passage_Re_Ranking.pdf
 	- see: https://ecai2020.eu/papers/82_paper.pdf
+
+<br><br>
 
 # 2019
 
