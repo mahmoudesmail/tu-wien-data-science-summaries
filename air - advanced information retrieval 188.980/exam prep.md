@@ -96,7 +96,7 @@ question: What are the differences between Matchpyramid, KNRM and what do they h
 
 answer: 
 
-- matchpyramid
+- matchPyramid
 	- i. compute match-matrix through cosine-similarity for all query-doc-combinations
 	- ii. apply 2D convolution kernels on matrix each learning a different feature
 	- iii. determine final score (as float) with a feed-forward neural net
