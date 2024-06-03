@@ -88,9 +88,7 @@ key words students used when discussing other questions:
 
 # 2019
 
-exam paper: https://arxiv.org/pdf/1904.12683.pdf
-
----
+> exam paper of this year: https://arxiv.org/pdf/1904.12683.pdf
 
 question: What are the differences between Matchpyramid, KNRM and what do they have in common with the transformer architecture?
 
