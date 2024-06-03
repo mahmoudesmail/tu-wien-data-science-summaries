@@ -112,7 +112,7 @@ but if we'd ignore the inverse relationship between precision and recall (becaus
 
 question: Why are low-frequency words an issue for information retrieval but not so much for other tasks like information categorization?
 
-answer: one way to argue could be:
+answer: the question is unclear. but one way to argue could be:
 
 - information retrieval = looking for similarity between query and relevant documents
 - classification = looking for distinct features to maximize dissimilarity
