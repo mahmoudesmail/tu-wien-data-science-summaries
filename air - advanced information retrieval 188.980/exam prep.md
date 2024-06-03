@@ -88,7 +88,7 @@ key words students used when discussing other questions:
 
 # 2019
 
-question: What are the differences between Matchpyramid, KNRM and what do they have in common with the transformer architecture?
+question: What are the differences between Matchpyramid and KNRM?
 
 answer: 
 
