@@ -63,7 +63,6 @@ when compared to real judgements:
 
 - differences:
 	- tend to be graded less critically (by gpt4)
-	- llm judgements seem to also be less strict than human judgements
 - benchmark:
 	- using the passage that the query was generated from as the only judgement (= sparse judgement, binary label) is very ineffective: $\tau$ = 0.157
 	- combining synthetic queries with synthetic judgements yields better results than human judgements: $\tau$ = ~0.84-0.85
