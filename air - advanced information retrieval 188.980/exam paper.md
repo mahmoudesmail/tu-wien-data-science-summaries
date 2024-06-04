@@ -2,8 +2,6 @@
 
 we need test-collections to evaluate systems.
 
-see: https://ir-datasets.com/
-
 *what is a test-collection?*
 
 based on the Cranfield-experiments:
@@ -65,6 +63,7 @@ when compared to real judgements:
 
 - differences:
 	- tend to be graded less critically (by gpt4)
+	- llm judgements seem to also be less strict than human judgements
 - benchmark:
 	- using the passage that the query was generated from as the only judgement (= sparse judgement, binary label) is very ineffective: $\tau$ = 0.157
 	- combining synthetic queries with synthetic judgements yields better results than human judgements: $\tau$ = ~0.84-0.85
@@ -75,9 +74,4 @@ they can be a very useful extension to existing test-collections:
 
 > It can be seen that evaluation on the fully synthetic test collection results in similar results to human queries with human judgments in terms of system ordering, with a Kendall's $\tau$ = 0.86 for NDCG@10
 
-llm judgements seem to also be less strict than human judgements:
-
-> for all system types, systems consistently achieve higher performance on synthetic test collections when compared to real queries, suggesting that synthetic test collections tend to be easier than real queries and they tend to overestimate system performance across all system types
-
--  it's likely that systems evaluated with test-collections that were generated with the same model as they use for retrieval might get favored, leading to biased results. this kind of bias wasn't observed but to mitigate this we could combine multiple models.
-- llm judgements are overall less strict than human judgements, suggesting that synthetic test collections tend to be easier than real queries.
+but it's likely that systems evaluated with test-collections that were generated with the same model as they use for retrieval might get favored, leading to biased results. this kind of bias wasn't observed but could be mitigated by combining multiple models.
