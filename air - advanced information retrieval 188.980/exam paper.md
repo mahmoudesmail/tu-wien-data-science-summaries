@@ -1,8 +1,8 @@
 > Hossein A. Rahmani, Nick Craswell, Emine Yilmaz, Bhaskar Mitra, and Daniel Campos. 2024. Synthetic Test Collections for Retrieval Evaluation. In Proceedings of the 47th International ACM SIGIR Conference on Research and Development in Information Retrieval (SIGIR ’24), July 14–18, 2024, Washington, DC, USA. ACM, New York, NY, USA, 5 pages. [arXiv:2405.07767v1](https://arxiv.org/pdf/2405.07767)
 
-we need test-collections to evaluate systems.
-
 *what is a test-collection?*
+
+we need test-collections to evaluate systems.
 
 based on the Cranfield-experiments:
 
