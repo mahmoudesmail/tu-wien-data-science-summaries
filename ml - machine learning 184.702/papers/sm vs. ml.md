@@ -29,4 +29,4 @@ one counter example:
 
 i'm not sure what the takeaway from this paper is.
 
-here are more takes on stackexchange: https://stats.stackexchange.com/questions/6/the-two-cultures-statistics-vs-machine-learning
+here's a related (and probably more insightful) post on stackexchange: https://stats.stackexchange.com/questions/6/the-two-cultures-statistics-vs-machine-learning
