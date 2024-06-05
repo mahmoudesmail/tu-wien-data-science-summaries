@@ -1,152 +1,214 @@
-# -------------------------------------------------------------------------- tracing memory usage
-x <- data.frame(matrix(runif(5 * 1e4), ncol = 5))
-medians <- sapply(x, median)
+# install dependencies
+if (!require("pacman")) install.packages("pacman", repos = "http://cran.us.r-project.org")
+library("pacman")
+pacman::p_load(numbers, DescTools, microbenchmark, parallel, foreach, doParallel, devtools, Rcpp, memoise)
 
-cat(tracemem(x), "\n")
-iters <- 0
-for (i in seq_along(medians)) {
-    iters <- iters + 1
-    x[[i]] <- x[[i]] - medians[[i]]
+# ------------------------------------------------------------------------------ library implementations
+
+# descTools library
+fib_ratio_lib_desctools <- function(n) {
+  stopifnot(n > 1)
+  seq <- DescTools::Fibonacci(0:(n + 2))
+  return(seq[2:(n + 1)] / seq[1:n])
 }
-print(paste("iterations:", iters))
-untracemem(x)
 
-y <- as.list(x)
-cat(tracemem(y), "\n")
-iters <- 0
-for (i in seq_along(medians)) {
-    iters <- iters + 1
-    y[[i]] <- y[[i]] - medians[[i]]
+# numbers library
+fib_ratio_lib_numbers <- function(n) {
+  stopifnot(n > 1)
+  seq <- sapply(0:n, numbers::fibonacci)
+  return(seq[2:(n + 1)] / seq[1:n])
 }
-print(paste("iterations:", iters))
-untracemem(y)
 
-# -------------------------------------------------------------------------- benchmarking
-if (!require("tibble")) install.packages("tibble")
-library(tibble)
-if (!require("bench")) install.packages("bench")
-library(bench)
+# ------------------------------------------------------------------------------ hpc implementations (don't run)
 
-# naive implementation
-slow.sqrt <- function(x) {
-    ans <- numeric(0)
-    for (i in seq_along(x)) {
-        ans <- c(ans, sqrt(x[i]))
+# cpp ffi
+# (don't run benchmarks, the ffi is way too slow)
+fib_ratio_cpp <- function(n) {
+  stopifnot(n > 1)
+  fib_cpp <- Rcpp::cppFunction("
+  int fibonacci(const int x) {
+    if (x == 0) return(0);
+    if (x == 1) return(1);
+    return (fibonacci(x - 1)) + fibonacci(x - 2);
+  }")
+  seq <- sapply(0:n, fib_cpp)
+  return(seq[2:(n + 1)] / seq[1:n])
+}
+
+# parallel
+# (don't run benchmarks - it will kill your machine because of too many sub-processes)
+fib_ratio_parallel_for <- function(n) {
+  stopifnot(n > 1)
+  cores <- parallel::detectCores()
+  cl <- parallel::makeCluster(cores)
+  doParallel::registerDoParallel(cl)
+  seq <- foreach::foreach(i = 0:n, .combine = "c") %dopar% {
+    numbers::fibonacci(i)
+  }
+  seq <- DescTools::Fibonacci(0:(n + 2))
+  return(seq[2:(n + 1)] / seq[1:n])
+}
+
+# ------------------------------------------------------------------------------ sequential implementations
+
+# for-loop
+fib_ratio_for <- function(n) {
+  stopifnot(n > 1)
+  n_fib <- n + 1
+  fib <- numeric(n_fib)
+  fib[1] <- 0
+  fib[2] <- 1
+  for (i in 3:n_fib) {
+    fib[i] <- fib[i - 1] + fib[i - 2]
+  }
+  return(fib[2:n_fib] / fib[1:(n_fib - 1)])
+}
+
+# while-loop
+fib_ratio_while <- function(n) {
+  stopifnot(n > 1)
+  n_fib <- n + 1
+  fib <- numeric(n_fib)
+  fib[1] <- 0
+  fib[2] <- 1
+  i <- 3
+  while (i <= n_fib) {
+    fib[i] <- fib[i - 1] + fib[i - 2]
+    i <- i + 1
+  }
+  return(fib[2:n_fib] / fib[1:(n_fib - 1)])
+}
+
+# ------------------------------------------------------------------------------ recursive implementations
+
+# source: https://www.r-bloggers.com/2014/12/fibonacci-sequence-in-r-with-memoization/
+# source: https://www.r-bloggers.com/2018/10/optimize-your-r-code-using-memoization/
+
+# recursive
+fib_ratio_rec <- function(n) {
+  stopifnot(n > 1)
+  fibrec <- function(i) {
+    if (i == 0) {
+      Inf
+    } else if (i == 1) {
+      1
+    } else {
+      1 + 1 / fibrec(i - 1)
     }
-    ans
+  }
+  return(sapply(seq_len(n) - 1, fibrec))
 }
 
-# preallocate result vector
-pre.sqrt <- function(x) {
-    ans <- numeric(length(x))
-    for (i in seq_along(x)) {
-        ans[i] <- sqrt(x[i])
+# recursive memoized v1
+fib_ratio_rec_memo_1 <- function(n) {
+  stopifnot(n > 1)
+  memo <- rep(NA, n)
+  memo[1:2] <- c(Inf, 1)
+
+  fibrec <- function(i) {
+    if (is.na(memo[i])) {
+      memo[i] <<- 1 + 1 / fibrec(i - 1)
     }
-    ans
+    memo[i]
+  }
+  sapply(seq_len(n), fibrec)
 }
 
-# benchmark
-mark(slow.sqrt(1:1000), pre.sqrt(1:1000), sqrt(1:1000))
+# recursive memoized v2
+fib_ratio_rec_memo_2 <- function(n) {
+  stopifnot(n > 1)
 
-# -------------------------------------------------------------------------- profiling
-testFunc <- function(n = 1000000, seed = 1) {
-    set.seed(seed)
-    normals <- rnorm(n*10)
-    X <- matrix(normals, nrow=10)
-    Y <- matrix(normals, ncol=10)
-    XXt <- X %*% t(X)
-    XXcp <- tcrossprod(X)
-    return(n)
+  fib_m <- (function() {
+    cache <- NULL
+    cache_reset <- function() {
+      cache <<- new.env(TRUE, emptyenv())
+      cache_set("0", 0)
+      cache_set("1", 1)
+    }
+    cache_set <- function(key, value) {
+      assign(key, value, envir = cache)
+    }
+    cache_get <- function(key) {
+      get(key, envir = cache, inherits = FALSE)
+    }
+    cache_has_key <- function(key) {
+      exists(key, envir = cache, inherits = FALSE)
+    }
+    cache_reset()
+
+    function(n) {
+      nc <- as.character(n)
+      if (length(n) > 1) {
+        return(sapply(n, fib_m))
+      }
+      if (round(n, 0) != n) {
+        return(NA)
+      }
+      if (cache_has_key(nc)) {
+        return(cache_get(nc))
+      }
+      if (n < 0) {
+        return(fib_m(-1 * n) * ((-1)^((n + 1) %% 2)))
+      }
+      out <- fib_m(n - 1) + fib_m(n - 2)
+      cache_set(nc, out)
+      return(out)
+    }
+  })()
+
+  seq <- sapply(0:n, fib_m)
+  return(seq[2:(n + 1)] / seq[1:n])
 }
-system.time(testFunc())
 
-# check execution time of each instruction inside the function
-Rprof(interval = 0.01)
-testFunc()
-Rprof(NULL)
-summaryRprof()$by.self
+# ------------------------------------------------------------------------------ tests
 
-# visualization using profvis
-if (!require("profvis")) install.packages("profvis")
-library("profvis")
+test_range <- 2:4
+for (n in test_range) {
+  cat("n =", n, "\n")
 
-# profvis({
-#     testFunc <- function(n=1000000, seed=1){ set.seed(seed)
-#         normals <- rnorm(n*10)
-#         X <- matrix(normals, nrow=10)
-#         Y <- matrix(normals, ncol=10)
-#         XXt <- X %*% t(X)
-#         XXcp <- tcrossprod(X)
-#         return(n)
-#     }
-#     testFunc()
-# })
+  # cat("descTools: \t", fib_ratio_lib_desctools(n), "\n")
+  # cat("numbers: \t", fib_ratio_lib_numbers(n), "\n")
+  solution <- fib_ratio_lib_desctools(n)
 
-# -------------------------------------------------------------------------- parallelim
-# see: https://facweb1.redlands.edu/fac/jim_bentley/Data/MATH_260/R%20Extras/Parallel/parallel.html
-# summary: parallelism is hard to get right in R and if done incorrectly like below it actually slows everything down
+  # cat("for: \t\t", fib_ratio_for(n), "\n")
+  # cat("while: \t\t", fib_ratio_while(n), "\n")
+  stopifnot(fib_ratio_for(n) == solution)
+  stopifnot(fib_ratio_while(n) == solution)
 
-if(!require("parallel")) install.packages("parallel")
-library("parallel")
-if(!require("MASS")) install.packages("MASS")
-library("MASS")
-if (!require("devtools")) install.packages("devtools")
-library(devtools)
-if (!require("microbenchmark")) install.packages("microbenchmark")
-library(microbenchmark)
-if (!require("foreach")) install.packages("foreach")
-library(foreach)
-if (!require("doParallel")) install.packages("doParallel")
-library(doParallel)
+  # cat("rec: \t\t", fib_ratio_rec(n), "\n")
+  # cat("rec_memo_1: \t", fib_ratio_rec_memo_1(n), "\n")
+  # cat("rec_memo_2: \t", fib_ratio_rec_memo_2(n), "\n")
+  stopifnot(fib_ratio_rec(n) == solution)
+  stopifnot(fib_ratio_rec_memo_1(n) == solution)
+  stopifnot(fib_ratio_rec_memo_2(n) == solution)
 
-# assert installed
-p_load(parallel)
-p_load(MASS)
-p_load(devtools)
-p_load(microbenchmark)
-p_load(foreach)
-p_load(doParallel)
+  cat("\n")
+}
+cat("✅ passed all tests")
 
-numCores <- detectCores()
-print(paste("number of cores:", numCores))
-cat(system("uname -a", intern=TRUE), "\n")
+# log machine specs for reproducibility
+cat(system("uname -a", intern = TRUE), "\n")
 
-# demo 1
-starts <- rep(100,4)
-fx <- function(nstart) kmeans(Boston, 4, nstart=nstart)
-microbenchmark(lapply(starts, fx), mclapply(starts, fx, mc.cores=numCores))
+# supress warnings
+options(warn = -1)
 
-# demo 2
-# slow because of multiprocessing, not multithreading -> too many forks
-registerDoParallel(2)
-getDoParWorkers()
-microbenchmark(
-    for (i in 1:10){
-        sqrt(i)
-    },
-    foreach(i=1:10) %do% {
-        sqrt(i)
-    },
-    foreach (i=1:10) %dopar% {
-        sqrt(i)
-    },
-    foreach (i=1:10, .combine=c) %dopar% {
-        sqrt(i)
-    }
-)
+bench <- function(n, iters) {
+  cat("🔥 benchmarking for n =", n, "and", iters, "iterations\n")
 
-# demo 3
-x <- iris[which(iris[,5] != "setosa"), c(1,5)] 
-trials <- 2
-microbenchmark(
-    bs1 <- foreach(icount(trials), .combine=cbind) %dopar% { 
-        ind <- sample(100, 100, replace=TRUE) 
-        result1 <- glm(x[ind,2]~x[ind,1], family=binomial(logit)) 
-        coefficients(result1) 
-    },
-    bs2 <- foreach(icount(trials), .combine=cbind) %do% { 
-        ind <- sample(100, 100, replace=TRUE) 
-        result1 <- glm(x[ind,2]~x[ind,1], family=binomial(logit)) 
-        coefficients(result1) 
-    }
-)
+  microbenchmark::microbenchmark(
+
+    fib_ratio_lib_numbers(n),
+    fib_ratio_lib_desctools(n),
+
+    fib_ratio_for(n), # fastest sequential implementation
+    fib_ratio_while(n),
+
+    fib_ratio_rec(n),
+    fib_ratio_rec_memo_1(n), # fastest recursive implementation
+    fib_ratio_rec_memo_2(n),
+
+    times = iters
+  )
+}
+
+bench(100, 100)
