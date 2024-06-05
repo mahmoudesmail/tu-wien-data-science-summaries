@@ -65,7 +65,7 @@ this way we get the complete gradient vector, which we use to update the weights
 
 now each layer can have multiple nodes:
 
-- $a_k^{(L-1)} ~\textemdash~ w^{(L)}_{jk} \longrightarrow a_j^{(L)}$
+- $a_k^{(L-1)} ~ – ~ w^{(L)}_{jk} \longrightarrow a_j^{(L)}$
 
 we apply the chain rule for partial derivatives to get the cost for a single training sample:
 
