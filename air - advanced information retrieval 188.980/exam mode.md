@@ -10,6 +10,16 @@
 	- 1st exam date topic: "Test collections"
 	- 2nd exam date topic: "Retrieval Augmented Generation" → based on: https://arxiv.org/pdf/2312.10997
 
+*exam mode 2024SS (based on students)*
+
+- waren drei Blöcke: (1) IR Metriken, (2) Test Collections, (3) so general stuff
+- 12 Punkte zur LV
+- 16 Punkte zu dem paper
+- bei deim ersten: 
+	- IR Models made xxxx totally obsolete
+	- MRR only considers the first relevant document
+	- The M in MAP stands for the mean over all Queries
+
 *exam mode in previous terms (based on students)*
 
 - vowi:
