@@ -1,0 +1,83 @@
+\documentclass[a4paper]{article}
+
+% ----- dependencies
+\usepackage{lmodern} % improve font quality
+\usepackage{hyperref} % url links
+\usepackage{graphicx} % insert image
+\usepackage{tabularx} % default tabular breaks inside mini-page
+\usepackage{enumitem} % customize itemize elements
+\usepackage{xcolor} % color text
+\usepackage{fp} % floating point arithmetic
+\usepackage{fontawesome5} % icons
+\usepackage{tikz} % svgs
+\usepackage{adjustbox} % adjusting image position
+\usepackage[most]{tcolorbox} % badges
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily,
+  showstringspaces=false,
+  commentstyle=\color{red},
+  keywordstyle=\color{blue}
+}
+
+% ----- configure: font type
+\renewcommand{\familydefault}{\rmdefault} % choose: \rmdefault, \ttdefault, \sfdefault
+\urlstyle{same}
+
+% ----- configure: font size
+\newcommand{\fontSize}{9pt}
+\usepackage[fontsize=\fontSize]{scrextend}
+
+% ----- configure: page margin
+\newcommand{\margin}{20mm}
+\usepackage[margin=0px, top=\margin, bottom=\margin, left=\margin, right=\margin]{geometry}
+\setlength\parindent{0pt}
+
+\begin{document}
+
+% header
+\begin{center}
+  \LARGE{\textbf{sweave demo}}
+\end{center}
+
+this file is a demo for the sweave package that allows to embed R code inside latex documents.
+
+\section{how to run this}
+
+here's how to get the output of this file:
+
+\begin{lstlisting}[language=bash]
+#!/bin/bash
+rscript -e "Sweave('file.rnw')" # get the .tex file
+rscript -e "Stangle('file.rnw')" # get the .R file
+\end{lstlisting}
+
+but be careful, as you'll most likely miss the \texttt{Sweave.sty} dependency when compiling the \texttt{.tex} file.
+
+\section{the code}
+
+here's our R code block that's embedded inside the latex document.
+
+% show results
+<<demo, echo=TRUE, eval=TRUE, fig=TRUE, out.width='3in', fig.align='center'>>=
+x <- 1:10
+y <- x^2
+
+plot(x, y)
+
+print(x)
+print(y)
+@
+
+\section{the config}
+
+when embedding code blocks, here are some possible options for the sweave package:
+
+\begin{itemize}
+  \item \texttt{echo} = show the code block
+  \item \texttt{eval} = evaluate the code block
+  \item \texttt{results} = show the results
+  \item \texttt{fig} = show the figures
+  \item \texttt{eps} = export the figures as eps
+\end{itemize}
+
+\end{document}
