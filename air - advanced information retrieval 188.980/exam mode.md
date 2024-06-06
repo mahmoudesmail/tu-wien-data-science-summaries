@@ -16,10 +16,6 @@
 - es waren nur True/False Fragen und zu dem Paper ist es viel um Methodik gegangen
 - 12 Punkte zur LV
 - 16 Punkte zu dem paper
-- bei dem ersten: 
-	- IR Models made xxxx totally obsolete
-	- MRR only considers the first relevant document
-	- The M in MAP stands for the mean over all Queries
 
 *exam mode in previous terms (based on students)*
 
