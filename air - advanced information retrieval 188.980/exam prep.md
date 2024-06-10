@@ -1,5 +1,9 @@
 <!-- most of these are from mattermost -->
 
+# 2024
+
+wip
+
 # 2023
 
 question: Recall and nDCG are typically measured at a lower cutoff than MAP and MRR (you don't have to know the exact formula)
