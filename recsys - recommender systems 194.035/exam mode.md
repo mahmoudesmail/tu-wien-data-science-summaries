@@ -26,3 +26,10 @@
 	- Additionally, for about 2-3 different topics, about 2-5 True/False statementes each. The exam is open book, i.e. all material from the lecture and self-prepared material can be used. The material was not checked. Even computers where allowed "as long as they were used for checking the slides".
 - telegram: –
 - whatsapp: –
+
+*exam mode 2024SS (student report)*
+
+- exam questions were pretty much just like previous years but on paper in a closed book format.
+- questions were pretty much the same.
+- grades got scaled in the end because a couple of questions were out of scope.
+- you had to memorize the F1 formula and a couple of other things but since the questions were so similar to the previous ones it was super easy nonetheless.
