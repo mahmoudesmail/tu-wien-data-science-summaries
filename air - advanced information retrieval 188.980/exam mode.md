@@ -13,9 +13,8 @@
 *exam mode 2024SS (based on students)*
 
 - waren drei Blöcke: (1) IR Metriken, (2) Test Collections, (3) so general stuff
-- es waren nur True/False Fragen und zu dem Paper ist es viel um Methodik gegangen
-- 12 Punkte zur LV
-- 16 Punkte zu dem paper
+- zu dem Paper ist es viel um Methodik gegangen
+- it's all T/F questions with 12 questions about theory and 16 abour the article. of course with minus points.
 
 *exam mode in previous terms (based on students)*
 
