@@ -1,4 +1,4 @@
-> Hossein A. Rahmani, Nick Craswell, Emine Yilmaz, Bhaskar Mitra, and Daniel Campos. 2024. Synthetic Test Collections for Retrieval Evaluation. In Proceedings of the 47th International ACM SIGIR Conference on Research and Development in Information Retrieval (SIGIR ’24), July 14–18, 2024, Washington, DC, USA. ACM, New York, NY, USA, 5 pages. [arXiv:2405.07767v1](https://arxiv.org/pdf/2405.07767)
+> Rahmani, Hossein A., et al. "Synthetic Test Collections for Retrieval Evaluation." arXiv preprint [arXiv:2405.07767v1](https://arxiv.org/pdf/2405.07767) (2024)
 
 *what is a test-collection?*
 
