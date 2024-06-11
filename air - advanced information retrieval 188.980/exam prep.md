@@ -98,7 +98,7 @@ answer (boolean): False
 
 answer (boolean): False
 
-- the degree of agreement among raters != test-collection quality
+- the degree of agreement among raters ≠ test-collection quality
 - "We can measure the label quality of annotators based on their inter-annotation agreement" [(source: lectures)](https://github.com/sebastian-hofstaetter/teaching/blob/master/advanced-information-retrieval/Lecture%203%20-%20Closed%20Captions.md#25-evaluate-annotation-quality)
 - see: https://en.wikipedia.org/wiki/Inter-rater_reliability
 
@@ -108,7 +108,7 @@ answer (boolean): False
 
 answer (boolean): False
 
-- 1-gram != n-gram
+- 1-gram ≠ n-gram
 - word2vec generates a single embedding for each word by learning to either guess the word from its surroundings or the other way around.
 - you do have to train it with more than a single word and pass in a window size, but the word it's being trained to reconstruct is always a 1-gram / unigram.
 - don't confuse this with CNNs that generate n-gram representations (a single embedding for n words)
