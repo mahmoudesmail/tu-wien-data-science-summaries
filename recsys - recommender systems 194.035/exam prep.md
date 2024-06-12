@@ -1,3 +1,5 @@
+<!-- 2024 i had roughly the same questions as below -->
+
 # 2022
 
 **question**: Recall the notion of F1-score of a recommender system. Given a precision of 0.27 and a recall of 0.46, what is the F1-score of the recommender?
