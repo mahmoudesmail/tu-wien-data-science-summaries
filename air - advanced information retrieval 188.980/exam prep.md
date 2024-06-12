@@ -15,7 +15,7 @@ answer (boolean): True
 
 answer (boolean): True
 
-- it takes the inverse of the position of the first token
+- it takes the inverse of the position of the first relevant doc
 
 ---
 
