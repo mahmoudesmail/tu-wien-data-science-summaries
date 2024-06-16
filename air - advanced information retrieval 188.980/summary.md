@@ -46,7 +46,7 @@ $\text{score}(q, d)$ = relevance score of query term $q$ and document $d$
  
 *tf-idf*
 
-$TF\texttt-IDF(q,d) = w_{t,d}= tf_{t,d} \cdot \underbrace{\log\left(\frac {|D|}{df_t}\right)}_{idf_t}$
+$\begin{gathered}TF\texttt-IDF(q,d) = w_{t,d}= tf_{t,d} \cdot \underbrace{\log\left(\frac {|D|}{df_t}\right)}_{idf_t}\end{gathered}$
 
 - term frequency within this doc
 	- increases with the number of occurrences within a document, but logistically
@@ -59,7 +59,7 @@ $TF\texttt-IDF(q,d) = w_{t,d}= tf_{t,d} \cdot \underbrace{\log\left(\frac {|D|}{
 
 *bm25*
 
-$BM25(q,d)=\sum_{t\in T_d\cap T_q}\frac{tf_{t,d}}{{\color{gray}k_1 \cdot ((1-b)+b \cdot} \frac{dl_d}{avgdl} {\color{gray})}+tf_{t,d}}  \cdot \log\left(\frac{|D|-df_t{\color{gray}+0.5}}{df_t{\color{gray}+0.5}}\right)$
+$\begin{aligned}BM25(q,d)=\sum_{t\in T_d\cap T_q}\frac{tf_{t,d}}{{\color{gray}k_1 \cdot ((1-b)+b \cdot} \frac{dl_d}{avgdl} {\color{gray})}+tf_{t,d}}  \cdot \log\left(\frac{|D|-df_t{\color{gray}+0.5}}{df_t{\color{gray}+0.5}}\right)\end{aligned}$
 
 - improvement over tf-idf: more saturated than logarithm as the term frequency increases
 - variables:
@@ -74,9 +74,9 @@ $BM25(q,d)=\sum_{t\in T_d\cap T_q}\frac{tf_{t,d}}{{\color{gray}k_1 \cdot ((1-b)+
 
 *bm25f*
 
-$BM25F(q,d)=\sum_{t\in T_d\cap T_q}\frac{\widetilde{tf}_{t,d}}{{\color{gray}k_1}+\widetilde{tf}_{t,d}}  \cdot \log\left(\frac{|D|-df_t{\color{gray} + 0.5}}{df_t{\color{gray} + 0.5}}\right)$
+$\begin{aligned}BM25F(q,d)=\sum_{t\in T_d\cap T_q}\frac{\widetilde{tf}_{t,d}}{{\color{gray}k_1}+\widetilde{tf}_{t,d}}  \cdot \log\left(\frac{|D|-df_t{\color{gray} + 0.5}}{df_t{\color{gray} + 0.5}}\right)\end{aligned}$
 
- $\widetilde{tf}_{t,d}=\sum_{s=1}^{s_d} {\color{VioletRed}w_s} \cdot \frac{tf_{t,s}}{{\color{gray}(1-b_s)+b_s \cdot }\frac{sl_s}{avgsl}}$
+ $\begin{aligned}\widetilde{tf}_{t,d}=\sum_{s=1}^{s_d} {\color{VioletRed}w_s} \cdot \frac{tf_{t,s}}{{\color{gray}(1-b_s)+b_s \cdot }\frac{sl_s}{avgsl}}\end{aligned}$
 
 - improvement over bm25: can weigh document segments ie. title, abstract, body
 - each segment is called a 'stream'
@@ -360,7 +360,7 @@ applying image processing techniques on match-matrix
 	- $M_{ij}=\cos(q_i,d_j)=\frac{d_j\cdot q_i}{|d_j||q_i|}$
 - ii. **apply 2D convolution layers on matrix**:
 	- layers:
-		- 1st — $z_{ij}^{(1,c)} =\text{2D\_Conv}(M_{ij}) =ReLU (\sum_{s=0}^{r_c-1}\sum_{t=0}^{r_c-1}w_{s,t}^{(1,c)}\cdot M_{i+s,j+t}+b^{(1,c)})$ 
+		- 1st — $\begin{aligned} z_{ij}^{(1,c)}& =\text{2D\_Conv}(M_{ij}) =ReLU\left(\sum_{s=0}^{r_c-1}\sum_{t=0}^{r_c-1}w_{s,t}^{(1,c)}\cdot M_{i+s,j+t}+b^{(1,c)}\right)\end{aligned}$ 
 		- 2nd — $z_{ij}^{(2,c)}=\text{dyn\_max\_pool}\left(z_{ij}^{(1,c)}\right)=\max_{0\leq s<d_c} ~\max_{0\leq t<d_c}z_{i\cdot d_c+s,j \cdot d_c+t}^{(1,c)}$ ⟶ makes output size static
 		- $\dots$ other kernels, each learning a different feature
 		- L'th — $z_{ij}^{(l,c)}=\text{max\_pool}\left(\text{2D\_Conv}(z_{ij}^{(l-1)})\right)$
@@ -391,7 +391,7 @@ applying image processing techniques on match-matrix
 	- $M_{ij}=\cos(q_i,d_j)=\frac{d_j\cdot q_i}{|d_j||q_i|}$
 - iii. **apply radial-basis-function kernel**:
 	- rbf kernel for a single match, summed along document dimension $j$
-	- $K_k(M)=\sum_{i=1}^n\log\left(\sum_j{\exp\left(-\frac{\left(M_{ij}-\mu_k\right)^2}{2\sigma_k^2}\right)}\right)$
+	- $K_k(M)=\sum_{i=1}^n\log\left(~\sum_j{\exp\left(-\frac{\left(M_{ij}-\mu_k\right)^2}{2\sigma_k^2}\right)}~\right)$
 	- where:
 		- $\mu_k$ = similarity level
 		- $\sigma_k$ = kernel width / range
