@@ -360,7 +360,7 @@ applying image processing techniques on match-matrix
 	- $M_{ij}=\cos(q_i,d_j)=\frac{d_j\cdot q_i}{|d_j||q_i|}$
 - ii. **apply 2D convolution layers on matrix**:
 	- layers:
-		- 1st — $z_{ij}^{(1,c)}& =\text{2D\_Conv}(M_{ij}) =ReLU\left(\sum_{s=0}^{r_c-1}\sum_{t=0}^{r_c-1}w_{s,t}^{(1,c)}\cdot M_{i+s,j+t}+b^{(1,c)}\right)$ 
+		- 1st — $z_{ij}^{(1,c)} =\text{2D\_Conv}(M_{ij}) =ReLU (\sum_{s=0}^{r_c-1}\sum_{t=0}^{r_c-1}w_{s,t}^{(1,c)}\cdot M_{i+s,j+t}+b^{(1,c)})$ 
 		- 2nd — $z_{ij}^{(2,c)}=\text{dyn\_max\_pool}\left(z_{ij}^{(1,c)}\right)=\max_{0\leq s<d_c} ~\max_{0\leq t<d_c}z_{i\cdot d_c+s,j \cdot d_c+t}^{(1,c)}$ ⟶ makes output size static
 		- $\dots$ other kernels, each learning a different feature
 		- L'th — $z_{ij}^{(l,c)}=\text{max\_pool}\left(\text{2D\_Conv}(z_{ij}^{(l-1)})\right)$
