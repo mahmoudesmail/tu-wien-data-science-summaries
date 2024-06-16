@@ -59,7 +59,7 @@ $\begin{gathered}TF\texttt-IDF(q,d) = w_{t,d}= tf_{t,d} \cdot \underbrace{\log\l
 
 *bm25*
 
-$\begin{aligned}BM25(q,d)=\sum_{t\in T_d\cap T_q}\frac{tf_{t,d}}{{\color{gray}k_1 \cdot ((1-b)+b \cdot} \frac{dl_d}{avgdl} {\color{gray})}+tf_{t,d}}  \cdot \log\left(\frac{|D|-df_t{\color{gray}+0.5}}{df_t{\color{gray}+0.5}}\right)\end{aligned}$
+$BM25(q,d)=\sum_{t\in T_d\cap T_q}\frac{tf_{t,d}}{{\color{gray}k_1 \cdot ((1-b)+b \cdot} \frac{dl_d}{avgdl} {\color{gray})}+tf_{t,d}}  \cdot \log\left(\frac{|D|-df_t{\color{gray}+0.5}}{df_t{\color{gray}+0.5}}\right)$
 
 - improvement over tf-idf: more saturated than logarithm as the term frequency increases
 - variables:
@@ -74,9 +74,9 @@ $\begin{aligned}BM25(q,d)=\sum_{t\in T_d\cap T_q}\frac{tf_{t,d}}{{\color{gray}k_
 
 *bm25f*
 
-$\begin{aligned}BM25F(q,d)=\sum_{t\in T_d\cap T_q}\frac{\widetilde{tf}_{t,d}}{{\color{gray}k_1}+\widetilde{tf}_{t,d}}  \cdot \log\left(\frac{|D|-df_t{\color{gray} + 0.5}}{df_t{\color{gray} + 0.5}}\right)\end{aligned}$
+$BM25F(q,d)=\sum_{t\in T_d\cap T_q}\frac{\widetilde{tf}_{t,d}}{{\color{gray}k_1}+\widetilde{tf}_{t,d}}  \cdot \log\left(\frac{|D|-df_t{\color{gray} + 0.5}}{df_t{\color{gray} + 0.5}}\right)$
 
- $\begin{aligned}\widetilde{tf}_{t,d}=\sum_{s=1}^{s_d} {\color{VioletRed}w_s} \cdot \frac{tf_{t,s}}{{\color{gray}(1-b_s)+b_s \cdot }\frac{sl_s}{avgsl}}\end{aligned}$
+ $\widetilde{tf}_{t,d}=\sum_{s=1}^{s_d} {\color{VioletRed}w_s} \cdot \frac{tf_{t,s}}{{\color{gray}(1-b_s)+b_s \cdot }\frac{sl_s}{avgsl}}$
 
 - improvement over bm25: can weigh document segments ie. title, abstract, body
 - each segment is called a 'stream'
