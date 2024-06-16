@@ -8,7 +8,7 @@
 	- You can **bring a print-out of the paper**, but no other materials
 - topics: 
 	- 1st exam date topic: "Test collections"
-	- 2nd exam date topic: "Retrieval Augmented Generation" → based on: https://arxiv.org/pdf/2312.10997
+	- 2nd exam date topic: "Retrieval Augmented Generation"
 
 *exam mode 2024SS (based on students)*
 
