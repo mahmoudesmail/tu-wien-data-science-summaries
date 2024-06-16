@@ -391,7 +391,7 @@ applying image processing techniques on match-matrix
 	- $M_{ij}=\cos(q_i,d_j)=\frac{d_j\cdot q_i}{|d_j||q_i|}$
 - iii. **apply radial-basis-function kernel**:
 	- rbf kernel for a single match, summed along document dimension $j$
-	- $K_k(M)=\sum_{i=1}^n\log\left(~\sum_j{\exp\left(-\frac{\left(M_{ij}-\mu_k\right)^2}{2\sigma_k^2}\right)}~\right)$
+	- $K_k(M)=\sum_{i=1}^n\log\left(\sum_j{\exp\left(-\frac{\left(M_{ij}-\mu_k\right)^2}{2\sigma_k^2}\right)}\right)$
 	- where:
 		- $\mu_k$ = similarity level
 		- $\sigma_k$ = kernel width / range
