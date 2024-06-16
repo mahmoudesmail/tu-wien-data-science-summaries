@@ -2,6 +2,8 @@
 
 survey based on 100 rag studies
 
+# definition
+
 *large language models llm*
 
 - very large models doing next-word-prediction using transformers
@@ -25,12 +27,9 @@ survey based on 100 rag studies
 - earlierst paradigm
 - retrieve-read pattern
 - steps:
-	- i. indexing:
-		- documents are converted to plaintext, chunked, encoded, stored in vector database
-	- ii. retrieval:
-		- we retrieve top-k most relevant documents based on user query and their cosine-similarity
-	- iii. generation:
-		- llm processes user query + retrieved documents + conversation history
+	- i. indexing = documents are converted to plaintext, chunked, encoded, stored in vector database
+	- ii. retrieval = we retrieve top-k most relevant documents based on user query and their cosine-similarity
+	- iii. generation = llm processes user query + retrieved documents + conversation history
 - weaknesses: retrieval has precision-recall-tradeoff, model still halucinates, model often doesn't add any value to retrieved docs and just echoes them
 
 *paradigm: advanced rag*
@@ -60,6 +59,8 @@ survey based on 100 rag studies
 	- generate-read pattern
 	- dsp rag = demonstrate-search-predict pattern
 	- iter-retgen rag = advanced rag but with iterative retrieval process
+
+# improvements
 
 *improving retrieval*
 
