@@ -18,7 +18,7 @@ survey based on 100 rag studies
 
 - fine-tuning can be understood as a type of rag
 - fine tuning = further training of model
-- rag = adding external knowledge, prompt engineering (more effective)
+- rag = adding external knowledge, prompt engineering
 
 *paradigm: naive rag*
 
