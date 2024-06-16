@@ -46,7 +46,7 @@ $\text{score}(q, d)$ = relevance score of query term $q$ and document $d$
  
 *tf-idf*
 
-$\begin{gathered}TF\texttt-IDF(q,d) = w_{t,d}= tf_{t,d} \cdot \underbrace{\log\left(\frac {|D|}{df_t}\right)}_{idf_t}\end{gathered}$
+$TF\texttt-IDF(q,d) = w_{t,d}= tf_{t,d} \cdot \underbrace{\log\left(\frac {|D|}{df_t}\right)}_{idf_t}$
 
 - term frequency within this doc
 	- increases with the number of occurrences within a document, but logistically
