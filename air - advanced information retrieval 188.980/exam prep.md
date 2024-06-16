@@ -4,10 +4,10 @@
 
 **question**: The M in MAP stands for the mean over all Queries
 
-answer (boolean): True
+answer (boolean): False
 
 - in the context of Mean Average Precision (MAP), the "M" stands for the "Mean", which refers to the mean of the Average Precision (AP) values calculated over all queries
-- note: it calculates the average precision across all queries, not the "mean over all queries" – this question is therefore slightly ambiguous
+- it calculates the average precision across all queries, not the "mean over all queries"
 
 ---
 
