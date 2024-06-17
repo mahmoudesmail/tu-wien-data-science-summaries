@@ -155,8 +155,6 @@ graded labels:
 
 *creating test collections*
 
-see: https://ir-datasets.com/
-
 we're measuring relevance to the information-need rather than the query. this is subjective.
 
 - sampled (ie. ms-marco) → real usage query logs only accessible to search companies
