@@ -59,7 +59,7 @@ $TF\texttt-IDF(q,d) = w_{t,d}= tf_{t,d} \cdot \underbrace{\log\left(\frac {|D|}{
 
 *bm25*
 
-$BM25(q,d)=\sum_{t\in T_d\cap T_q}\frac{tf_{t,d}}{{k_1 \cdot ((1-b)+b \cdot} \frac{dl_d}{avgdl} {)}+tf_{t,d}}  \cdot \log\left(\frac{|D|-df_t{+0.5}}{df_t{+0.5}}\right)$
+$BM25(q,d)=\sum_{t\in T_d\cap T_q}\frac{tf_{t,d}}{{k_1 \cdot ((1-b)+b \cdot} \frac{dl_d}{avgdl} {)}+tf_{t,d}} \cdot \log\left(\frac{|D|-df_t{+0.5}}{df_t{+0.5}}\right)$
 
 - improvement over tf-idf: more saturated than logarithm as the term frequency increases
 - variables:
