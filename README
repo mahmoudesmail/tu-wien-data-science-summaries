@@ -15,7 +15,6 @@ archive of all my course summaries
 github sometimes struggles to render math in markdown.
 when that's the case use:
 
-- stackedit: https://stackedit.io/app
 - obsidian: https://obsidian.md/
+- stackedit: https://stackedit.io/app
 - pandoc: https://www.pandoc.org/
-- mathpix: https://mathpix.com/markdown-to-latex
