@@ -46,7 +46,7 @@ $\text{score}(q, d)$ = relevance score of query term $q$ and document $d$
  
 *tf-idf*
 
-$\begin{gathered}TF\texttt-IDF(q,d) = w_{t,d}= tf_{t,d} \cdot \underbrace{\log\left(\frac {|D|}{df_t}\right)}_{idf_t}\end{gathered}$
+$TF\texttt-IDF(q,d) = w_{t,d}= tf_{t,d} \cdot \underbrace{\log\left(\frac {|D|}{df_t}\right)}_{idf_t}$
 
 - term frequency within this doc
 	- increases with the number of occurrences within a document, but logistically
@@ -59,7 +59,7 @@ $\begin{gathered}TF\texttt-IDF(q,d) = w_{t,d}= tf_{t,d} \cdot \underbrace{\log\l
 
 *bm25*
 
-$\begin{aligned}BM25(q,d)=\sum_{t\in T_d\cap T_q}\frac{tf_{t,d}}{{\color{gray}k_1 \cdot ((1-b)+b \cdot} \frac{dl_d}{avgdl} {\color{gray})}+tf_{t,d}}  \cdot \log\left(\frac{|D|-df_t{\color{gray}+0.5}}{df_t{\color{gray}+0.5}}\right)\end{aligned}$
+$BM25(q,d)=\sum_{t\in T_d\cap T_q}\frac{tf_{t,d}}{{\color{gray}k_1 \cdot ((1-b)+b \cdot} \frac{dl_d}{avgdl} {\color{gray})}+tf_{t,d}}  \cdot \log\left(\frac{|D|-df_t{\color{gray}+0.5}}{df_t{\color{gray}+0.5}}\right)$
 
 - improvement over tf-idf: more saturated than logarithm as the term frequency increases
 - variables:
@@ -74,9 +74,9 @@ $\begin{aligned}BM25(q,d)=\sum_{t\in T_d\cap T_q}\frac{tf_{t,d}}{{\color{gray}k_
 
 *bm25f*
 
-$\begin{aligned}BM25F(q,d)=\sum_{t\in T_d\cap T_q}\frac{\widetilde{tf}_{t,d}}{{\color{gray}k_1}+\widetilde{tf}_{t,d}}  \cdot \log\left(\frac{|D|-df_t{\color{gray} + 0.5}}{df_t{\color{gray} + 0.5}}\right)\end{aligned}$
+$BM25F(q,d)=\sum_{t\in T_d\cap T_q}\frac{\widetilde{tf}_{t,d}}{{\color{gray}k_1}+\widetilde{tf}_{t,d}}  \cdot \log\left(\frac{|D|-df_t{\color{gray} + 0.5}}{df_t{\color{gray} + 0.5}}\right)$
 
- $\begin{aligned}\widetilde{tf}_{t,d}=\sum_{s=1}^{s_d} {\color{VioletRed}w_s} \cdot \frac{tf_{t,s}}{{\color{gray}(1-b_s)+b_s \cdot }\frac{sl_s}{avgsl}}\end{aligned}$
+ $\widetilde{tf}_{t,d}=\sum_{s=1}^{s_d} {\color{VioletRed}w_s} \cdot \frac{tf_{t,s}}{{\color{gray}(1-b_s)+b_s \cdot }\frac{sl_s}{avgsl}}$
 
 - improvement over bm25: can weigh document segments ie. title, abstract, body
 - each segment is called a 'stream'
@@ -109,7 +109,7 @@ we want IR models to be effective, efficient (fast, scalable), interpretable.
 
 *metrics*
 
-- **precision P:
+- **precision P**:
 	- intuition: correctness
 	- $P = TP/(TP+FP)$
 - **recall R**:
@@ -123,13 +123,13 @@ binary labels:
 - **mean average precision MAP**:
 	- = sum of relative rel-doc positions / total num of rel-docs
 	- (also measures area under precision-recall-curve, hard to interpret)
-	- $\begin{aligned}MAP(Q)=\frac1{|Q|}*\sum_{q\in Q}\frac{\sum_{i=1}^kP(q)_{@i}\cdot rel(q)_i}{|rel(q)|}\end{aligned}$
+	- $MAP(Q)=\frac1{|Q|}*\sum_{q\in Q}\frac{\sum_{i=1}^kP(q)_{@i}\cdot rel(q)_i}{|rel(q)|}$
 	- $P(q)_{@i}$ = precision metric at $i$ – can be interpreted as position of rel-docs among other rel-docs
 	- $rel(q)_{i}$ = relevance (binary)
 	- $|rel(q)_{i}|$ = number of rel-docs in result
 - **mean reciprocal rank MRR**:
 	- = 1 / absolute position of first rel-doc
-	- $\begin{aligned}MRR(Q)=\frac1{|Q|}*\sum_{q\in Q}\frac1{FirstRank(q)}\end{aligned}$
+	- $MRR(Q)=\frac1{|Q|}*\sum_{q\in Q}\frac1{FirstRank(q)}$
 	- $FirstRank$ = position of first rel-doc
 
 graded labels:
@@ -137,12 +137,12 @@ graded labels:
 - **discounted cumulative gain DCG**:
 	- = relevance score / logarithm of absolute position for each doc
 	- (discounted means we're normallizing scores based on ranks)
-	- $\begin{aligned}DCG(D)=\sum_{d\in D,\mathrm{~}i=1}\frac{rel(d)}{\log(i+1)}\end{aligned}$
+	- $DCG(D)=\sum_{d\in D,\mathrm{~}i=1}\frac{rel(d)}{\log(i+1)}$
 	- $rel(d)$ = relevance of doc for given query
 	- $i$ = absolute position in ranking
 - **normalized discounted cumulative gain nDCG**:
 	- = normalizes by best possible ranking per query, where docs are sorted based on their relevance
-	- $\begin{aligned}nDCG(Q)=\frac1{|Q|}\sum_{q\in Q}\frac{DCG(q)}{DCG(\mathrm{sorted}(rel(q))}\end{aligned}$
+	- $nDCG(Q)=\frac1{|Q|}\sum_{q\in Q}\frac{DCG(q)}{DCG(\mathrm{sorted}(rel(q))}$
 
 *statistical significance*
 
@@ -362,7 +362,7 @@ applying image processing techniques on match-matrix
 	- $M_{ij}=\cos(q_i,d_j)=\frac{d_j\cdot q_i}{|d_j||q_i|}$
 - ii. **apply 2D convolution layers on matrix**:
 	- layers:
-		- 1st — $\begin{aligned} z_{ij}^{(1,c)}& =\text{2D\_Conv}(M_{ij}) =ReLU\left(\sum_{s=0}^{r_c-1}\sum_{t=0}^{r_c-1}w_{s,t}^{(1,c)}\cdot M_{i+s,j+t}+b^{(1,c)}\right)\end{aligned}$ 
+		- 1st — $ z_{ij}^{(1,c)}& =\text{2D\_Conv}(M_{ij}) =ReLU\left(\sum_{s=0}^{r_c-1}\sum_{t=0}^{r_c-1}w_{s,t}^{(1,c)}\cdot M_{i+s,j+t}+b^{(1,c)}\right)$ 
 		- 2nd — $z_{ij}^{(2,c)}=\text{dyn\_max\_pool}\left(z_{ij}^{(1,c)}\right)=\max_{0\leq s<d_c} ~\max_{0\leq t<d_c}z_{i\cdot d_c+s,j \cdot d_c+t}^{(1,c)}$ ⟶ makes output size static
 		- $\dots$ other kernels, each learning a different feature
 		- L'th — $z_{ij}^{(l,c)}=\text{max\_pool}\left(\text{2D\_Conv}(z_{ij}^{(l-1)})\right)$
