@@ -76,7 +76,7 @@ $BM25(q,d)=\sum_{t\in T_d\cap T_q}\frac{tf_{t,d}}{{k_1 \cdot ((1-b)+b \cdot} \fr
 
 $BM25F(q,d)=\sum_{t\in T_d\cap T_q}\frac{\widetilde{tf}_{t,d}}{{k_1}+\widetilde{tf}_{t,d}}  \cdot \log\left(\frac{|D|-df_t{ + 0.5}}{df_t{ + 0.5}}\right)$
 
- $\widetilde{tf}_{t,d}=\sum_{s=1}^{s_d} {\color{VioletRed}w_s} \cdot \frac{tf_{t,s}}{{(1-b_s)+b_s \cdot }\frac{sl_s}{avgsl}}$
+ $\widetilde{tf}_{t,d}=\sum_{s=1}^{s_d} {w_s} \cdot \frac{tf_{t,s}}{{(1-b_s)+b_s \cdot }\frac{sl_s}{avgsl}}$
 
 - improvement over bm25: can weigh document segments ie. title, abstract, body
 - each segment is called a 'stream'
