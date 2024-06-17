@@ -2,7 +2,7 @@
 > 
 > code: https://github.com/alirezasalemi7/eRAG
 
-goal: evaluating the retrieval system in rag.
+goal: evaluating the retrieval-system in rag pipelines
 
 *rag*
 
