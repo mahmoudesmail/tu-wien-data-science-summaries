@@ -10,6 +10,7 @@
 *exam mode in previous terms (based on students)*
 
 - vowi:
+	- True or False single choice questions (mostly already available in older exams) +2 points for correct answer, 0 points for no answer, -1 point for incorrect answer
 	- At least last two exams (WS2022) were entirely MC tests, no open questions. However, they contained a few calculations you had to perform but they gave you 6 options to choose from. Overall, the exam was surprisingly easy, and it contained a few of the older questions (especially in the true/false part).
 - discord: 
 	- 2023: There are 12 T/F questions (+1 correct, -0.5 wrong answer) And some open answer questions, supposedly one with a simple algorithm to go through. 90 minutes
