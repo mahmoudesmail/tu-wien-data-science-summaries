@@ -12,7 +12,7 @@
 - these are some of the questions from the exam in January
 - pt1: True or False single choice questions (mostly already available in older exams) +2 points for correct answer, 0 points for no answer, -1 point for incorrect answer
 - pt2: Very simple calculations (no calculator needed) for topics such as k armed bandits, root means squared error, 1R feature selection and convolution with stride 2: +3 points for correct answer, 0 points for no answer, -1.5 points for incorrect answer
-- pt3: multiple choice questions on topics like feature selection, image augmentation or preprocessing. one question was what to do with missing values in test and training set. ? points for correct answer, 0 points for incorrect OR incomplete answer
+- pt3: Multiple choice questions on topics like feature selection, image augmentation or preprocessing. one question was what to do with missing values in test and training set. ? points for correct answer, 0 points for incorrect OR incomplete answer
 
 *exam mode in previous terms (based on students)*
 
