@@ -170,7 +170,7 @@ answer (single choice): None of the above
 	- $\text{err}_2$ = (16 - 14)^2 = 4
 	- $\text{err}_3$ = (18 - 14)^2 = 16
 	- $\text{err}_4$ = (22 - 17)^2 = 25
-- root mean squared error RMSE: $\sqrt{\sum_i (p_i - a_i)^2 ~/~ n}$
+- root mean squared error RMSE: $\sqrt{\sum_i (p_i - a_i)^2 / n}$
 	- $\sum_{i} \text{err}_i$ = 81 + 4 + 16 + 25 = 126
 	- $n$ = 4
 	- RMSE = sqrt(126 / 4) = 5.6124860802
@@ -201,12 +201,12 @@ Options:
 answer (single choice): The class $+$ is likelier
 
 - using the bayes theorem with multiple events:
-	- $p(A\mid BCD)=\frac{p(BCD\mid A) ~\cdot~  p(A)}{p(BCD)}=\frac{p(B \mid A) ~\cdot~ p(C \mid A) ~\cdot~ p(D \mid A) ~\cdot~ p(A)}{p(BCD)}$
+	- $p(A\mid BCD)=\frac{p(BCD\mid A) \cdot  p(A)}{p(BCD)}=\frac{p(B \mid A) \cdot p(C \mid A) \cdot p(D \mid A) \cdot p(A)}{p(BCD)}$
 	- see: https://stats.stackexchange.com/questions/417277/bayesian-formula-for-multiple-events/417278#417278
 - we want to know:
 	- since they both have the same denominator knowing the nominator is sufficient to see which case is likelier
-	- $p({+} \mid a, n, s) = \frac{p(a \mid +) ~\cdot~ p(n \mid +) ~\cdot~ p(s \mid +) ~\cdot~ p(+)}{p(a,n,s)} \propto p(a \mid +) \cdot p(n \mid +) \cdot p(s \mid +) \cdot p(+)$
-	- $p({-} \mid a, n, s) = \frac{p(a \mid -) ~\cdot~ p(n \mid -) ~\cdot~ p(s \mid -) ~\cdot~ p(-)}{p(a,n,s)} \propto p(a \mid -) \cdot p(n \mid -) \cdot p(s \mid -) \cdot p(-)$
+	- $p({+} \mid a, n, s) = \frac{p(a \mid +) \cdot p(n \mid +) \cdot p(s \mid +) \cdot p(+)}{p(a,n,s)} \propto p(a \mid +) \cdot p(n \mid +) \cdot p(s \mid +) \cdot p(+)$
+	- $p({-} \mid a, n, s) = \frac{p(a \mid -) \cdot p(n \mid -) \cdot p(s \mid -) \cdot p(-)}{p(a,n,s)} \propto p(a \mid -) \cdot p(n \mid -) \cdot p(s \mid -) \cdot p(-)$
 - prior probabilities for each class:
 	- $p({+})$ = 3/7
 	- $p({-})$ = 4/7
