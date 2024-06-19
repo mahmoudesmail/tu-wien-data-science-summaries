@@ -53,7 +53,6 @@ answer (boolean): False
 
 how it gradient boosting works:
 
-- https://en.wikipedia.org/wiki/Gradient_boosting#Informal_introduction
 - i. start with an initial model $F_0(x)$
 	- this can be as simple as predicting the mean of the target values in the case of regression, or the logarithm of the odds for classification.
 - ii. for each iteration:
@@ -65,6 +64,7 @@ how it gradient boosting works:
 		- $h_m(x)$ = new weak learner fitted to the pseudo-residuals
 		- $\nu$ = learning rate
 - iii. the final model is the sum of all the weak learners from each iteration.
+- see: https://en.wikipedia.org/wiki/Gradient_boosting#Informal_introduction
 
 ---
 
@@ -333,3 +333,238 @@ answer (open question): actions taken at $t_3$​, $t_5$​, and $t_6$​ are no
 		- $Q = [0.5, 1, 0, 0, 1]$
 - see: https://stats.stackexchange.com/questions/316911/how-to-understand-k-armed-bandit-example-from-suttons-rl-book-chapter-2 
 - see: https://github.com/Sagarnandeshwar/Bandit_Algorithms
+
+# unknown date
+
+**question**: When are two nodes in a Bayesian Network d-seperated?,
+
+answer (open question):
+
+- connection types:
+	- forward-serial: $A \rightarrow B \rightarrow C$
+		- knowing A will only tell us something about C, if we don't know B
+	- backward-serial: $A \leftarrow B \leftarrow C$
+		- knowing C will only tell us something about A, if we don't know B
+	- diverging: $A \rightarrow \{B, C\}$
+		- knowing A will only tell us something about C and vice versa, if we don't know B
+	- converging: $\{A, C\} \rightarrow B$ 
+		- knowing A will only tell us something about C and vice versa, if we know B or any of it's children
+- d-seperated / blocked:
+	- = we can't transmit evidence
+	- assuming some type of connection $A - B - C$ the variables A, C are blocked if they're:
+		- serial or diverging, and B is known
+		- converging, and B or any of it's children are unknown
+	- this must apply to all possible paths between A, C and there must be an intermediate node
+- d-connected / connected:
+	- = we can transmit evidence
+	- not d-seperated
+
+---
+
+**question**: Describe a local search based approach for learning Bayesian Networks.
+
+answer (open question): hill climbing / local search heuristic
+
+- start with an initial network structure – this could be an empty network (no edges), a naive Bayes structure (all nodes connected to a single parent node), a randomly generated one, one based on prior knowledge, etc.
+- choose a metric to evaluate networks
+- until convergence to a local optimum:
+	- generate neighbors from the current network through local modifications like edge addition, deletion or reversal.
+	- score neighbors.
+
+---
+
+**question**: Which are advantages/disadvantages of gradient descent when applied for linear regression?
+
+answer (open question):
+
+- pros:
+	- versatility – can be also used for non-linear models
+	- simplicity – with iterative method there is no need for matrix conversion
+	- efficiency – for larger datasets (the analytical method is faster for smaller datasets)
+- cons:
+	- sensitivity to learning rate – it may either converge too slowly or overshoot
+	- susceptibility to local minima – it's not guaranteed to converge to a global minimum / find the optimal solution
+	- noisy updates – might have lots of redundant computations and oscilate
+	- sensitivity to feature scaling – features with different scales influence performance
+
+---
+
+**question**: What is overfitting, and when & why is it a problem? Explain measures against overfitting on an algorithm discussed in the lecture.
+
+answer (open question):
+
+- overfitting = poor generalization
+	- model performs poorly on unseen data. it has "memorized" the training data rather than learning the underlying patterns
+	- high training accuracy, low test accuracy
+	- unnecessarily complex, harder to interpret
+- measures against overfitting:
+	- cross validation
+	- pruning (for decision trees)
+	- regularization (ie. L1, L2 in polynomial regression)
+	- early stopping
+	- data augmentation
+	- ensemble training with diverse models
+	- simplifying model → simpler models are less likely to overfit as they focus on the most relevant aspects of the data.
+
+---
+
+**question**: Suppose you have 5 convolutional kernels of size 7x7 with zero padding and stride 1 in the first layer of a convolutional neural network. You pass an input of dimension 224 x 224 x 3 through this layer. What are the dimensions of the data which the next layer will receive? Explain your answer.
+
+answer (numeric):
+
+- $n\times n \circledast f\times f \Rightarrow \left\lfloor\frac{n+2p-f}{s}+1\right\rfloor\times\left\lfloor\frac{n+2p-f}{s}+1\right\rfloor$
+- where:
+	- $n$ = input = 224 x 224 x 3
+	- $f$ = kernel filter = 7 x 7
+	- $p$ = padding = 0
+	- $s$ = stride = 1
+	- num kernels = 5
+- result:
+	- in this case, since the input image has 3 channels, each of the 5 convolutional kernels has a depth of 3 as well.
+	- the 5 convolutional kernels are not applied to separate channels independently. each kernel is applied to the entire input image, which includes all 3 channels - resulting in 5 different outputs each with 3 channels.
+	- 5 times: (224 x 224 x 3) $\circledast$ (7 x 7 x 3) = (224 - 7 + 1) x (224 - 7 + 1) x 3 = (218 x 218 x 3)
+
+---
+
+**question**: The following is a very simple classification problem with two classes (y = +1, y = -1), and a total of three training samples:
+
+- $(x_1, y_1)$ = (1, -1)
+- $(x_2, y_2)$ = (3, +1)
+- $(x_3, y_3)$ = (5, -1)
+
+A Decision Stump classifier, basically a 1-level decision tree, chooses a constant value c on the x-axis and classifies all points where x > c as one class and other points where x ≤ c as the other class. Now consider we want to train a boosting ensemble using Decision stumps on this dataset.
+
+- a) What is the initial weight that is assigned to each data point?
+- b) Where would you draw the decision boundary for the first decision stump, and indicate which class would be predicted each side of the decision boundary. Argue your decision.
+- b) Which points will have their weights increased after the first iteration.
+
+answer (open question):
+
+- a) initial weights:
+	- the question asks about the initial weight assignment and weight updates after each iteration, which is a characteristic of the AdaBoost algorithm. – Gradient Boosting, on the other hand, does not explicitly maintain weights over the training data.
+	- in AdaBoost, the initial weight assigned to each data point is typically set to be equal.
+	- with three data points, the initial weight for each point would be $\frac{1}{3}$.
+- b) optimal decision boundary in decision tree:
+	- we choose the "absolute error rate" $\text{err}$ as a metric to find the best split.
+	- we only consider boundaries between adjacent data points.
+	- results:
+		- boundary in \[1;3\[
+			- left: -1, right: +1 ⟶ $\text{err}$ = 1
+			- left: +1, right: -1 ⟶ $\text{err}$ = 2
+		- boundary in \[3;5\[
+			- left: -1, right: +1 ⟶ $\text{err}$ = 2
+			- left: +1, right: -1 ⟶ $\text{err}$ = 1
+	- it's a tie, so we take the first boundary by setting it to $c$ = (1+3)/2 = 2.5
+		- if $x_i$ ≤ 2.5 then we predict $y_i$ to be -1
+		- if $x_i$ > 2.5 then we predict $y_i$ to be +1
+- c) weight increase:
+	- the weights of the misclassified points are increased
+	- in this case we're missclassifying the datapoint (5, -1) and have to increase it by some factor of choice
+
+---
+
+**question**: Calculate the coefficients $w_0, w_1, w_2$ when using the RSS as a metric. The learning rate $\alpha$ = 0.5. All weights are initialized with 0. What will the second step be?
+
+| $F1$ | $F_2$ | $t$ |
+| ---- | ----- | --- |
+| 1    | 3     | 12  |
+| 2    | 5     | 9   |
+
+answer (open question):
+
+- polynomial regression with hypothesis function: $y = w_0 + w_1 \cdot F_1 + w_2 \cdot F_2$
+- 1) initial RSS (residual sum of squares) predictions
+	- $\hat{y}_1 = 0 + 0 \cdot 1 + 0 \cdot 3 = 0$
+	- $\hat{y}_2 = 0 + 0 \cdot 2 + 0 \cdot 5 = 0$
+	- $\text{RSS} = (12-0)^2 + (9-0)^2 = 12^2 + 9^2 = 225$
+- 2) calculating the gradients of the RSS for each weight
+	- first we simplify the gradient of the RSS:
+		- $\frac{\partial \text{RSS}}{\partial w_j} = \frac{\partial}{\partial w_j} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 = \ldots = \sum_{i=1}^{n} 2 (y_i - \hat{y}_i) \cdot \left(-\frac{\partial \hat{y}_i}{\partial w_j}\right)$
+		- $\frac{\partial \hat{y}_i}{\partial w_0} = 1$
+		- $\frac{\partial \hat{y}_i}{\partial w_1} = F_{1i}$
+		- $\frac{\partial \hat{y}_i}{\partial w_2} = F_{2i}$
+		- The -2 factor comes from applying the chain rule to the derivative of the squared term $(y_i - \hat{y}_i)^2$.
+	- then we apply the chain rule for each weight:
+		- $\frac{\partial \text{RSS}}{\partial w_0} = -2 \sum_{i=1}^{n} (y_i - \hat{y}_i) = -2 \cdot (12 - 0 + 9 - 0) = -42$
+		- $\frac{\partial \text{RSS}}{\partial w_1} = -2 \sum_{i=1}^{n} (y_i - \hat{y}_i) \cdot F_{1i} = -2 \cdot ((12 - 0) \cdot 1 + (9 - 0) \cdot 2) = -60$
+		- $\frac{\partial \text{RSS}}{\partial w_2} = -2 \sum_{i=1}^{n} (y_i - \hat{y}_i) \cdot F_{2i} = -2 \cdot ((12 - 0) \cdot 3 + (9 - 0) \cdot 5) = -162$
+- 3) updating the weights based on the gradients
+	- $w_0 \leftarrow w_0 - \alpha \cdot \frac{\partial \text{RSS}}{\partial w_0} = 0 - 0.5 \cdot (-42) = 21$
+	- $w_1 \leftarrow w_1 - \alpha \cdot \frac{\partial \text{RSS}}{\partial w_1} = 0 - 0.5 \cdot (-60) = 30$
+	- $w_2 \leftarrow w_2 - \alpha \cdot \frac{\partial \text{RSS}}{\partial w_2} = 0 - 0.5 \cdot (-162) = 81$
+- 4) repeating until convergence
+
+---
+
+**question**: Classify the missing samples using Naive Bayes.
+
+| Groups | Shifts | Seq2 | DayBlocks | NightB | WorkB | DayOffB | Algorithm |
+| ------ | ------ | ---- | --------- | ------ | ----- | ------- | --------- |
+| 9      | 3      | NO   | 6         | 3      | 4     | 3       | MC        |
+| 9      | 3      | NO   | 4         | 4      | 4     | 3       | MC        |
+| 17     | 3      | NO   | 6         | 4      | 4     | 4       | ILS       |
+| 13     | 3      | YES  | 5         | 3      | 5     | 4       | ILS       |
+| 11     | 3      | YES  | 5         | 3      | 4     | 4       | MC        |
+| 7      | 3      | YES  | 5         | 5      | 4     | 4       | MC        |
+| 29     | 3      | NO   | 6         | 4      | 4     | 3       | MC        |
+| 16     | 3      | NO   | 6         | 4      | 5     | 3       | ILS       |
+| 47     | 3      | NO   | 6         | 5      | 6     | 3       | ILS       |
+| 27     | 3      | NO   | 6         | 4      | 4     | 3       | ILS       |
+| 30     | 3      | NO   | 5         | 3      | 5     | 3       | ILS       |
+| 20     | 2      | NO   | 5         | 5      | 4     | 3       | ILS       |
+| 24     | 3      | NO   | 5         | 4      | 5     | 3       |           |
+| 13     | 3      | YES  | 5         | 3      | 4     | 4       |           |
+
+answer (open question):
+
+- laplace smoothing:
+	- $p(x_i = v_j \mid y = c) = \frac{\text{count}(x_i = v_j \text{ and } y = c) + 1}{\text{count}(y = c) + k}$
+	- where:
+		- $\text{count}(x_i = v_j \text{ and } y = c)$ is the number of times feature $x_i$ takes value $v_j$ in class $c$.
+		- $\text{count}(y = c)$ is the number of samples in class $c$.
+		- $k$ is the number of possible values that feature $x_i$ can take.
+- conditional likelihoods for each feature value given the class:
+	- first prediction:
+		- class ILS:
+			- $p(\text{Groups} = 24 \mid \text{ILS})$ = 0/7 → (0+1)/(7+12) = 0.0526315789
+			- $p(\text{Shifts} = 3 \mid \text{ILS})$ = 6/7 → (6+1)/(7+2) = 0.7777777778
+			- $p(\text{Seq2} = \text{NO} \mid \text{ILS})$ = 6/7 → (6+1)/(7+2) = 0.7777777778
+			- $p(\text{DayBlocks} = 5 \mid \text{ILS})$ = 2/7 → (2+1)/(7+3) = 0.3
+			- $p(\text{NightB} = 4 \mid \text{ILS})$ = 3/7 → (3+1)/(7+3) = 0.4
+			- $p(\text{WorkB} = 5 \mid \text{ILS})$ = 3/7 → (3+1)/(7+3) = 0.4
+			- $p(\text{DayOFFB} = 3 \mid \text{ILS})$ = 5/7 → (5+1)/(7+2) = 0.6666666667
+			- $p(\text{ILS})$ = 7/12 = 0.5833333333
+			- $p(\text{ILS} \mid 24, 3, \text{NO}, 5, 4, 5, 3) \propto p(24, 3, \text{NO}, 5, 4, 5, 3 \mid \text{ILS}) \cdot p(\text{ILS})$ = 0.0526315789 · 0.7777777778 · 0.7777777778 · 0.3 · 0.4 · 0.4 · 0.6666666667 · 0.5833333333 = 0.0005943253189 👈 likelier prediction
+		- class MC:
+			- $p(\text{Groups} = 24 \mid \text{MC})$ = 0/5 → (0+1)/(5+12) = 0.0588235294
+			- $p(\text{Shifts} = 3 \mid \text{MC})$ = 5/5 → (5+1)/(5+2) = 0.8571428571
+			- $p(\text{Seq2} = \text{NO} \mid \text{MC})$ = 3/5 → (3+1)/(7+2) = 0.4444444444
+			- $p(\text{DayBlocks} = 5 \mid \text{MC})$ = 1/5 → (1+1)/(5+3) = 0.25
+			- $p(\text{NightB} = 4 \mid \text{MC})$ = 2/5 → (2+1)/(5+3) = 0.375
+			- $p(\text{WorkB} = 5 \mid \text{MC})$ = 0/5 → (0+1)/(5+3) = 0.125
+			- $p(\text{DayOFFB} = 3 \mid \text{MC})$ = 3/5 → (3+1)/(5+2) = 0.5714285714
+			- $p(\text{MC})$ = 5/12 = 0.4166666667
+			- $p(\text{MC} \mid 24, 3, \text{NO}, 5, 4, 5, 3) \propto p(24, 3, \text{NO}, 5, 4, 5, 3 \mid \text{MC}) \cdot p(\text{MC})$ = 0.0588235294 · 0.8571428571 · 0.4444444444 · 0.25 · 0.375 · 0.125 · 0.5714285714 · 0.4166666667 = 0.0000625250099
+	- second prediction:
+		- class ILS:
+			- $p(\text{Groups} = 13 \mid \text{ILS})$ = 1/7 → (1+1)/(5+12) = 0.1176470588
+			- $p(\text{Shifts} = 3 \mid \text{ILS})$ = 6/7 → (6+1)/(7+2) = 0.7777777778
+			- $p(\text{Seq2} = \text{YES} \mid \text{ILS})$ = 1/7 → (1+1)/(7+2) = 0.2222222222
+			- $p(\text{DayBlocks} = 5 \mid \text{ILS})$ = 2/7 → (2+1)/(7+3) = 0.3
+			- $p(\text{NightB} = 3 \mid \text{ILS})$ = 2/7 → (2+1)/(7+3) = 0.3
+			- $p(\text{WorkB} = 4 \mid \text{ILS})$ = 3/7 → (3+1)/(7+3) = 0.4
+			- $p(\text{DayOFFB} = 4 \mid \text{ILS})$ = 2/7 → (2+1)/(7+2) = 0.3333333333
+			- $p(\text{ILS})$ = 7/12 = 0.5833333333
+			- $p(\text{ILS} \mid 13, 3, \text{YES}, 5, 3, 4, 4) \propto p(13, 3, \text{YES}, 5, 3, 4, 4 \mid \text{ILS}) \cdot p(ILS)$ = 0.1176470588 · 0.7777777778 · 0.2222222222 · 0.3 · 0.3 · 0.4 · 0.3333333333 · 0.5833333333 = 0.0001423384167 👈 likelier prediction
+		- class MC:
+			- $p(\text{Groups} = 13 \mid \text{MC})$ = 0/5 → (0+1)/(5+12) = 0.0588235294
+			- $p(\text{Shifts} = 3 \mid \text{MC})$ = 5/5 → (5+1)/(5+2) = 0.8571428571
+			- $p(\text{Seq2} = \text{YES} \mid \text{MC})$ = 2/5 → (2+1)/(5+2) = 0.4285714286
+			- $p(\text{DayBlocks} = 5 \mid \text{MC})$ = 1/5 → (1+1)/(5+3) = 0.25
+			- $p(\text{NightB} = 3 \mid \text{MC})$ = 2/5 → (2+1)/(5+3) = 0.375
+			- $p(\text{DayOFFB} = 4 \mid \text{MC})$ = 2/5 → (2+1)/(5+2) = 0.4285714286
+			- $p(\text{MC})$ = 5/12 = 0.4166666667
+			- $p(\text{MC} \mid 13, 3, \text{YES}, 5, 3, 4, 4) \propto p(13, 3, \text{YES}, 5, 3, 4, 4 \mid \text{MC}) \cdot p(MC)$ = 0.0588235294 · 0.8571428571 · 0.4285714286 · 0.25 · 0.375 · 0.125 · 0.4285714286 · 0.4166666667 = 0.0000452189804
+
+
+
