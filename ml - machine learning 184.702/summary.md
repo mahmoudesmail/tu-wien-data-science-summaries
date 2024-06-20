@@ -88,7 +88,7 @@ bootstrapping:
 comparison:
 
 - supervised:
-	- uses labels to find relevance of features to them
+	- how well we can predict the target variable with the input features
 - unsupervised:
 	- dimensionality reduction
 	- hide labels during unsupervised selection
@@ -247,7 +247,7 @@ algorithm:
 
 *decision tree*
 
-- other versions: 1R (one root), 0R (no root, return majority)
+- other versions: 1R (one rule), 0R (no rule, return majority)
 - num of features are the space dimensions
 - binary trees
 
@@ -396,24 +396,20 @@ search algorithms:
 
 *connection types*
 
-- **connection types**:
-	- forward-serial: $A \rightarrow B \rightarrow C$
-		- knowing A will only tell us something about C, if we don't know B
-	- backward-serial: $A \leftarrow B \leftarrow C$
-		- knowing C will only tell us something about A, if we don't know B
-	- diverging: $A \rightarrow \{B, C\}$
-		- knowing A will only tell us something about C and vice versa, if we don't know B
-	- converging: $\{A, C\} \rightarrow B$ 
-		- knowing A will only tell us something about C and vice versa, if we know B or any of it's children
-- **d-seperated / blocked**:
-	- = we can't transmit evidence (conditional independence)
-	- assuming some type of connection $A - B - C$ the variables A, C are blocked if they're:
-		- serial or diverging, and B is known
-		- converging, and B or any of it's children are unknown
-	- this must apply to all possible paths between A, C and there must be at least one intermediate node
-- **d-connected / connected**:
-	- = we can transmit evidence
-	- not d-seperated
+- transmission of evidence:
+	- d-seperated / blocked = we can't transmit evidence (conditional independence)
+	- d-connected / connected = we can transmit evidence
+	- the rules below must apply to all possible paths between A, C
+	- there must be at least one intermediate node
+	- in the serial case we can differentiate between forward-serial and backward-serial
+	- in the converging case, if B or any of its descendants are observed we can "explain away"
+- connection types:
+	- serial: A → B → C
+		- A → C transmission blocked if we know B
+	- diverging: A ← B → C
+		- A ←→ C transmission blocked if we know B
+	- converging: A → B ← C
+		- A ←→ C transmission blocked if we don't know B or any of it's descendants
 
 # svm - support vector machine
 
