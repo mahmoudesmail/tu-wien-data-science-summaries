@@ -1189,7 +1189,7 @@ answer:
 answer:
 
 - loss function for hyperparams:
-	- $f(\boldsymbol{\lambda})=\frac{1}{k}\sum_{i=1}^{k}{L}(A_{\boldsymbol{\lambda}},{D}_{\mathrm{train}}^{(i)},{D}_{\mathrm{valid}}^{(i)})$
+	- $f(\boldsymbol{\lambda})=\frac{1}{k}\sum_{i=1}^{k}{L} (A_{\boldsymbol{\lambda}}, {D}_{\mathrm{train}}^{(i)}, {D}_{\mathrm{valid}}^{(i)})$
 	- where:
 		- $A_\lambda$ = algorithm configured with hyperparam $\lambda$
 		- $\mathbf \Lambda = \Lambda_1 \times \dots \times \Lambda_n$ = hyperparam-space from different domains
