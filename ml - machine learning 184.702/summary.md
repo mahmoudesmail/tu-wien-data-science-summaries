@@ -83,29 +83,39 @@ bootstrapping:
 
 *feature selection*
 
-- dimensionality reduction = select subset of features to reduce redundancy
-- greedy algorithm:
-	- a) forward selection = start with empty set, iteratively add features and compute loss
-	- b) backward elimination = start with complete set, iteratively remove features and compute loss
-- unsupervised selection:
+- dimensionality reduction = select subset of features to reduce redundance, noise
+
+comparison:
+
+- supervised:
+	- uses labels to find relevance of features to them
+- unsupervised:
+	- dimensionality reduction
 	- hide labels during unsupervised selection
-	- might learn features that depend on eachother - run correlation analysis to prevent
-	- examples:
-		- frequency count
-		- principal component analysis (pca) = project to lower dimension through single value decomposition
-- supervised selection:
-	- use labels during supervised selection
-	- examples:
+	- might learn unwanted feature dependencies - run correlation analysis to prevent
+
+types:
+
+- supervised types:
+	- a) wrapper
+		- = evaluate models trained with feature subsets – search through all possible subsets.
+		- forward selection – greedy search, starting with no features and progressively adding features
+		- backward elimination – greedy search, starting with all features and progressively removing features
+	- b) filter
+		- = use statistical metrics directly on features – efficient, independent of the learning algorithm, less prone to overfitting.
 		- information gain
-		- mutual information (mi): influence of presence on accuracy
-		- maximum probability estimates: $\chi^2$
-		- odds ratio: probabilistic association between multiple varialbes
-- rank based on utility:
-	- a) wrapper strategy: iteratively remove features, evaluate model
-		- same as backward eliminiation search strategy (see above)
-	- b) filter strategy: compare features by metrics
-		- ie. compare information-gain
-		- much faster and less pronte to overfitting than wrapper-strategy
+		- chi-square test
+		- mutual information
+		- f-score
+		- fisher's score
+	- c) embedded
+		- = evaluate features during training
+		- lasso and ridge regulation
+		- decision tree
+- unsupervised types:
+	- frequency count
+	- principal component analysis – pca, project to lower dimension through single value decomposition
+	- autoencoder – generating vector representations in hidden layer
 
 *data augmentation*
 
@@ -238,7 +248,8 @@ algorithm:
 *decision tree*
 
 - other versions: 1R (one root), 0R (no root, return majority)
-- attributes are the space dimensions
+- num of features are the space dimensions
+- binary trees
 
 algorithm:
 
@@ -327,6 +338,8 @@ algorithm:
 # bn - bayesian network
 
 - https://ocw.mit.edu/courses/6-825-techniques-in-artificial-intelligence-sma-5504-fall-2002/pages/lecture-notes/
+- https://cs.uwaterloo.ca/~a23gao/cs486686_f21/lecture_notes/Lecture_13_on_Variable_Elimination_Algorithm.pdf
+- https://ermongroup.github.io/cs228-notes/
 
 *bayesian network*
 
@@ -391,13 +404,13 @@ search algorithms:
 	- diverging: $A \rightarrow \{B, C\}$
 		- knowing A will only tell us something about C and vice versa, if we don't know B
 	- converging: $\{A, C\} \rightarrow B$ 
-		- knowing A will only tell us something about C and vice versa, if know B or any of it's children
+		- knowing A will only tell us something about C and vice versa, if we know B or any of it's children
 - **d-seperated / blocked**:
-	- = we can't transmit evidence
+	- = we can't transmit evidence (conditional independence)
 	- assuming some type of connection $A - B - C$ the variables A, C are blocked if they're:
 		- serial or diverging, and B is known
 		- converging, and B or any of it's children are unknown
-	- this must apply to all possible paths between A, C and there must be an intermediate node
+	- this must apply to all possible paths between A, C and there must be at least one intermediate node
 - **d-connected / connected**:
 	- = we can transmit evidence
 	- not d-seperated
@@ -535,6 +548,15 @@ algorithm:
 	- can also be done by 1x1 kernel
 - iii. fully connected layer = combine results with mlp
 
+output size:
+
+- $n\times n \circledast f\times f \Rightarrow \left\lfloor\frac{n+2p-f}{s}+1\right\rfloor\times\left\lfloor\frac{n+2p-f}{s}+1\right\rfloor$
+- where:
+	- $n$ = input
+	- $f$ = kernel filter
+	- $p$ = padding
+	- $s$ = stride
+
 # rnn - recurrent neural network
 
 *rnn - recurrent neural network*
@@ -582,7 +604,7 @@ algorithm:
 	- reward signal = immediate or delayed signal sent to agent
 - agent = can read / update state through actions
 	- policy = state-action matrix (behavior)
-	- value of action = action-reward matrix (expected rewards for actions)
+	- value estimate = action-reward matrix (estimated rewards for actions)
 	- has internal model of environment, learns based on own experience
 - tabular solution method = state-action-matrix is small enough, optimal policy and value can be found
 
