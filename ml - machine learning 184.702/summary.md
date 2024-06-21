@@ -161,6 +161,8 @@ types:
 - balanced accuracy
 	- $\frac{\frac{TP}{TP + FN} + \frac{TN}{TN + FP}}{2}$
 	- average of precision and specificity
+- f1 score
+	- $2 \cdot \frac{\text{Prec} \cdot \text{Rec}}{\text{Prec} + \text{Rec}}$
 
 *metrics for regression*
 
@@ -461,9 +463,9 @@ algorithm:
 
 - polynomial with one weight per coefficient
 - loss function:
-	- $L$ = fitness + $\lambda$ · regularization
-	- $L = \mathrm{RSS}({w}_0,\cdots,{w}_n) + \lambda \cdot ||\mathrm{w}||_{1 ~ or ~2}$
-		- lambda works the same way as alpha does here
+	- $L$ = rss + $\lambda$ · regularization
+	- $L = \mathrm{RSS}({w}_0,\cdots,{w}_n) + \lambda \cdot L_{1 ~ or ~2}(w)$
+		- residual sum squared rss: $\text{RSS} = \sum_i e_i^2$
 		- lasso regression: $L_1 = ||\mathrm{w}||_{1} = |w_0| + \dots + |w_n|$
 		- ridge regression: $L_2 = ||\mathrm{w}||_{2}^2 =  w_0^2 + \dots + w_n^2$
 
@@ -766,11 +768,13 @@ algorithm:
 bagging (bootstrap aggregating):
 
 - = models trained on bootstrap samples
+- = parallel evaluation of independent models
 - works best when models are non-deterministic
 
 boosting:
 
 - = stacked layers of models, each trying to fix shortcomings of previous layer
+- = sequential evaluation of models
 - **adaBoost**:
 	- linear combination of models
 	- model-weights adjusted based on loss
