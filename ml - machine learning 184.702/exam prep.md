@@ -1732,8 +1732,13 @@ search algorithms:
 
 answer:
 
-- no model can generalize to all kinds of tasks
-- when averaged across all tasks, all models are equally accurate
+- premise: any two optimization algorithms are equivalent when averaged across all possible problems
+- implications: no algorithm can outperform others across all possible situations; effectiveness is context-dependent
+	- there is no universally superior algorithm
+	- we need problem-specific algorithms
+	- all learning algorithms must make some assumptions (inductive bias) about the problem space to perform well
+	- there is no "free lunch" - good performance on some problems comes at the cost of worse performance on others
+	- general-purpose optimization or learning algorithms without any domain-specific knowledge are fundamentally limited
 
 ---
 
@@ -1852,8 +1857,13 @@ answer:
 
 answer:
 
-- no model can generalize to all kinds of tasks
-- when averaged across all tasks, all models are equally accurate
+- premise: any two optimization algorithms are equivalent when averaged across all possible problems
+- implications: no algorithm can outperform others across all possible situations; effectiveness is context-dependent
+	- there is no universally superior algorithm
+	- we need problem-specific algorithms
+	- all learning algorithms must make some assumptions (inductive bias) about the problem space to perform well
+	- there is no "free lunch" - good performance on some problems comes at the cost of worse performance on others
+	- general-purpose optimization or learning algorithms without any domain-specific knowledge are fundamentally limited
 
 ---
 
@@ -2827,7 +2837,7 @@ answer:
 	- regression: average
 - iv. out-f-bag error estimates
 
-# 2021-12-07
+# 2021-12-07 – TODO
 
 **question**: In AdaBoost weights are uniformly initialized: T
 
@@ -2839,25 +2849,41 @@ answer: True
 
 **question**: Categorical data should be normalized before training a k-NN
 
-answer: 
+answer: True
+
+- correction: categorical features should be Z-score normalized after one-hot-encoding if you want to compute a distance in models such as knn.
+- categorical features should be one-hot encoded but not normalized post encoding.
+- normalizing them will destroy their meaning, as they are binary flags.
 
 ---
 
 **question**: The error of a 1-NN classifier on the training set is 0
 
-answer: 
+answer: True
+
+- 1nn = 1-nearest neighbor
+- its nearest neighbor is itself, since the distance to itself is 0 (which is always the smallest possible distance)
+- therefore, every training point will be classified as its own class, resulting in perfect classification (0 error) on the training data
+- the 0 training error only applies to 1-NN. For k-NN with k > 1, there can be non-zero training error
+- see: https://stats.stackexchange.com/questions/367010/training-error-in-knn-classifier-when-k-1
 
 ---
 
 **question**: One-vs-all is an approach to solve multi-class problems for DTs
 
-answer: 
+answer: False
+
+- DT = decision tree
+- 
 
 ---
 
 **question**: Boosting ensembles can be easily parallelized
 
 answer: 
+
+- bagging (bootstrap aggegating) = parallel evaluation of independent models
+- boosting = sequential evaluation of models
 
 ---
 
@@ -2916,7 +2942,7 @@ answer:
 
 **question**: Naive Bayes is a lazy learner
 
-answer: 
+answer:
 
 ---
 
@@ -2936,6 +2962,8 @@ answer:
 
 answer: 
 
+- see above
+
 ---
 
 **question**: one vs all is approach used by Naive Bayes
@@ -2953,6 +2981,19 @@ answer:
 **question**: What are features in metalearning? What are landmarking features.
 
 answer: 
+
+- features used in metalearning:
+	- simple = frequency, …
+	- statistical = mean, std dev, correleation, skew, …
+	- information theoretic = entropy, mutual information, …
+	- model based = model properties like decision-tree depth, …
+	- landmarking features = performance of landmarkers
+- landmarking:
+	- landmarkers = simple and fast algorithms (ie. naive bayes, 1nn, 1r, …)
+	- landmarking features = performance of landmarkers
+	- landmark learner = selects best performing landmarker
+	- the best performing landmarker tells us something about the dataset
+	- ie. linear classifier do
 
 ---
 
@@ -2987,11 +3028,25 @@ search algorithms:
 
 answer: 
 
+- ignoring missing values
+- imputation
+- treating missing as a separate category:
+- laplace smoothing (additive smoothing):
+	- P(feature|class) = (count(feature, class) + α) / (count(class) + α * |V|)
+
 ---
 
 **question**: Difference between micro and macro averaging measures
 
 answer: 
+
+- micro-averaging:
+	- = calculating the metric globally
+- macro-averaging:
+	- = calculating the metric for each class
+	- $\frac{1}{|C|} \sum_{i=1}^{|C|} w_i \cdot \text{metric}$
+	- weight can be based on cost of missclassifications
+	- equal importance to all classes, especially useful for imbalanced datasets
 
 ---
 
@@ -3016,6 +3071,17 @@ answer:
 **question**: Explain polynomial regression, name advantages and disadvantages compared to linear regression
 
 answer: 
+
+- $y = \sum_{i=0}^n w_i x^i + \varepsilon$
+- $\mathbf y = \mathbf X \mathbf \beta + \mathbf \varepsilon$
+- pros:
+	- can capture non-linear relationships, more complex decision boundaries than linear regression
+	- relatively simple, same concepts as linear regression
+	- fast to compute, useful for data exploration
+- cons:
+	- prone to overfitting with high degrees
+	- very sensitive to outliers
+	- requires more datapoints to fit well
 
 ---
 
@@ -3047,11 +3113,23 @@ answer:
 
 answer: 
 
+- premise: any two optimization algorithms are equivalent when averaged across all possible problems
+- implications: no algorithm can outperform others across all possible situations; effectiveness is context-dependent
+	- there is no universally superior algorithm
+	- we need problem-specific algorithms
+	- all learning algorithms must make some assumptions (inductive bias) about the problem space to perform well
+	- there is no "free lunch" - good performance on some problems comes at the cost of worse performance on others
+	- general-purpose optimization or learning algorithms without any domain-specific knowledge are fundamentally limited
+
 # 2022-01-28
 
 **question**: Classification is a machine learning task where the target attribute is nominal
 
-answer: 
+answer: False
+
+- the datatype can also be ordinal
+- nominal = unique names
+- ordinal = also have order (sorting)
 
 ---
 
@@ -3063,13 +3141,21 @@ answer:
 
 **question**: The error of a 1-NN classifier on the training set is 0
 
-answer: 
+answer: True
+
+- 1nn = 1-nearest neighbor
+- its nearest neighbor is itself, since the distance to itself is 0 (which is always the smallest possible distance)
+- therefore, every training point will be classified as its own class, resulting in perfect classification (0 error) on the training data
+- the 0 training error only applies to 1-NN. For k-NN with k > 1, there can be non-zero training error
+- see: https://stats.stackexchange.com/questions/367010/training-error-in-knn-classifier-when-k-1
 
 ---
 
 **question**: A softmax function in MLPs transforms the activation to a range of -1…1
 
-answer: 
+answer: True
+
+- softmax activation scales outputs to probabilities between 0 and 1
 
 ---
 
@@ -3100,6 +3186,8 @@ answer:
 **question**: In a dataset the entropy is highest when all classes have the same amount of samples
 
 answer: 
+
+- see above
 
 ---
 
@@ -3225,11 +3313,32 @@ answer:
 
 answer: 
 
+- features used in metalearning:
+	- simple = frequency, …
+	- statistical = mean, std dev, correleation, skew, …
+	- information theoretic = entropy, mutual information, …
+	- model based = model properties like decision-tree depth, …
+	- landmarking features = performance of landmarkers
+- landmarking:
+	- landmarkers = simple and fast algorithms (ie. naive bayes, 1nn, 1r, …)
+	- landmarking features = performance of landmarkers
+	- landmark learner = selects best performing landmarker
+	- the best performing landmarker tells us something about the dataset
+	- ie. linear classifier do
+
 ---
 
 **question**: What are the difference between micro and macro averaged performance measures? 
 
 answer: 
+
+- micro-averaging:
+	- = calculating the metric globally
+- macro-averaging:
+	- = calculating the metric for each class
+	- $\frac{1}{|C|} \sum_{i=1}^{|C|} w_i \cdot \text{metric}$
+	- weight can be based on cost of missclassifications
+	- equal importance to all classes, especially useful for imbalanced datasets
 
 ---
 
@@ -3254,17 +3363,41 @@ answer:
 	- until convergence to a local optimum:
 		- generate neighbors from the current network through local modifications like edge addition, deletion or reversal.
 		- score neighbors.
+
 ---
 
 **question**: Goal and settings of classification. To what tasks does it relate and from which it differs in machine learning ?
 
 answer: 
 
+- goal:
+	- learn a model that can accurately predict the class label for new, unseen inputs - by mapping input features to discrete class labels
+	- use labeled training data (supervised ml)
+- settings:
+	- binary classification (2 classes) and multi-class classification (3+ classes)
+- related to / different from:
+	- unlike regression, classification predicts discrete categories rather than continuous values
+	- unlike clustering, classification uses labeled data and predefined classes
+	- unlike anomaly detection, classification assigns all inputs to known classes rather than identifying outliers
+
 ---
 
 **question**: What methods are there for combatting overfitting in Neural Networks?
 
 answer: 
+
+- increasing train-data (data augmentation)
+- regularization (L1/L2 regularization)
+- dropout
+- early stopping
+- reducing model complexity (removing unnecessary layers, parameters, connections, units)
+- cross validation
+- ensemble methods
+- batch normalization (normalize layer activations for better generalization)
+- weight constraints (clipping weights)
+- transfer learning (knowledge distillation)
+- hyperparam tuning
+- reducing batch size
 
 ---
 
@@ -3274,9 +3407,25 @@ answer:
 
 ---
 
-**question**: Something about regularisations z-score and min-max. What are they, when they are useful and on which type of features.
+**question**: difference between z-score and min-max, when to use which on which feature types
 
 answer: 
+
+- Z-score normalization:
+	- transforms the data to have a mean of 0 and a standard deviation of 1.
+	- keeps relative scale (range)
+	- doesn't keep the distribution
+	- can deal with positive and negative numbers.
+	- use-cases:
+		- algorithms that assume gaussian distributed data, like PCA or LD
+- min-max normalization:
+	- maps the data to a different range, typically 0;1.
+	- doesn't keep relative scale (range)
+	- keeps distribution
+	- outliers can skew the range.
+	- use-cases:
+		- algorithms that need a certain range like neural networksn
+- see: https://stats.stackexchange.com/questions/547446/z-score-vs-min-max-normalization
 
 ---
 
@@ -3288,7 +3437,9 @@ answer:
 
 **question**: A decision tree can be converted into a rule set.
 
-answer: 
+answer: True
+
+- using the covering algorithm / prism algorithm
 
 ---
 
@@ -3300,7 +3451,9 @@ answer:
 
 **question**: A bayesian network is a directed cyclic graph.
 
-answer: 
+answer: True
+
+- otherwise conditional dependencies between variables wouldn't make sense
 
 ---
 
@@ -3337,15 +3490,17 @@ answer:
 
 ---
 
-**question**: Something about tabular methods
-
-answer: 
-
----
-
 **question**: Calculation of output size of convolution.
 
 answer: 
+
+- $n\times n \circledast f\times f \Rightarrow \left\lfloor\frac{n+2p-f}{s}+1\right\rfloor\times\left\lfloor\frac{n+2p-f}{s}+1\right\rfloor$
+- where:
+	- $n$ = input
+	- $f$ = kernel filter
+	- $p$ = padding
+	- $s$ = stride
+	- num kernels
 
 ---
 
@@ -3355,35 +3510,91 @@ answer:
 
 # 2023-06-21
 
-A recurrent Neural Network is well suited to process sequential input, if the size is not fixed
+**question**: A recurrent Neural Network is well suited to process sequential input, if the size is not fixed
 
-Training time of knn depends on the chosen distance metric
+answer: 
 
-The paired t-test is used when testing for statistical significance of results obtained with holdout validation
+---
 
-Decisions trees are learned by maximizing information gain
+**question**: Training time of knn depends on the chosen distance metric
 
-Decision trees can handle multi-class problems
+answer: 
 
-Overfitting is more likely when the set of testing data is small
+---
 
-Random forests is boosting ensemble technique
+**question**: The paired t-test is used when testing for statistical significance of results obtained with holdout validation
 
-The first model in Gradient Boosting is a zero rule model
+answer: 
 
-In Bayesian Networks we assume that attributes are statistically independent given the class
+---
 
-If Naive Bayes is applied on a data set that contains also numeric attributes than a probability density function must always be used
+**question**: Decisions trees are learned by maximizing information gain
 
-Automated Machine Learning deals only with optimization of hyperparameters of algorithms
+answer: 
 
-Lasso regression cannot be used for feature selection
+---
 
-The mean absolute error (a performance metric used for regression) is less sensitive to outliers than MSE
+**question**: Decision trees can handle multi-class problems
 
-K-armed bandit problem The problem: Consider a k-armed bandit problem with k = 4 actions, denoted 1, 2, 3, and 4. Consider applying to this problem a bandit algorithm using epsilon-greedy action selection, sample-average action-value estimates, and initial estimates of Q1(a) = 2, for all a. Suppose the initial sequence of actions and rewards is A1 = 1, R1 = -2, A2 = 2, R2 = 2, A3 = 1, R3 = 2, A4 = 2, R4 = -1, A5 = 3, R5 = 1. On some of these time steps the epsilon case may have occurred, causing an action to be selected at random. On which time step this definitely occurred? Answer: 1. t3, t5 2. t3, t4 3. t2, t5 4. t1, t2
+answer: 
 
-1R algorithm Problem: Which feature of the dataset below would be selected by the 1R algorithm? F1, F2, F3?
+---
+
+**question**: Overfitting is more likely when the set of testing data is small
+
+answer: 
+
+---
+
+**question**: Random forests is boosting ensemble technique
+
+answer: 
+
+---
+
+**question**: The first model in Gradient Boosting is a zero rule model
+
+answer: 
+
+---
+
+**question**: In Bayesian Networks we assume that attributes are statistically independent given the class
+
+answer: 
+
+---
+
+**question**: If Naive Bayes is applied on a data set that contains also numeric attributes than a probability density function must always be used
+
+answer: 
+
+---
+
+**question**: Automated Machine Learning deals only with optimization of hyperparameters of algorithms
+
+answer: 
+
+---
+
+**question**: Lasso regression cannot be used for feature selection
+
+answer: 
+
+---
+
+**question**: The mean absolute error (a performance metric used for regression) is less sensitive to outliers than MSE
+
+answer: 
+
+---
+
+**question**: K-armed bandit problem The problem: Consider a k-armed bandit problem with k = 4 actions, denoted 1, 2, 3, and 4. Consider applying to this problem a bandit algorithm using epsilon-greedy action selection, sample-average action-value estimates, and initial estimates of Q1(a) = 2, for all a. Suppose the initial sequence of actions and rewards is A1 = 1, R1 = -2, A2 = 2, R2 = 2, A3 = 1, R3 = 2, A4 = 2, R4 = -1, A5 = 3, R5 = 1. On some of these time steps the epsilon case may have occurred, causing an action to be selected at random. On which time step this definitely occurred? Answer: 1. t3, t5 2. t3, t4 3. t2, t5 4. t1, t2
+
+answer: 
+
+---
+
+**question**: 1R algorithm Problem: Which feature of the dataset below would be selected by the 1R algorithm? F1, F2, F3?
 
 | Instance | F1  | F2  | F3  | Class |
 | -------- | --- | --- | --- | ----- |
@@ -3396,7 +3607,11 @@ K-armed bandit problem The problem: Consider a k-armed bandit problem with k = 4
 | 7        | a   | n   | k   | -     |
 | 8        | a   | t   | s   | -     |
 
-Naive Bayes algorithm Problem: Suppose that you would apply the Naive Bayes algorithm (without using Laplace correction) in the dataset below to predict the class of the last instances based on the first seven training instances. Which class would be predicted for this instance? -, +, + or -?
+answer: 
+
+---
+
+**question**: Naive Bayes algorithm Problem: Suppose that you would apply the Naive Bayes algorithm (without using Laplace correction) in the dataset below to predict the class of the last instances based on the first seven training instances. Which class would be predicted for this instance? -, +, + or -?
 
 | Instance | F1  | F2  | F3  | Class |
 | -------- | --- | --- | --- | ----- |
@@ -3409,7 +3624,11 @@ Naive Bayes algorithm Problem: Suppose that you would apply the Naive Bayes algo
 | 7        | b   | n   | s   | -     |
 | 8        | a   | n   | s   | ?     |
 
-RMSE Problem: Suppose that you learned this linear model for the dataset below: 2+F1+F2 – The RMSE of this model in this training set is: Answer: a) 1 b) 1/4 c) 2 d) 3
+answer: 
+
+---
+
+**question**: RMSE Problem: Suppose that you learned this linear model for the dataset below: 2+F1+F2 – The RMSE of this model in this training set is: Answer: a) 1 b) 1/4 c) 2 d) 3
 
 | F1  | F2  | Target |
 | --- | --- | ------ |
@@ -3418,49 +3637,138 @@ RMSE Problem: Suppose that you learned this linear model for the dataset below: 
 | 6   | 2   | 10     |
 | 5   | 5   | 15     |
 
-An MLP with three hidden layers and linear activation functions can be approximated by a Perceptron 1. Always 2. Sometimes 3. Never
+answer: 
 
-An output of a convolutional layer is larger when 1. Padding decreases 2. Padding increases 3. Stride decreases 4. Stride increases
+---
 
-Which approaches can help to improve the performance of a neural network? 1. Get more test data 2. Use holdout instead of cross-validation 3. Increase the number of training epochs 4. Add dropout for testing 5. Change the learning rate
+**question**: An MLP with three hidden layers and linear activation functions can be approximated by a Perceptron 1. Always 2. Sometimes 3. Never
 
-Which of the following classification methods uses majority voting? 1. k-NN 2. Decision Trees 3. Bayesian Networks 4. Random Forests 5. An ensemble of an SVM, Logistic Regression and an MLP with two hidden layers than outputs the prediction of the model with the highest confidence 6. All of the above 7. None of the above
+answer: 
 
-In this course, we briefly discussed a neural network architecture whose outputs are aimed at having the same values the same as their inputs. How is that architecture called? 1. Generative Adversarial Network 2. Autoencoder 3. Bayesian Network 4. Recurrent Neural Network 5. None of the above
+---
 
-Which of the following is a data augmentation method? 1. Image normalisation 2. SIFT 3. Max Pooling 4. Holdout method 5. Convolution 6. Cross Validation 7. All of the above 8. None of the above
+**question**: An output of a convolutional layer is larger when 1. Padding decreases 2. Padding increases 3. Stride decreases 4. Stride increases
+
+answer: 
+
+---
+
+**question**: Which approaches can help to improve the performance of a neural network? 1. Get more test data 2. Use holdout instead of cross-validation 3. Increase the number of training epochs 4. Add dropout for testing 5. Change the learning rate
+
+answer: 
+
+---
+
+**question**: Which of the following classification methods uses majority voting? 1. k-NN 2. Decision Trees 3. Bayesian Networks 4. Random Forests 5. An ensemble of an SVM, Logistic Regression and an MLP with two hidden layers than outputs the prediction of the model with the highest confidence 6. All of the above 7. None of the above
+
+answer: 
+
+---
+
+**question**: In this course, we briefly discussed a neural network architecture whose outputs are aimed at having the same values the same as their inputs. How is that architecture called? 1. Generative Adversarial Network 2. Autoencoder 3. Bayesian Network 4. Recurrent Neural Network 5. None of the above
+
+answer: 
+
+---
+
+**question**: Which of the following is a data augmentation method? 1. Image normalisation 2. SIFT 3. Max Pooling 4. Holdout method 5. Convolution 6. Cross Validation 7. All of the above 8. None of the above
+
+answer: 
 
 # 2023-10-20
 
-Usually state of the art AutoML systems use grid search to find best hyperparameters
+**question**: Usually state of the art AutoML systems use grid search to find best hyperparameters
 
-The epsilon-greedy action selection for the k-armed bandit problem does not try inferior action
+answer: 
 
-When knn is used for predicting numeric values the majority voting is applied
+---
 
-F-score is an important performance metric that is used for evaluating regression techniques
+**question**: The epsilon-greedy action selection for the k-armed bandit problem does not try inferior action
 
-Chain Rule does not simplify calculation of probabilities in Bayesian Networks
+answer: 
 
-“Off-the-shell” is a transfer learning technique that uses the output of layers from a deep-learning architecture as input for a shallow model
+---
 
-A Perceptron with Soft Margin can solve the XOR-problem
+**question**: When knn is used for predicting numeric values the majority voting is applied
 
-Back propagation is a method for training a Perceptron
+answer: 
 
-Categorical data should be normalized before training a knn
+---
 
-LSTM is a form of Deep Neural Network
+**question**: F-score is an important performance metric that is used for evaluating regression techniques
 
-The computation of bagging can be easily parallelized
+answer: 
 
-Tree pruning performed after training aims at decreasing the variance of the tree, while it can also decrease its performance on the train set
+---
 
-In AdaBoost, the wights are randomly initialized
+**question**: Chain Rule does not simplify calculation of probabilities in Bayesian Networks
 
-Consider a k-armed bandit problem with k=4 actions, denoted 1,2,3 and 4. Consider applying this problem to a bandit algorithm using epsilon-greedy action selection, sample-average action-value estimates, and initial estimates of Q1(a)=4 for all. Suppose the initial sequence of actions and reward is A1=1, R1=-2, A2=1, R2=2, A3=2, R3=2, A4=1, R4=-1, A5=2, R5=1. On some of these steps the epsilon case may have occurred, causing an action to be selected at random. On which time step this definitely occurred? a) t2,t4 b) t3,t4 c) t2,t4 d) t1,t2
+answer: 
 
-Which feature of the dataset would be selected by the 1R algorithm? a) F1 b) F2 c) F3
+---
+
+**question**: “Off-the-shell” is a transfer learning technique that uses the output of layers from a deep-learning architecture as input for a shallow model
+
+answer: 
+
+---
+
+**question**: A Perceptron with Soft Margin can solve the XOR-problem
+
+answer: 
+
+---
+
+**question**: Back propagation is a method for training a Perceptron
+
+answer: 
+
+---
+
+**question**: Categorical data should be normalized before training a knn
+
+answer: True
+
+- correction: categorical features should be Z-score normalized after one-hot-encoding if you want to compute a distance in models such as knn.
+- categorical features should be one-hot encoded but not normalized post encoding.
+- normalizing them will destroy their meaning, as they are binary flags.
+
+---
+
+**question**: LSTM is a form of Deep Neural Network
+
+answer: 
+
+---
+
+**question**: The computation of bagging can be easily parallelized
+
+answer:
+
+- bagging (bootstrap aggegating) = parallel evaluation of independent models
+- boosting = sequential evaluation of models
+
+---
+
+**question**: Tree pruning performed after training aims at decreasing the variance of the tree, while it can also decrease its performance on the train set
+
+answer: 
+
+---
+
+**question**: In AdaBoost, the wights are randomly initialized
+
+answer: 
+
+---
+
+**question**: Consider a k-armed bandit problem with k=4 actions, denoted 1,2,3 and 4. Consider applying this problem to a bandit algorithm using epsilon-greedy action selection, sample-average action-value estimates, and initial estimates of Q1(a)=4 for all. Suppose the initial sequence of actions and reward is A1=1, R1=-2, A2=1, R2=2, A3=2, R3=2, A4=1, R4=-1, A5=2, R5=1. On some of these steps the epsilon case may have occurred, causing an action to be selected at random. On which time step this definitely occurred? a) t2,t4 b) t3,t4 c) t2,t4 d) t1,t2
+
+answer: 
+
+---
+
+**question**: Which feature of the dataset would be selected by the 1R algorithm? a) F1 b) F2 c) F3
 
 | Instance | F1  | F2  | F3  | Class |
 | -------- | --- | --- | --- | ----- |
@@ -3473,7 +3781,11 @@ Which feature of the dataset would be selected by the 1R algorithm? a) F1 b) F2 
 | 7        | a   | n   | k   | +     |
 | 8        | a   | t   | s   | -     |
 
-Suppose that you would apply Naive Bayes algorithm (without using Laplace correction) in the dataset to predict the class of the last instances based on the first seven training instances. Which class would be predicted for this instance? a) - b) + c) + OR -
+answer: 
+
+---
+
+**question**: Suppose that you would apply Naive Bayes algorithm (without using Laplace correction) in the dataset to predict the class of the last instances based on the first seven training instances. Which class would be predicted for this instance? a) - b) + c) + OR -
 
 | Instance | F1  | F2  | F3  | Class |
 | -------- | --- | --- | --- | ----- |
@@ -3486,7 +3798,11 @@ Suppose that you would apply Naive Bayes algorithm (without using Laplace correc
 | 7        | b   | n   | s   | -     |
 | 8        | a   | n   | s   | ?     |
 
-Suppose that you learned this linear model for the dataset: 2+2F1+F2. Which RMSE does the training set have? a) 1.5 b) 3 c) 2 d) None
+answer: 
+
+---
+
+**question**: Suppose that you learned this linear model for the dataset: 2+2F1+F2. Which RMSE does the training set have? a) 1.5 b) 3 c) 2 d) None
 
 | F1  | F2  | Target |
 | --- | --- | ------ |
@@ -3495,15 +3811,40 @@ Suppose that you learned this linear model for the dataset: 2+2F1+F2. Which RMSE
 | 6   | 2   | 14     |
 | 5   | 5   | 17     |
 
-A dataset has missing values in both training and test sets. Which data processing is valid? a) Remove samples with missing values only from the test set b) Remove samples with missing values only from the train set c) Remove samples with missing values from both train and test set d) None of above
+answer: 
 
-Knn is very likely to overfit due to the curse of dimensionality. Which of the following options would you consider to handle such a problem? a) Dimensionality reduction b) Feature selection c) Bootstrapping d) One-hot Encoding e) All of above f) None of above
+---
 
-SVM trained on 60% of data and tested on 40% of data has accuracy of 70%. RF trained on the same dataset, but with 80% training and 20% test data, has accuracy of 80%. Which classifier performs better? a) SVM b) RF c) Can’t tell d) None of above
+**question**: A dataset has missing values in both training and test sets. Which data processing is valid? a) Remove samples with missing values only from the test set b) Remove samples with missing values only from the train set c) Remove samples with missing values from both train and test set d) None of above
 
-Which of the following are well-known CNN architectures? a) LeNet b) LSTM c) ResNet d) Reception e) TeNet f) None of above
+answer: 
 
-Which of the following techniques performs a similar operation as applying dropout of the input layer in a neural network? a) Boosting b) Bagging c) Metalearning d) None of these
+---
 
-In a neural network, which of the following techniques is used to deal with overfitting? a) Dropout b) Regularization c) Batch normalization d) Cross validation e) All of the above f) None of the above
+**question**: Knn is very likely to overfit due to the curse of dimensionality. Which of the following options would you consider to handle such a problem? a) Dimensionality reduction b) Feature selection c) Bootstrapping d) One-hot Encoding e) All of above f) None of above
 
+answer: 
+
+---
+
+**question**: SVM trained on 60% of data and tested on 40% of data has accuracy of 70%. RF trained on the same dataset, but with 80% training and 20% test data, has accuracy of 80%. Which classifier performs better? a) SVM b) RF c) Can’t tell d) None of above
+
+answer: 
+
+---
+
+**question**: Which of the following are well-known CNN architectures? a) LeNet b) LSTM c) ResNet d) Reception e) TeNet f) None of above
+
+answer: 
+
+---
+
+**question**: Which of the following techniques performs a similar operation as applying dropout of the input layer in a neural network? a) Boosting b) Bagging c) Metalearning d) None of these
+
+answer: 
+
+---
+
+**question**: In a neural network, which of the following techniques is used to deal with overfitting? a) Dropout b) Regularization c) Batch normalization d) Cross validation e) All of the above f) None of the above
+
+answer: 
