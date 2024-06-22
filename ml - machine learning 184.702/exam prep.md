@@ -931,6 +931,420 @@ answer (open question): actions taken at $t_3$​, $t_5$​, and $t_6$​ are no
 - see: https://stats.stackexchange.com/questions/316911/how-to-understand-k-armed-bandit-example-from-suttons-rl-book-chapter-2 
 - see: https://github.com/Sagarnandeshwar/Bandit_Algorithms
 
+# 2021-12-07
+
+**question**: In AdaBoost weights are uniformly initialized
+
+answer: True
+
+- they're initialized uniformly both for models and data
+
+---
+
+**question**: Categorical data should be normalized before training a k-NN
+
+answer: True
+
+- correction: categorical features should be Z-score normalized after one-hot-encoding if you want to compute a distance in models such as knn.
+- categorical features should be one-hot encoded but not normalized post encoding.
+- normalizing them will destroy their meaning, as they are binary flags.
+
+---
+
+**question**: The error of a 1-NN classifier on the training set is 0
+
+answer: True
+
+- 1nn = 1-nearest neighbor
+- its nearest neighbor is itself, since the distance to itself is 0 (which is always the smallest possible distance)
+- therefore, every training point will be classified as its own class, resulting in perfect classification (0 error) on the training data
+- the 0 training error only applies to 1-NN. For k-NN with k > 1, there can be non-zero training error
+- see: https://stats.stackexchange.com/questions/367010/training-error-in-knn-classifier-when-k-1
+
+---
+
+**question**: One-vs-all is an approach to solve multi-class problems for DTs
+
+answer: False
+
+- DT = decision tree
+- decision trees can naturally split data into multiple classes at each leaf node
+- they don't need this technique - but it's technically possible
+
+---
+
+**question**: Boosting ensembles can be easily parallelized
+
+answer: False
+
+- bagging (bootstrap aggegating) = parallel evaluation of independent models
+- boosting = sequential evaluation of models
+
+---
+
+**question**: 1-hot encoding is used to transform numerical into categorical attributes
+
+answer: False
+
+- it's the other way around
+- 1-hot-encoding = zero array with 1 bit flag for category
+
+---
+
+**question**: The Pearson coefficient has a value range from -1 to 1
+
+answer: True
+
+- the range represents the strength and direction of the linear relationship between two continuous variables
+- value range -1;1
+	- -1 = perfect negative linear relationship
+	- 0 = no linear relationship
+	- +1 = perfect positive linear relationship
+
+---
+
+**question**: Off-the-shelf is a transfer learning technique that uses the output of layers from a deep-learning 
+architecture as input for a shallow model
+
+answer: True
+
+- off-the-shelf = using pretrained models or layers as they are without modification
+
+---
+
+**question**: SVMs search for a decision boundary with the maximum margin
+
+answer: True
+
+- this is true in case of the hard-margin svm
+- but the soft-margin svm tolerates some missclassifications to improve generalizability
+- margin = distance between the closest data points from each class and the hyperplane
+
+---
+
+**question**: SVMs always find a more optimal decision boundary (hyperplane) than Perceptrons
+
+answer: True
+
+- SVMs generally find more optimal and robust decision boundaries than basic perceptrons, especially for complex or noisy datasets - but there are exceptions
+- linearly seperable data:
+	- SVMs
+		- find the optimal hyperplane that maximizes the margin between classes
+		- generalize better (especialy with a soft margin)
+		- less sensitive to outliers and noise in train-data
+		- the objective is a convex, quadratic function with guaranteed bounds on generalization error
+	- perceptrons
+		- just find any hyperplane that separates the classes
+		- trained by optimizing a loss function that isn't guaranteed to converge to a global optimum
+- non-linearly seperable data:
+	- perceptrons can't find a boundary
+	- SVMs do, by using the kernel trick
+
+---
+
+**question**: In Bayesian Networks we assume that attributes are statistically independent given the class
+
+answer: False
+
+- the independence assumption is for naive bayes, not for bayesian networks:
+	- naive bayes assumes that all the features are conditionally independent between features (presence or absence of a particular feature does not depend on the presence or absence of any other feature) given the class variable.
+- general bayesian network captures the conditional dependencies between variables
+
+---
+
+**question**: Majority voting is not used when k-NN is applied for linear regression
+
+answer: False
+
+- majority voting is for classification
+- the mean is for regression
+
+---
+
+**question**: Chain Rule does not simplify calculation of probabilities for BNs
+
+answer: False
+
+- this question isn't referring to the gradient chain-rule but the probability-theory chain-rule
+- $P(X_1, X_2, \ldots, X_n) = \prod P(X_i | \text{Parents}(X_i))$
+- it allows us to express the joint probability distribution of multiple variables as smaller conditional probability distributions
+
+---
+
+**question**: Naive Bayes is a lazy learner
+
+answer: False
+
+- Naive Bayes is an eager learner
+- training phase:
+	- learns prior probabilities of different classes
+	- learns likelihood of different features for each class
+- prediction phase:
+	- uses learned parameters to estimate the conditional probability of each class for new samples
+	- it does not need to re-examine the entire training dataset for each prediction
+
+---
+
+**question**: Normal Equation (analytical approach) is always more efficient than gradient descent for linear regression
+
+answer: False
+
+- a counterexample from the slides: the analytical-solution to linear regression is slower than the iterative-solution through gradient descent
+- but in practice it depends on the problem size and for smaller datasets the analytical solution could be faster
+- see: https://datascience.stackexchange.com/a/14119/162429
+
+---
+
+**question**: knn is based on supervised paradigm
+
+answer: True
+
+- we need labels in our dataset during evaluation (lazy learner)
+
+---
+
+**question**: knn is based on unsupervised paradigm
+
+answer: False
+
+- see above
+
+---
+
+**question**: one vs all is approach used by Naive Bayes
+
+answer: False
+
+- naive bayes is inherently a multi-class classifier
+- they don't need this technique - but it's technically possible
+
+---
+
+**question**: Compare Perceptron with SVM algorithms. Common characteristics and differences.
+
+answer:
+
+- similarities:
+	- binary classification
+	- linear seperability
+	- supervised learning
+	- hyperplane decision boundary
+	- online learning (by extending)
+- differences:
+	- optimization objective
+		- perceptron – takes any decision boundary that seperates classes
+		- svm – takes decision boundary with max margin between classes
+	- handling non-linearly seperable data
+		- perceptron – doesn't converge for non-linearly seperable data
+		- svm – can apply kernel to transform the feature space and handle non-linearly seperable data
+	- efficiency
+		- perceptron – simple and fast to train, especially for large datasets
+		- svm – quadratic optimization needs a lot of compute
+	- regularization
+		- perceptron – none
+		- svm – soft-margin allows missclassifications for better generalizability
+	- probabilistic output
+		- perceptron – no
+		- svm – can be extended
+	- interpretability
+		- perceptron – simpler, easier to interpret
+		- svm – harder to interpret after applying a kernel
+	- robustness to outliers
+		- perceptron – more sensitive to outliers and noise
+		- perceptron – more robust to outliers and noice (due to maximum margin property)
+
+---
+
+**question**: What are features in metalearning? What are landmarking features.
+
+answer: 
+
+- features used in metalearning:
+	- simple = frequency, …
+	- statistical = mean, std dev, correleation, skew, …
+	- information theoretic = entropy, mutual information, …
+	- model based = model properties like decision-tree depth, …
+	- landmarking features = performance of landmarkers
+- landmarking:
+	- landmarkers = simple and fast algorithms (ie. naive bayes, 1nn, 1r, …)
+	- landmarking features = performance of landmarkers
+	- landmark learner = selects best performing landmarker
+	- the best performing landmarker tells us something about the dataset
+	- ie. linear classifier do
+
+---
+
+**question**: How can you learn the structure of a Bayesian Network
+
+answer:
+
+- i. generate inital network
+	- start with an initial network structure – this could be an empty network (no edges), a naive Bayes structure (all nodes connected to a single parent node), a randomly generated one, one based on prior knowledge, etc.
+- ii. compute probabilities
+	- count occurences in all truth tables
+- iii. evaluate network
+	- $D$ data, $M$ model
+	- goodness-of-fit:
+		- $p(D|M)=\Pi_jP(s^j|M)=\Pi_j\Pi_i p(N_i=v_i^j\mid Parents(N_i),M)$
+	- log-probability:
+		- $\log (p(D|M)) - \alpha =\sum_j\sum_i p(N_i=v_i^j \mid Parents(N_i),M)$
+		- $\alpha$ - hyperparam to penalize network complexity
+- iv. search for related networks, repeat
+	- generate neighbors from the current network through local modifications like edge addition, deletion or reversal.
+
+search algorithms:
+
+- hill climbing = choose best in neighborhood, until local optimum is reached
+- tabu search = hill-climbing but some some neighbors are hidden
+- simulated annealing = based on cooldown parameters
+- genetic algorithm = initialize population, mutate, reproduce, evaluatie population.
+
+---
+
+**question**: Explain how to deal with missing values and zero frequency problem in NB
+
+answer: 
+
+- ignoring missing values
+- imputation
+- treating missing as a separate category:
+- laplace smoothing (additive smoothing):
+	- P(feature|class) = (count(feature, class) + α) / (count(class) + α * |V|)
+
+---
+
+**question**: Difference between micro and macro averaging measures
+
+answer: 
+
+- micro-averaging:
+	- = calculating the metric globally
+- macro-averaging:
+	- = calculating the metric for each class
+	- $\frac{1}{|C|} \sum_{i=1}^{|C|} w_i \cdot \text{metric}$
+	- weight can be based on cost of missclassifications
+	- equal importance to all classes, especially useful for imbalanced datasets
+
+---
+
+**question**: Describe a local search algorithm for Bayesian Network creation
+
+answer:
+
+- search heuristics:
+	- hill climbing = choose best in neighborhood, until local optimum is reached
+	- tabu search = hill-climbing but some some neighbors are hidden
+	- simulated annealing = based on cooldown parameters
+	- genetic algorithm = initialize population, mutate, reproduce, evaluatie population.
+- hill climbing / local search heuristic:
+	- start with an initial network structure – this could be an empty network (no edges), a naive Bayes structure (all nodes connected to a single parent node), a randomly generated one, one based on prior knowledge, etc.
+	- choose a metric to evaluate networks
+	- until convergence to a local optimum:
+		- generate neighbors from the current network through local modifications like edge addition, deletion or reversal.
+		- score neighbors.
+
+---
+
+**question**: Explain polynomial regression, name advantages and disadvantages compared to linear regression
+
+answer: 
+
+- $y = \sum_{i=0}^n w_i x^i + \varepsilon$
+- $\mathbf y = \mathbf X \mathbf \beta + \mathbf \varepsilon$
+- pros:
+	- can capture non-linear relationships, more complex decision boundaries than linear regression
+	- relatively simple, same concepts as linear regression
+	- fast to compute, useful for data exploration
+- cons:
+	- prone to overfitting with high degrees
+	- very sensitive to outliers
+	- requires more datapoints to fit well
+
+---
+
+**question**: What is the difference between Lasso and Ridge regression?
+
+answer:
+
+- the regularization terms include the parameters (not just the errors) in the loss function to prevent overfitting
+- lasso regression: $L_1 = ||\mathrm{w}||_{1} = |w_0| + \dots + |w_n|$
+	- computes sum of absolute values as penalty
+	- better for feature selection and sparse models
+	- tends to create sparse models by shrinking some coefficients to exactly zero, effectively performing feature selection
+	- more robust to outliers
+- ridge regression: $L_2 = ||\mathrm{w}||_{2}^2 =  w_0^2 + \dots + w_n^2$
+	- computes sum of squared values as penalty
+	- better for dealing with correlated features, that you want to retain but with smaller coefficients
+	- tends to shrink all coefficients towards zero but not exactly to zero
+	- differentiable everywhere
+
+---
+
+**question**: Which data preparation/preprocessing steps are mentioned during the lecture? describe them 
+
+answer: 
+
+normalization
+
+- categorical:
+	- 1-hot-encoding = map to 0 array with one flag bit
+	- distance encoding = map ordinal-data to integers
+- numerical:
+	- min-max = map to 0;1
+	- z-score = map distribution to mean 0, std dev 1
+	- binning = map value ranges to discrete numbers
+
+dealing with missing values
+
+- a) deletion (of rows, features)
+- b) imputation
+	- categorical: `NA` as label, regression, clustering, knn
+	- numerical: mean, median, regression, clustering, knn
+
+feature extraction
+
+- get a representation of data (text, image, audio, …) that we can process
+- representation learning
+
+feature selection
+
+- dimensionality reduction = select subset of features to reduce redundance, noise
+- 1) supervised (how well we can predict the target variable with the input features)
+	- a) wrapper
+		- forward selection – greedy search, starting with no features and progressively adding features
+		- backward elimination – greedy search, starting with all features and progressively removing features
+	- b) filter
+		- information gain
+		- chi-square test
+		- mutual information
+		- f-score
+		- fisher's score
+	- c) embedded
+		- lasso and ridge regulation
+		- decision tree
+- 2) unsupervised (dimensionality reduction)
+	- frequency count
+	- principal component analysis – pca, project to lower dimension through single value decomposition
+	- autoencoder – generating vector representations in hidden layer
+
+data augmentation
+
+- extend train-set by slightly modifying data (ie. flip, rotate, scale images, …)
+
+---
+
+**question**: No free lunch theorem. Explain.
+
+answer: 
+
+- premise: any two optimization algorithms are equivalent when averaged across all possible problems
+- implications: no algorithm can outperform others across all possible situations; effectiveness is context-dependent
+	- there is no universally superior algorithm
+	- we need problem-specific algorithms
+	- all learning algorithms must make some assumptions (inductive bias) about the problem space to perform well
+	- there is no "free lunch" - good performance on some problems comes at the cost of worse performance on others
+	- general-purpose optimization or learning algorithms without any domain-specific knowledge are fundamentally limited
+
 # 2021-10-21
 
 **question:** Is ensamble boosting easily parallelizable
@@ -2837,291 +3251,7 @@ answer:
 	- converging: A → B ← C
 		- A ←→ C transmission blocked if we don't know B or any of it's descendants
 
-# 2021-12-07 – TODO
-
-**question**: In AdaBoost weights are uniformly initialized: T
-
-answer: True
-
-- they're initialized uniformly both for models and data
-
----
-
-**question**: Categorical data should be normalized before training a k-NN
-
-answer: True
-
-- correction: categorical features should be Z-score normalized after one-hot-encoding if you want to compute a distance in models such as knn.
-- categorical features should be one-hot encoded but not normalized post encoding.
-- normalizing them will destroy their meaning, as they are binary flags.
-
----
-
-**question**: The error of a 1-NN classifier on the training set is 0
-
-answer: True
-
-- 1nn = 1-nearest neighbor
-- its nearest neighbor is itself, since the distance to itself is 0 (which is always the smallest possible distance)
-- therefore, every training point will be classified as its own class, resulting in perfect classification (0 error) on the training data
-- the 0 training error only applies to 1-NN. For k-NN with k > 1, there can be non-zero training error
-- see: https://stats.stackexchange.com/questions/367010/training-error-in-knn-classifier-when-k-1
-
----
-
-**question**: One-vs-all is an approach to solve multi-class problems for DTs
-
-answer: False
-
-- DT = decision tree
-- 
-
----
-
-**question**: Boosting ensembles can be easily parallelized
-
-answer: 
-
-- bagging (bootstrap aggegating) = parallel evaluation of independent models
-- boosting = sequential evaluation of models
-
----
-
-**question**: 1-hot encoding is used to transform numerical into categorical attributes:
-
-answer: 
-
----
-
-**question**: The Pearson coefficient has a value range from -1 to 1: T
-
-answer: 
-
----
-
-**question**: Off-the-shelf is a transfer learning technique that uses the output of layers from a deep-learning 
-architecture as input for a shallow model
-
-answer: 
-
----
-
-**question**: SVMs search for a decision boundary with the maximum margin
-
-answer: 
-
----
-
-**question**: SVMs always find a more optimal decision boundary (hyperplane) than Perceptrons
-
-answer: 
-
----
-
-**question**: In Bayesian Networks we assume that attributes are statistically independent given the class
-
-answer: 
-
----
-
-**question**: Majority voting is not used when k-NN is applied for linear regression
-
-answer: 
-
----
-
-**question**: Chain Rule does not simplify calculation of probabilities for BNs
-
-answer: 
-
-- this question isn't referring to the gradient chain-rule but the probability-theory chain-rule
-- $P(X_1, X_2, \ldots, X_n) = \prod P(X_i | \text{Parents}(X_i))$
-- it allows us to express the joint probability distribution of multiple variables as smaller conditional probability distributions
-
----
-
-**question**: Naive Bayes is a lazy learner
-
-answer:
-
----
-
-**question**: Normal Equation (analytical approach) is always more efficient than gradient descent for linear regression
-
-answer: 
-
----
-
-**question**: knn is based on supervised paradigm
-
-answer: 
-
----
-
-**question**: knn is based on unsupervised paradigm
-
-answer: 
-
-- see above
-
----
-
-**question**: one vs all is approach used by Naive Bayes
-
-answer: 
-
----
-
-**question**: Compare Perceptron with SVM algorithms. Common characteristics and differences.
-
-answer: 
-
----
-
-**question**: What are features in metalearning? What are landmarking features.
-
-answer: 
-
-- features used in metalearning:
-	- simple = frequency, …
-	- statistical = mean, std dev, correleation, skew, …
-	- information theoretic = entropy, mutual information, …
-	- model based = model properties like decision-tree depth, …
-	- landmarking features = performance of landmarkers
-- landmarking:
-	- landmarkers = simple and fast algorithms (ie. naive bayes, 1nn, 1r, …)
-	- landmarking features = performance of landmarkers
-	- landmark learner = selects best performing landmarker
-	- the best performing landmarker tells us something about the dataset
-	- ie. linear classifier do
-
----
-
-**question**: How can you learn the structure of a Bayesian Network
-
-answer:
-
-- i. generate inital network
-	- start with an initial network structure – this could be an empty network (no edges), a naive Bayes structure (all nodes connected to a single parent node), a randomly generated one, one based on prior knowledge, etc.
-- ii. compute probabilities
-	- count occurences in all truth tables
-- iii. evaluate network
-	- $D$ data, $M$ model
-	- goodness-of-fit:
-		- $p(D|M)=\Pi_jP(s^j|M)=\Pi_j\Pi_i p(N_i=v_i^j\mid Parents(N_i),M)$
-	- log-probability:
-		- $\log (p(D|M)) - \alpha =\sum_j\sum_i p(N_i=v_i^j \mid Parents(N_i),M)$
-		- $\alpha$ - hyperparam to penalize network complexity
-- iv. search for related networks, repeat
-	- generate neighbors from the current network through local modifications like edge addition, deletion or reversal.
-
-search algorithms:
-
-- hill climbing = choose best in neighborhood, until local optimum is reached
-- tabu search = hill-climbing but some some neighbors are hidden
-- simulated annealing = based on cooldown parameters
-- genetic algorithm = initialize population, mutate, reproduce, evaluatie population.
-
----
-
-**question**: Explain how to deal with missing values and zero frequency problem in NB
-
-answer: 
-
-- ignoring missing values
-- imputation
-- treating missing as a separate category:
-- laplace smoothing (additive smoothing):
-	- P(feature|class) = (count(feature, class) + α) / (count(class) + α * |V|)
-
----
-
-**question**: Difference between micro and macro averaging measures
-
-answer: 
-
-- micro-averaging:
-	- = calculating the metric globally
-- macro-averaging:
-	- = calculating the metric for each class
-	- $\frac{1}{|C|} \sum_{i=1}^{|C|} w_i \cdot \text{metric}$
-	- weight can be based on cost of missclassifications
-	- equal importance to all classes, especially useful for imbalanced datasets
-
----
-
-**question**: Describe a local search algorithm for Bayesian Network creation
-
-answer:
-
-- search heuristics:
-	- hill climbing = choose best in neighborhood, until local optimum is reached
-	- tabu search = hill-climbing but some some neighbors are hidden
-	- simulated annealing = based on cooldown parameters
-	- genetic algorithm = initialize population, mutate, reproduce, evaluatie population.
-- hill climbing / local search heuristic:
-	- start with an initial network structure – this could be an empty network (no edges), a naive Bayes structure (all nodes connected to a single parent node), a randomly generated one, one based on prior knowledge, etc.
-	- choose a metric to evaluate networks
-	- until convergence to a local optimum:
-		- generate neighbors from the current network through local modifications like edge addition, deletion or reversal.
-		- score neighbors.
-
----
-
-**question**: Explain polynomial regression, name advantages and disadvantages compared to linear regression
-
-answer: 
-
-- $y = \sum_{i=0}^n w_i x^i + \varepsilon$
-- $\mathbf y = \mathbf X \mathbf \beta + \mathbf \varepsilon$
-- pros:
-	- can capture non-linear relationships, more complex decision boundaries than linear regression
-	- relatively simple, same concepts as linear regression
-	- fast to compute, useful for data exploration
-- cons:
-	- prone to overfitting with high degrees
-	- very sensitive to outliers
-	- requires more datapoints to fit well
-
----
-
-**question**: What is the difference between Lasso and Ridge regression?
-
-answer:
-
-- the regularization terms include the parameters (not just the errors) in the loss function to prevent overfitting
-- lasso regression: $L_1 = ||\mathrm{w}||_{1} = |w_0| + \dots + |w_n|$
-	- computes sum of absolute values as penalty
-	- better for feature selection and sparse models
-	- tends to create sparse models by shrinking some coefficients to exactly zero, effectively performing feature selection
-	- more robust to outliers
-- ridge regression: $L_2 = ||\mathrm{w}||_{2}^2 =  w_0^2 + \dots + w_n^2$
-	- computes sum of squared values as penalty
-	- better for dealing with correlated features, that you want to retain but with smaller coefficients
-	- tends to shrink all coefficients towards zero but not exactly to zero
-	- differentiable everywhere
-
----
-
-**question**: Which data preparation/preprocessing steps are mentioned during the lecture? describe them 
-
-answer: 
-
----
-
-**question**: No free lunch theorem. Explain.
-
-answer: 
-
-- premise: any two optimization algorithms are equivalent when averaged across all possible problems
-- implications: no algorithm can outperform others across all possible situations; effectiveness is context-dependent
-	- there is no universally superior algorithm
-	- we need problem-specific algorithms
-	- all learning algorithms must make some assumptions (inductive bias) about the problem space to perform well
-	- there is no "free lunch" - good performance on some problems comes at the cost of worse performance on others
-	- general-purpose optimization or learning algorithms without any domain-specific knowledge are fundamentally limited
-
-# 2022-01-28
+# 2022-01-28 – TODO
 
 **question**: Classification is a machine learning task where the target attribute is nominal
 
@@ -3135,7 +3265,7 @@ answer: False
 
 **question**: Demission trees can handle only binary classification problems
 
-answer: 
+answer:
 
 ---
 
@@ -3231,6 +3361,9 @@ answer:
 
 answer: 
 
+- majority voting is for classification
+- the mean is for regression
+
 ---
 
 **question**: For the Monte Carlo method in reinforcement learning value estimates and policies are changed only on the completion of an episode
@@ -3242,6 +3375,10 @@ answer:
 **question**: Gradient descent is always more efficient than Normal Equation (analytical approach) for linear regression
 
 answer: 
+
+- an example from the slides: the analytical-solution to linear regression is slower than the iterative-solution through gradient descent
+- but in practice it depends on the problem size and for smaller datasets the analytical solution could be faster
+- see: https://datascience.stackexchange.com/a/14119/162429
 
 ---
 
@@ -3433,7 +3570,7 @@ answer:
 
 answer: 
 
-# 2023-01-24
+# 2023-01-24 – TODO
 
 **question**: A decision tree can be converted into a rule set.
 
@@ -3508,7 +3645,7 @@ answer:
 
 answer: 
 
-# 2023-06-21
+# 2023-06-21 – TODO
 
 **question**: A recurrent Neural Network is well suited to process sequential input, if the size is not fixed
 
@@ -3731,7 +3868,7 @@ answer:
 
 answer: 
 
-# 2023-10-20
+# 2023-10-20 – TODO
 
 **question**: Usually state of the art AutoML systems use grid search to find best hyperparameters
 
@@ -3748,6 +3885,9 @@ answer:
 **question**: When knn is used for predicting numeric values the majority voting is applied
 
 answer: 
+
+- majority voting is for classification
+- the mean is for regression
 
 ---
 
