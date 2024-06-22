@@ -417,6 +417,8 @@ search algorithms:
 
 # svm - support vector machine
 
+- https://en.wikipedia.org/wiki/Support_vector_machine
+
 *kernel matrices*
 
 - kernel trick = increase dimensionality of feature space, to make them linearly seperable by high-dimensional hyperplane
@@ -427,21 +429,61 @@ search algorithms:
 	- kernel must be positive semi-definite (psd): $\forall \mathbf x\in\mathbb{R}^n:\mathbf x^tK\mathbf x\geq0$
 	- kernel must be factorizable: $K = F^{t}F$
 	- kernel must only have non-negative eigenvalues: $UDU^t=K,~U^tU=1$
+- can be also applied to kernel perceptron
+
+*linear svm*
+
+- the objective is a convex, quadratic function
+- the constraints are linear inequality constraints
+- minimum can be found with convex optimisation algorithm (ie. quadratic program QP solver)
+- alternatively an unconstrained optimization solver
+	- $\arg\min_{w\in\mathbb{R}^d}\sum_{i=1}^n\max(0,1-y_i \cdot x_i \cdot w) + \nu\|w\|^2$
+- the outermost $\mathbf{x}_i$ of each class determine the hyperplane, so they're called support-vectors
+
+algorithm:
+
+- assuming two dimensional space
+- data:
+	- $D = \{(x_i, y_i)\}_{i=1}^n \subset \mathbb{R}^2 \times \{-1, +1\}$
+	- features = $\{(x_0, y_0), (x_1, y_1), \ldots, (x_n, y_n)\}$
+	- labels = $\{-1, +1\}$
+- hyperplane:
+	- $\{x\in \mathbb{R}^2: x \cdot w = 0\}$
+	- $\mathbf w^\intercal  \cdot \mathbf x = 0$
+	- $\mathbf w$ = normal vector to hyperplane (not normalized)
+	- the hyperplane can also have a bias $b$
+- two subspaces:
+	- $P_{w, \gamma} = \{x\in \mathbb{R}^2: x \cdot \frac{w}{||w||} \geq +\gamma\}$
+	- $N_{w, \gamma} = \{x\in \mathbb{R}^2: x \cdot \frac{w}{||w||} \leq -\gamma\}$
+	- $w$ is be normalized with $\frac{w}{||w||}$
+- we're looking for weights that predict labels correctly:
+	- $\forall i: y_i = + 1 \Rightarrow x_i \in P_{w, \gamma}$
+	- $\forall i: y_i = - 1 \Rightarrow x_i \in N_{w, \gamma}$
+	- can be rewritten as
+	- $\forall i: y_i (\mathbf{w}^\intercal \mathbf{x}_i) \geq 1$
+	- $\forall i: (\mathbf{w}^\intercal \mathbf{x}_i) \geq 1$
 
 *hard-margin svm*
 
-- maximizes accuracy, uses max distance / margin between outliers to place hyperplane
+- maximizes margin between outliers to place hyperplane and accuracy
 - overfits, doesn't generalize
+- idea:
+	- the distance between the two hyperplanes is $\frac{2}{||w||}$
+	- so to maximize it we need to minimize $||w||$
 - linear case:
-	- $\underset{w\in\mathbb{R}^D}{\text{argmin}}\quad\|w\|^2$
+	- $\underset{w\in\mathbb{R}^D}{\text{argmin}}\quad\|w\|^2_2$
+	- while also $\forall i: (\mathbf{w}^\intercal \mathbf{x}_i) \geq 1$
 - non linear case:
 	- $\underset{w\in\mathbb{R}^D}{\text{argmin}}\quad c^\intercal K c$
 
 *soft-margin svm*
 
-- has a tolerance of $\xi$ to accept some errors, generalizes better
+- has a tolerance of $\xi$ to missclassifications
+- generalizes better
 - linear case:
 	- $\underset{w\in\mathbb{R}^D,\xi\in\mathbb{R}^n}{\operatorname*{argmin}}\quad\sum_{i=1}^n\xi_i + \nu\cdot\|w\|^2$
+	- while also $\forall i: (\mathbf{w}^\intercal \mathbf{x}_i) \geq 1 - \xi_i$
+	- where $\xi_i \geq 0$
 - non linear case:
 	- $\underset{w\in\mathbb{R}^D,\xi\in\mathbb{R}^n}{\operatorname*{argmin}}\quad\sum_{i=1}^n\xi_i + \nu\cdot\ c^\intercal K c$
 
