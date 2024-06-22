@@ -3588,13 +3588,18 @@ answer:
 
 ---
 
-**question**: K-armed bandit problem The problem: Consider a k-armed bandit problem with k = 4 actions, denoted 1, 2, 3, and 4. Consider applying to this problem a bandit algorithm using epsilon-greedy action selection, sample-average action-value estimates, and initial estimates of Q1(a) = 2, for all a. Suppose the initial sequence of actions and rewards is A1 = 1, R1 = -2, A2 = 2, R2 = 2, A3 = 1, R3 = 2, A4 = 2, R4 = -1, A5 = 3, R5 = 1. On some of these time steps the epsilon case may have occurred, causing an action to be selected at random. On which time step this definitely occurred? Answer: 1. t3, t5 2. t3, t4 3. t2, t5 4. t1, t2
+**question**: K-armed bandit problem The problem: Consider a k-armed bandit problem with k = 4 actions, denoted 1, 2, 3, and 4. Consider applying to this problem a bandit algorithm using epsilon-greedy action selection, sample-average action-value estimates, and initial estimates of Q1(a) = 2, for all a. Suppose the initial sequence of actions and rewards is A1 = 1, R1 = -2, A2 = 2, R2 = 2, A3 = 1, R3 = 2, A4 = 2, R4 = -1, A5 = 3, R5 = 1. On some of these time steps the epsilon case may have occurred, causing an action to be selected at random. On which time step this definitely occurred?
+
+- a) t3, t5
+- b) t3, t4
+- c) t2, t5
+- d) t1, t2
 
 answer: 
 
 ---
 
-**question**: 1R algorithm Problem: Which feature of the dataset below would be selected by the 1R algorithm? F1, F2, F3?
+**question**: 1R algorithm Problem: Which feature of the dataset below would be selected by the 1R algorithm?
 
 | Instance | F1  | F2  | F3  | Class |
 | -------- | --- | --- | --- | ----- |
@@ -3607,11 +3612,15 @@ answer:
 | 7        | a   | n   | k   | -     |
 | 8        | a   | t   | s   | -     |
 
+- a) F1
+- b) F2
+- c) F3
+
 answer: 
 
 ---
 
-**question**: Naive Bayes algorithm Problem: Suppose that you would apply the Naive Bayes algorithm (without using Laplace correction) in the dataset below to predict the class of the last instances based on the first seven training instances. Which class would be predicted for this instance? -, +, + or -?
+**question**: Naive Bayes algorithm Problem: Suppose that you would apply the Naive Bayes algorithm (without using Laplace correction) in the dataset below to predict the class of the last instances based on the first seven training instances. Which class would be predicted for this instance?
 
 | Instance | F1  | F2  | F3  | Class |
 | -------- | --- | --- | --- | ----- |
@@ -3624,11 +3633,15 @@ answer:
 | 7        | b   | n   | s   | -     |
 | 8        | a   | n   | s   | ?     |
 
+- a) -
+- b) +
+- c) + or -
+
 answer: 
 
 ---
 
-**question**: RMSE Problem: Suppose that you learned this linear model for the dataset below: 2+F1+F2 – The RMSE of this model in this training set is: Answer: a) 1 b) 1/4 c) 2 d) 3
+**question**: RMSE Problem: Suppose that you learned this linear model for the dataset below: 2+F1+F2 – The RMSE of this model in this training set is: Answer:
 
 | F1  | F2  | Target |
 | --- | --- | ------ |
@@ -3637,41 +3650,84 @@ answer:
 | 6   | 2   | 10     |
 | 5   | 5   | 15     |
 
+ - a) 1
+ - b) 1/4
+ - c) 2
+ - d) 3
+ 
 answer: 
 
 ---
 
-**question**: An MLP with three hidden layers and linear activation functions can be approximated by a Perceptron 1. Always 2. Sometimes 3. Never
+**question**: An MLP with three hidden layers and linear activation functions can be approximated by a Perceptron
 
-answer: 
-
----
-
-**question**: An output of a convolutional layer is larger when 1. Padding decreases 2. Padding increases 3. Stride decreases 4. Stride increases
-
-answer: 
-
----
-
-**question**: Which approaches can help to improve the performance of a neural network? 1. Get more test data 2. Use holdout instead of cross-validation 3. Increase the number of training epochs 4. Add dropout for testing 5. Change the learning rate
-
-answer: 
-
----
-
-**question**: Which of the following classification methods uses majority voting? 1. k-NN 2. Decision Trees 3. Bayesian Networks 4. Random Forests 5. An ensemble of an SVM, Logistic Regression and an MLP with two hidden layers than outputs the prediction of the model with the highest confidence 6. All of the above 7. None of the above
+- Always
+- Sometimes
+- Never
 
 answer: 
 
 ---
 
-**question**: In this course, we briefly discussed a neural network architecture whose outputs are aimed at having the same values the same as their inputs. How is that architecture called? 1. Generative Adversarial Network 2. Autoencoder 3. Bayesian Network 4. Recurrent Neural Network 5. None of the above
+**question**: An output of a convolutional layer is larger when … 
+
+- a) Padding decreases
+- b) Padding increases
+- c) Stride decreases
+- d) Stride increases
 
 answer: 
 
 ---
 
-**question**: Which of the following is a data augmentation method? 1. Image normalisation 2. SIFT 3. Max Pooling 4. Holdout method 5. Convolution 6. Cross Validation 7. All of the above 8. None of the above
+**question**: Which approaches can help to improve the performance of a neural network?
+
+- a) Get more test data
+- b) Use holdout instead of cross-validation
+- c) Increase the number of training epochs
+- d) Add dropout for testing
+- e) Change the learning rate
+
+answer: 
+
+---
+
+**question**: Which of the following classification methods uses majority voting?
+
+- a) k-NN
+- b) Decision Trees
+- c) Bayesian Networks
+- d) Random Forests
+- e) An ensemble of an SVM, Logistic Regression and an MLP with two hidden layers than outputs the prediction of the model with the highest confidence
+- f) All of the above
+- g) None of the above
+
+answer: 
+
+---
+
+**question**: In this course, we briefly discussed a neural network architecture whose outputs are aimed at having the same values the same as their inputs. How is that architecture called?
+
+- a) Generative Adversarial Network
+- b) Autoencoder
+- c) Bayesian Network
+- d) Recurrent Neural Network
+- e) None of the above
+
+answer: 
+
+---
+
+**question**: Which of the following is a data augmentation method?
+
+- a) Image normalisation
+- b) SIFT
+- c) Max Pooling
+- d) Holdout method
+- e) Convolution
+- f) Cross Validation
+- g) All of the above
+- h) None of the above
 
 answer: 
 
@@ -3762,13 +3818,18 @@ answer:
 
 ---
 
-**question**: Consider a k-armed bandit problem with k=4 actions, denoted 1,2,3 and 4. Consider applying this problem to a bandit algorithm using epsilon-greedy action selection, sample-average action-value estimates, and initial estimates of Q1(a)=4 for all. Suppose the initial sequence of actions and reward is A1=1, R1=-2, A2=1, R2=2, A3=2, R3=2, A4=1, R4=-1, A5=2, R5=1. On some of these steps the epsilon case may have occurred, causing an action to be selected at random. On which time step this definitely occurred? a) t2,t4 b) t3,t4 c) t2,t4 d) t1,t2
+**question**: Consider a k-armed bandit problem with k=4 actions, denoted 1,2,3 and 4. Consider applying this problem to a bandit algorithm using epsilon-greedy action selection, sample-average action-value estimates, and initial estimates of Q1(a)=4 for all. Suppose the initial sequence of actions and reward is A1=1, R1=-2, A2=1, R2=2, A3=2, R3=2, A4=1, R4=-1, A5=2, R5=1. On some of these steps the epsilon case may have occurred, causing an action to be selected at random. On which time step this definitely occurred?
+
+- a) t2,t4
+- b) t3,t4
+- c) t2,t4
+- d) t1,t2
 
 answer: 
 
 ---
 
-**question**: Which feature of the dataset would be selected by the 1R algorithm? a) F1 b) F2 c) F3
+**question**: Which feature of the dataset would be selected by the 1R algorithm?
 
 | Instance | F1  | F2  | F3  | Class |
 | -------- | --- | --- | --- | ----- |
@@ -3781,11 +3842,15 @@ answer:
 | 7        | a   | n   | k   | +     |
 | 8        | a   | t   | s   | -     |
 
+- a) F1
+- b) F2
+- c) F3
+
 answer: 
 
 ---
 
-**question**: Suppose that you would apply Naive Bayes algorithm (without using Laplace correction) in the dataset to predict the class of the last instances based on the first seven training instances. Which class would be predicted for this instance? a) - b) + c) + OR -
+**question**: Suppose that you would apply Naive Bayes algorithm (without using Laplace correction) in the dataset to predict the class of the last instances based on the first seven training instances. Which class would be predicted for this instance?
 
 | Instance | F1  | F2  | F3  | Class |
 | -------- | --- | --- | --- | ----- |
@@ -3798,11 +3863,15 @@ answer:
 | 7        | b   | n   | s   | -     |
 | 8        | a   | n   | s   | ?     |
 
+ - a) -
+ - b) +
+ - c) + OR -
+
 answer: 
 
 ---
 
-**question**: Suppose that you learned this linear model for the dataset: 2+2F1+F2. Which RMSE does the training set have? a) 1.5 b) 3 c) 2 d) None
+**question**: Suppose that you learned this linear model for the dataset: 2+2F1+F2. Which RMSE does the training set have?
 
 | F1  | F2  | Target |
 | --- | --- | ------ |
@@ -3811,40 +3880,81 @@ answer:
 | 6   | 2   | 14     |
 | 5   | 5   | 17     |
 
-answer: 
-
----
-
-**question**: A dataset has missing values in both training and test sets. Which data processing is valid? a) Remove samples with missing values only from the test set b) Remove samples with missing values only from the train set c) Remove samples with missing values from both train and test set d) None of above
-
-answer: 
-
----
-
-**question**: Knn is very likely to overfit due to the curse of dimensionality. Which of the following options would you consider to handle such a problem? a) Dimensionality reduction b) Feature selection c) Bootstrapping d) One-hot Encoding e) All of above f) None of above
+-  a) 1.5
+- b) 3
+- c) 2
+- d) None
 
 answer: 
 
 ---
 
-**question**: SVM trained on 60% of data and tested on 40% of data has accuracy of 70%. RF trained on the same dataset, but with 80% training and 20% test data, has accuracy of 80%. Which classifier performs better? a) SVM b) RF c) Can’t tell d) None of above
+**question**: A dataset has missing values in both training and test sets. Which data processing is valid?
+
+- a) Remove samples with missing values only from the test set
+- b) Remove samples with missing values only from the train set
+- c) Remove samples with missing values from both train and test set
+- d) None of above
 
 answer: 
 
 ---
 
-**question**: Which of the following are well-known CNN architectures? a) LeNet b) LSTM c) ResNet d) Reception e) TeNet f) None of above
+**question**: Knn is very likely to overfit due to the curse of dimensionality. Which of the following options would you consider to handle such a problem?
+
+- a) Dimensionality reduction
+- b) Feature selection
+- c) Bootstrapping
+- d) One-hot Encoding
+- e) All of above
+- f) None of above
 
 answer: 
 
 ---
 
-**question**: Which of the following techniques performs a similar operation as applying dropout of the input layer in a neural network? a) Boosting b) Bagging c) Metalearning d) None of these
+**question**: SVM trained on 60% of data and tested on 40% of data has accuracy of 70%. RF trained on the same dataset, but with 80% training and 20% test data, has accuracy of 80%. Which classifier performs better?
+
+- a) SVM
+- b) RF
+- c) Can’t tell
+- d) None of above
 
 answer: 
 
 ---
 
-**question**: In a neural network, which of the following techniques is used to deal with overfitting? a) Dropout b) Regularization c) Batch normalization d) Cross validation e) All of the above f) None of the above
+**question**: Which of the following are well-known CNN architectures?
+
+- a) LeNet
+- b) LSTM
+- c) ResNet
+- d) Reception
+- e) TeNet
+- f) None of above
+
+answer: 
+
+---
+
+**question**: Which of the following techniques performs a similar operation as applying dropout of the input layer in a neural network?
+
+- a) Boosting
+- b) Bagging
+- c) Metalearning
+- d) None of these
+
+answer: 
+
+---
+
+**question**: In a neural network, which of the following techniques is used to deal with overfitting?
+
+- a) Dropout
+- b) Regularization
+- c) Batch normalization
+- d) Cross validation
+- e) All of the above
+- f) None of the above
 
 answer: 
