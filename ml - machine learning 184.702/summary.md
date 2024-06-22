@@ -481,11 +481,11 @@ algorithm:
 - has a tolerance of $\xi$ to missclassifications
 - generalizes better
 - linear case:
-	- $\underset{w\in\mathbb{R}^D,\xi\in\mathbb{R}^n}{\operatorname*{argmin}}\quad\sum_{i=1}^n\xi_i + \nu\cdot\|w\|^2$
+	- $\underset{w\in\mathbb{R}^D,\xi\in\mathbb{R}^n}{\text{argmin}}\quad\sum_{i=1}^n\xi_i + \nu\cdot\|w\|^2$
 	- while also $\forall i: (\mathbf{w}^\intercal \mathbf{x}_i) \geq 1 - \xi_i$
 	- where $\xi_i \geq 0$
 - non linear case:
-	- $\underset{w\in\mathbb{R}^D,\xi\in\mathbb{R}^n}{\operatorname*{argmin}}\quad\sum_{i=1}^n\xi_i + \nu\cdot\ c^\intercal K c$
+	- $\underset{w\in\mathbb{R}^D,\xi\in\mathbb{R}^n}{\text{argmin}}\quad\sum_{i=1}^n\xi_i + \nu\cdot\ c^\intercal K c$
 
 # mlp - multi layer perceptron
 
