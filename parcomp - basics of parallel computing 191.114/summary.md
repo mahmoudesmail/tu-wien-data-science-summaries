@@ -103,7 +103,7 @@ _efficiency of parallelization_
 
 _amdahls law_
 
-- $\large S(n,p)=\frac{   {T_{\text{seq}}^*(n)}}{s \cdot {T_{\text{seq}}^*(n)}   +\frac{1-s}{p} \cdot {T_{\text{seq}}^*(n)}   }=\frac{1}{s+\frac{1-s}p}\leq\frac1s$
+- $\large S(n,p)=\frac{   {T_{\text{seq}}^*(n)}}{s \cdot {T_{\text{seq}}^*(n)}   +\frac{1-s}{p} \cdot {T_{\text{seq}}^*(n)}   }=\frac{1}{s+\frac{1-s}p}\leq\frac{1}{s}$
 - fix $n$, increase $p$, speedup converges to $1/s$
 - where:
      - $s \in [0;1]$ = sequential fraction
