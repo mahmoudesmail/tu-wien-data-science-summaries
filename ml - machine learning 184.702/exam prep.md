@@ -453,7 +453,7 @@ answer:
 answer:
 
 - subsampling / downsampling
-- take the max. activation across small regions (ie.. 2x2 regions in the the example below)
+- take the max. activation across small regions (ie. 2x2 regions in the the example below)
 
 - $\begin{bmatrix}   1 & (3) & (5) & -3 \\ -2 & (3) & 2 & -1 \\ 1 & 2 & -2 & (2) \\ -1 & (3) & -2 & 1  \end{bmatrix} \Rightarrow \begin{bmatrix}   3 & 5 \\ 3 & 2  \end{bmatrix}$
 
