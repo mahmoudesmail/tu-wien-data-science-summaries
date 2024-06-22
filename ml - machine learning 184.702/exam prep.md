@@ -1,599 +1,3 @@
-# unknown date
-
-**question**: Suppose you have 5 convolutional kernels of size 7x7 with zero padding and stride 1 in the first layer of a convolutional neural network. You pass an input of dimension 224 x 224 x 3 through this layer. What are the dimensions of the data which the next layer will receive? Explain your answer.
-
-answer:
-
-- $n\times n \circledast f\times f \Rightarrow \left\lfloor\frac{n+2p-f}{s}+1\right\rfloor\times\left\lfloor\frac{n+2p-f}{s}+1\right\rfloor$
-- where:
-	- $n$ = input = 224 x 224 x 3
-	- $f$ = kernel filter = 7 x 7
-	- $p$ = padding = 0
-	- $s$ = stride = 1
-	- num kernels = 5
-- result:
-	- in this case, since the input image has 3 channels, each of the 5 convolutional kernels has a depth of 3 as well.
-	- the 5 convolutional kernels are not applied to separate channels independently. each kernel is applied to the entire input image, which includes all 3 channels - resulting in 5 different outputs each with 3 channels.
-	- 5 times: (224 x 224 x 3) $\circledast$ (7 x 7 x 3) = (224 - 7 + 1) x (224 - 7 + 1) x 3 = (218 x 218 x 3)
-
----
-
-**question**: Calculate the coefficients $w_0, w_1, w_2$ when using the RSS as a metric. The learning rate $\alpha$ = 0.5. All weights are initialized with 0. What will the second step be?
-
-| $F1$ | $F_2$ | $t$ |
-| ---- | ----- | --- |
-| 1    | 3     | 12  |
-| 2    | 5     | 9   |
-
-answer:
-
-- polynomial regression with hypothesis function: $y = w_0 + w_1 \cdot F_1 + w_2 \cdot F_2$
-- 1) initial RSS (residual sum of squares) predictions
-	- $\hat{y}_1 = 0 + 0 \cdot 1 + 0 \cdot 3 = 0$
-	- $\hat{y}_2 = 0 + 0 \cdot 2 + 0 \cdot 5 = 0$
-	- $\text{RSS} = (12-0)^2 + (9-0)^2 = 12^2 + 9^2 = 225$
-- 2) calculating the gradients of the RSS for each weight
-	- first we simplify the gradient of the RSS:
-		- $\frac{\partial \text{RSS}}{\partial w_j} = \frac{\partial}{\partial w_j} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 = \ldots = \sum_{i=1}^{n} 2 (y_i - \hat{y}_i) \cdot \left(-\frac{\partial \hat{y}_i}{\partial w_j}\right)$
-		- $\frac{\partial \hat{y}_i}{\partial w_0} = 1$
-		- $\frac{\partial \hat{y}_i}{\partial w_1} = F_{1i}$
-		- $\frac{\partial \hat{y}_i}{\partial w_2} = F_{2i}$
-		- The -2 factor comes from applying the chain rule to the derivative of the squared term $(y_i - \hat{y}_i)^2$.
-	- then we apply the chain rule for each weight:
-		- $\frac{\partial \text{RSS}}{\partial w_0} = -2 \sum_{i=1}^{n} (y_i - \hat{y}_i) = -2 \cdot (12 - 0 + 9 - 0) = -42$
-		- $\frac{\partial \text{RSS}}{\partial w_1} = -2 \sum_{i=1}^{n} (y_i - \hat{y}_i) \cdot F_{1i} = -2 \cdot ((12 - 0) \cdot 1 + (9 - 0) \cdot 2) = -60$
-		- $\frac{\partial \text{RSS}}{\partial w_2} = -2 \sum_{i=1}^{n} (y_i - \hat{y}_i) \cdot F_{2i} = -2 \cdot ((12 - 0) \cdot 3 + (9 - 0) \cdot 5) = -162$
-- 3) updating the weights based on the gradients
-	- $w_0 \leftarrow w_0 - \alpha \cdot \frac{\partial \text{RSS}}{\partial w_0} = 0 - 0.5 \cdot (-42) = 21$
-	- $w_1 \leftarrow w_1 - \alpha \cdot \frac{\partial \text{RSS}}{\partial w_1} = 0 - 0.5 \cdot (-60) = 30$
-	- $w_2 \leftarrow w_2 - \alpha \cdot \frac{\partial \text{RSS}}{\partial w_2} = 0 - 0.5 \cdot (-162) = 81$
-- 4) repeating until convergence
-
----
-
-**question**: Explain the goals of automatic classification. Detail how classification differs from other machine learning paradigms.
-
-answer:
-
-- automatic classification = supervised learning
-- supervised learning:
-	- training data is labeled with the correct class or category (in contrast to unsupervised learning)
-	- output variable is categorical or discrete (in contrast to regression)
-	- typically evaluated using metrics such as accuracy, precision, recall, F1-score, and confusion matrix, which measure how well the classifier can correctly predict the class labels
-
----
-
-**question**: Given a Dataset with 7 entries: Using knn(1), calculate the prediction accuracy using the first 6 entries and 2-fold.
-
-| #   | Calories | MeatType | Salad | MealTime | Healthy |
-| --- | -------- | -------- | ----- | -------- | ------- |
-| 1   | Many     | Cow      | No    | Evening  | No      |
-| 2   | Many     | Cow      | Yes   | Noon     | Yes     |
-| 3   | Many     | Chicken  | No    | Morning  | No      |
-| 4   | Few      | Fish     | Yes   | Evening  | Yes     |
-| 5   | Few      | Chicken  | Yes   | Evening  | Yes     |
-| 6   | Few      | Fish     | No    | Morning  | No      |
-|     | Many     | Fish     | Yes   | Evening  | ?       |
-
-answer:
-
-**step 1**: encoding the categorical variables:
-
-- Calories (ordinal):
-	- could have mapped to 0;1 to represent an order - but we're keeping it simple here
-	- `Many` = [1, 0]
-	- `Few` = [0, 1]
-- MeatType (nominal):
-	- `Cow` = [1, 0, 0]
-	- `Chicken` = [0, 1, 0]
-	- `Fish` = [0, 0, 1]
-- Salad (nominal):
-	- `No` = [1, 0]
-	- `Yes` = [0, 1]
-- MealTime: (nominal):
-	- `Morning` = [1, 0, 0]
-	- `Noon` = [0, 1, 0]
-	- `Evening` = [0, 0, 1]
-
-| #   | Calories | MeatType         | Salad  | MealTime         | Healthy |
-| --- | -------- | ---------------- | ------ | ---------------- | ------- |
-| 1   | [1, 0]   | [1, 0, 0]        | [1, 0] | [0, 0, 1]        | 0       |
-| 2   | [1, 0]   | [1, 0, 0]        | [0, 1] | [0, 1, 0]        | 1       |
-| 3   | [1, 0]   | [0, 1, 0]        | [1, 0] | [1, 0, 0]        | 0       |
-| 4   | [0, 1]   | [0, 0, 1]        | [0, 1] | [0, 0, 1]        | 1       |
-| 5   | [0, 1]   | [0, 1, 0]        | [0, 1] | [0, 0, 1]        | 1       |
-| 6   | [0, 1]   | [0, 0, 1]        | [1, 0] | [1, 0, 0]        | 0       |
-|     | [1, 0]   | [0, 0, 1]        | [0, 1] | [0, 0, 1]        | ?       |
-
-| #   | Concatenated Features          | Healthy |
-| --- | ------------------------------ | ------- |
-| 1   | [1, 0, 1, 0, 0, 1, 0, 0, 0, 1] | 0       |
-| 2   | [1, 0, 1, 0, 0, 0, 1, 0, 1, 0] | 1       |
-| 3   | [1, 0, 0, 1, 0, 1, 0, 1, 0, 0] | 0       |
-| 4   | [0, 1, 0, 0, 1, 0, 1, 0, 0, 1] | 1       |
-| 5   | [0, 1, 0, 1, 0, 0, 1, 0, 0, 1] | 1       |
-| 6   | [0, 1, 0, 0, 1, 1, 0, 1, 0, 0] | 0       |
-|     | [1, 0, 0, 0, 1, 0, 1, 0, 0, 1] | ?       |
-
-**step 2**: two folding data
-
-```
-# fold 1: train set / fold 2: test set
-
-[1, 0, 1, 0, 0, 1, 0, 0, 0, 1] -> 0
-[1, 0, 1, 0, 0, 0, 1, 0, 1, 0] -> 1
-[1, 0, 0, 1, 0, 1, 0, 1, 0, 0] -> 0
-
-# fold 2: train set / fold 1: test set
-
-[0, 1, 0, 0, 1, 0, 1, 0, 0, 1] -> 1
-[0, 1, 0, 1, 0, 0, 1, 0, 0, 1] -> 1
-[0, 1, 0, 0, 1, 1, 0, 1, 0, 0] -> 0
-```
-
-**step 3**: evaluating with knn ($k$ = 1) and measuring accuracy
-
-```
-# fold 1
-
-[1, 0, 1, 0, 0, 1, 0, 0, 0, 1]
-- Nearest to [1, 0, 1, 0, 0, 1, 0, 0, 0, 1] (Label 0) → Predicted: 0 (True: 0)
-
-[1, 0, 1, 0, 0, 0, 1, 0, 1, 0]
-- Nearest to [1, 0, 1, 0, 0, 0, 1, 0, 1, 0] (Label 1) → Predicted: 1 (True: 1)
-
-[1, 0, 0, 1, 0, 1, 0, 1, 0, 0]
-Nearest to [1, 0, 0, 1, 0, 1, 0, 1, 0, 0] (Label 0) → Predicted: 0 (True: 0)
-
-Acc: 3/3 (100%)
-
-# fold 2
-
-Sample: [0, 1, 0, 0, 1, 0, 1, 0, 0, 1] -> 1
-- Nearest to [0, 1, 0, 0, 1, 0, 1, 0, 0, 1] (Label 1) → Predicted: 1 (True: 1)
-
-Sample: [0, 1, 0, 1, 0, 0, 1, 0, 0, 1]
-- Nearest to [0, 1, 0, 1, 0, 0, 1, 0, 0, 1] (Label 1) → Predicted: 1 (True: 1)
-
-Sample: [0, 1, 0, 0, 1, 1, 0, 1, 0, 0]
-- Nearest to [0, 1, 0, 0, 1, 1, 0, 1, 0, 0] (Label 0) → Predicted: 0 (True: 0)
-
-Acc: 3/3 (100%)
-```
-
-overall accuracy = (accuracy of fold 1 + accuracy of fold 2) / 2 = (1 + 1) / 2 = 1
-
----
-
-**question**: Classify the missing samples using Naive Bayes.
-
-| Groups | Shifts | Seq2 | DayBlocks | NightB | WorkB | DayOffB | Algorithm |
-| ------ | ------ | ---- | --------- | ------ | ----- | ------- | --------- |
-| 9      | 3      | NO   | 6         | 3      | 4     | 3       | MC        |
-| 9      | 3      | NO   | 4         | 4      | 4     | 3       | MC        |
-| 17     | 3      | NO   | 6         | 4      | 4     | 4       | `ILS      |
-| 13     | 3      | YES  | 5         | 3      | 5     | 4       | ILS       |
-| 11     | 3      | YES  | 5         | 3      | 4     | 4       | MC        |
-| 7      | 3      | YES  | 5         | 5      | 4     | 4       | MC        |
-| 29     | 3      | NO   | 6         | 4      | 4     | 3       | MC        |
-| 16     | 3      | NO   | 6         | 4      | 5     | 3       | ILS       |
-| 47     | 3      | NO   | 6         | 5      | 6     | 3       | ILS       |
-| 27     | 3      | NO   | 6         | 4      | 4     | 3       | ILS       |
-| 30     | 3      | NO   | 5         | 3      | 5     | 3       | ILS       |
-| 20     | 2      | NO   | 5         | 5      | 4     | 3       | ILS       |
-| 24     | 3      | NO   | 5         | 4      | 5     | 3       |           |
-| 13     | 3      | YES  | 5         | 3      | 4     | 4       |           |
-
-answer (open question):
-
-- laplace smoothing:
-	- $p(x_i = v_j \mid y = c) = \frac{\text{count}(x_i = v_j \text{ and } y = c) + 1}{\text{count}(y = c) + k}$
-	- where:
-		- $\text{count}(x_i = v_j \text{ and } y = c)$ is the number of times feature $x_i$ takes value $v_j$ in class $c$.
-		- $\text{count}(y = c)$ is the number of samples in class $c$.
-		- $k$ is the number of possible values that feature $x_i$ can take.
-- first prediction:
-	- class ILS:
-		- $p(\text{Groups} = 24 \mid \text{ILS})$ = 0/7 → (0+1)/(7+12) = 0.0526315789
-		- $p(\text{Shifts} = 3 \mid \text{ILS})$ = 6/7 → (6+1)/(7+2) = 0.7777777778
-		- $p(\text{Seq2} = \text{NO} \mid \text{ILS})$ = 6/7 → (6+1)/(7+2) = 0.7777777778
-		- $p(\text{DayBlocks} = 5 \mid \text{ILS})$ = 2/7 → (2+1)/(7+3) = 0.3
-		- $p(\text{NightB} = 4 \mid \text{ILS})$ = 3/7 → (3+1)/(7+3) = 0.4
-		- $p(\text{WorkB} = 5 \mid \text{ILS})$ = 3/7 → (3+1)/(7+3) = 0.4
-		- $p(\text{DayOFFB} = 3 \mid \text{ILS})$ = 5/7 → (5+1)/(7+2) = 0.6666666667
-		- $p(\text{ILS})$ = 7/12 = 0.5833333333
-		- $p(\text{ILS} \mid 24, 3, \text{NO}, 5, 4, 5, 3) \propto p(24, 3, \text{NO}, 5, 4, 5, 3 \mid \text{ILS}) \cdot p(\text{ILS})$ = 0.0526315789 · 0.7777777778 · 0.7777777778 · 0.3 · 0.4 · 0.4 · 0.6666666667 · 0.5833333333 = 0.0005943253189 👈 likelier outcome
-	- class MC:
-		- $p(\text{Groups} = 24 \mid \text{MC})$ = 0/5 → (0+1)/(5+12) = 0.0588235294
-		- $p(\text{Shifts} = 3 \mid \text{MC})$ = 5/5 → (5+1)/(5+2) = 0.8571428571
-		- $p(\text{Seq2} = \text{NO} \mid \text{MC})$ = 3/5 → (3+1)/(7+2) = 0.4444444444
-		- $p(\text{DayBlocks} = 5 \mid \text{MC})$ = 1/5 → (1+1)/(5+3) = 0.25
-		- $p(\text{NightB} = 4 \mid \text{MC})$ = 2/5 → (2+1)/(5+3) = 0.375
-		- $p(\text{WorkB} = 5 \mid \text{MC})$ = 0/5 → (0+1)/(5+3) = 0.125
-		- $p(\text{DayOFFB} = 3 \mid \text{MC})$ = 3/5 → (3+1)/(5+2) = 0.5714285714
-		- $p(\text{MC})$ = 5/12 = 0.4166666667
-		- $p(\text{MC} \mid 24, 3, \text{NO}, 5, 4, 5, 3) \propto p(24, 3, \text{NO}, 5, 4, 5, 3 \mid \text{MC}) \cdot p(\text{MC})$ = 0.0588235294 · 0.8571428571 · 0.4444444444 · 0.25 · 0.375 · 0.125 · 0.5714285714 · 0.4166666667 = 0.0000625250099
-- second prediction:
-	- class ILS:
-		- $p(\text{Groups} = 13 \mid \text{ILS})$ = 1/7 → (1+1)/(5+12) = 0.1176470588
-		- $p(\text{Shifts} = 3 \mid \text{ILS})$ = 6/7 → (6+1)/(7+2) = 0.7777777778
-		- $p(\text{Seq2} = \text{YES} \mid \text{ILS})$ = 1/7 → (1+1)/(7+2) = 0.2222222222
-		- $p(\text{DayBlocks} = 5 \mid \text{ILS})$ = 2/7 → (2+1)/(7+3) = 0.3
-		- $p(\text{NightB} = 3 \mid \text{ILS})$ = 2/7 → (2+1)/(7+3) = 0.3
-		- $p(\text{WorkB} = 4 \mid \text{ILS})$ = 3/7 → (3+1)/(7+3) = 0.4
-		- $p(\text{DayOFFB} = 4 \mid \text{ILS})$ = 2/7 → (2+1)/(7+2) = 0.3333333333
-		- $p(\text{ILS})$ = 7/12 = 0.5833333333
-		- $p(\text{ILS} \mid 13, 3, \text{YES}, 5, 3, 4, 4) \propto p(13, 3, \text{YES}, 5, 3, 4, 4 \mid \text{ILS}) \cdot p(ILS)$ = 0.1176470588 · 0.7777777778 · 0.2222222222 · 0.3 · 0.3 · 0.4 · 0.3333333333 · 0.5833333333 = 0.0001423384167 👈 likelier outcome
-	- class MC:
-		- $p(\text{Groups} = 13 \mid \text{MC})$ = 0/5 → (0+1)/(5+12) = 0.0588235294
-		- $p(\text{Shifts} = 3 \mid \text{MC})$ = 5/5 → (5+1)/(5+2) = 0.8571428571
-		- $p(\text{Seq2} = \text{YES} \mid \text{MC})$ = 2/5 → (2+1)/(5+2) = 0.4285714286
-		- $p(\text{DayBlocks} = 5 \mid \text{MC})$ = 1/5 → (1+1)/(5+3) = 0.25
-		- $p(\text{NightB} = 3 \mid \text{MC})$ = 2/5 → (2+1)/(5+3) = 0.375
-		- $p(\text{DayOFFB} = 4 \mid \text{MC})$ = 2/5 → (2+1)/(5+2) = 0.4285714286
-		- $p(\text{MC})$ = 5/12 = 0.4166666667
-		- $p(\text{MC} \mid 13, 3, \text{YES}, 5, 3, 4, 4) \propto p(13, 3, \text{YES}, 5, 3, 4, 4 \mid \text{MC}) \cdot p(MC)$ = 0.0588235294 · 0.8571428571 · 0.4285714286 · 0.25 · 0.375 · 0.125 · 0.4285714286 · 0.4166666667 = 0.0000452189804
-
----
-
-**question**: Classify the missing samples using 1R
-
-| Groups | Shifts | Seq2 | DayBlocks | NightB | WorkB | DayOffB | Algorithm |     |
-| ------ | ------ | ---- | --------- | ------ | ----- | ------- | --------- | --- |
-| 9      | 3      | NO   | 6         | 3      | 4     | 3       | MC        |     |
-| 9      | 3      | NO   | 4         | 4      | 4     | 3       | MC        |     |
-| 17     | 3      | NO   | 6         | 4      | 4     | 4       | ILS       |     |
-| 13     | 3      | YES  | 5         | 3      | 5     | 4       | ILS       |     |
-| 11     | 3      | YES  | 5         | 3      | 4     | 4       | MC        |     |
-| 7      | 3      | YES  | 5         | 5      | 4     | 4       | MC        |     |
-| 29     | 3      | NO   | 6         | 4      | 4     | 3       | MC        |     |
-| 16     | 3      | NO   | 6         | 4      | 5     | 3       | ILS       |     |
-| 47     | 3      | NO   | 6         | 5      | 6     | 3       | ILS       |     |
-| 27     | 3      | NO   | 6         | 4      | 4     | 3       | ILS       |     |
-| 30     | 3      | NO   | 5         | 3      | 5     | 3       | ILS       |     |
-| 20     | 2      | NO   | 5         | 5      | 4     | 3       | ILS       |     |
-| 24     | 3      | NO   | 5         | 4      | 5     | 3       |           |     |
-| 13     | 3      | YES  | 5         | 3      | 4     | 4       |           |     |
-
-answer:
-
-- we need to identify the single attribute that can best predict the target
-- for each feature (dimension), calculate the number of correct predictions it makes on the training data
-
-attribute: Groups
-
-- unique values: {7, 9, 11, 13, 16, 17, 20, 24, 27, 29, 30, 47}
-- model:
-	- Groups = 9 (MC: 2, ILS: 0) → MC
-	- Groups = 11 (MC: 1, ILS: 0) → MC
-	- Groups = 13 (MC: 1, ILS: 1) → MC
-	- Groups = 7 (MC: 1, ILS: 0) → MC
-	- Groups = 29 (MC: 1, ILS: 0) → MC
-	- Groups = 17 (MC: 0, ILS: 1) → ILS
-	- Groups = 16 (MC: 0, ILS: 1) → ILS
-	- Groups = 47 (MC: 0, ILS: 1) → ILS
-	- Groups = 27 (MC: 0, ILS: 1) → ILS
-	- Groups = 30 (MC: 0, ILS: 1) → ILS
-	- Groups = 20 (MC: 0, ILS: 1) → ILS
-- evaluation:
-	- Predict 9 with MC (2 out of 2 correct)
-	- Predict 11 with MC (1 correct)
-	- Predict 13 with MC (1 correct)
-	- Predict 7 with MC (1 correct)
-	- Predict 29 with MC (1 correct)
-	- Predict 17 with ILS (1 correct)
-	- Predict 16 with ILS (1 correct)
-	- Predict 47 with ILS (1 correct)
-	- Predict 27 with ILS (1 correct)
-	- Predict 30 with ILS (1 correct)
-	- Predict 20 with ILS (1 correct)
-- accuracy: 12/12
-
-attribute: Seq2
-
-- unique values: {NO, YES}
-- model:
-	- Seq2 = NO (MC: 4, ILS: 5) → MC
-	- Seq2 = YES (MC: 2, ILS: 1) → MC
-- evaluation:
-	- Predict NO with MC (4 out of 9 correct)
-	- Predict YES with MC (2 out of 3 correct)
-- accuracy: 6/12
-
-attribute: DayBlocks
-
-- unique values: {4, 5, 6}
-- model:
-	- DayBlocks = 4 (MC: 1, ILS: 0) → MC
-	- DayBlocks = 5 (MC: 3, ILS: 2) → MC
-	- DayBlocks = 6 (MC: 2, ILS: 4) → ILS
-- evaluation:
-	- Predict 4 with MC (1 correct)
-	- Predict 5 with MC (3 out of 5 correct)
-	- Predict 6 with ILS (4 out of 6 correct)
-- accuracy: 8/12
-
-attribute: NightB
-
-- unique values: {3, 4, 5}
-- model:
-	- NightB = 3 (MC: 3, ILS: 1) → MC
-	- NightB = 4 (MC: 1, ILS: 4) → ILS
-	- NightB = 5 (MC: 1, ILS: 2) → ILS
-- evaluation:
-	- Predict 3 with MC (3 out of 4 correct)
-	- Predict 4 with ILS (4 out of 5 correct)
-	- Predict 5 with ILS (2 out of 3 correct)
-- accuracy: 9/12
-
-attribute: WorkB
-
-- unique values: {4, 5, 6}
-- model:
-	- WorkB = 4 (MC: 4, ILS: 3) → MC
-	- WorkB = 5 (MC: 1, ILS: 3) → ILS
-	- WorkB = 6 (MC: 0, ILS: 1) → ILS
-- evaluation:
-	- Predict 4 with MC (4 out of 7 correct)
-	- Predict 5 with ILS (3 out of 4 correct)
-	- Predict 6 with ILS (1 correct)
-- accuracy: 8/12
-
-attribute: DayOffB
-
-- Unique values: {3, 4}
-- model:
-	- DayOffB = 3 (MC: 4, ILS: 4) → MC
-	- DayOffB = 4 (MC: 2, ILS: 2) → MC
-- evaluation:
-	- Predict 3 with MC (4 out of 8 correct)
-	- Predict 4 with MC (2 out of 4 correct)
-- accuracy: 6/12
-
-selecting best feature:
-
-- the "Group" feature accuracy of 12/12
-- generated rule = `if (Groups = 9 or 11 or 13 or 7 or 29) then Algorithm = MC otherwise Algorithm = ILS
-
-classifying missing samples:
-
-- first test sample: Group = 24 → predicted label: ILS
-- second test sample: Group = 13 → predicted label: MC
-
----
-
-**question**: Describe the difference between bagging and boosting. Describe one algorithm that makes use of bagging.
-
-answer:
-
-- both are ensemble methods where weak learners are combined to create a strong learner
-- bagging (bootstrap aggegating):
-	- parallel evaluation of independent models
-	- using random subsets of the training data
-	- constant model weights
-	- aggregating the predictions from all models to make a final prediction
-	- aims to decrease variance
-- boosting:
-	- sequential evaluation of models
-	- model-weights adjusted based on loss
-	- data-weights adjusted based on missclassifications - each model tries to improve previous missclassifications
-	- aims to decrease bias
-- bagging example: random forest
-	- i. train multiple classifiers – through bootstrap sampling
-	- ii. combine classifiers – through majority-voting of each classifier
-	- iii. evaluate combined classifier – out-of-bag elements for each tree as test-set
-
----
-
-**question**: Describe random forests in detail + compare to similar algorithms (e.g. 1R and decision trees)
-
-answer:
-
-- random forest:
-	- i. train multiple classifiers – through bootstrap sampling
-	- ii. combine classifiers – through majority-voting of each classifier
-	- iii. evaluate combined classifier – out-of-bag elements for each tree as test-set
-- random forest compared to 1-rule and decision tree
-	- 1-rule decision trees are decision trees with a depth of 1
-	- a decision tree is just one weak lerner in the RF ensemble
-
----
-
-**question**: difference naive bayesian network to normal (bayesian) network
-
-answer:
-
-- naive bayes is a simple special case of a bayesian network with strong assumptions
-- independence assumption:
-	- naive bayes assumes that all the features are conditionally independent between features (presence or absence of a particular feature does not depend on the presence or absence of any other feature) given the class variable.
-	- general bayesian network captures the conditional dependencies between variables.
-- network structure:
-	- naive bayes has a single root node
-
----
-
-**question**: what can be used to create a Bayesian networks? compare it
-
-answer:
-
-- human experts
-- learning network structure through local search heuristics: for example hill climb search
-	- start with an initial network structure – this could be an empty network (no edges), a naive Bayes structure (all nodes connected to a single parent node), a randomly generated one, one based on prior knowledge, etc.
-	- choose a metric to evaluate networks
-	- until convergence to a local optimum:
-		- generate neighbors from the current network through local modifications like edge addition, deletion or reversal.
-		- score neighbors based on goodness-of-fit, log-probability
-
----
-
-**question**: Propose a Bayesian Network, which you think will be appropriate for this domain (the network should not be a simple Naïve Bayes). Explain shortly why you selected exactly this network
-
-- Calculate some of the conditional probabilities in your network
-- Based on your network, classify the last data sample from the table above
-- Suppose that node Calories is instantiated. Which nodes of your network would be d-separated in this case?
-
-| #   | Calories | MeatType | Salad | MealTime | Healthy |
-| --- | -------- | -------- | ----- | -------- | ------- |
-| 1   | Many     | Cow      | No    | Evening  | No      |
-| 2   | Many     | Cow      | Yes   | Noon     | Yes     |
-| 3   | Many     | Chicken  | No    | Morning  | No      |
-| 4   | Few      | Fish     | Yes   | Evening  | Yes     |
-| 5   | Few      | Chicken  | Yes   | Evening  | Yes     |
-| 6   | Few      | Fish     | No    | Morning  | No      |
-|     | Many     | Fish     | Yes   | Evening  | ?       |
-
-answer:
-
-```mermaid
-graph TD;
-  Calories --> Healthy
-  MeatType --> Healthy
-  Salad --> Healthy
-  MealTime --> Healthy
-  MeatType --> Calories
-  Salad --> Calories
-```
-
-
-- all features determine whether a meal is healthy
-- the ingredients additionally also determine the calories
-
-d-seperation:
-
-- assuming that Calories is instantiated
-- MeatType → Calories ← Salad (converging, not d-seperated)
-- MeatType → Calories → Healthy (serial, d-seperated)
-- Salad → Calories → Healthy (serial, d-seperated)
-
-probabilities:
-
-- P(Calories=Many) = 3/6 = 0.5  
-- P(Calories=Few) = 3/6 = 0.5
-- P(MeatType=Fish) = 2/6 = 0.33  
-- P(MeatType=Chicken) = 2/6 = 0.33  
-- P(MeatType=Cow) = 2/6 = 0.33
-- P(Salad=Yes) = 3/6 = 0.5  
-- P(Salad=No) = 3/6 = 0.5
-- P(MealTime=Evening) = 3/6 = 0.5  
-- P(MealTime=Noon) = 1/6 = 0.17  
-- P(MealTime=Morning) = 2/6 = 0.33
-- P(Healthy=Yes) = 3/6 = 0.5
-- P(Healthy=No) = 3/6 = 0.5
-- P(Calories=Many|MeatType=Fish) = 1/2 = 0.5
-- P(Calories=Many|Salad=Yes) = 1/3 = 0.33
-- P(Healthy=Yes|Calories=Many) = 1/3 = 0.33  
-- P(Healthy=Yes|MeatType=Fish) = 1/2 = 0.5  
-- P(Healthy=Yes|Salad=Yes) = 2/3 = 0.67  
-- P(Healthy=Yes|MealTime=Evening) = 2/3 = 0.67
-
-labeling the last sample: P(X1, ..., Xn) = Πi P(Xi | Parents(Xi))
-
-- P(Healthy=Yes | Calories=Many, MeatType=Fish, Salad=Yes, MealTime=Evening) ∝ P(Calories=Many | MeatType=Fish, Salad=Yes) · P(MeatType=Fish) · P(Salad=Yes) · P(MealTime=Evening) · P(Healthy=Yes | Calories=Many, MeatType=Fish, Salad=Yes, MealTime=Evening)
-- P(Healthy=Yes) = P(MeatType=Fish) · P(Salad=Yes) · P(MealTime=Evening) · P(Calories=Many|MeatType=Fish,Salad=Yes) · P(Healthy=Yes|Calories=Many,MeatType=Fish,Salad=Yes,MealTime=Evening) = 0.33 · 0.5 · 0.5 · 0.5 · 0.67 = **0.028**
-- P(Healthy=No) = P(MeatType=Fish) · P(Salad=Yes) · P(MealTime=Evening) · P(Calories=Many|MeatType=Fish,Salad=Yes) · P(Healthy=No|Calories=Many,MeatType=Fish,Salad=Yes,MealTime=Evening) = 0.33 · 0.5 · 0.5 · 0.5 · 0.33 = **0.014**
-- conclusion: P(Healthy=Yes) > P(Healthy=No)
-
----
-
-**question**: Compare SVM with perceptron what is common, what differs
-
-answer:
-
-- SVMs tend to have better generalization performance and can handle more complex datasets, but perceptrons are simpler and faster to train and use.
-- perceptron:
-	- decision boundary must be linear
-	- not guaranteed to find optimal solution
-	- iterative, faster to train
-	- sensitive to outliers
-	- can handle multiclass problems
-	- can be easily adapted for online learning
-- svm:
-	- decision boundary doesn't have to be linear
-	- guaranteed to find optimal solution, tries to maximize margin between classes
-	- slow inference with non-linear kernels
-	- less sensitive to outliers
-	- only special variants can handle multiclass problems
-
-**question**: Describe in detail the ideas and concepts of Support Vector Machines; describe all algorithm variations discussed in the lecture
-
-answer:
-
-- kernel trick = increase dimensionality of feature space, to make them linearly seperable by high-dimensional hyperplane
-- $K\in\mathbb{R}^{n\times n}$
-
----
-
-**question**: What re the advantages and disadvantages of SVMs?
-
-answer:
-
-- SVMs are great  high-dimensional data and non-linear classification
-- but they can be computationally intensive, sensitive to parameter tuning, hard to interpret
-
-pros:
-
-- effective in high-dimensional spaces
-- memory efficient – only use subset of datasets (support vectors) at a time
-- versatile with different kernel functions
-- effective for non-linear classification using the kernel trick
-- good generalization performance and robustness to noise
-- can do both classification and regression
-
-cons:
-
-- computationally expensive – not suitable for very large datasets due to quadratic programming optimization and memory requirements
-- hard to interpret
-- sensitive to choice of of hyperparameters
-- less effective when target classes overlap
-- primarily designed for binary classification, though can be extended to multi-class problems
-- cannot handle missing values well
-
----
-
-**question**: How do they differ from other classifiers using the basic principle of SVMs?
-
-answer:
-
-- correction: differences between SVMs and other classifiers
-- Margin maximization
-- Support vectors
-- Kernel trick
-- Convex optimization
-- Sparsity
-- Robustness to high dimensions
-- Deterministic
-- Focus on difficult points near decision boundary
-
----
-
-**question**: Describe 3 metrics to evaluate classification algorithms and explain how these metrics relate to each other.
-
-answer:
-
-- accuracy
-	- $\frac{TP + TN}{TP + FP + TN + FN}$
-	- correctness of both positives and negatives
-- precision
-	- $\frac{TP}{TP + FP}$
-	- correctness of positives
-- specificity
-	- $\frac{TN}{TN + FN}$
-	- correctness of negatives
-- recall, sensitivity
-	- $\frac{TP}{TP + FN}$
-	- completeness
-- balanced accuracy
-	- $\frac{\frac{TP}{TP + FN} + \frac{TN}{TN + FP}}{2}$
-	- average of precision and specificity
-
----
-
-**question**: Explain the importance of statistical significance tests.
-
-answer:
-
-- determining whether observed difference between two systems is by chance (like variations in data or randomness in algorithm)
-
 # 2024-01-23
 
 **(1) question**: Suppose a convolutional neural network is trained on ImageNet dataset. This trained model is then given a completely white image as an input. The output probabilities for this input would be equal for all classes.
@@ -930,6 +334,128 @@ answer (open question): actions taken at $t_3$​, $t_5$​, and $t_6$​ are no
 		- $Q = [0.5, 1, 0, 0, 1]$
 - see: https://stats.stackexchange.com/questions/316911/how-to-understand-k-armed-bandit-example-from-suttons-rl-book-chapter-2 
 - see: https://github.com/Sagarnandeshwar/Bandit_Algorithms
+
+# 2023-01-24
+
+**question**: A decision tree can be converted into a rule set.
+
+answer: True
+
+- this is called rule-extraction from decision-trees
+- note: this is different from the covering algorithm / prism algorithm - they learn directly from data
+
+---
+
+**question**: k-armed bandits choose the next action based on the expected future reward.
+
+answer: True
+
+- stationary reward probability distribution
+- reward for action, based on experience:
+	- $Q_t(a) = \large \frac{\sum_{i=1}^{t-1}R_i\cdot\mathbb{1}_{A_i=a}}{\sum_{i=1}^{t-1}\mathbb{1}_{A_i=a}}$
+	- = sum of rewards from $a$, divided by how often $a$ was chosen so far
+	- should ideally converge to $q_*(a)\doteq\mathbb{E}[R_t \mid A_t=a]$
+	- if repeated $n \texttt{-}1$ times this results in:
+		- $Q_{n+1}=\frac{1}{n}\sum_{i=1}^nR_i = \cdots = Q_n+\frac{1}{n} \cdot \Big[R_n-Q_n\Big]$
+
+algorithm:
+
+- for all actions $a\in A$ initialize:
+	- $Q(a) \leftarrow 0$
+	- $N(a) \leftarrow 0$
+- loop forever:
+	- $A_t\doteq\arg\max_aQ_t(a)$
+	- $R \leftarrow \text{execute}(A)$
+	- $N(A) \leftarrow N(A) + 1$
+	- $Q(A) \leftarrow Q(A) + \frac 1 {N(A)} \cdot \Big[R-Q(A)\Big]$
+
+---
+
+**question**: A bayesian network is a directed cyclic graph.
+
+answer: True
+
+- edges represent conditional dependencies between variables in a way that avoids circular reasoning
+
+---
+
+**question**: Which of these methods helps to prevent overfitting?
+
+- a) Regularization
+- b) Dropout
+- c) Batch Normalization
+- d) Cross Validation
+- …
+
+answer:
+
+- prevents overfitting:
+	- Regularization
+		- prevent overfitting by adding a penalty term to the loss function
+	- Dropout
+		- randomly "dropping out" (i.e., temporarily removing) a certain percentage of neurons during training
+	- Batch Normalization
+		- normalizes the inputs to each layer, to reduce the dependence on specific neurons, has a regularizing effect 
+- doesn't prevent overfitting:
+	- Cross Validation
+		- improves evaluation of generalizability which can help in choosing the right hyperparams
+
+---
+
+**question**: What can a validation set be used for?
+
+- a) Early stopping
+- b) Hyperparameter tunining
+- c) Signifcance Testing
+- …
+
+answer: 
+
+- Early stopping
+	- using validation-set to find the right stopping-point (performance starts to degrade or plateau)
+- Hyperparameter tunining
+	- using validation-set to find the right hyperparams
+
+---
+
+**question**: Which technique is similar to dropout in neural networks
+
+- a) Bagging
+- b) Boosting
+- …
+
+answer:
+
+- dropout randomly drops out neurons within a single network during training
+- they all have very little in common with drouput
+- but dropout is conceptually more similar to bagging than boosting, given that it's trying to improve robustness through randomness:
+	- we're introducting randomness by trying different neural network architectures
+	- we want reduce variance (overfitting), not bias
+
+---
+
+**question**: Calculation of output size of convolution.
+
+answer: 
+
+- $n\times n \circledast f\times f \Rightarrow \left\lfloor\frac{n+2p-f}{s}+1\right\rfloor\times\left\lfloor\frac{n+2p-f}{s}+1\right\rfloor$
+- where:
+	- $n$ = input
+	- $f$ = kernel filter
+	- $p$ = padding
+	- $s$ = stride
+	- num kernels
+
+---
+
+**question**: Calculation of max pooling operation.
+
+answer:
+
+- subsampling / downsampling
+- take the max. activation across small regions (ie.. 2x2 regions in the the example below)
+
+- $\begin{bmatrix}   1 & (3) & (5) & -3 \\ -2 & (3) & 2 & -1 \\ 1 & 2 & -2 & (2) \\ -1 & (3) & -2 & 1  \end{bmatrix} \Rightarrow \begin{bmatrix}   3 & 5 \\ 3 & 2  \end{bmatrix}$
 
 # 2021-12-07
 
@@ -2626,7 +2152,12 @@ answer: False
 
 answer: True
 
-- it can be used to compare the performance of two algorithms across k-fold cross-validation or holdout validation
+- paired t-tests are designed for comparing different model performances
+- we can't compare the same model on different folds
+- use-cases:
+	- comparing different models
+	- comparing the same model with different hyperparameters, data preprocessing techniques
+	- comparing different cross-validation strategies (ie. k-fold vs. leave-one-out) → helps considering data variability introduced by the different data folds
 
 ---
 
@@ -3251,6 +2782,602 @@ answer:
 	- converging: A → B ← C
 		- A ←→ C transmission blocked if we don't know B or any of it's descendants
 
+# unknown date
+
+**question**: Suppose you have 5 convolutional kernels of size 7x7 with zero padding and stride 1 in the first layer of a convolutional neural network. You pass an input of dimension 224 x 224 x 3 through this layer. What are the dimensions of the data which the next layer will receive? Explain your answer.
+
+answer:
+
+- $n\times n \circledast f\times f \Rightarrow \left\lfloor\frac{n+2p-f}{s}+1\right\rfloor\times\left\lfloor\frac{n+2p-f}{s}+1\right\rfloor$
+- where:
+	- $n$ = input = 224 x 224 x 3
+	- $f$ = kernel filter = 7 x 7
+	- $p$ = padding = 0
+	- $s$ = stride = 1
+	- num kernels = 5
+- result:
+	- in this case, since the input image has 3 channels, each of the 5 convolutional kernels has a depth of 3 as well.
+	- the 5 convolutional kernels are not applied to separate channels independently. each kernel is applied to the entire input image, which includes all 3 channels - resulting in 5 different outputs each with 3 channels.
+	- 5 times: (224 x 224 x 3) $\circledast$ (7 x 7 x 3) = (224 - 7 + 1) x (224 - 7 + 1) x 3 = (218 x 218 x 3)
+
+---
+
+**question**: Calculate the coefficients $w_0, w_1, w_2$ when using the RSS as a metric. The learning rate $\alpha$ = 0.5. All weights are initialized with 0. What will the second step be?
+
+| $F1$ | $F_2$ | $t$ |
+| ---- | ----- | --- |
+| 1    | 3     | 12  |
+| 2    | 5     | 9   |
+
+answer:
+
+- polynomial regression with hypothesis function: $y = w_0 + w_1 \cdot F_1 + w_2 \cdot F_2$
+- 1) initial RSS (residual sum of squares) predictions
+	- $\hat{y}_1 = 0 + 0 \cdot 1 + 0 \cdot 3 = 0$
+	- $\hat{y}_2 = 0 + 0 \cdot 2 + 0 \cdot 5 = 0$
+	- $\text{RSS} = (12-0)^2 + (9-0)^2 = 12^2 + 9^2 = 225$
+- 2) calculating the gradients of the RSS for each weight
+	- first we simplify the gradient of the RSS:
+		- $\frac{\partial \text{RSS}}{\partial w_j} = \frac{\partial}{\partial w_j} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2 = \ldots = \sum_{i=1}^{n} 2 (y_i - \hat{y}_i) \cdot \left(-\frac{\partial \hat{y}_i}{\partial w_j}\right)$
+		- $\frac{\partial \hat{y}_i}{\partial w_0} = 1$
+		- $\frac{\partial \hat{y}_i}{\partial w_1} = F_{1i}$
+		- $\frac{\partial \hat{y}_i}{\partial w_2} = F_{2i}$
+		- The -2 factor comes from applying the chain rule to the derivative of the squared term $(y_i - \hat{y}_i)^2$.
+	- then we apply the chain rule for each weight:
+		- $\frac{\partial \text{RSS}}{\partial w_0} = -2 \sum_{i=1}^{n} (y_i - \hat{y}_i) = -2 \cdot (12 - 0 + 9 - 0) = -42$
+		- $\frac{\partial \text{RSS}}{\partial w_1} = -2 \sum_{i=1}^{n} (y_i - \hat{y}_i) \cdot F_{1i} = -2 \cdot ((12 - 0) \cdot 1 + (9 - 0) \cdot 2) = -60$
+		- $\frac{\partial \text{RSS}}{\partial w_2} = -2 \sum_{i=1}^{n} (y_i - \hat{y}_i) \cdot F_{2i} = -2 \cdot ((12 - 0) \cdot 3 + (9 - 0) \cdot 5) = -162$
+- 3) updating the weights based on the gradients
+	- $w_0 \leftarrow w_0 - \alpha \cdot \frac{\partial \text{RSS}}{\partial w_0} = 0 - 0.5 \cdot (-42) = 21$
+	- $w_1 \leftarrow w_1 - \alpha \cdot \frac{\partial \text{RSS}}{\partial w_1} = 0 - 0.5 \cdot (-60) = 30$
+	- $w_2 \leftarrow w_2 - \alpha \cdot \frac{\partial \text{RSS}}{\partial w_2} = 0 - 0.5 \cdot (-162) = 81$
+- 4) repeating until convergence
+
+---
+
+**question**: Explain the goals of automatic classification. Detail how classification differs from other machine learning paradigms.
+
+answer:
+
+- automatic classification = supervised learning
+- supervised learning:
+	- training data is labeled with the correct class or category (in contrast to unsupervised learning)
+	- output variable is categorical or discrete (in contrast to regression)
+	- typically evaluated using metrics such as accuracy, precision, recall, F1-score, and confusion matrix, which measure how well the classifier can correctly predict the class labels
+
+---
+
+**question**: Given a Dataset with 7 entries: Using knn(1), calculate the prediction accuracy using the first 6 entries and 2-fold.
+
+| #   | Calories | MeatType | Salad | MealTime | Healthy |
+| --- | -------- | -------- | ----- | -------- | ------- |
+| 1   | Many     | Cow      | No    | Evening  | No      |
+| 2   | Many     | Cow      | Yes   | Noon     | Yes     |
+| 3   | Many     | Chicken  | No    | Morning  | No      |
+| 4   | Few      | Fish     | Yes   | Evening  | Yes     |
+| 5   | Few      | Chicken  | Yes   | Evening  | Yes     |
+| 6   | Few      | Fish     | No    | Morning  | No      |
+|     | Many     | Fish     | Yes   | Evening  | ?       |
+
+answer:
+
+**step 1**: encoding the categorical variables:
+
+- Calories (ordinal):
+	- could have mapped to 0;1 to represent an order - but we're keeping it simple here
+	- `Many` = [1, 0]
+	- `Few` = [0, 1]
+- MeatType (nominal):
+	- `Cow` = [1, 0, 0]
+	- `Chicken` = [0, 1, 0]
+	- `Fish` = [0, 0, 1]
+- Salad (nominal):
+	- `No` = [1, 0]
+	- `Yes` = [0, 1]
+- MealTime: (nominal):
+	- `Morning` = [1, 0, 0]
+	- `Noon` = [0, 1, 0]
+	- `Evening` = [0, 0, 1]
+
+| #   | Calories | MeatType         | Salad  | MealTime         | Healthy |
+| --- | -------- | ---------------- | ------ | ---------------- | ------- |
+| 1   | [1, 0]   | [1, 0, 0]        | [1, 0] | [0, 0, 1]        | 0       |
+| 2   | [1, 0]   | [1, 0, 0]        | [0, 1] | [0, 1, 0]        | 1       |
+| 3   | [1, 0]   | [0, 1, 0]        | [1, 0] | [1, 0, 0]        | 0       |
+| 4   | [0, 1]   | [0, 0, 1]        | [0, 1] | [0, 0, 1]        | 1       |
+| 5   | [0, 1]   | [0, 1, 0]        | [0, 1] | [0, 0, 1]        | 1       |
+| 6   | [0, 1]   | [0, 0, 1]        | [1, 0] | [1, 0, 0]        | 0       |
+|     | [1, 0]   | [0, 0, 1]        | [0, 1] | [0, 0, 1]        | ?       |
+
+| #   | Concatenated Features          | Healthy |
+| --- | ------------------------------ | ------- |
+| 1   | [1, 0, 1, 0, 0, 1, 0, 0, 0, 1] | 0       |
+| 2   | [1, 0, 1, 0, 0, 0, 1, 0, 1, 0] | 1       |
+| 3   | [1, 0, 0, 1, 0, 1, 0, 1, 0, 0] | 0       |
+| 4   | [0, 1, 0, 0, 1, 0, 1, 0, 0, 1] | 1       |
+| 5   | [0, 1, 0, 1, 0, 0, 1, 0, 0, 1] | 1       |
+| 6   | [0, 1, 0, 0, 1, 1, 0, 1, 0, 0] | 0       |
+|     | [1, 0, 0, 0, 1, 0, 1, 0, 0, 1] | ?       |
+
+**step 2**: two folding data
+
+```
+# fold 1: train set / fold 2: test set
+
+[1, 0, 1, 0, 0, 1, 0, 0, 0, 1] -> 0
+[1, 0, 1, 0, 0, 0, 1, 0, 1, 0] -> 1
+[1, 0, 0, 1, 0, 1, 0, 1, 0, 0] -> 0
+
+# fold 2: train set / fold 1: test set
+
+[0, 1, 0, 0, 1, 0, 1, 0, 0, 1] -> 1
+[0, 1, 0, 1, 0, 0, 1, 0, 0, 1] -> 1
+[0, 1, 0, 0, 1, 1, 0, 1, 0, 0] -> 0
+```
+
+**step 3**: evaluating with knn ($k$ = 1) and measuring accuracy
+
+```
+# fold 1
+
+[1, 0, 1, 0, 0, 1, 0, 0, 0, 1]
+- Nearest to [1, 0, 1, 0, 0, 1, 0, 0, 0, 1] (Label 0) → Predicted: 0 (True: 0)
+
+[1, 0, 1, 0, 0, 0, 1, 0, 1, 0]
+- Nearest to [1, 0, 1, 0, 0, 0, 1, 0, 1, 0] (Label 1) → Predicted: 1 (True: 1)
+
+[1, 0, 0, 1, 0, 1, 0, 1, 0, 0]
+Nearest to [1, 0, 0, 1, 0, 1, 0, 1, 0, 0] (Label 0) → Predicted: 0 (True: 0)
+
+Acc: 3/3 (100%)
+
+# fold 2
+
+Sample: [0, 1, 0, 0, 1, 0, 1, 0, 0, 1] -> 1
+- Nearest to [0, 1, 0, 0, 1, 0, 1, 0, 0, 1] (Label 1) → Predicted: 1 (True: 1)
+
+Sample: [0, 1, 0, 1, 0, 0, 1, 0, 0, 1]
+- Nearest to [0, 1, 0, 1, 0, 0, 1, 0, 0, 1] (Label 1) → Predicted: 1 (True: 1)
+
+Sample: [0, 1, 0, 0, 1, 1, 0, 1, 0, 0]
+- Nearest to [0, 1, 0, 0, 1, 1, 0, 1, 0, 0] (Label 0) → Predicted: 0 (True: 0)
+
+Acc: 3/3 (100%)
+```
+
+overall accuracy = (accuracy of fold 1 + accuracy of fold 2) / 2 = (1 + 1) / 2 = 1
+
+---
+
+**question**: Classify the missing samples using Naive Bayes.
+
+| Groups | Shifts | Seq2 | DayBlocks | NightB | WorkB | DayOffB | Algorithm |
+| ------ | ------ | ---- | --------- | ------ | ----- | ------- | --------- |
+| 9      | 3      | NO   | 6         | 3      | 4     | 3       | MC        |
+| 9      | 3      | NO   | 4         | 4      | 4     | 3       | MC        |
+| 17     | 3      | NO   | 6         | 4      | 4     | 4       | `ILS      |
+| 13     | 3      | YES  | 5         | 3      | 5     | 4       | ILS       |
+| 11     | 3      | YES  | 5         | 3      | 4     | 4       | MC        |
+| 7      | 3      | YES  | 5         | 5      | 4     | 4       | MC        |
+| 29     | 3      | NO   | 6         | 4      | 4     | 3       | MC        |
+| 16     | 3      | NO   | 6         | 4      | 5     | 3       | ILS       |
+| 47     | 3      | NO   | 6         | 5      | 6     | 3       | ILS       |
+| 27     | 3      | NO   | 6         | 4      | 4     | 3       | ILS       |
+| 30     | 3      | NO   | 5         | 3      | 5     | 3       | ILS       |
+| 20     | 2      | NO   | 5         | 5      | 4     | 3       | ILS       |
+| 24     | 3      | NO   | 5         | 4      | 5     | 3       |           |
+| 13     | 3      | YES  | 5         | 3      | 4     | 4       |           |
+
+answer (open question):
+
+- laplace smoothing:
+	- $p(x_i = v_j \mid y = c) = \frac{\text{count}(x_i = v_j \text{ and } y = c) + 1}{\text{count}(y = c) + k}$
+	- where:
+		- $\text{count}(x_i = v_j \text{ and } y = c)$ is the number of times feature $x_i$ takes value $v_j$ in class $c$.
+		- $\text{count}(y = c)$ is the number of samples in class $c$.
+		- $k$ is the number of possible values that feature $x_i$ can take.
+- first prediction:
+	- class ILS:
+		- $p(\text{Groups} = 24 \mid \text{ILS})$ = 0/7 → (0+1)/(7+12) = 0.0526315789
+		- $p(\text{Shifts} = 3 \mid \text{ILS})$ = 6/7 → (6+1)/(7+2) = 0.7777777778
+		- $p(\text{Seq2} = \text{NO} \mid \text{ILS})$ = 6/7 → (6+1)/(7+2) = 0.7777777778
+		- $p(\text{DayBlocks} = 5 \mid \text{ILS})$ = 2/7 → (2+1)/(7+3) = 0.3
+		- $p(\text{NightB} = 4 \mid \text{ILS})$ = 3/7 → (3+1)/(7+3) = 0.4
+		- $p(\text{WorkB} = 5 \mid \text{ILS})$ = 3/7 → (3+1)/(7+3) = 0.4
+		- $p(\text{DayOFFB} = 3 \mid \text{ILS})$ = 5/7 → (5+1)/(7+2) = 0.6666666667
+		- $p(\text{ILS})$ = 7/12 = 0.5833333333
+		- $p(\text{ILS} \mid 24, 3, \text{NO}, 5, 4, 5, 3) \propto p(24, 3, \text{NO}, 5, 4, 5, 3 \mid \text{ILS}) \cdot p(\text{ILS})$ = 0.0526315789 · 0.7777777778 · 0.7777777778 · 0.3 · 0.4 · 0.4 · 0.6666666667 · 0.5833333333 = 0.0005943253189 👈 likelier outcome
+	- class MC:
+		- $p(\text{Groups} = 24 \mid \text{MC})$ = 0/5 → (0+1)/(5+12) = 0.0588235294
+		- $p(\text{Shifts} = 3 \mid \text{MC})$ = 5/5 → (5+1)/(5+2) = 0.8571428571
+		- $p(\text{Seq2} = \text{NO} \mid \text{MC})$ = 3/5 → (3+1)/(7+2) = 0.4444444444
+		- $p(\text{DayBlocks} = 5 \mid \text{MC})$ = 1/5 → (1+1)/(5+3) = 0.25
+		- $p(\text{NightB} = 4 \mid \text{MC})$ = 2/5 → (2+1)/(5+3) = 0.375
+		- $p(\text{WorkB} = 5 \mid \text{MC})$ = 0/5 → (0+1)/(5+3) = 0.125
+		- $p(\text{DayOFFB} = 3 \mid \text{MC})$ = 3/5 → (3+1)/(5+2) = 0.5714285714
+		- $p(\text{MC})$ = 5/12 = 0.4166666667
+		- $p(\text{MC} \mid 24, 3, \text{NO}, 5, 4, 5, 3) \propto p(24, 3, \text{NO}, 5, 4, 5, 3 \mid \text{MC}) \cdot p(\text{MC})$ = 0.0588235294 · 0.8571428571 · 0.4444444444 · 0.25 · 0.375 · 0.125 · 0.5714285714 · 0.4166666667 = 0.0000625250099
+- second prediction:
+	- class ILS:
+		- $p(\text{Groups} = 13 \mid \text{ILS})$ = 1/7 → (1+1)/(5+12) = 0.1176470588
+		- $p(\text{Shifts} = 3 \mid \text{ILS})$ = 6/7 → (6+1)/(7+2) = 0.7777777778
+		- $p(\text{Seq2} = \text{YES} \mid \text{ILS})$ = 1/7 → (1+1)/(7+2) = 0.2222222222
+		- $p(\text{DayBlocks} = 5 \mid \text{ILS})$ = 2/7 → (2+1)/(7+3) = 0.3
+		- $p(\text{NightB} = 3 \mid \text{ILS})$ = 2/7 → (2+1)/(7+3) = 0.3
+		- $p(\text{WorkB} = 4 \mid \text{ILS})$ = 3/7 → (3+1)/(7+3) = 0.4
+		- $p(\text{DayOFFB} = 4 \mid \text{ILS})$ = 2/7 → (2+1)/(7+2) = 0.3333333333
+		- $p(\text{ILS})$ = 7/12 = 0.5833333333
+		- $p(\text{ILS} \mid 13, 3, \text{YES}, 5, 3, 4, 4) \propto p(13, 3, \text{YES}, 5, 3, 4, 4 \mid \text{ILS}) \cdot p(ILS)$ = 0.1176470588 · 0.7777777778 · 0.2222222222 · 0.3 · 0.3 · 0.4 · 0.3333333333 · 0.5833333333 = 0.0001423384167 👈 likelier outcome
+	- class MC:
+		- $p(\text{Groups} = 13 \mid \text{MC})$ = 0/5 → (0+1)/(5+12) = 0.0588235294
+		- $p(\text{Shifts} = 3 \mid \text{MC})$ = 5/5 → (5+1)/(5+2) = 0.8571428571
+		- $p(\text{Seq2} = \text{YES} \mid \text{MC})$ = 2/5 → (2+1)/(5+2) = 0.4285714286
+		- $p(\text{DayBlocks} = 5 \mid \text{MC})$ = 1/5 → (1+1)/(5+3) = 0.25
+		- $p(\text{NightB} = 3 \mid \text{MC})$ = 2/5 → (2+1)/(5+3) = 0.375
+		- $p(\text{DayOFFB} = 4 \mid \text{MC})$ = 2/5 → (2+1)/(5+2) = 0.4285714286
+		- $p(\text{MC})$ = 5/12 = 0.4166666667
+		- $p(\text{MC} \mid 13, 3, \text{YES}, 5, 3, 4, 4) \propto p(13, 3, \text{YES}, 5, 3, 4, 4 \mid \text{MC}) \cdot p(MC)$ = 0.0588235294 · 0.8571428571 · 0.4285714286 · 0.25 · 0.375 · 0.125 · 0.4285714286 · 0.4166666667 = 0.0000452189804
+
+---
+
+**question**: Classify the missing samples using 1R
+
+| Groups | Shifts | Seq2 | DayBlocks | NightB | WorkB | DayOffB | Algorithm |     |
+| ------ | ------ | ---- | --------- | ------ | ----- | ------- | --------- | --- |
+| 9      | 3      | NO   | 6         | 3      | 4     | 3       | MC        |     |
+| 9      | 3      | NO   | 4         | 4      | 4     | 3       | MC        |     |
+| 17     | 3      | NO   | 6         | 4      | 4     | 4       | ILS       |     |
+| 13     | 3      | YES  | 5         | 3      | 5     | 4       | ILS       |     |
+| 11     | 3      | YES  | 5         | 3      | 4     | 4       | MC        |     |
+| 7      | 3      | YES  | 5         | 5      | 4     | 4       | MC        |     |
+| 29     | 3      | NO   | 6         | 4      | 4     | 3       | MC        |     |
+| 16     | 3      | NO   | 6         | 4      | 5     | 3       | ILS       |     |
+| 47     | 3      | NO   | 6         | 5      | 6     | 3       | ILS       |     |
+| 27     | 3      | NO   | 6         | 4      | 4     | 3       | ILS       |     |
+| 30     | 3      | NO   | 5         | 3      | 5     | 3       | ILS       |     |
+| 20     | 2      | NO   | 5         | 5      | 4     | 3       | ILS       |     |
+| 24     | 3      | NO   | 5         | 4      | 5     | 3       |           |     |
+| 13     | 3      | YES  | 5         | 3      | 4     | 4       |           |     |
+
+answer:
+
+- we need to identify the single attribute that can best predict the target
+- for each feature (dimension), calculate the number of correct predictions it makes on the training data
+
+attribute: Groups
+
+- unique values: {7, 9, 11, 13, 16, 17, 20, 24, 27, 29, 30, 47}
+- model:
+	- Groups = 9 (MC: 2, ILS: 0) → MC
+	- Groups = 11 (MC: 1, ILS: 0) → MC
+	- Groups = 13 (MC: 1, ILS: 1) → MC
+	- Groups = 7 (MC: 1, ILS: 0) → MC
+	- Groups = 29 (MC: 1, ILS: 0) → MC
+	- Groups = 17 (MC: 0, ILS: 1) → ILS
+	- Groups = 16 (MC: 0, ILS: 1) → ILS
+	- Groups = 47 (MC: 0, ILS: 1) → ILS
+	- Groups = 27 (MC: 0, ILS: 1) → ILS
+	- Groups = 30 (MC: 0, ILS: 1) → ILS
+	- Groups = 20 (MC: 0, ILS: 1) → ILS
+- evaluation:
+	- Predict 9 with MC (2 out of 2 correct)
+	- Predict 11 with MC (1 correct)
+	- Predict 13 with MC (1 correct)
+	- Predict 7 with MC (1 correct)
+	- Predict 29 with MC (1 correct)
+	- Predict 17 with ILS (1 correct)
+	- Predict 16 with ILS (1 correct)
+	- Predict 47 with ILS (1 correct)
+	- Predict 27 with ILS (1 correct)
+	- Predict 30 with ILS (1 correct)
+	- Predict 20 with ILS (1 correct)
+- accuracy: 12/12
+
+attribute: Seq2
+
+- unique values: {NO, YES}
+- model:
+	- Seq2 = NO (MC: 4, ILS: 5) → MC
+	- Seq2 = YES (MC: 2, ILS: 1) → MC
+- evaluation:
+	- Predict NO with MC (4 out of 9 correct)
+	- Predict YES with MC (2 out of 3 correct)
+- accuracy: 6/12
+
+attribute: DayBlocks
+
+- unique values: {4, 5, 6}
+- model:
+	- DayBlocks = 4 (MC: 1, ILS: 0) → MC
+	- DayBlocks = 5 (MC: 3, ILS: 2) → MC
+	- DayBlocks = 6 (MC: 2, ILS: 4) → ILS
+- evaluation:
+	- Predict 4 with MC (1 correct)
+	- Predict 5 with MC (3 out of 5 correct)
+	- Predict 6 with ILS (4 out of 6 correct)
+- accuracy: 8/12
+
+attribute: NightB
+
+- unique values: {3, 4, 5}
+- model:
+	- NightB = 3 (MC: 3, ILS: 1) → MC
+	- NightB = 4 (MC: 1, ILS: 4) → ILS
+	- NightB = 5 (MC: 1, ILS: 2) → ILS
+- evaluation:
+	- Predict 3 with MC (3 out of 4 correct)
+	- Predict 4 with ILS (4 out of 5 correct)
+	- Predict 5 with ILS (2 out of 3 correct)
+- accuracy: 9/12
+
+attribute: WorkB
+
+- unique values: {4, 5, 6}
+- model:
+	- WorkB = 4 (MC: 4, ILS: 3) → MC
+	- WorkB = 5 (MC: 1, ILS: 3) → ILS
+	- WorkB = 6 (MC: 0, ILS: 1) → ILS
+- evaluation:
+	- Predict 4 with MC (4 out of 7 correct)
+	- Predict 5 with ILS (3 out of 4 correct)
+	- Predict 6 with ILS (1 correct)
+- accuracy: 8/12
+
+attribute: DayOffB
+
+- Unique values: {3, 4}
+- model:
+	- DayOffB = 3 (MC: 4, ILS: 4) → MC
+	- DayOffB = 4 (MC: 2, ILS: 2) → MC
+- evaluation:
+	- Predict 3 with MC (4 out of 8 correct)
+	- Predict 4 with MC (2 out of 4 correct)
+- accuracy: 6/12
+
+selecting best feature:
+
+- the "Group" feature accuracy of 12/12
+- generated rule = `if (Groups = 9 or 11 or 13 or 7 or 29) then Algorithm = MC otherwise Algorithm = ILS
+
+classifying missing samples:
+
+- first test sample: Group = 24 → predicted label: ILS
+- second test sample: Group = 13 → predicted label: MC
+
+---
+
+**question**: Describe the difference between bagging and boosting. Describe one algorithm that makes use of bagging.
+
+answer:
+
+- both are ensemble methods where weak learners are combined to create a strong learner
+- bagging (bootstrap aggegating):
+	- parallel evaluation of independent models
+	- using random subsets of the training data
+	- constant model weights
+	- aggregating the predictions from all models to make a final prediction
+	- aims to decrease variance
+- boosting:
+	- sequential evaluation of models
+	- model-weights adjusted based on loss
+	- data-weights adjusted based on missclassifications - each model tries to improve previous missclassifications
+	- aims to decrease bias
+- bagging example: random forest
+	- i. train multiple classifiers – through bootstrap sampling
+	- ii. combine classifiers – through majority-voting of each classifier
+	- iii. evaluate combined classifier – out-of-bag elements for each tree as test-set
+
+---
+
+**question**: Describe random forests in detail + compare to similar algorithms (e.g. 1R and decision trees)
+
+answer:
+
+- random forest:
+	- i. train multiple classifiers – through bootstrap sampling
+	- ii. combine classifiers – through majority-voting of each classifier
+	- iii. evaluate combined classifier – out-of-bag elements for each tree as test-set
+- random forest compared to 1-rule and decision tree
+	- 1-rule decision trees are decision trees with a depth of 1
+	- a decision tree is just one weak lerner in the RF ensemble
+
+---
+
+**question**: difference naive bayesian network to normal (bayesian) network
+
+answer:
+
+- naive bayes is a simple special case of a bayesian network with strong assumptions
+- independence assumption:
+	- naive bayes assumes that all the features are conditionally independent between features (presence or absence of a particular feature does not depend on the presence or absence of any other feature) given the class variable.
+	- general bayesian network captures the conditional dependencies between variables.
+- network structure:
+	- naive bayes has a single root node
+
+---
+
+**question**: what can be used to create a Bayesian networks? compare it
+
+answer:
+
+- human experts
+- learning network structure through local search heuristics: for example hill climb search
+	- start with an initial network structure – this could be an empty network (no edges), a naive Bayes structure (all nodes connected to a single parent node), a randomly generated one, one based on prior knowledge, etc.
+	- choose a metric to evaluate networks
+	- until convergence to a local optimum:
+		- generate neighbors from the current network through local modifications like edge addition, deletion or reversal.
+		- score neighbors based on goodness-of-fit, log-probability
+
+---
+
+**question**: Propose a Bayesian Network, which you think will be appropriate for this domain (the network should not be a simple Naïve Bayes). Explain shortly why you selected exactly this network
+
+- Calculate some of the conditional probabilities in your network
+- Based on your network, classify the last data sample from the table above
+- Suppose that node Calories is instantiated. Which nodes of your network would be d-separated in this case?
+
+| #   | Calories | MeatType | Salad | MealTime | Healthy |
+| --- | -------- | -------- | ----- | -------- | ------- |
+| 1   | Many     | Cow      | No    | Evening  | No      |
+| 2   | Many     | Cow      | Yes   | Noon     | Yes     |
+| 3   | Many     | Chicken  | No    | Morning  | No      |
+| 4   | Few      | Fish     | Yes   | Evening  | Yes     |
+| 5   | Few      | Chicken  | Yes   | Evening  | Yes     |
+| 6   | Few      | Fish     | No    | Morning  | No      |
+|     | Many     | Fish     | Yes   | Evening  | ?       |
+
+answer:
+
+```mermaid
+graph TD;
+  Calories --> Healthy
+  MeatType --> Healthy
+  Salad --> Healthy
+  MealTime --> Healthy
+  MeatType --> Calories
+  Salad --> Calories
+```
+
+
+- all features determine whether a meal is healthy
+- the ingredients additionally also determine the calories
+
+d-seperation:
+
+- assuming that Calories is instantiated
+- MeatType → Calories ← Salad (converging, not d-seperated)
+- MeatType → Calories → Healthy (serial, d-seperated)
+- Salad → Calories → Healthy (serial, d-seperated)
+
+probabilities:
+
+- P(Calories=Many) = 3/6 = 0.5  
+- P(Calories=Few) = 3/6 = 0.5
+- P(MeatType=Fish) = 2/6 = 0.33  
+- P(MeatType=Chicken) = 2/6 = 0.33  
+- P(MeatType=Cow) = 2/6 = 0.33
+- P(Salad=Yes) = 3/6 = 0.5  
+- P(Salad=No) = 3/6 = 0.5
+- P(MealTime=Evening) = 3/6 = 0.5  
+- P(MealTime=Noon) = 1/6 = 0.17  
+- P(MealTime=Morning) = 2/6 = 0.33
+- P(Healthy=Yes) = 3/6 = 0.5
+- P(Healthy=No) = 3/6 = 0.5
+- P(Calories=Many|MeatType=Fish) = 1/2 = 0.5
+- P(Calories=Many|Salad=Yes) = 1/3 = 0.33
+- P(Healthy=Yes|Calories=Many) = 1/3 = 0.33  
+- P(Healthy=Yes|MeatType=Fish) = 1/2 = 0.5  
+- P(Healthy=Yes|Salad=Yes) = 2/3 = 0.67  
+- P(Healthy=Yes|MealTime=Evening) = 2/3 = 0.67
+
+labeling the last sample: P(X1, ..., Xn) = Πi P(Xi | Parents(Xi))
+
+- P(Healthy=Yes | Calories=Many, MeatType=Fish, Salad=Yes, MealTime=Evening) ∝ P(Calories=Many | MeatType=Fish, Salad=Yes) · P(MeatType=Fish) · P(Salad=Yes) · P(MealTime=Evening) · P(Healthy=Yes | Calories=Many, MeatType=Fish, Salad=Yes, MealTime=Evening)
+- P(Healthy=Yes) = P(MeatType=Fish) · P(Salad=Yes) · P(MealTime=Evening) · P(Calories=Many|MeatType=Fish,Salad=Yes) · P(Healthy=Yes|Calories=Many,MeatType=Fish,Salad=Yes,MealTime=Evening) = 0.33 · 0.5 · 0.5 · 0.5 · 0.67 = **0.028**
+- P(Healthy=No) = P(MeatType=Fish) · P(Salad=Yes) · P(MealTime=Evening) · P(Calories=Many|MeatType=Fish,Salad=Yes) · P(Healthy=No|Calories=Many,MeatType=Fish,Salad=Yes,MealTime=Evening) = 0.33 · 0.5 · 0.5 · 0.5 · 0.33 = **0.014**
+- conclusion: P(Healthy=Yes) > P(Healthy=No)
+
+---
+
+**question**: Compare SVM with perceptron what is common, what differs
+
+answer:
+
+- SVMs tend to have better generalization performance and can handle more complex datasets, but perceptrons are simpler and faster to train and use.
+- perceptron:
+	- decision boundary must be linear
+	- not guaranteed to find optimal solution
+	- iterative, faster to train
+	- sensitive to outliers
+	- can handle multiclass problems
+	- can be easily adapted for online learning
+- svm:
+	- decision boundary doesn't have to be linear
+	- guaranteed to find optimal solution, tries to maximize margin between classes
+	- slow inference with non-linear kernels
+	- less sensitive to outliers
+	- only special variants can handle multiclass problems
+
+**question**: Describe in detail the ideas and concepts of Support Vector Machines; describe all algorithm variations discussed in the lecture
+
+answer:
+
+- kernel trick = increase dimensionality of feature space, to make them linearly seperable by high-dimensional hyperplane
+- $K\in\mathbb{R}^{n\times n}$
+
+---
+
+**question**: What re the advantages and disadvantages of SVMs?
+
+answer:
+
+- SVMs are great  high-dimensional data and non-linear classification
+- but they can be computationally intensive, sensitive to parameter tuning, hard to interpret
+
+pros:
+
+- effective in high-dimensional spaces
+- memory efficient – only use subset of datasets (support vectors) at a time
+- versatile with different kernel functions
+- effective for non-linear classification using the kernel trick
+- good generalization performance and robustness to noise
+- can do both classification and regression
+
+cons:
+
+- computationally expensive – not suitable for very large datasets due to quadratic programming optimization and memory requirements
+- hard to interpret
+- sensitive to choice of of hyperparameters
+- less effective when target classes overlap
+- primarily designed for binary classification, though can be extended to multi-class problems
+- cannot handle missing values well
+
+---
+
+**question**: How do they differ from other classifiers using the basic principle of SVMs?
+
+answer:
+
+- correction: differences between SVMs and other classifiers
+- Margin maximization
+- Support vectors
+- Kernel trick
+- Convex optimization
+- Sparsity
+- Robustness to high dimensions
+- Deterministic
+- Focus on difficult points near decision boundary
+
+---
+
+**question**: Describe 3 metrics to evaluate classification algorithms and explain how these metrics relate to each other.
+
+answer:
+
+- accuracy
+	- $\frac{TP + TN}{TP + FP + TN + FN}$
+	- correctness of both positives and negatives
+- precision
+	- $\frac{TP}{TP + FP}$
+	- correctness of positives
+- specificity
+	- $\frac{TN}{TN + FN}$
+	- correctness of negatives
+- recall, sensitivity
+	- $\frac{TP}{TP + FN}$
+	- completeness
+- balanced accuracy
+	- $\frac{\frac{TP}{TP + FN} + \frac{TN}{TN + FP}}{2}$
+	- average of precision and specificity
+
+---
+
+**question**: Explain the importance of statistical significance tests.
+
+answer:
+
+- determining whether observed difference between two systems is by chance (like variations in data or randomness in algorithm)
+
 # 2022-01-28 – TODO
 
 **question**: Classification is a machine learning task where the target attribute is nominal
@@ -3263,9 +3390,12 @@ answer: False
 
 ---
 
-**question**: Demission trees can handle only binary classification problems
+**question**: Decision trees can handle only binary classification problems
 
-answer:
+answer: False
+
+- the tree can have multiple leaf nodes corresponding to different class labels
+- they can handle: binary classification, multi-class classification, regression problems
 
 ---
 
@@ -3291,31 +3421,55 @@ answer: True
 
 **question**: Macro-averaging for classifier evaluation first calculates accuracy/precision/recall/… per class, before averaging across classes
 
-answer: 
+answer: True
+
+- i. calculate the metric independently for each class
+- ii. take the (optionally weighted) average of those per-class metrics across all classes
 
 ---
 
 **question**: The paired t-test is used when testing for statistical significance of results obtained with holdout validation
 
-answer: 
+answer: True
+
+- paired t-tests are designed for comparing different model performances
+- we can't compare the same model on different folds
+- use-cases:
+	- comparing different models
+	- comparing the same model with different hyperparameters, data preprocessing techniques
+	- comparing different cross-validation strategies (ie. k-fold vs. leave-one-out) → helps considering data variability introduced by the different data folds
 
 ---
 
 **question**: The paired t-test is used when testing for statistical significance of results obtained with cross validation
 
-answer: 
+answer: True
+
+- paired t-tests are designed for comparing different model performances
+- we can't compare the same model on different folds
+- use-cases:
+	- comparing different models
+	- comparing the same model with different hyperparameters, data preprocessing techniques
+	- comparing different cross-validation strategies (ie. k-fold vs. leave-one-out) → helps considering data variability introduced by the different data folds
 
 ---
 
 **question**: In a dataset the entropy is lowest when all classes have the same amount of samples
 
-answer: 
+answer: False
+
+- $H(X) = - \sum_{i = 1}^n p(x_i) \cdot \log_{2}(p(x_i))$ = entropy
+- $p_i = k_i / N$ =  probability based on relative frequency
+- $k_i$ = category count
+- the total sample size may affect the precision of probability estimates, but does not directly factor into the entropy calculation itself
+- when all classes have an equal number of samples, this represents the maximum uncertainty or randomness in the dataset - you can't predict the class of a randomly selected sample with any confidence, because all classes are equally likely
+- as the distribution becomes more imbalanced (one class having more samples than the other), the entropy decreases - this is because you can predict the class of a random sample with more confidence
 
 ---
 
 **question**: In a dataset the entropy is highest when all classes have the same amount of samples
 
-answer: 
+answer: True
 
 - see above
 
@@ -3323,13 +3477,29 @@ answer:
 
 **question**: In AdaBoost, the weights are randomly initialised
 
-answer: 
+answer: False
+
+- all training samples are assigned equal weights
 
 ---
 
 **question**: Support Vector Machines always finds a more optimal decision boundary (hyperplane) than Perceptrons
 
-answer: 
+answer: True
+
+- SVMs generally find more optimal and robust decision boundaries than basic perceptrons, especially for complex or noisy datasets - but there are exceptions
+- linearly seperable data:
+	- SVMs
+		- find the optimal hyperplane that maximizes the margin between classes
+		- generalize better (especialy with a soft margin)
+		- less sensitive to outliers and noise in train-data
+		- the objective is a convex, quadratic function with guaranteed bounds on generalization error
+	- perceptrons
+		- just find any hyperplane that separates the classes
+		- trained by optimizing a loss function that isn't guaranteed to converge to a global optimum
+- non-linearly seperable data:
+	- perceptrons can't find a boundary
+	- SVMs do, by using the kernel trick
 
 ---
 
@@ -3570,81 +3740,6 @@ answer:
 
 answer: 
 
-# 2023-01-24 – TODO
-
-**question**: A decision tree can be converted into a rule set.
-
-answer: True
-
-- using the covering algorithm / prism algorithm
-
----
-
-**question**: k-armed bandits choose the next action based on the expected future reward.
-
-answer: 
-
----
-
-**question**: A bayesian network is a directed cyclic graph.
-
-answer: True
-
-- otherwise conditional dependencies between variables wouldn't make sense
-
----
-
-**question**: Which of these methods helps to prevent overfitting?
-
-answer: 
-
-- Regularization
-- Dropout
-- Batch Normalization
-- Cross Validation
-- …
-
----
-
-**question**: What can a validation set be used for?
-
-- Early stopping
-- Hyperparameter tunining
-- Signifcance Testing
-- …
-
-answer: 
-
----
-
-**question**: Which technique is similar to dropout in neural networks
-
-- Bagging
-- Boosting
-- …
-
-answer: 
-
----
-
-**question**: Calculation of output size of convolution.
-
-answer: 
-
-- $n\times n \circledast f\times f \Rightarrow \left\lfloor\frac{n+2p-f}{s}+1\right\rfloor\times\left\lfloor\frac{n+2p-f}{s}+1\right\rfloor$
-- where:
-	- $n$ = input
-	- $f$ = kernel filter
-	- $p$ = padding
-	- $s$ = stride
-	- num kernels
-
----
-
-**question**: Calculation of max pooling operation.
-
-answer: 
-
 # 2023-06-21 – TODO
 
 **question**: A recurrent Neural Network is well suited to process sequential input, if the size is not fixed
@@ -3661,7 +3756,14 @@ answer:
 
 **question**: The paired t-test is used when testing for statistical significance of results obtained with holdout validation
 
-answer: 
+answer: True
+
+- paired t-tests are designed for comparing different model performances
+- we can't compare the same model on different folds
+- use-cases:
+	- comparing different models
+	- comparing the same model with different hyperparameters, data preprocessing techniques
+	- comparing different cross-validation strategies (ie. k-fold vs. leave-one-out) → helps considering data variability introduced by the different data folds
 
 ---
 
@@ -3954,7 +4056,9 @@ answer:
 
 **question**: In AdaBoost, the wights are randomly initialized
 
-answer: 
+answer: False
+
+- all training samples are assigned equal weights
 
 ---
 
