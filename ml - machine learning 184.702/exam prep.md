@@ -931,911 +931,127 @@ answer (open question): actions taken at $t_3$​, $t_5$​, and $t_6$​ are no
 - see: https://stats.stackexchange.com/questions/316911/how-to-understand-k-armed-bandit-example-from-suttons-rl-book-chapter-2 
 - see: https://github.com/Sagarnandeshwar/Bandit_Algorithms
 
-# 2019-10-18
+# 2021-10-21
 
-**question**: Random forests heterogenous ensemble learner?
-
-answer: False
-
-- it's homogenous because the decision-tree is the only used model
-
----
-
-**question**: Perceptron with Softmax solves XOR-Problem
+**question:** Is ensamble boosting easily parallelizable
 
 answer: False
 
-- perceptron is a linear seperator - the xor function we want to fit is not linearly seperable
-- the softmax activation function just returns predicted probabilities for each output class
-
----
-
-**question**: D-Separation used in neighbourhood searches in a Bayes net
-
-answer: True
-
-- d-separation tells us whether two nodes are conditionally independent given the evidence
-- it can serve to reduce the search space, but it isn't necessary
-
----
-
-**question**: Paired t-tests used for folds verification in holdout method (train/test split)
-
-answer: True
-
-- note: the folds meant here are the train/test splits in the holdout method
-- paired t-tests are designed for comparing different model performances
-- we can't compare the same model on different folds
-- use-cases:
-	- comparing different models
-	- comparing the same model with different hyperparameters, data preprocessing techniques
-	- comparing different cross-validation strategies (ie. k-fold vs. leave-one-out) → helps considering data variability introduced by the different data folds
-
----
-
-**question**: Is information gain a method for unsupervised feature selection?
-
-answer: False
-
-- information gain is a supervised method because we're measuring can predict the target variable with the input features
-
----
-
-**question**: Is Bayesian optimization used for construction Bayesian networks?
-
-answer: False
-
-- i assume that what's meant here is bayesian optimization BO as a type of SMBO
-- BO optimizes hyperparameters, not network structures
-
----
-
-**question**: SVM: Does the SOM (?) method/algorithm guarantee convergence to globally optimal solution?
-
-answer: False
-
-- correction: does the sequential minimal optimization SMO algorithm guarantuee that SVMs converge to the globally optimal solution?
-- SMO = designed to solve the quadratic programming problem in SVMs
-	- iterative algorithm
-	- updates lagrange multipliers to minimize the quadratic programming (QP) problem
-	- in some scenarios with non-strict convexity, it doesn't find the global optimum.
-	- see: https://en.wikipedia.org/wiki/Sequential_minimal_optimization
-
----
-
-**question**: Explain Rice's framework for algorithm selection. Can it be used for Bayesian optimization of hyperparameters?
-
-answer: True
-
-- correction: can rice's model of the algorithm selection problem also be used for the sequential model-based bayesian-optimization (smbo) algorithm, specifically bayesian optimization?
-- yes – we can use rice's framework to find the optimal model for optimizing hyperparameters
-- rice's model:
-	- for a given problem instance $x \in P$ with features $f(x) \in F$ find the selection mapping $S(f(x))$ into algorithm space, such that the selected algorithm $a \in A$ maximizes the performance mapping $y(a(x)) \in Y$
-	- i. feature extraction:
-		- $x \in P \mapsto f(x) \in F$
-		- $x$ = dataset from problem-space $P$
-		- $f$ = extracted features from feature-space $F$
-		- we assume that we can access a subset $P'$ of the universe $P$
-		- the dataset $x$ contains features $f(x)$, but we also have to add labels $t(x)$
-	- ii. algorithm selection:
-		- $S: f(x) \mapsto \alpha \in A$
-		- $\alpha$ = algorithms that can solve the problem in algorithm-space $A$
-	- iii. performance measurement:
-		- $\alpha(x) \mapsto y \in Y$
-		- $y$ = performance metrics in performance-metric space
-		- next select another algorithm and repeat
-- adapted to bayesian optimization:
-	- problem space $X$ = all possible black-box functions to be optimized
-	- algorithm apace $A$ = the different selection functions used to select the next point to evaluate.
-	- performance measure $P$ = the performance of the SMBO algorithm, typically measured by how quickly it finds a near-optimal solution.
-
-# 2019-06-27
-
-**question**: Perceptron with Softmax solves XOR-Problem
-
-answer: False
-
-- linear decision boundary - doesn't converge for xor function
-
----
-
-**question**: Lazy learners good for big data
-
-answer: False
-
-- lazy learner = no training, computation at prediction-step $O(Nd)$
-- this makes it inefficient on large datasets (even with a variety of optimizations to reduce the runtime)
-- but they're useful for online learning systems where you don’t want to retrain your model on each new datapoint
-
----
-
-**question**: D-Separation used in neighbourhood searches in a Bayes net
-
-answer: True
-
-- d-separation tells us whether two nodes are conditionally independent given the evidence
-- it can serve to reduce the search space, but it isn't necessary
-
----
-
-**question**: Naive Bayes, Lapace correction must be used
-
-answer: True
-
-- zero probability when a feature is not present in the training data
-- the laplace correction ensures that the multiplication of probabilities do not become zero
-
----
-
-**question**: Paired T-tests used at folds verification?
-
-answer: True
-
-- note: the folds meant here are the train/test splits in the holdout method
-- paired t-tests are designed for comparing different model performances
-- we can't compare the same model on different folds
-- use-cases:
-	- comparing different models
-	- comparing the same model with different hyperparameters, data preprocessing techniques
-	- comparing different cross-validation strategies (ie. k-fold vs. leave-one-out) → helps considering data variability introduced by the different data folds
-
----
-
-**question**: Decision Tree: $k$ features $\gg$ $N$ samples
-
-- a) If all features are binary: how many leaves can you have? how deep can the tree be?
-- b) If all features are continuous: how many leaves can you have? how deep can the tree be?
-
-answer:
-
-- the maximum number of leaves in the tree is reached when every possible combination of feature values is represented by a leaf.
-- the depth of the tree is determined by the maximum number of splits from the root to a leaf.
-- a) binary features only
-	- max leaves = $\min(2^k, N)$
-		- on each split the number of branches can double
-		- but the actual number of leaves can be at most $N$ as there can't be more leaves than samples
-	- max depth = $\log_2(2^k) = k$
-		- on each split we halve the feature space
-	- but since there cant be more leaves $k \gg N$:
-- b) continuous features only
-	- max leaves = $N$
-		- each split can potentially infinitely divide the dataset, but practically, the maximum number of splits will be constrained by the number of samples
-	- max depth = $N$
-		- In the worst-case scenario, the tree could also split multiple times on the same feature due to the continuous values
-		- but the tree can't have more levels than there are samples to split
-
----
-
-**question**: Describe gradient descent in linear regression
-
-answer:
-
-- i. initialize weights: $w_0, w_1$
-- ii. define the loss function (ie. sum of squares rss)
-- iii. until convergence of error, for each training example $(x, y)$ subtract the gradients of the loss function in regard to each weight $\frac{\partial L(w_0,w_1)}{\partial w_0}$, $\frac{\partial L(w_0,w_1)}{\partial w_1}$ multiplied by the learning rate $\alpha$ from the weights.
-
----
-
-**question**: Describe optimization of hyper parameters with Bayes optimization
-
-answer:
-
-- loss function for hyperparams:
-	- $f(\boldsymbol{\lambda})=\frac{1}{k}\sum_{i=1}^{k}{L} (A_{\boldsymbol{\lambda}}, {D}_{\mathrm{train}}^{(i)}, {D}_{\mathrm{valid}}^{(i)})$
-	- where:
-		- $A_\lambda$ = algorithm configured with hyperparam $\lambda$
-		- $\mathbf \Lambda = \Lambda_1 \times \dots \times \Lambda_n$ = hyperparam-space from different domains
-- sequential model-based bayesian-optimization (smbo):
-	- probabilistic regression model with loss function
-	- uses information from past trials to inform the next set of hyperparameters to explore
-	- useful for optimizing computationally expensive models
-	- objective function = function that takes in hyperparameters and outputs a score to be minimized or maximized.
-	- surrogate model = model that approximates the objective function based on past observations, so it's faster than direct measurement.
-	- selection function = criteria used to evaluate which hyperparameters to choose next from the surrogate model. balances exploration and exploitation.
-	- history = collection of (score, hyperparameter) pairs used to update the surrogate model.
-	- variants:
-		- bayesian optimization (BO): uses a gaussian process (GP) as the surrogate model
-		- tree parzen estimator (TPE): multiple separate models
-	- steps:
-		- i. initial surrogate model – fit a surrogate model to the initial set of observations.
-		- ii. selection – use the selection function to determine the next set of hyperparameters to evaluate.
-		- iii. evaluation – evaluate the objective function at the selected hyperparameters.
-		- iv. update – update the surrogate model with the new observations.
-		- repeat until convergence
-- see: https://towardsdatascience.com/bayesian-optimization-concept-explained-in-layman-terms-1d2bcdeaf12f
-
-# 2018-01-26
-
-**question**: when k-nn is used with 1-n encoding, min-max scaling is needed to perform euclidian distance
-
-answer: True
-
-- it's not required but recommended
-- definitions:
-	- euclidian distance: $d(\mathbf d, \mathbf p) = \sqrt{\sum_{i=1}^n (q_i - p_i)^2}$
-	- 1-hot-encoding = zero array with 1 bit flag for category
-	- min-max scaling = mapping to new range, typically 0;1
-- reasoning:
-	- after encoding the categorical features, you should normalize or scale all features.
-	- normalizing or scaling all features ensures that they contribute equally to the distance calculations and won't skew the results by their scale or representation.
-
----
-
-**question**: backpropagation is a technique used with perceptrons (single layer)
-
-answer: False
-
-- you can't backprop if you don't have any previous layeres to apply the gradient chain-rule on
-
----
-
-**question**: pruning is needed for underfitting
-
-answer: False
-
-- pruning improves generalizability
-
----
-
-**question**: k-nn is recommended for large datasets
-
-answer: False
-
-- lazy learner = no training, computation at prediction-step $O(Nd)$
-- this makes it inefficient on large datasets (even with a variety of optimizations to reduce the runtime)
-
----
-
-**question**: paired t-tests are used when dealing with train/test splits
-
-answer: True
-
-- note: this question is referring to the holdout method
-- paired t-tests are designed for comparing different model performances
-- we can't compare the same model on different folds
-- use-cases:
-	- comparing different models
-	- comparing the same model with different hyperparameters, data preprocessing techniques
-	- comparing different cross-validation strategies (ie. k-fold vs. leave-one-out) → helps considering data variability introduced by the different data folds
-
----
-
-**question**: for k-nn categorical features should be normalized
-
-answer: True
-
-- correction: categorical features should be Z-score normalized after one-hot-encoding if you want to compute a distance in models such as knn.
-- categorical features should be one-hot encoded but not normalized post encoding.
-- normalizing them will destroy their meaning, as they are binary flags.
-
----
-
-**question**: difference between z-score and min-max, when to use which on which feature types
-
-answer: 
-
-- Z-score normalization:
-	- transforms the data to have a mean of 0 and a standard deviation of 1.
-	- keeps relative scale (range)
-	- doesn't keep the distribution
-	- can deal with positive and negative numbers.
-	- use-cases:
-		- algorithms that assume gaussian distributed data, like PCA or LD
-- min-max normalization:
-	- maps the data to a different range, typically 0;1.
-	- doesn't keep relative scale (range)
-	- keeps distribution
-	- outliers can skew the range.
-	- use-cases:
-		- algorithms that need a certain range like neural networksn
-- see: https://stats.stackexchange.com/questions/547446/z-score-vs-min-max-normalization
-
----
-
-**question**: difference naive bayesian network to normal network
-
-answer:
-
-- difference naive bayesian network to neural network
-- a bayesian network is a type of graph:
-	- directed acyclic graph
-	- nodes = represents a random variable
-	- edges = probabilistic dependencies
-	- each node has a conditional-probability-table with incoming edges as columns (ancestors being true/false) and their corresponding output probabilities
-- neural networks are a type of graph:
-	- doesn't have to be acyclic - nodes can have self-referencing edges (but during backprop these self-references are unrolled)
-	- can approximate functions by composing different parts of the activation function in each layer
-	- nodes = represent neurons, have an activation function based on all incoming edges
-	- edges = show order of function compositions
-
----
-
-**question**: difference gradient descent and normal equation. which would you use on a lin. reg. example
-
-answer: 
-
-- (based on the slides) the analytical-solution to linear regression is slower than the iterative-solution through gradient descent
-- but in practice it depends on the problem size and for smaller datasets the analytical solution could be faster
-- gradient descent pros:
-	- versatility – can be also used for non-linear models
-	- simplicity – with iterative method there is no need for matrix conversion
-	- efficiency – for larger datasets (the analytical method is faster for smaller datasets)
-- gradient descent cons:
-	- sensitivity to learning rate – it may either converge too slowly or overshoot
-	- susceptibility to local minima – it's not guaranteed to converge to a global minimum / find the optimal solution
-	- noisy updates – might have lots of redundant computations and oscilate
-	- sensitivity to feature scaling – features with different scales influence performance
-
----
-
-**question**: name some model based attributes in meta learning
-
-answer: 
-
-- model-based attributes (meta-features) are measures obtained from a fitted model
-- they don't incorporate or rely on any performance metrics
-- examples:
-	- model architecture (ie. convolutional, recurrent, or fully connected)
-	- initialization strategy
-	- regularization techniques
-	- optimization algorithm (ie. stochastic gradient descent SGD, Adam)
-	- learning rate scheduling (how learning rate is updated)
-	- loss function
-
-# 2017-06-14
-
-**question**: Entropy max when all elements from same class?
-
-answer (boolean): False
-
-- the entropy is minimized when all elements belong to the same class, and it is maximized when the elements are evenly distributed among all classes.
-- proof:
-	- $H(X) = - \sum_{i = 1}^n p(x_i) \cdot \log_{2}(p(x_i))$
-	- where:
-		- $p(x_i)$ = probability of a dataset having the label $i$
-	- assuming there is just one label, then: $\forall i: p(x_i) = 1$ and $n=1$
-	- therefore: $H(X) = - \sum_{i = 1}^1 1 \cdot \log_{2}(1) = -1 \cdot 0 = 0$
-
----
-
-**question**: RF heterogeneous ensemble learner?
-
-answer (boolean): False
-
-- it's homogenous because the decision-tree is the only used model
-
----
-
-**question**: PCA supervised feature selection method?
-
-answer (boolean): False
-
-- principal component analysis is unsupervised
-
----
-
-**question**: McNemar's Test is used for significance testing?
-
-answer (boolean): Yes
-
-- it helps determine if an event or intervention caused a significant shift in some characteristic within the same group of people, by comparing how many people changed their characteristic in one direction versus the other direction.
-
----
-
-**question**: Z-scaling vs. min/max scaling.
-
-answer:
-
-- min/max-scaling (normalization)
-	- transforms data to a specified range, typically between 0 and 1
-	- $X_{\text{normalized}} = \frac{X - X_{min}}{X_{max} - X_{min}}$
-- Z-scaling (standardization)
-	- transforms data to have a mean of 0 and a std dev of 1
-	- $X_{\text{standard}} = \frac{X - \mu}{\sigma}$
-- see: https://kharshit.github.io/blog/2018/03/23/scaling-vs-normalization
-
----
-
-**question**: Draw an Bayes Net with 5-7 Nodes. Include serial, diverging, and converging connection. D-separation?
-
-answer:
-
-- transmission of evidence:
-	- d-seperated / blocked = we can't transmit evidence (conditional independence)
-	- d-connected / connected = we can transmit evidence
-	- the rules below must apply to all possible paths between A, C
-	- there must be at least one intermediate node
-	- in the serial case we can differentiate between forward-serial and backward-serial
-	- in the converging case, if B or any of its descendants are observed we can "explain away"
-- connection types:
-	- serial: A → B → C
-		- A → C transmission blocked if we know B
-	- diverging: A ← B → C
-		- A ←→ C transmission blocked if we know B
-	- converging: A → B ← C
-		- A ←→ C transmission blocked if we don't know B or any of it's descendants
-
----
-
-**question**: Gradient Descent pseudo code.
-
-answer:
-
-```
-Initialize weights (w) randomly
-Define a learning rate (α)
-Define a maximum number of iterations (max_iter)
-
-Initialize weights θ randomly
-
-for iter = 1 to max_iter:
-    # Forward Propagation
-    Compute the predicted output (y_pred) using the current weights
-
-    # Compute the cost function
-    Compute the cost (J) using the predicted output and true output
-
-    # Backward Propagation
-    Compute the gradients of the cost function with respect to weights (dJ/dw)
-
-    # Update the weights
-    w = w - α * (dJ/dw)
-
-return w
-```
-
-# 2017-03-17
-
-**question**: Random Forests. What makes a RF random?
-
-answer:
-
-- ensemble learning method
-- de-correlated decision-trees used as models
-- steps:
-	- i. random sampling of data
-		- bagging or bootstrap aggregating
-		- some samples may appear multiple times in a given subset while others may not appear at all
-	- ii. random feature selection
-		- random subset of features chosen to decide split
-	- iii. prediction, evaluation
-		- averaging the predictions (regression) or taking a majority vote (classification)
-		- evaluated with unused samples (out-of-bag elements) for each tree as test-set
-
----
-
-**question**: What is Feature Selection? Name methods of Feature Selection
-
-answer:
-
-- dimensionality reduction = select subset of features to reduce redundance, noise
-- supervised types:
-	- a) wrapper
-		- = evaluate models trained with feature subsets – search through all possible subsets.
-		- forward selection – greedy search, starting with no features and progressively adding features
-		- backward elimination – greedy search, starting with all features and progressively removing features
-	- b) filter
-		- = use statistical metrics directly on features – efficient, independent of the learning algorithm, less prone to overfitting.
-		- information gain
-		- chi-square test
-		- mutual information
-		- f-score
-		- fisher's score
-	- c) embedded
-		- = evaluate features during training
-		- lasso and ridge regulation
-		- decision tree
-- unsupervised types:
-	- frequency count
-	- principal component analysis – pca, project to lower dimension through single value decomposition
-	- autoencoder – generating vector representations in hidden layer
-- see: https://www.kdnuggets.com/2023/06/advanced-feature-selection-techniques-machine-learning-models.html
-- see: https://neptune.ai/blog/feature-selection-methods
-
----
-
-**question**: What is Deep Learning? How does it compare to "traditional" Machine Learning?
-
-answer:
-
-- deep learning = modular modules (usually of multi-layer-perceptrons), that you stack on top of eachother
-- differences:
-	- feature extraction layers
-	- less domain knowledge required
-	- contextualized representations, lower interpretability
-	- needs large amounts of data, memory, compute for double descent effect
-	- models optimized for hardware accelerators (ie. transformers)
-
----
-
-**question**: What is HMM? What are the three problems of HMM?
-
-answer:
-
-- (not part of lecture anymore)
-- HMM = hidden markov model
-- a statistical model with hidden states and observable events.
-- 3 problems of interest:
-	- evaluation problem – given an observation sequence, determine how likely that sequence is
-	- decoding problem – given an observation sequence, determine the most likely hidden states
-	- learning problem – observation sequences + hidden states, estimate their model parameters
-- see: http://jedlik.phy.bme.hu/~gerjanos/HMM/node6.html
-
----
-
-**question**: What is a Bayesian Network? Explain Inference, Variable Elimination, d-separation
-
-answer:
-
-- bayesian network:
-	- directed acyclic graph
-	- nodes = represents a random variable
-	- edges = probabilistic dependencies
-	- each node has a conditional-probability-table with incoming edges as columns (ancestors being true/false) and their corresponding output probabilities
-- inference:
-	- causal inference (causes → effects)
-	- given our knowledge of which nodes are true/false (evidence $E$) get probability distribution for variables were interested in (query variables $Q$)
-	- $\text{argmax}_q ~~ {p}({Q}_1{=}{q}_1,{Q}_2{=}{q}_2, \ldots \mid {E}_1{=}{e}_1,{E}_2{=}{e}_2,\ldots)$
-- variable elimination:
-	- similar to caching in dynamic programming
-	- factor out independent variables (because they're constant) from nested sums
-	- in the converging case, if B or any of its descendants are observed we can "explain away"
-- connection types:
-	- serial: A → B → C
-		- A → C transmission blocked if we know B
-	- diverging: A ← B → C
-		- A ←→ C transmission blocked if we know B
-	- converging: A → B ← C
-		- A ←→ C transmission blocked if we don't know B or any of it's descendants
-
-# 2020-06-25
-
-**question:** MAE is less sensitive to outliers
-
-answer: True
-
-- mean absolute error MAE = ${\sum_i |p_i - a_i|} / n$
-- Mean Absolute Error MAE is generally less sensitive to outliers compared to metrics that measure the squared error
-
----
-
-**question:** Freezing layers means that their weights are only updated during fine-tuning.
-
-answer: False
-
-- the opposite is true
-- you freeze layers (mostly in earlier layers) to preserve learned features while fine-tuning others
-
----
-
-**question:** Overfit is more likely on a smaller test set
-
-answer: False
-
-- the train step determines whether a model overfits or not, not the prediction / evaluation step
-- but a smaller test set can make it more difficult to reliably detect overfitting, 
-
----
-
-**question:** Boosting is easily parallelizeable
-
-answer: False
-
-- bagging (bootstrap aggegating) = parallel evaluation of independent models
+- bagging (bootstrap aggregating) = parallel evaluation of independent models
 - boosting = sequential evaluation of models
 
 ---
 
-**question:** Paired t-tests used for folds verification in holdout method (train/test split)
+**question:** Usually state of the art AutoML systems use grid search to find best hyperparameters
+
+answer: False
+
+- the most common technique is bayesian optimization
+
+---
+
+**question:** In AdaBoost, the weights are uniformly initialised
 
 answer: True
 
-- it can be used to compare the performance of two algorithms across k-fold cross-validation or holdout validation
+- they're initialized uniformly both for models and data
 
 ---
 
-**question:** Random Forests use Bootstrapping
-
-answer: True
-
-- it's uses bootstrap sampling
-
----
-
-**question**: The following is a very simple classification problem with two classes (y = +1, y = -1), and a total of three training samples:
-
-- $(x_1, y_1)$ = (1, -1)
-- $(x_2, y_2)$ = (3, +1)
-- $(x_3, y_3)$ = (5, -1)
-
-A Decision Stump classifier, basically a 1-level decision tree, chooses a constant value c on the x-axis and classifies all points where x > c as one class and other points where x ≤ c as the other class. Now consider we want to train a boosting ensemble using Decision stumps on this dataset.
-
-- a) What is the initial weight that is assigned to each data point?
-- b) Where would you draw the decision boundary for the first decision stump, and indicate which class would be predicted each side of the decision boundary. Argue your decision.
-- b) Which points will have their weights increased after the first iteration.
+**question:** Describe a local search algorithm for Bayesian Network creation.
 
 answer:
 
-- a) initial weights:
-	- the question asks about the initial weight assignment and weight updates after each iteration, which is a characteristic of the AdaBoost algorithm. – Gradient Boosting, on the other hand, does not explicitly maintain weights over the training data.
-	- in AdaBoost, the initial weight assigned to each data point is typically set to be equal.
-	- with three data points, the initial weight for each point would be $\frac{1}{3}$.
-- b) optimal decision boundary in decision tree:
-	- we choose the "absolute error rate" $\text{err}$ as a metric to find the best split.
-	- we only consider boundaries between adjacent data points.
-	- results:
-		- boundary in \[1;3\[
-			- left: -1, right: +1 ⟶ $\text{err}$ = 1
-			- left: +1, right: -1 ⟶ $\text{err}$ = 2
-		- boundary in \[3;5\[
-			- left: -1, right: +1 ⟶ $\text{err}$ = 2
-			- left: +1, right: -1 ⟶ $\text{err}$ = 1
-	- it's a tie, so we take the first boundary by setting it to $c$ = (1+3)/2 = 2.5
-		- if $x_i$ ≤ 2.5 then we predict $y_i$ to be -1
-		- if $x_i$ > 2.5 then we predict $y_i$ to be +1
-- c) weight increase:
-	- the weights of the misclassified points are increased
-	- in this case we're missclassifying the datapoint (5, -1) and have to increase it by some factor of choice
-
----
-
-**question:** Name 3 methods for hyperparameter optimization
-
-answer:
-
-- we can express hyperparameter optimization as a search-problem
 - search heuristics:
-	- grid search = test equi-distanced values on discrete scale
-	- random search = sample from a distribution, can outperform grid-search
-	- sequential model-based bayesian-optimization (smbo): probabilistic regression model with loss function
-
----
-
-**question:** Name two methods to compute coefficients in linear regression
-
-answer:
-
-- Normal Equation Method
-- Gradient Descent Method
-
-# 2020-09-09
-
-**question:** Softmax as activation function is used to scale output to a range of 0..1
-
-answer: True
-
-- softmax activation scales outputs to probabilities between 0 and 1
-
----
-
-**question:** Kernels can only be used with SVMs
-
-answer: False
-
-- some other use cases:
-	- Kernel Perceptron
-	- Kernel k-means
-	- Kernel Principal Component Analysis (Kernel PCA)
-
----
-
-**question:** Boosting is easy to parallize
-
-answer: False
-
-- bagging (bootstrap aggegating) = parallel evaluation of independent models
-- boosting = sequential evaluation of models
-
----
-
-**question:** A good machine learning model has low bias and low variance.
-
-answer: True
-
-- this would be ideal, but because of the bias-variance tradeoff this isn't possible in practice
-
----
-
-**question:** Freezing layers means that their weights are only updated during fine-tuning
-
-answer:
-
-- the opposite is true
-- you freeze layers (mostly in earlier layers) to preserve learned features while fine-tuning others
-
----
-
-**question:** Leave-p-out cross validation is computationally expensive on large data sets.
-
-answer: True
-
-- it takes binom(n,p) iterations
-- number of iterations grows combinatorially with the dataset size
-- each iteration involves training a model on n-p samples and testing it on p samples
-
----
-
-**question:** There exists no Bayesian network where all instatiated nodes are not d-seperated after one node is instatiated.
-
-answer:
-
-- there can be networks where not all instantiated nodes are d-separated after one other node is instantiated
-- counter argument:
-	- network: A → B → C
-	- by instantiating B the other two nodes become d-connected (not d-separated).
-
----
-
-**question:** Lasso can not be used for feature selection.
-
-answer:
-
-- lasso and ridge regulation are embedded feature selection algorithms
-- embedded (supervised) feature selection = evaluate features during training
-
----
-
-**question:** F1 used with regression
-
-answer: False
-
-- f1 score: $2 \cdot \frac{\text{Prec} \cdot \text{Rec}}{\text{Prec} + \text{Rec}}$
-- precision and recall are computed for classification
-
----
-
-**question:** Naive Bayes - probability density function used when only nominal attributes used
-
-answer: False
-
-- naive-bayes uses probability density functions (often Gaussian) for regression, not classification
-
----
-
-**question:** Convolutions and max-pooling layers are important for Recurrent Neural Networks
-
-answer: False
-
-- they're components of convolutional neural networks
-- RNNs use recurrent connections to process sequences of data, maintaining an internal state or "memory"
-
----
-
-**question:** Describe a local-search based algorithm for creating bayesian networks.
-
-answer:
-
-- i. generate inital network
+	- hill climbing = choose best in neighborhood, until local optimum is reached
+	- tabu search = hill-climbing but some some neighbors are hidden
+	- simulated annealing = based on cooldown parameters
+	- genetic algorithm = initialize population, mutate, reproduce, evaluatie population.
+- hill climbing / local search heuristic:
 	- start with an initial network structure – this could be an empty network (no edges), a naive Bayes structure (all nodes connected to a single parent node), a randomly generated one, one based on prior knowledge, etc.
-- ii. compute probabilities
-	- count occurences in all truth tables
-- iii. evaluate network
-	- $D$ data, $M$ model
-	- goodness-of-fit:
-		- $p(D|M)=\Pi_jP(s^j|M)=\Pi_j\Pi_i p(N_i=v_i^j\mid Parents(N_i),M)$
-	- log-probability:
-		- $\log (p(D|M)) - \alpha =\sum_j\sum_i p(N_i=v_i^j \mid Parents(N_i),M)$
-		- $\alpha$ - hyperparam to penalize network complexity
-- iv. search for related networks, repeat
-	- generate neighbors from the current network through local modifications like edge addition, deletion or reversal.
-
-search algorithms:
-
-- hill climbing = choose best in neighborhood, until local optimum is reached
-- tabu search = hill-climbing but some some neighbors are hidden
-- simulated annealing = based on cooldown parameters
-- genetic algorithm = initialize population, mutate, reproduce, evaluatie population.
+	- choose a metric to evaluate networks
+	- until convergence to a local optimum:
+		- generate neighbors from the current network through local modifications like edge addition, deletion or reversal.
+		- score neighbors.
 
 ---
 
-**question:** What are the implications of the no free lunch theorem?
+**question:** Given are 1000 observations, from which you want to train a decision tree. As pre-pruning the following parameters are set: The minimum number of observations required to split a node is set to 200. The minimum leaf size (number of obs.) to 300.
 
 answer:
 
-- premise: any two optimization algorithms are equivalent when averaged across all possible problems
-- implications: no algorithm can outperform others across all possible situations; effectiveness is context-dependent
-	- there is no universally superior algorithm
-	- we need problem-specific algorithms
-	- all learning algorithms must make some assumptions (inductive bias) about the problem space to perform well
-	- there is no "free lunch" - good performance on some problems comes at the cost of worse performance on others
-	- general-purpose optimization or learning algorithms without any domain-specific knowledge are fundamentally limited
+- all leaves have at least 300 samples
+- all internal-nodes have at least 200 samples
+- depth = 2
+- on each split / iteration from root-node we can only deduct 200 samples at most, otherwise the split is invalid – so the formula is $\lfloor \log_2(1000/200) \rfloor$ = 2
+
+```mermaid
+graph TD
+    A[Root: 1000] --> B[Node: 700]
+    A --> C[Leaf: 300]
+    B --> D[Leaf: 400]
+    B --> E[Leaf: 300]
+```
 
 ---
 
-**question:** Explain polynomial regression. What are the advantages/disadvantages?
+**question:** Goal and settings of classification. To what tasks does it relate and from which it differs in machine learning ?
 
 answer:
 
-- $y = \sum_{i=0}^n w_i x^i + \varepsilon$
-- $\mathbf y = \mathbf X \mathbf \beta + \mathbf \varepsilon$
-- pros:
-	- can capture non-linear relationships, more complex decision boundaries than linear regression
-	- relatively simple, same concepts as linear regression
-	- fast to compute, useful for data exploration
-- cons:
-	- prone to overfitting with high degrees
-	- very sensitive to outliers
-	- requires more datapoints to fit well
-
-# 2021-01-25
-
-**question:** SVM with gradient descent always finds the optimal hyperplane
-
-answer: False
-
-- gradient descent is an iterative algorithm and doesn't guarantee finding the global optimum
+- goal:
+	- learn a model that can accurately predict the class label for new, unseen inputs - by mapping input features to discrete class labels
+	- use labeled training data (supervised ml)
+- settings:
+	- binary classification (2 classes) and multi-class classification (3+ classes)
+- related to / different from:
+	- unlike regression, classification predicts discrete categories rather than continuous values
+	- unlike clustering, classification uses labeled data and predefined classes
+	- unlike anomaly detection, classification assigns all inputs to known classes rather than identifying outliers
 
 ---
 
-**question:** Gradient descent always finds the global optimum
+**question:** What is the Chain rule and how is it used in Bayesian Networks?
 
-answer: False
+answer:
 
-- gradient descent is an iterative algorithm and doesn't guarantee finding the global optimum
-
----
-
-**question:** A RNN can be unrolled into an infinite fully connected network
-
-answer: False
-
-- the unrolled RNN isn't infinite
-- the depth of the unrolled RNN is equal to the input size
+- this question isn't referring to the gradient chain-rule but the probability-theory chain-rule
+- $P(X_1, X_2, \ldots, X_n) = \prod P(X_i \mid \text{Parents}(X_i))$
+- it allows us to express the joint probability distribution of multiple variables as smaller conditional probability distributions
 
 ---
 
-**question:** Pooling and convolution are operations related to RNNs
+**question:** What approaches can be chosen for linear regression? Describe them.
 
-answer: False
+answer:
 
-- they're components of convolutional neural networks
-- RNNs use recurrent connections to process sequences of data, maintaining an internal state or "memory"
-
----
-
-**question:** Learning the structure of a bayesian network is less complex than learning the probabilities
-
-answer: False
-
-- learning the structure is considered to be the harder task
-- structure learning is NP-hard and can be expressed as a search problem
-- once the structure is known learning the probabilities is pretty straightforward with some train data
-- see: https://proceedings.neurips.cc/paper/2021/hash/040a99f23e8960763e680041c601acab-Abstract.html
+- gradient descent
+- normal equation method (not faster than gradient descent): ${\mathbf w = (\mathbf X^\intercal ~ \mathbf X)^{-1} ~ \mathbf X^\intercal ~ \mathbf y}$
+- regularized methods (ridge and lasso)
+- …
 
 ---
 
-**question:** SVMs with a linear kernel are especially good for high-dimensional data
+**question:** What methods are there for combatting overfitting in Neural Networks?
 
-answer: True
+answer:
 
-- the "kernel trick" used by nonlinear kernels to implicitly map data to higher dimensions may not provide much additional benefit when the original data is already high-dimensional
-- linear kernels are simple and efficient
-- kernel examples:
-	- linear: $K(x, y) = x^\intercal y$
-	- polynomial: $K(x, y) = (x^\intercal y + c)^d$
-	- radial basis function rbg: $K(x, y) = exp(-γ \cdot ||x - y||^2)$
-	- sigmoid: $K(x, y) = tanh(\alpha \cdot x^\intercal y + c)$
-
----
-
-**question:** Random forest is a homogeneous ensemble method
-
-answer: True
-
-- ensemble of decision trees
+- increasing train-data (data augmentation)
+- regularization (L1/L2 regularization)
+- dropout
+- early stopping
+- reducing model complexity (removing unnecessary layers, parameters, connections, units)
+- cross validation
+- ensemble methods
+- batch normalization (normalize layer activations for better generalization)
+- weight constraints (clipping weights)
+- transfer learning (knowledge distillation)
+- hyperparam tuning
+- reducing batch size
 
 ---
 
-**question:** If you use use several weak learners $h$ with boosting to get a classifier $H$ and all $h$ are linear classifiers, then $H$ is also a linear classifier
-
-answer: True
-
-- if all the weak learners $h$ are linear classifiers, then the final boosted classifier $H$ is essentially a weighted sum of these linear classifiers
-- a weighted sum of linear functions is still a linear function
-
----
-
-**question:** Explain difference between L2 and L1 regularization
+**question:** What is the difference between Lasso and Ridge regression?
 
 answer:
 
@@ -1849,11 +1065,23 @@ answer:
 	- computes sum of squared values as penalty
 	- better for dealing with correlated features, that you want to retain but with smaller coefficients
 	- tends to shrink all coefficients towards zero but not exactly to zero
-	- differentiable everywhere (even at zero)
+	- differentiable everywhere
 
 ---
 
-**question:** Explain implications of no free lunch theorem
+**question:** Describe at least three methods for hyperparameter optimization.
+
+answer:
+
+- we can express hyperparameter optimization as a search-problem
+- search heuristics:
+	- grid search = test equi-distanced values on discrete scale
+	- random search = sample from a distribution, can outperform grid-search
+	- sequential model-based bayesian-optimization (smbo): probabilistic regression model with loss function
+
+---
+
+**question:** What are the implications of the No Free Lunch theorem?
 
 answer:
 
@@ -1867,46 +1095,40 @@ answer:
 
 ---
 
-**question:** Depth of decision tree with 1000 samples and max 300 samples per leave
+**question:** XOR dataset, which of perceptron, decision tree, SVM 1-NN can achieve 0 error rate?
 
 answer:
 
-```mermaid
-graph TD
-    A[Root: 1000] --> B[Node: 700]
-    A --> C[Leaf: 300]
-    B --> D[Leaf: 400]
-    B --> E[Leaf: 300]
-    D --> F[Leaf: 100]
-    D --> G[Leaf: 300]
-```
-
-- total samples = 1000
-- max samples per leaf = 300
-- max leafs = 1000/300 = 10/3
-	- if we want to achieve the max depth in a binary tree we just expand one child while cutting the other child off with a leaf.
-	- since each leaf can at most classify 300 of 1000 samples, this means that we can at most have 1000/300 leafs.
-	- as in: 1000 → 700 → 400 → 100
-	- this means we have 3 splits
-- max depth = $\lceil \log_2(\frac{10}{3}) \rceil \text{+} 1= \lceil 1.7369 \rceil  \text{+} 1 = 2  \text{+} 1 = 3$
-	- for the max depth we have to add 1 because the numbers are not perfectly divisible / the splits are not perfectly balanced
+- perceptron
+	- can not achieve 0 error rate
+	- the xor function we want to fit is not linearly seperable
+- decision tree
+	- can achieve 0 error rate
+	- needs 2 splits to fit
+- svm
+	- can achieve 0 error rate (only with non linear kernel)
+	- by mapping the data to a higher dimensional space where it becomes linearly separable
+- 1-nearest neighbor
+	- can achieve 0 error rate
+	- memorizes all training points, to classify each point based on its nearest neighbor
 
 ---
 
-**question:** Explain polynomial regression, name advantages and disadvantages compared to linear regression
+**question:** Describe in detail the random forest algorithm.
 
 answer:
 
-- $y = \sum_{i=0}^n w_i x^i + \varepsilon$
-- $\mathbf y = \mathbf X \mathbf \beta + \mathbf \varepsilon$
-- pros:
-	- can capture non-linear relationships, more complex decision boundaries than linear regression
-	- relatively simple, same concepts as linear regression
-	- fast to compute, useful for data exploration
-- cons:
-	- prone to overfitting with high degrees
-	- very sensitive to outliers
-	- requires more datapoints to fit well
+- i. bootstrap sampling
+	- create bootstrap samples by randomly selecting N samples with replacement from the original dataset
+- ii. building decision trees
+	- for each sample:
+		- select random subset of features
+		- find the best split among features
+		- split and repeat for children (full depth without pruning)
+- iii. making predictions
+	- classification: majority voting
+	- regression: average
+- iv. out-f-bag error estimates
 
 # 2021-06-24
 
@@ -2638,127 +1860,85 @@ graph TD
     B --> E[Leaf: 300]
 ```
 
-# 2021-10-21
+# 2021-01-25
 
-**question:** Is ensamble boosting easily parallelizable
-
-answer: False
-
-- bagging (bootstrap aggregating) = parallel evaluation of independent models
-- boosting = sequential evaluation of models
-
----
-
-**question:** Usually state of the art AutoML systems use grid search to find best hyperparameters
+**question:** SVM with gradient descent always finds the optimal hyperplane
 
 answer: False
 
-- the most common technique is bayesian optimization
+- gradient descent is an iterative algorithm and doesn't guarantee finding the global optimum
 
 ---
 
-**question:** In AdaBoost, the weights are uniformly initialised
+**question:** Gradient descent always finds the global optimum
+
+answer: False
+
+- gradient descent is an iterative algorithm and doesn't guarantee finding the global optimum
+
+---
+
+**question:** A RNN can be unrolled into an infinite fully connected network
+
+answer: False
+
+- the unrolled RNN isn't infinite
+- the depth of the unrolled RNN is equal to the input size
+
+---
+
+**question:** Pooling and convolution are operations related to RNNs
+
+answer: False
+
+- they're components of convolutional neural networks
+- RNNs use recurrent connections to process sequences of data, maintaining an internal state or "memory"
+
+---
+
+**question:** Learning the structure of a bayesian network is less complex than learning the probabilities
+
+answer: False
+
+- learning the structure is considered to be the harder task
+- structure learning is NP-hard and can be expressed as a search problem
+- once the structure is known learning the probabilities is pretty straightforward with some train data
+- see: https://proceedings.neurips.cc/paper/2021/hash/040a99f23e8960763e680041c601acab-Abstract.html
+
+---
+
+**question:** SVMs with a linear kernel are especially good for high-dimensional data
 
 answer: True
 
-- they're initialized uniformly both for models and data
+- the "kernel trick" used by nonlinear kernels to implicitly map data to higher dimensions may not provide much additional benefit when the original data is already high-dimensional
+- linear kernels are simple and efficient
+- kernel examples:
+	- linear: $K(x, y) = x^\intercal y$
+	- polynomial: $K(x, y) = (x^\intercal y + c)^d$
+	- radial basis function rbg: $K(x, y) = exp(-γ \cdot ||x - y||^2)$
+	- sigmoid: $K(x, y) = tanh(\alpha \cdot x^\intercal y + c)$
 
 ---
 
-**question:** Describe a local search algorithm for Bayesian Network creation.
+**question:** Random forest is a homogeneous ensemble method
 
-answer:
+answer: True
 
-- search heuristics:
-	- hill climbing = choose best in neighborhood, until local optimum is reached
-	- tabu search = hill-climbing but some some neighbors are hidden
-	- simulated annealing = based on cooldown parameters
-	- genetic algorithm = initialize population, mutate, reproduce, evaluatie population.
-- hill climbing / local search heuristic:
-	- start with an initial network structure – this could be an empty network (no edges), a naive Bayes structure (all nodes connected to a single parent node), a randomly generated one, one based on prior knowledge, etc.
-	- choose a metric to evaluate networks
-	- until convergence to a local optimum:
-		- generate neighbors from the current network through local modifications like edge addition, deletion or reversal.
-		- score neighbors.
+- ensemble of decision trees
 
 ---
 
-**question:** Given are 1000 observations, from which you want to train a decision tree. As pre-pruning the following parameters are set: The minimum number of observations required to split a node is set to 200. The minimum leaf size (number of obs.) to 300.
+**question:** If you use use several weak learners $h$ with boosting to get a classifier $H$ and all $h$ are linear classifiers, then $H$ is also a linear classifier
 
-answer:
+answer: True
 
-- all leaves have at least 300 samples
-- all internal-nodes have at least 200 samples
-- depth = 2
-- on each split / iteration from root-node we can only deduct 200 samples at most, otherwise the split is invalid – so the formula is $\lfloor \log_2(1000/200) \rfloor$ = 2
-
-```mermaid
-graph TD
-    A[Root: 1000] --> B[Node: 700]
-    A --> C[Leaf: 300]
-    B --> D[Leaf: 400]
-    B --> E[Leaf: 300]
-```
+- if all the weak learners $h$ are linear classifiers, then the final boosted classifier $H$ is essentially a weighted sum of these linear classifiers
+- a weighted sum of linear functions is still a linear function
 
 ---
 
-**question:** Goal and settings of classification. To what tasks does it relate and from which it differs in machine learning ?
-
-answer:
-
-- goal:
-	- learn a model that can accurately predict the class label for new, unseen inputs - by mapping input features to discrete class labels
-	- use labeled training data (supervised ml)
-- settings:
-	- binary classification (2 classes) and multi-class classification (3+ classes)
-- related to / different from:
-	- unlike regression, classification predicts discrete categories rather than continuous values
-	- unlike clustering, classification uses labeled data and predefined classes
-	- unlike anomaly detection, classification assigns all inputs to known classes rather than identifying outliers
-
----
-
-**question:** What is the Chain rule and how is it used in Bayesian Networks?
-
-answer:
-
-- this question isn't referring to the gradient chain-rule but the probability-theory chain-rule
-- $P(X_1, X_2, \ldots, X_n) = \prod P(X_i \mid \text{Parents}(X_i))$
-- it allows us to express the joint probability distribution of multiple variables as smaller conditional probability distributions
-
----
-
-**question:** What approaches can be chosen for linear regression? Describe them.
-
-answer:
-
-- gradient descent
-- normal equation method (not faster than gradient descent): ${\mathbf w = (\mathbf X^\intercal ~ \mathbf X)^{-1} ~ \mathbf X^\intercal ~ \mathbf y}$
-- regularized methods (ridge and lasso)
-- …
-
----
-
-**question:** What methods are there for combatting overfitting in Neural Networks?
-
-answer:
-
-- increasing train-data (data augmentation)
-- regularization (L1/L2 regularization)
-- dropout
-- early stopping
-- reducing model complexity (removing unnecessary layers, parameters, connections, units)
-- cross validation
-- ensemble methods
-- batch normalization (normalize layer activations for better generalization)
-- weight constraints (clipping weights)
-- transfer learning (knowledge distillation)
-- hyperparam tuning
-- reducing batch size
-
----
-
-**question:** What is the difference between Lasso and Ridge regression?
+**question:** Explain difference between L2 and L1 regularization
 
 answer:
 
@@ -2772,23 +1952,11 @@ answer:
 	- computes sum of squared values as penalty
 	- better for dealing with correlated features, that you want to retain but with smaller coefficients
 	- tends to shrink all coefficients towards zero but not exactly to zero
-	- differentiable everywhere
+	- differentiable everywhere (even at zero)
 
 ---
 
-**question:** Describe at least three methods for hyperparameter optimization.
-
-answer:
-
-- we can express hyperparameter optimization as a search-problem
-- search heuristics:
-	- grid search = test equi-distanced values on discrete scale
-	- random search = sample from a distribution, can outperform grid-search
-	- sequential model-based bayesian-optimization (smbo): probabilistic regression model with loss function
-
----
-
-**question:** What are the implications of the No Free Lunch theorem?
+**question:** Explain implications of no free lunch theorem
 
 answer:
 
@@ -2802,40 +1970,872 @@ answer:
 
 ---
 
-**question:** XOR dataset, which of perceptron, decision tree, SVM 1-NN can achieve 0 error rate?
+**question:** Depth of decision tree with 1000 samples and max 300 samples per leave
 
 answer:
 
-- perceptron
-	- can not achieve 0 error rate
-	- the xor function we want to fit is not linearly seperable
-- decision tree
-	- can achieve 0 error rate
-	- needs 2 splits to fit
-- svm
-	- can achieve 0 error rate (only with non linear kernel)
-	- by mapping the data to a higher dimensional space where it becomes linearly separable
-- 1-nearest neighbor
-	- can achieve 0 error rate
-	- memorizes all training points, to classify each point based on its nearest neighbor
+```mermaid
+graph TD
+    A[Root: 1000] --> B[Node: 700]
+    A --> C[Leaf: 300]
+    B --> D[Leaf: 400]
+    B --> E[Leaf: 300]
+    D --> F[Leaf: 100]
+    D --> G[Leaf: 300]
+```
+
+- total samples = 1000
+- max samples per leaf = 300
+- max leafs = 1000/300 = 10/3
+	- if we want to achieve the max depth in a binary tree we just expand one child while cutting the other child off with a leaf.
+	- since each leaf can at most classify 300 of 1000 samples, this means that we can at most have 1000/300 leafs.
+	- as in: 1000 → 700 → 400 → 100
+	- this means we have 3 splits
+- max depth = $\lceil \log_2(\frac{10}{3}) \rceil \text{+} 1= \lceil 1.7369 \rceil  \text{+} 1 = 2  \text{+} 1 = 3$
+	- for the max depth we have to add 1 because the numbers are not perfectly divisible / the splits are not perfectly balanced
 
 ---
 
-**question:** Describe in detail the random forest algorithm.
+**question:** Explain polynomial regression, name advantages and disadvantages compared to linear regression
 
 answer:
 
-- i. bootstrap sampling
-	- create bootstrap samples by randomly selecting N samples with replacement from the original dataset
-- ii. building decision trees
-	- for each sample:
-		- select random subset of features
-		- find the best split among features
-		- split and repeat for children (full depth without pruning)
-- iii. making predictions
-	- classification: majority voting
-	- regression: average
-- iv. out-f-bag error estimates
+- $y = \sum_{i=0}^n w_i x^i + \varepsilon$
+- $\mathbf y = \mathbf X \mathbf \beta + \mathbf \varepsilon$
+- pros:
+	- can capture non-linear relationships, more complex decision boundaries than linear regression
+	- relatively simple, same concepts as linear regression
+	- fast to compute, useful for data exploration
+- cons:
+	- prone to overfitting with high degrees
+	- very sensitive to outliers
+	- requires more datapoints to fit well
+
+# 2020-09-09
+
+**question:** Softmax as activation function is used to scale output to a range of 0..1
+
+answer: True
+
+- softmax activation scales outputs to probabilities between 0 and 1
+
+---
+
+**question:** Kernels can only be used with SVMs
+
+answer: False
+
+- some other use cases:
+	- Kernel Perceptron
+	- Kernel k-means
+	- Kernel Principal Component Analysis (Kernel PCA)
+
+---
+
+**question:** Boosting is easy to parallize
+
+answer: False
+
+- bagging (bootstrap aggegating) = parallel evaluation of independent models
+- boosting = sequential evaluation of models
+
+---
+
+**question:** A good machine learning model has low bias and low variance.
+
+answer: True
+
+- this would be ideal, but because of the bias-variance tradeoff this isn't possible in practice
+
+---
+
+**question:** Freezing layers means that their weights are only updated during fine-tuning
+
+answer:
+
+- the opposite is true
+- you freeze layers (mostly in earlier layers) to preserve learned features while fine-tuning others
+
+---
+
+**question:** Leave-p-out cross validation is computationally expensive on large data sets.
+
+answer: True
+
+- it takes binom(n,p) iterations
+- number of iterations grows combinatorially with the dataset size
+- each iteration involves training a model on n-p samples and testing it on p samples
+
+---
+
+**question:** There exists no Bayesian network where all instatiated nodes are not d-seperated after one node is instatiated.
+
+answer:
+
+- there can be networks where not all instantiated nodes are d-separated after one other node is instantiated
+- counter argument:
+	- network: A → B → C
+	- by instantiating B the other two nodes become d-connected (not d-separated).
+
+---
+
+**question:** Lasso can not be used for feature selection.
+
+answer:
+
+- lasso and ridge regulation are embedded feature selection algorithms
+- embedded (supervised) feature selection = evaluate features during training
+
+---
+
+**question:** F1 used with regression
+
+answer: False
+
+- f1 score: $2 \cdot \frac{\text{Prec} \cdot \text{Rec}}{\text{Prec} + \text{Rec}}$
+- precision and recall are computed for classification
+
+---
+
+**question:** Naive Bayes - probability density function used when only nominal attributes used
+
+answer: False
+
+- naive-bayes uses probability density functions (often Gaussian) for regression, not classification
+
+---
+
+**question:** Convolutions and max-pooling layers are important for Recurrent Neural Networks
+
+answer: False
+
+- they're components of convolutional neural networks
+- RNNs use recurrent connections to process sequences of data, maintaining an internal state or "memory"
+
+---
+
+**question:** Describe a local-search based algorithm for creating bayesian networks.
+
+answer:
+
+- i. generate inital network
+	- start with an initial network structure – this could be an empty network (no edges), a naive Bayes structure (all nodes connected to a single parent node), a randomly generated one, one based on prior knowledge, etc.
+- ii. compute probabilities
+	- count occurences in all truth tables
+- iii. evaluate network
+	- $D$ data, $M$ model
+	- goodness-of-fit:
+		- $p(D|M)=\Pi_jP(s^j|M)=\Pi_j\Pi_i p(N_i=v_i^j\mid Parents(N_i),M)$
+	- log-probability:
+		- $\log (p(D|M)) - \alpha =\sum_j\sum_i p(N_i=v_i^j \mid Parents(N_i),M)$
+		- $\alpha$ - hyperparam to penalize network complexity
+- iv. search for related networks, repeat
+	- generate neighbors from the current network through local modifications like edge addition, deletion or reversal.
+
+search algorithms:
+
+- hill climbing = choose best in neighborhood, until local optimum is reached
+- tabu search = hill-climbing but some some neighbors are hidden
+- simulated annealing = based on cooldown parameters
+- genetic algorithm = initialize population, mutate, reproduce, evaluatie population.
+
+---
+
+**question:** What are the implications of the no free lunch theorem?
+
+answer:
+
+- premise: any two optimization algorithms are equivalent when averaged across all possible problems
+- implications: no algorithm can outperform others across all possible situations; effectiveness is context-dependent
+	- there is no universally superior algorithm
+	- we need problem-specific algorithms
+	- all learning algorithms must make some assumptions (inductive bias) about the problem space to perform well
+	- there is no "free lunch" - good performance on some problems comes at the cost of worse performance on others
+	- general-purpose optimization or learning algorithms without any domain-specific knowledge are fundamentally limited
+
+---
+
+**question:** Explain polynomial regression. What are the advantages/disadvantages?
+
+answer:
+
+- $y = \sum_{i=0}^n w_i x^i + \varepsilon$
+- $\mathbf y = \mathbf X \mathbf \beta + \mathbf \varepsilon$
+- pros:
+	- can capture non-linear relationships, more complex decision boundaries than linear regression
+	- relatively simple, same concepts as linear regression
+	- fast to compute, useful for data exploration
+- cons:
+	- prone to overfitting with high degrees
+	- very sensitive to outliers
+	- requires more datapoints to fit well
+
+# 2020-06-25
+
+**question:** MAE is less sensitive to outliers
+
+answer: True
+
+- mean absolute error MAE = ${\sum_i |p_i - a_i|} / n$
+- Mean Absolute Error MAE is generally less sensitive to outliers compared to metrics that measure the squared error
+
+---
+
+**question:** Freezing layers means that their weights are only updated during fine-tuning.
+
+answer: False
+
+- the opposite is true
+- you freeze layers (mostly in earlier layers) to preserve learned features while fine-tuning others
+
+---
+
+**question:** Overfit is more likely on a smaller test set
+
+answer: False
+
+- the train step determines whether a model overfits or not, not the prediction / evaluation step
+- but a smaller test set can make it more difficult to reliably detect overfitting, 
+
+---
+
+**question:** Boosting is easily parallelizeable
+
+answer: False
+
+- bagging (bootstrap aggegating) = parallel evaluation of independent models
+- boosting = sequential evaluation of models
+
+---
+
+**question:** Paired t-tests used for folds verification in holdout method (train/test split)
+
+answer: True
+
+- it can be used to compare the performance of two algorithms across k-fold cross-validation or holdout validation
+
+---
+
+**question:** Random Forests use Bootstrapping
+
+answer: True
+
+- it's uses bootstrap sampling
+
+---
+
+**question**: The following is a very simple classification problem with two classes (y = +1, y = -1), and a total of three training samples:
+
+- $(x_1, y_1)$ = (1, -1)
+- $(x_2, y_2)$ = (3, +1)
+- $(x_3, y_3)$ = (5, -1)
+
+A Decision Stump classifier, basically a 1-level decision tree, chooses a constant value c on the x-axis and classifies all points where x > c as one class and other points where x ≤ c as the other class. Now consider we want to train a boosting ensemble using Decision stumps on this dataset.
+
+- a) What is the initial weight that is assigned to each data point?
+- b) Where would you draw the decision boundary for the first decision stump, and indicate which class would be predicted each side of the decision boundary. Argue your decision.
+- b) Which points will have their weights increased after the first iteration.
+
+answer:
+
+- a) initial weights:
+	- the question asks about the initial weight assignment and weight updates after each iteration, which is a characteristic of the AdaBoost algorithm. – Gradient Boosting, on the other hand, does not explicitly maintain weights over the training data.
+	- in AdaBoost, the initial weight assigned to each data point is typically set to be equal.
+	- with three data points, the initial weight for each point would be $\frac{1}{3}$.
+- b) optimal decision boundary in decision tree:
+	- we choose the "absolute error rate" $\text{err}$ as a metric to find the best split.
+	- we only consider boundaries between adjacent data points.
+	- results:
+		- boundary in \[1;3\[
+			- left: -1, right: +1 ⟶ $\text{err}$ = 1
+			- left: +1, right: -1 ⟶ $\text{err}$ = 2
+		- boundary in \[3;5\[
+			- left: -1, right: +1 ⟶ $\text{err}$ = 2
+			- left: +1, right: -1 ⟶ $\text{err}$ = 1
+	- it's a tie, so we take the first boundary by setting it to $c$ = (1+3)/2 = 2.5
+		- if $x_i$ ≤ 2.5 then we predict $y_i$ to be -1
+		- if $x_i$ > 2.5 then we predict $y_i$ to be +1
+- c) weight increase:
+	- the weights of the misclassified points are increased
+	- in this case we're missclassifying the datapoint (5, -1) and have to increase it by some factor of choice
+
+---
+
+**question:** Name 3 methods for hyperparameter optimization
+
+answer:
+
+- we can express hyperparameter optimization as a search-problem
+- search heuristics:
+	- grid search = test equi-distanced values on discrete scale
+	- random search = sample from a distribution, can outperform grid-search
+	- sequential model-based bayesian-optimization (smbo): probabilistic regression model with loss function
+
+---
+
+**question:** Name two methods to compute coefficients in linear regression
+
+answer:
+
+- Normal Equation Method
+- Gradient Descent Method
+
+# 2019-10-18
+
+**question**: Random forests heterogenous ensemble learner?
+
+answer: False
+
+- it's homogenous because the decision-tree is the only used model
+
+---
+
+**question**: Perceptron with Softmax solves XOR-Problem
+
+answer: False
+
+- perceptron is a linear seperator - the xor function we want to fit is not linearly seperable
+- the softmax activation function just returns predicted probabilities for each output class
+
+---
+
+**question**: D-Separation used in neighbourhood searches in a Bayes net
+
+answer: True
+
+- d-separation tells us whether two nodes are conditionally independent given the evidence
+- it can serve to reduce the search space, but it isn't necessary
+
+---
+
+**question**: Paired t-tests used for folds verification in holdout method (train/test split)
+
+answer: True
+
+- note: the folds meant here are the train/test splits in the holdout method
+- paired t-tests are designed for comparing different model performances
+- we can't compare the same model on different folds
+- use-cases:
+	- comparing different models
+	- comparing the same model with different hyperparameters, data preprocessing techniques
+	- comparing different cross-validation strategies (ie. k-fold vs. leave-one-out) → helps considering data variability introduced by the different data folds
+
+---
+
+**question**: Is information gain a method for unsupervised feature selection?
+
+answer: False
+
+- information gain is a supervised method because we're measuring can predict the target variable with the input features
+
+---
+
+**question**: Is Bayesian optimization used for construction Bayesian networks?
+
+answer: False
+
+- i assume that what's meant here is bayesian optimization BO as a type of SMBO
+- BO optimizes hyperparameters, not network structures
+
+---
+
+**question**: SVM: Does the SOM (?) method/algorithm guarantee convergence to globally optimal solution?
+
+answer: False
+
+- correction: does the sequential minimal optimization SMO algorithm guarantuee that SVMs converge to the globally optimal solution?
+- SMO = designed to solve the quadratic programming problem in SVMs
+	- iterative algorithm
+	- updates lagrange multipliers to minimize the quadratic programming (QP) problem
+	- in some scenarios with non-strict convexity, it doesn't find the global optimum.
+	- see: https://en.wikipedia.org/wiki/Sequential_minimal_optimization
+
+---
+
+**question**: Explain Rice's framework for algorithm selection. Can it be used for Bayesian optimization of hyperparameters?
+
+answer: True
+
+- correction: can rice's model of the algorithm selection problem also be used for the sequential model-based bayesian-optimization (smbo) algorithm, specifically bayesian optimization?
+- yes – we can use rice's framework to find the optimal model for optimizing hyperparameters
+- rice's model:
+	- for a given problem instance $x \in P$ with features $f(x) \in F$ find the selection mapping $S(f(x))$ into algorithm space, such that the selected algorithm $a \in A$ maximizes the performance mapping $y(a(x)) \in Y$
+	- i. feature extraction:
+		- $x \in P \mapsto f(x) \in F$
+		- $x$ = dataset from problem-space $P$
+		- $f$ = extracted features from feature-space $F$
+		- we assume that we can access a subset $P'$ of the universe $P$
+		- the dataset $x$ contains features $f(x)$, but we also have to add labels $t(x)$
+	- ii. algorithm selection:
+		- $S: f(x) \mapsto \alpha \in A$
+		- $\alpha$ = algorithms that can solve the problem in algorithm-space $A$
+	- iii. performance measurement:
+		- $\alpha(x) \mapsto y \in Y$
+		- $y$ = performance metrics in performance-metric space
+		- next select another algorithm and repeat
+- adapted to bayesian optimization:
+	- problem space $X$ = all possible black-box functions to be optimized
+	- algorithm apace $A$ = the different selection functions used to select the next point to evaluate.
+	- performance measure $P$ = the performance of the SMBO algorithm, typically measured by how quickly it finds a near-optimal solution.
+
+# 2019-06-27
+
+**question**: Perceptron with Softmax solves XOR-Problem
+
+answer: False
+
+- linear decision boundary - doesn't converge for xor function
+
+---
+
+**question**: Lazy learners good for big data
+
+answer: False
+
+- lazy learner = no training, computation at prediction-step $O(Nd)$
+- this makes it inefficient on large datasets (even with a variety of optimizations to reduce the runtime)
+- but they're useful for online learning systems where you don’t want to retrain your model on each new datapoint
+
+---
+
+**question**: D-Separation used in neighbourhood searches in a Bayes net
+
+answer: True
+
+- d-separation tells us whether two nodes are conditionally independent given the evidence
+- it can serve to reduce the search space, but it isn't necessary
+
+---
+
+**question**: Naive Bayes, Lapace correction must be used
+
+answer: True
+
+- zero probability when a feature is not present in the training data
+- the laplace correction ensures that the multiplication of probabilities do not become zero
+
+---
+
+**question**: Paired T-tests used at folds verification?
+
+answer: True
+
+- note: the folds meant here are the train/test splits in the holdout method
+- paired t-tests are designed for comparing different model performances
+- we can't compare the same model on different folds
+- use-cases:
+	- comparing different models
+	- comparing the same model with different hyperparameters, data preprocessing techniques
+	- comparing different cross-validation strategies (ie. k-fold vs. leave-one-out) → helps considering data variability introduced by the different data folds
+
+---
+
+**question**: Decision Tree: $k$ features $\gg$ $N$ samples
+
+- a) If all features are binary: how many leaves can you have? how deep can the tree be?
+- b) If all features are continuous: how many leaves can you have? how deep can the tree be?
+
+answer:
+
+- the maximum number of leaves in the tree is reached when every possible combination of feature values is represented by a leaf.
+- the depth of the tree is determined by the maximum number of splits from the root to a leaf.
+- a) binary features only
+	- max leaves = $\min(2^k, N)$
+		- on each split the number of branches can double
+		- but the actual number of leaves can be at most $N$ as there can't be more leaves than samples
+	- max depth = $\log_2(2^k) = k$
+		- on each split we halve the feature space
+	- but since there cant be more leaves $k \gg N$:
+- b) continuous features only
+	- max leaves = $N$
+		- each split can potentially infinitely divide the dataset, but practically, the maximum number of splits will be constrained by the number of samples
+	- max depth = $N$
+		- In the worst-case scenario, the tree could also split multiple times on the same feature due to the continuous values
+		- but the tree can't have more levels than there are samples to split
+
+---
+
+**question**: Describe gradient descent in linear regression
+
+answer:
+
+- i. initialize weights: $w_0, w_1$
+- ii. define the loss function (ie. sum of squares rss)
+- iii. until convergence of error, for each training example $(x, y)$ subtract the gradients of the loss function in regard to each weight $\frac{\partial L(w_0,w_1)}{\partial w_0}$, $\frac{\partial L(w_0,w_1)}{\partial w_1}$ multiplied by the learning rate $\alpha$ from the weights.
+
+---
+
+**question**: Describe optimization of hyper parameters with Bayes optimization
+
+answer:
+
+- loss function for hyperparams:
+	- $f(\boldsymbol{\lambda})=\frac{1}{k}\sum_{i=1}^{k}{L} (A_{\boldsymbol{\lambda}}, {D}_{\mathrm{train}}^{(i)}, {D}_{\mathrm{valid}}^{(i)})$
+	- where:
+		- $A_\lambda$ = algorithm configured with hyperparam $\lambda$
+		- $\mathbf \Lambda = \Lambda_1 \times \dots \times \Lambda_n$ = hyperparam-space from different domains
+- sequential model-based bayesian-optimization (smbo):
+	- probabilistic regression model with loss function
+	- uses information from past trials to inform the next set of hyperparameters to explore
+	- useful for optimizing computationally expensive models
+	- objective function = function that takes in hyperparameters and outputs a score to be minimized or maximized.
+	- surrogate model = model that approximates the objective function based on past observations, so it's faster than direct measurement.
+	- selection function = criteria used to evaluate which hyperparameters to choose next from the surrogate model. balances exploration and exploitation.
+	- history = collection of (score, hyperparameter) pairs used to update the surrogate model.
+	- variants:
+		- bayesian optimization (BO): uses a gaussian process (GP) as the surrogate model
+		- tree parzen estimator (TPE): multiple separate models
+	- steps:
+		- i. initial surrogate model – fit a surrogate model to the initial set of observations.
+		- ii. selection – use the selection function to determine the next set of hyperparameters to evaluate.
+		- iii. evaluation – evaluate the objective function at the selected hyperparameters.
+		- iv. update – update the surrogate model with the new observations.
+		- repeat until convergence
+- see: https://towardsdatascience.com/bayesian-optimization-concept-explained-in-layman-terms-1d2bcdeaf12f
+
+# 2018-01-26
+
+**question**: when k-nn is used with 1-n encoding, min-max scaling is needed to perform euclidian distance
+
+answer: True
+
+- it's not required but recommended
+- definitions:
+	- euclidian distance: $d(\mathbf d, \mathbf p) = \sqrt{\sum_{i=1}^n (q_i - p_i)^2}$
+	- 1-hot-encoding = zero array with 1 bit flag for category
+	- min-max scaling = mapping to new range, typically 0;1
+- reasoning:
+	- after encoding the categorical features, you should normalize or scale all features.
+	- normalizing or scaling all features ensures that they contribute equally to the distance calculations and won't skew the results by their scale or representation.
+
+---
+
+**question**: backpropagation is a technique used with perceptrons (single layer)
+
+answer: False
+
+- you can't backprop if you don't have any previous layeres to apply the gradient chain-rule on
+
+---
+
+**question**: pruning is needed for underfitting
+
+answer: False
+
+- pruning improves generalizability
+
+---
+
+**question**: k-nn is recommended for large datasets
+
+answer: False
+
+- lazy learner = no training, computation at prediction-step $O(Nd)$
+- this makes it inefficient on large datasets (even with a variety of optimizations to reduce the runtime)
+
+---
+
+**question**: paired t-tests are used when dealing with train/test splits
+
+answer: True
+
+- note: this question is referring to the holdout method
+- paired t-tests are designed for comparing different model performances
+- we can't compare the same model on different folds
+- use-cases:
+	- comparing different models
+	- comparing the same model with different hyperparameters, data preprocessing techniques
+	- comparing different cross-validation strategies (ie. k-fold vs. leave-one-out) → helps considering data variability introduced by the different data folds
+
+---
+
+**question**: for k-nn categorical features should be normalized
+
+answer: True
+
+- correction: categorical features should be Z-score normalized after one-hot-encoding if you want to compute a distance in models such as knn.
+- categorical features should be one-hot encoded but not normalized post encoding.
+- normalizing them will destroy their meaning, as they are binary flags.
+
+---
+
+**question**: difference between z-score and min-max, when to use which on which feature types
+
+answer: 
+
+- Z-score normalization:
+	- transforms the data to have a mean of 0 and a standard deviation of 1.
+	- keeps relative scale (range)
+	- doesn't keep the distribution
+	- can deal with positive and negative numbers.
+	- use-cases:
+		- algorithms that assume gaussian distributed data, like PCA or LD
+- min-max normalization:
+	- maps the data to a different range, typically 0;1.
+	- doesn't keep relative scale (range)
+	- keeps distribution
+	- outliers can skew the range.
+	- use-cases:
+		- algorithms that need a certain range like neural networksn
+- see: https://stats.stackexchange.com/questions/547446/z-score-vs-min-max-normalization
+
+---
+
+**question**: difference naive bayesian network to normal network
+
+answer:
+
+- difference naive bayesian network to neural network
+- a bayesian network is a type of graph:
+	- directed acyclic graph
+	- nodes = represents a random variable
+	- edges = probabilistic dependencies
+	- each node has a conditional-probability-table with incoming edges as columns (ancestors being true/false) and their corresponding output probabilities
+- neural networks are a type of graph:
+	- doesn't have to be acyclic - nodes can have self-referencing edges (but during backprop these self-references are unrolled)
+	- can approximate functions by composing different parts of the activation function in each layer
+	- nodes = represent neurons, have an activation function based on all incoming edges
+	- edges = show order of function compositions
+
+---
+
+**question**: difference gradient descent and normal equation. which would you use on a lin. reg. example
+
+answer: 
+
+- (based on the slides) the analytical-solution to linear regression is slower than the iterative-solution through gradient descent
+- but in practice it depends on the problem size and for smaller datasets the analytical solution could be faster
+- gradient descent pros:
+	- versatility – can be also used for non-linear models
+	- simplicity – with iterative method there is no need for matrix conversion
+	- efficiency – for larger datasets (the analytical method is faster for smaller datasets)
+- gradient descent cons:
+	- sensitivity to learning rate – it may either converge too slowly or overshoot
+	- susceptibility to local minima – it's not guaranteed to converge to a global minimum / find the optimal solution
+	- noisy updates – might have lots of redundant computations and oscilate
+	- sensitivity to feature scaling – features with different scales influence performance
+
+---
+
+**question**: name some model based attributes in meta learning
+
+answer: 
+
+- model-based attributes (meta-features) are measures obtained from a fitted model
+- they don't incorporate or rely on any performance metrics
+- examples:
+	- model architecture (ie. convolutional, recurrent, or fully connected)
+	- initialization strategy
+	- regularization techniques
+	- optimization algorithm (ie. stochastic gradient descent SGD, Adam)
+	- learning rate scheduling (how learning rate is updated)
+	- loss function
+
+# 2017-06-14
+
+**question**: Entropy max when all elements from same class?
+
+answer (boolean): False
+
+- the entropy is minimized when all elements belong to the same class, and it is maximized when the elements are evenly distributed among all classes.
+- proof:
+	- $H(X) = - \sum_{i = 1}^n p(x_i) \cdot \log_{2}(p(x_i))$
+	- where:
+		- $p(x_i)$ = probability of a dataset having the label $i$
+	- assuming there is just one label, then: $\forall i: p(x_i) = 1$ and $n=1$
+	- therefore: $H(X) = - \sum_{i = 1}^1 1 \cdot \log_{2}(1) = -1 \cdot 0 = 0$
+
+---
+
+**question**: RF heterogeneous ensemble learner?
+
+answer (boolean): False
+
+- it's homogenous because the decision-tree is the only used model
+
+---
+
+**question**: PCA supervised feature selection method?
+
+answer (boolean): False
+
+- principal component analysis is unsupervised
+
+---
+
+**question**: McNemar's Test is used for significance testing?
+
+answer (boolean): Yes
+
+- it helps determine if an event or intervention caused a significant shift in some characteristic within the same group of people, by comparing how many people changed their characteristic in one direction versus the other direction.
+
+---
+
+**question**: Z-scaling vs. min/max scaling.
+
+answer:
+
+- min/max-scaling (normalization)
+	- transforms data to a specified range, typically between 0 and 1
+	- $X_{\text{normalized}} = \frac{X - X_{min}}{X_{max} - X_{min}}$
+- Z-scaling (standardization)
+	- transforms data to have a mean of 0 and a std dev of 1
+	- $X_{\text{standard}} = \frac{X - \mu}{\sigma}$
+- see: https://kharshit.github.io/blog/2018/03/23/scaling-vs-normalization
+
+---
+
+**question**: Draw an Bayes Net with 5-7 Nodes. Include serial, diverging, and converging connection. D-separation?
+
+answer:
+
+- transmission of evidence:
+	- d-seperated / blocked = we can't transmit evidence (conditional independence)
+	- d-connected / connected = we can transmit evidence
+	- the rules below must apply to all possible paths between A, C
+	- there must be at least one intermediate node
+	- in the serial case we can differentiate between forward-serial and backward-serial
+	- in the converging case, if B or any of its descendants are observed we can "explain away"
+- connection types:
+	- serial: A → B → C
+		- A → C transmission blocked if we know B
+	- diverging: A ← B → C
+		- A ←→ C transmission blocked if we know B
+	- converging: A → B ← C
+		- A ←→ C transmission blocked if we don't know B or any of it's descendants
+
+---
+
+**question**: Gradient Descent pseudo code.
+
+answer:
+
+```
+Initialize weights (w) randomly
+Define a learning rate (α)
+Define a maximum number of iterations (max_iter)
+
+Initialize weights θ randomly
+
+for iter = 1 to max_iter:
+    # Forward Propagation
+    Compute the predicted output (y_pred) using the current weights
+
+    # Compute the cost function
+    Compute the cost (J) using the predicted output and true output
+
+    # Backward Propagation
+    Compute the gradients of the cost function with respect to weights (dJ/dw)
+
+    # Update the weights
+    w = w - α * (dJ/dw)
+
+return w
+```
+
+# 2017-03-17
+
+**question**: Random Forests. What makes a RF random?
+
+answer:
+
+- ensemble learning method
+- de-correlated decision-trees used as models
+- steps:
+	- i. random sampling of data
+		- bagging or bootstrap aggregating
+		- some samples may appear multiple times in a given subset while others may not appear at all
+	- ii. random feature selection
+		- random subset of features chosen to decide split
+	- iii. prediction, evaluation
+		- averaging the predictions (regression) or taking a majority vote (classification)
+		- evaluated with unused samples (out-of-bag elements) for each tree as test-set
+
+---
+
+**question**: What is Feature Selection? Name methods of Feature Selection
+
+answer:
+
+- dimensionality reduction = select subset of features to reduce redundance, noise
+- supervised types:
+	- a) wrapper
+		- = evaluate models trained with feature subsets – search through all possible subsets.
+		- forward selection – greedy search, starting with no features and progressively adding features
+		- backward elimination – greedy search, starting with all features and progressively removing features
+	- b) filter
+		- = use statistical metrics directly on features – efficient, independent of the learning algorithm, less prone to overfitting.
+		- information gain
+		- chi-square test
+		- mutual information
+		- f-score
+		- fisher's score
+	- c) embedded
+		- = evaluate features during training
+		- lasso and ridge regulation
+		- decision tree
+- unsupervised types:
+	- frequency count
+	- principal component analysis – pca, project to lower dimension through single value decomposition
+	- autoencoder – generating vector representations in hidden layer
+- see: https://www.kdnuggets.com/2023/06/advanced-feature-selection-techniques-machine-learning-models.html
+- see: https://neptune.ai/blog/feature-selection-methods
+
+---
+
+**question**: What is Deep Learning? How does it compare to "traditional" Machine Learning?
+
+answer:
+
+- deep learning = modular modules (usually of multi-layer-perceptrons), that you stack on top of eachother
+- differences:
+	- feature extraction layers
+	- less domain knowledge required
+	- contextualized representations, lower interpretability
+	- needs large amounts of data, memory, compute for double descent effect
+	- models optimized for hardware accelerators (ie. transformers)
+
+---
+
+**question**: What is HMM? What are the three problems of HMM?
+
+answer:
+
+- (not part of lecture anymore)
+- HMM = hidden markov model
+- a statistical model with hidden states and observable events.
+- 3 problems of interest:
+	- evaluation problem – given an observation sequence, determine how likely that sequence is
+	- decoding problem – given an observation sequence, determine the most likely hidden states
+	- learning problem – observation sequences + hidden states, estimate their model parameters
+- see: http://jedlik.phy.bme.hu/~gerjanos/HMM/node6.html
+
+---
+
+**question**: What is a Bayesian Network? Explain Inference, Variable Elimination, d-separation
+
+answer:
+
+- bayesian network:
+	- directed acyclic graph
+	- nodes = represents a random variable
+	- edges = probabilistic dependencies
+	- each node has a conditional-probability-table with incoming edges as columns (ancestors being true/false) and their corresponding output probabilities
+- inference:
+	- causal inference (causes → effects)
+	- given our knowledge of which nodes are true/false (evidence $E$) get probability distribution for variables were interested in (query variables $Q$)
+	- $\text{argmax}_q ~~ {p}({Q}_1{=}{q}_1,{Q}_2{=}{q}_2, \ldots \mid {E}_1{=}{e}_1,{E}_2{=}{e}_2,\ldots)$
+- variable elimination:
+	- similar to caching in dynamic programming
+	- factor out independent variables (because they're constant) from nested sums
+	- in the converging case, if B or any of its descendants are observed we can "explain away"
+- connection types:
+	- serial: A → B → C
+		- A → C transmission blocked if we know B
+	- diverging: A ← B → C
+		- A ←→ C transmission blocked if we know B
+	- converging: A → B ← C
+		- A ←→ C transmission blocked if we don't know B or any of it's descendants
 
 # 2021-12-07 – TODO
 
