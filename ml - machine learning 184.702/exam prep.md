@@ -1355,7 +1355,6 @@ answer:
 	- converging: A → B ← C
 		- A ←→ C transmission blocked if we don't know B or any of it's descendants
 
-
 ---
 
 **question**: Gradient Descent pseudo code.
@@ -1706,17 +1705,26 @@ answer: False
 
 answer:
 
-- search heuristics:
-	- hill climbing = choose best in neighborhood, until local optimum is reached
-	- tabu search = hill-climbing but some some neighbors are hidden
-	- simulated annealing = based on cooldown parameters
-	- genetic algorithm = initialize population, mutate, reproduce, evaluatie population.
-- hill climbing / local search heuristic:
+- i. generate inital network
 	- start with an initial network structure – this could be an empty network (no edges), a naive Bayes structure (all nodes connected to a single parent node), a randomly generated one, one based on prior knowledge, etc.
-	- choose a metric to evaluate networks
-	- until convergence to a local optimum:
-		- generate neighbors from the current network through local modifications like edge addition, deletion or reversal.
-		- score neighbors.
+- ii. compute probabilities
+	- count occurences in all truth tables
+- iii. evaluate network
+	- $D$ data, $M$ model
+	- goodness-of-fit:
+		- $p(D|M)=\Pi_jP(s^j|M)=\Pi_j\Pi_i p(N_i=v_i^j\mid Parents(N_i),M)$
+	- log-probability:
+		- $\log (p(D|M)) - \alpha =\sum_j\sum_i p(N_i=v_i^j \mid Parents(N_i),M)$
+		- $\alpha$ - hyperparam to penalize network complexity
+- iv. search for related networks, repeat
+	- generate neighbors from the current network through local modifications like edge addition, deletion or reversal.
+
+search algorithms:
+
+- hill climbing = choose best in neighborhood, until local optimum is reached
+- tabu search = hill-climbing but some some neighbors are hidden
+- simulated annealing = based on cooldown parameters
+- genetic algorithm = initialize population, mutate, reproduce, evaluatie population.
 
 ---
 
@@ -1852,6 +1860,16 @@ answer:
 **question:** Depth of decision tree with 1000 samples and max 300 samples per leave
 
 answer:
+
+```mermaid
+graph TD
+    A[Root: 1000] --> B[Node: 700]
+    A --> C[Leaf: 300]
+    B --> D[Leaf: 400]
+    B --> E[Leaf: 300]
+    D --> F[Leaf: 100]
+    D --> G[Leaf: 300]
+```
 
 - total samples = 1000
 - max samples per leaf = 300
@@ -2015,9 +2033,9 @@ answer: True
 
 answer: True
 
-- this isn't referring to the gradient chain-rule but the probability-theory chain-rule
-- it allows us to express the joint probability distribution of multiple variables as a product of conditional probabilities
-- P(X1, X2, ..., Xn) = ∏ P(Xi | Parents(Xi))
+- this question isn't referring to the gradient chain-rule but the probability-theory chain-rule
+- $P(X_1, X_2, \ldots, X_n) = \prod P(X_i \mid \text{Parents}(X_i))$
+- it allows us to express the joint probability distribution of multiple variables as smaller conditional probability distributions
 
 ---
 
@@ -2186,6 +2204,14 @@ answer:
 
 ---
 
+**question:** How can we automatically pick best algorithm for a specific dataset?
+
+answer:
+
+- see above
+
+---
+
 **question:** Why a general Bayesian Network can give better results than Naive Bayes?
 
 answer:
@@ -2230,6 +2256,7 @@ answer:
 	- = calculating the metric for each class
 	- $\frac{1}{|C|} \sum_{i=1}^{|C|} w_i \cdot \text{metric}$
 	- weight can be based on cost of missclassifications
+	- equal importance to all classes, especially useful for imbalanced datasets
 
 ---
 
@@ -2237,17 +2264,48 @@ answer:
 
 answer:
 
+- rice's framework = framework for finding the best model
+- important things to consider when implementing the framework:
+	- defining the right spaces (problem space, feature space, aglorithm space, performance space)
+		- finding the right datasets / data splits, algorithms / ensembles, performance metrics
+		- considering interpretability vs predictive power tradeoffs
+		- considering runtime predictions as part of the selection criteria
+	- defining the right mappings (feature extraction, algorithm selection, performance measurement)
+	- finding relevant meta-features of dataset that influence the models performance
+	- designing the system to improve and adapt as more data is collected, potentially using online learning approaches
+	- comparison against baselines like single best algorithm
+
 ---
 
 **question:** How can we avoid overfitting for polynomial regression?
 
 answer:
 
+- k-fold cross validation
+- regularization (lasso L1, ridge L2)
+	- principle of parsimony - choosing the most simple model
+- increasing training-data and feature-selection
+- monitoring training
+- considering ensemble methods, alternative models
+
 ---
 
-**question:** Which type of features are used in Metalearning ? What are landmarking features?
+**question:** Which type of features are used in Metalearning? What are landmarking features?
 
 answer:
+
+- features used in metalearning:
+	- simple = frequency, …
+	- statistical = mean, std dev, correleation, skew, …
+	- information theoretic = entropy, mutual information, …
+	- model based = model properties like decision-tree depth, …
+	- landmarking features = performance of landmarkers
+- landmarking:
+	- landmarkers = simple and fast algorithms (ie. naive bayes, 1nn, 1r, …)
+	- landmarking features = performance of landmarkers
+	- landmark learner = selects best performing landmarker
+	- the best performing landmarker tells us something about the dataset
+	- ie. linear classifier does well on linearly seperable dataproblems) 
 
 ---
 
@@ -2255,13 +2313,65 @@ answer:
 
 answer:
 
+- $p_i$ = predicted
+- $a_i$ = actual
+- mean squared error MSE
+	- ${\sum_i (p_i - a_i)^2} ~/~ n$
+	- emphasizes larger errors due to squaring
+	- differentiable, useful for optimization algorithms
+	- sensitive to outliers
+- root mean squared error RMSE
+	- $\sqrt{\sum_i (p_i - a_i)^2 ~/~ n}$
+	- used in regression problems, where large errors are undesirable
+	- provides error metric in the same unit as the target variable
+	- penalizes large errors more than small ones
+	- more sensitive to outliers than MAE
+	- assumes errors are unbiased and follow a normal distribution (derived from the maximum likelihood estimation under the assumption of normally distributed errors)
+- mean absolute error MAE
+	- ${\sum_i |p_i - a_i|} ~/~ n$
+	- provides a linear scale of error
+	- used in regression problems where outliers should have less impact
+	- robust to outliers
+	- in the same unit as the original data, easy to interpret
+	- does not penalize large errors as heavily as MSE/RMSE
+	- less popular than RMSE
+- relative squared error RSE
+	- ${\sum_i (p_i - a_i)^2} ~/~ {\sum_i (a_i - \bar{a})^2}$
+	- normalizes error by the variance of actual values
+	- used for comparing models across different scales or units, is unitless
+	- can be misleading if the denominator is close to zero
+	- less intuitive to interpret than absolute error measures
+	- sensitive to outliers due to squaring
+- root relative squared error RRSE
+	- $\sqrt{{\sum_i (p_i - a_i)^2} ~/~ {\sum_i (a_i - \bar{a})^2}}$
+	- similar to RSE, but with a more intuitive scale due to square root
+	- still sensitive to outliers, though less than RSE
+	- less commonly used than other metrics
+- relative absolute error RAE
+	- ${\sum_i |p_i - a_i|} ~/~ {\sum_i |a_i - \bar{a}|}$
+	- provides a relative error measure without squaring
+	- used for comparing models across different scales, robust to outliers
+	- less emphasis on large errors compared to squared error measures
+- statistical correlation coefficient:
+	- ${S_{PA}} ~/~ {\sqrt{S_P \cdot S_A}}$
+	- where:
+		- $S_{PA} = {\sum_i(p_i-\overline{p})(a_i-\overline{a})} ~/~ {n-1}$
+		- $S_P = {\sum_i(p_i-\overline{p})^2} ~/~ {n-1}$
+		- $S_A = {\sum_i(a_i-\overline{a})^2} ~/~ {n-1}$
+	- assesses how well the predictions correlate with actual values
+	- scale-independent measure
+	- indicates both strength and direction of relationship
+	- does not account for systematic bias in predictions
+	- can be misleading if the relationship is non-linear
+	- does not measure prediction accuracy
+
 ---
 
 **question:** how is 1-R related to Decision tree
 
 answer:
 
-- 
+- 1-R (one-rule) is a special case of decision-tree with a single split (depth of 1)
 
 ---
 
@@ -2269,11 +2379,17 @@ answer:
 
 - Initialize weights and bias
 - Let input through the NN to get output
-- Get error rate(compare what was expected to output or smthg like that)
+- Get error rate
 - Adjust weights
 - Reiterate until the best weights are in place
 
 answer:
+
+- initialization – Initialize weights and bias
+- forward pass – Let input through the NN to get output
+- get error – Get error rate
+- update weights based on error – Adjust weights
+- converge – Reiterate until the best weights are in place
 
 ---
 
@@ -2281,11 +2397,33 @@ answer:
 
 answer:
 
+- the regularization terms include the parameters (not just the errors) in the loss function to prevent overfitting
+- lasso regression: $L_1 = ||\mathrm{w}||_{1} = |w_0| + \dots + |w_n|$
+	- computes sum of absolute values as penalty
+	- better for feature selection and sparse models
+	- tends to create sparse models by shrinking some coefficients to exactly zero, effectively performing feature selection
+	- more robust to outliers
+- ridge regression: $L_2 = ||\mathrm{w}||_{2}^2 =  w_0^2 + \dots + w_n^2$
+	- computes sum of squared values as penalty
+	- better for dealing with correlated features, that you want to retain but with smaller coefficients
+	- tends to shrink all coefficients towards zero but not exactly to zero
+	- differentiable everywhere
+
 ---
 
-**question:** Goal and settings of classification. To what tasks does it relate and from which it differs in machine learning ?
+**question:** Goal and settings of classification. To what tasks does it relate and from which it differs in machine learning?
 
 answer:
+
+- goal:
+	- learn a model that can accurately predict the class label for new, unseen inputs - by mapping input features to discrete class labels
+	- use labeled training data (supervised ml)
+- settings:
+	- binary classification (2 classes) and multi-class classification (3+ classes)
+- related to / different from:
+	- unlike regression, classification predicts discrete categories rather than continuous values
+	- unlike clustering, classification uses labeled data and predefined classes
+	- unlike anomaly detection, classification assigns all inputs to known classes rather than identifying outliers
 
 ---
 
@@ -2293,17 +2431,27 @@ answer:
 
 answer:
 
+- the rules below must apply to all possible paths between A, C
+- there must be at least one intermediate node
+- connection types:
+	- serial: A → B → C
+		- A → C transmission blocked if we know B
+	- diverging: A ← B → C
+		- A ←→ C transmission blocked if we know B
+	- converging: A → B ← C
+		- A ←→ C transmission blocked if we don't know B or any of it's descendants
+
 ---
 
 **question:** Can kernel be used in perceptron ?
 
 answer:
 
----
-
-**question:** How can we automatically pick best algorithm for a specific dataset ?
-
-answer:
+- kernel perceptron:
+	- $\hat{y}=\mathrm{sgn}\sum_i^n\alpha_iy_iK(\mathbf{x}_i,\mathbf{x}_j)$
+	- can learn non-linear decision boundaries
+	- replaces dot products in the original perceptron algorithm with kernel function evaluations
+	- implicitly maps the input data to a higher-dimensional feature space
 
 ---
 
@@ -2311,11 +2459,38 @@ answer:
 
 answer:
 
+- i. generate inital network
+	- start with an initial network structure – this could be an empty network (no edges), a naive Bayes structure (all nodes connected to a single parent node), a randomly generated one, one based on prior knowledge, etc.
+- ii. compute probabilities
+	- count occurences in all truth tables
+- iii. evaluate network
+	- $D$ data, $M$ model
+	- goodness-of-fit:
+		- $p(D|M)=\Pi_jP(s^j|M)=\Pi_j\Pi_i p(N_i=v_i^j\mid Parents(N_i),M)$
+	- log-probability:
+		- $\log (p(D|M)) - \alpha =\sum_j\sum_i p(N_i=v_i^j \mid Parents(N_i),M)$
+		- $\alpha$ - hyperparam to penalize network complexity
+- iv. search for related networks, repeat
+	- generate neighbors from the current network through local modifications like edge addition, deletion or reversal.
+
+search algorithms:
+
+- hill climbing = choose best in neighborhood, until local optimum is reached
+- tabu search = hill-climbing but some some neighbors are hidden
+- simulated annealing = based on cooldown parameters
+- genetic algorithm = initialize population, mutate, reproduce, evaluatie population.
+
 ---
 
-**question:** Explain how we can deal with missing values or zero frequency problem in Naive Bayes. Ignore the missing values / apply Laplace correction
+**question:** Explain how we can deal with missing values or zero frequency problem in Naive Bayes.
 
 answer:
+
+- ignoring missing values
+- imputation
+- treating missing as a separate category:
+- laplace smoothing (additive smoothing):
+	- P(feature|class) = (count(feature, class) + α) / (count(class) + α * |V|)
 
 ---
 
@@ -2323,11 +2498,39 @@ answer:
 
 answer:
 
+- deep learning = modular modules (usually of multi-layer-perceptrons), that you stack on top of eachother
+- differences:
+	- feature extraction layers
+	- less domain knowledge required
+	- contextualized representations, lower interpretability
+	- needs large amounts of data, memory, compute for double descent effect
+	- models optimized for hardware accelerators (ie. transformers)
+- advances in deep learning:
+	- Computer Vision and Image Recognition
+	- Natural Language Processing (NLP)
+	- Speech Synthesis
+	- Robotics
+	- Game Playing
+	- Generative AI
+	- Autonomous Vehicles
+	- Healthcare and Medical Imaging
+	- Financial Services
+
 ---
 
 **question:** Describe the goal and setting of classification. How does that relate and differ from other techniques in machine learning? compare it to unsupervised, name regression as a technique, etc.
 
 answer:
+
+- goal:
+	- learn a model that can accurately predict the class label for new, unseen inputs - by mapping input features to discrete class labels
+	- use labeled training data (supervised ml)
+- settings:
+	- binary classification (2 classes) and multi-class classification (3+ classes)
+- related to / different from:
+	- unlike regression, classification predicts discrete categories rather than continuous values
+	- unlike clustering, classification uses labeled data and predefined classes
+	- unlike anomaly detection, classification assigns all inputs to known classes rather than identifying outliers
 
 ---
 
@@ -2335,17 +2538,49 @@ answer:
 
 answer:
 
+- the goal is that the decision-trees in the ensemble are uncorrelated and capture different aspects of the data so the ensemble is more robust and generalizes better
+- randomness in random forests:
+	- bootstrap sampling (bagging):
+		- random subset of the training data with replacement (same datapoints can be selected multiple times)
+	- random feature selection:
+		- at each node of a decision tree, only a random subset of features is considered for splitting
+	- random split selection:
+		- in extra-trees variant: splitting threshold for each feature is chosen randomly
+	- independent tree growth:
+		- trees have their own random seeds
+	- ensemble prediction:
+		- final prediction of a random forest is made by aggregating the predictions of all individual trees
+		- classification, this is typically done through majority voting, while for regression, it's done by averaging the predictions
+
 ---
 
 **question:** Describe 2 AutoML systems
 
 answer:
 
+- we can express hyperparameter optimization as a search-problem
+- search heuristics:
+	- grid search = test equi-distanced values on discrete scale
+	- random search = sample from a distribution, can outperform grid-search
+	- sequential model-based bayesian-optimization (smbo): probabilistic regression model with loss function
+
 ---
 
 **question:** Describe in detail the algorithm to compute random forest
 
 answer:
+
+- i. bootstrap sampling
+	- create bootstrap samples by randomly selecting N samples with replacement from the original dataset
+- ii. building decision trees
+	- for each sample:
+		- select random subset of features
+		- find the best split among features
+		- split and repeat for children (full depth without pruning)
+- iii. making predictions
+	- classification: majority voting
+	- regression: average
+- iv. out-f-bag error estimates
 
 ---
 
@@ -2358,6 +2593,40 @@ Then, what would be the maximum depth a decision tree can take (not counting the
 
 answer:
 
+- total samples = 1000
+- min samples per internal-node = 200
+- min samples per leaf = 300
+- we want to achieve max depth so we only expand on either the left children xor right children of each node
+
+without pruning:
+
+- there is an illegal leaf with 100 samples (≤ 300)
+- depth = 3
+
+```mermaid
+graph TD
+    A[Root: 1000] --> B[Node: 700]
+    A --> C[Leaf: 300]
+    B --> D[Leaf: 400]
+    B --> E[Leaf: 300]
+    D --> F[Leaf: 100]
+    D --> G[Leaf: 300]
+```
+
+with pruning:
+
+- all leaves have at least 300 samples
+- all internal-nodes have at least 200 samples
+- depth = 2
+- on each split / iteration from root-node we can only deduct 200 samples at most, otherwise the split is invalid – so the formula is $\lfloor \log_2(1000/200) \rfloor$ = 2
+
+```mermaid
+graph TD
+    A[Root: 1000] --> B[Node: 700]
+    A --> C[Leaf: 300]
+    B --> D[Leaf: 400]
+    B --> E[Leaf: 300]
+```
 
 # 2021-10-21
 
@@ -2380,7 +2649,9 @@ answer: False
 
 **question:** In AdaBoost, the weights are uniformly initialised
 
-answer:
+answer: True
+
+- they're initialized uniformly both for models and data
 
 ---
 
@@ -2406,11 +2677,34 @@ answer:
 
 answer:
 
+- all leaves have at least 300 samples
+- all internal-nodes have at least 200 samples
+- depth = 2
+- on each split / iteration from root-node we can only deduct 200 samples at most, otherwise the split is invalid – so the formula is $\lfloor \log_2(1000/200) \rfloor$ = 2
+
+```mermaid
+graph TD
+    A[Root: 1000] --> B[Node: 700]
+    A --> C[Leaf: 300]
+    B --> D[Leaf: 400]
+    B --> E[Leaf: 300]
+```
+
 ---
 
 **question:** Goal and settings of classification. To what tasks does it relate and from which it differs in machine learning ?
 
 answer:
+
+- goal:
+	- learn a model that can accurately predict the class label for new, unseen inputs - by mapping input features to discrete class labels
+	- use labeled training data (supervised ml)
+- settings:
+	- binary classification (2 classes) and multi-class classification (3+ classes)
+- related to / different from:
+	- unlike regression, classification predicts discrete categories rather than continuous values
+	- unlike clustering, classification uses labeled data and predefined classes
+	- unlike anomaly detection, classification assigns all inputs to known classes rather than identifying outliers
 
 ---
 
@@ -2418,11 +2712,20 @@ answer:
 
 answer:
 
+- this question isn't referring to the gradient chain-rule but the probability-theory chain-rule
+- $P(X_1, X_2, \ldots, X_n) = \prod P(X_i \mid \text{Parents}(X_i))$
+- it allows us to express the joint probability distribution of multiple variables as smaller conditional probability distributions
+
 ---
 
 **question:** What approaches can be chosen for linear regression? Describe them.
 
 answer:
+
+- gradient descent
+- normal equation method (not faster than gradient descent): ${\mathbf w = (\mathbf X^\intercal ~ \mathbf X)^{-1} ~ \mathbf X^\intercal ~ \mathbf y}$
+- regularized methods (ridge and lasso)
+- …
 
 ---
 
@@ -2430,11 +2733,36 @@ answer:
 
 answer:
 
+- increasing train-data (data augmentation)
+- regularization (L1/L2 regularization)
+- dropout
+- early stopping
+- reducing model complexity (removing unnecessary layers, parameters, connections, units)
+- cross validation
+- ensemble methods
+- batch normalization (normalize layer activations for better generalization)
+- weight constraints (clipping weights)
+- transfer learning (knowledge distillation)
+- hyperparam tuning
+- reducing batch size
+
 ---
 
 **question:** What is the difference between Lasso and Ridge regression?
 
 answer:
+
+- the regularization terms include the parameters (not just the errors) in the loss function to prevent overfitting
+- lasso regression: $L_1 = ||\mathrm{w}||_{1} = |w_0| + \dots + |w_n|$
+	- computes sum of absolute values as penalty
+	- better for feature selection and sparse models
+	- tends to create sparse models by shrinking some coefficients to exactly zero, effectively performing feature selection
+	- more robust to outliers
+- ridge regression: $L_2 = ||\mathrm{w}||_{2}^2 =  w_0^2 + \dots + w_n^2$
+	- computes sum of squared values as penalty
+	- better for dealing with correlated features, that you want to retain but with smaller coefficients
+	- tends to shrink all coefficients towards zero but not exactly to zero
+	- differentiable everywhere
 
 ---
 
@@ -2454,11 +2782,32 @@ answer:
 
 answer:
 
+- premise: any two optimization algorithms are equivalent when averaged across all possible problems
+- implications: no algorithm can outperform others across all possible situations; effectiveness is context-dependent
+	- there is no universally superior algorithm
+	- we need problem-specific algorithms
+	- all learning algorithms must make some assumptions (inductive bias) about the problem space to perform well
+	- there is no "free lunch" - good performance on some problems comes at the cost of worse performance on others
+	- general-purpose optimization or learning algorithms without any domain-specific knowledge are fundamentally limited
+
 ---
 
 **question:** XOR dataset, which of perceptron, decision tree, SVM 1-NN can achieve 0 error rate?
 
 answer:
+
+- perceptron
+	- can not achieve 0 error rate
+	- the xor function we want to fit is not linearly seperable
+- decision tree
+	- can achieve 0 error rate
+	- needs 2 splits to fit
+- svm
+	- can achieve 0 error rate (only with non linear kernel)
+	- by mapping the data to a higher dimensional space where it becomes linearly separable
+- 1-nearest neighbor
+	- can achieve 0 error rate
+	- memorizes all training points, to classify each point based on its nearest neighbor
 
 ---
 
@@ -2466,10 +2815,25 @@ answer:
 
 answer:
 
+- i. bootstrap sampling
+	- create bootstrap samples by randomly selecting N samples with replacement from the original dataset
+- ii. building decision trees
+	- for each sample:
+		- select random subset of features
+		- find the best split among features
+		- split and repeat for children (full depth without pruning)
+- iii. making predictions
+	- classification: majority voting
+	- regression: average
+- iv. out-f-bag error estimates
 
 # 2021-12-07
 
 In AdaBoost weights are uniformly initialized: T
+
+answer: True
+
+- they're initialized uniformly both for models and data
 
 Categorical data should be normalized before training a k-NN
 
@@ -2495,6 +2859,10 @@ Majority voting is not used when k-NN is applied for linear regression
 
 Chain Rule does not simplify calculation of probabilities for BNs
 
+- this question isn't referring to the gradient chain-rule but the probability-theory chain-rule
+- $P(X_1, X_2, \ldots, X_n) = \prod P(X_i | \text{Parents}(X_i))$
+- it allows us to express the joint probability distribution of multiple variables as smaller conditional probability distributions
+
 Naive Bayes is a lazy learner
 
 Normal Equation (analytical approach) is always more efficient than gradient descent for linear regression
@@ -2511,9 +2879,34 @@ What are features in metalearning? What are landmarking features.
 
 How can you learn the structure of a Bayesian Network
 
+answer:
+
+- i. generate inital network
+	- start with an initial network structure – this could be an empty network (no edges), a naive Bayes structure (all nodes connected to a single parent node), a randomly generated one, one based on prior knowledge, etc.
+- ii. compute probabilities
+	- count occurences in all truth tables
+- iii. evaluate network
+	- $D$ data, $M$ model
+	- goodness-of-fit:
+		- $p(D|M)=\Pi_jP(s^j|M)=\Pi_j\Pi_i p(N_i=v_i^j\mid Parents(N_i),M)$
+	- log-probability:
+		- $\log (p(D|M)) - \alpha =\sum_j\sum_i p(N_i=v_i^j \mid Parents(N_i),M)$
+		- $\alpha$ - hyperparam to penalize network complexity
+- iv. search for related networks, repeat
+	- generate neighbors from the current network through local modifications like edge addition, deletion or reversal.
+
+search algorithms:
+
+- hill climbing = choose best in neighborhood, until local optimum is reached
+- tabu search = hill-climbing but some some neighbors are hidden
+- simulated annealing = based on cooldown parameters
+- genetic algorithm = initialize population, mutate, reproduce, evaluatie population.
+
 Explain how to deal with missing values and zero frequency problem in NB
 
 Difference between micro and macro averaging measures
+
+---
 
 Describe a local search algorithm for Bayesian Network creation
 
@@ -2530,17 +2923,34 @@ answer:
 	- until convergence to a local optimum:
 		- generate neighbors from the current network through local modifications like edge addition, deletion or reversal.
 		- score neighbors.
+
 ---
 
 Explain polynomial regression, name advantages and disadvantages compared to linear regression
 
 What is the difference between Lasso and Ridge regression?
 
+answer:
+
+- the regularization terms include the parameters (not just the errors) in the loss function to prevent overfitting
+- lasso regression: $L_1 = ||\mathrm{w}||_{1} = |w_0| + \dots + |w_n|$
+	- computes sum of absolute values as penalty
+	- better for feature selection and sparse models
+	- tends to create sparse models by shrinking some coefficients to exactly zero, effectively performing feature selection
+	- more robust to outliers
+- ridge regression: $L_2 = ||\mathrm{w}||_{2}^2 =  w_0^2 + \dots + w_n^2$
+	- computes sum of squared values as penalty
+	- better for dealing with correlated features, that you want to retain but with smaller coefficients
+	- tends to shrink all coefficients towards zero but not exactly to zero
+	- differentiable everywhere
+
+---
+
 Which data preparation/preprocessing steps are mentioned during the lecture? describe them 
 
 No free lunch theorem. Explain.
 
-# 2022-01-28
+# 2022-01-28 (2 left)
 
 Classification is a machine learning task where the target attribute is nominal
 
@@ -2590,9 +3000,29 @@ PCA is a supervised feature selection method
 
 Can kernel methods also be applied to the perceptron classifier (also discuss why or why not!)
 
+answer:
+
+- kernel perceptron:
+	- $\hat{y}=\mathrm{sgn}\sum_i^n\alpha_iy_iK(\mathbf{x}_i,\mathbf{x}_j)$
+	- can learn non-linear decision boundaries
+	- replaces dot products in the original perceptron algorithm with kernel function evaluations
+	- implicitly maps the input data to a higher-dimensional feature space
+
 What is polynomial regression? Which are advantages/disadvantages of polynomial regression compared to linear regression?
 
 When are two nodes in a Bayesian Network d-seperated?
+
+answer:
+
+- there must be at least one intermediate node
+- in the converging case, if B or any of its descendants are observed we can "explain away"
+- connection types:
+	- serial: A → B → C
+		- A → C transmission blocked if we know B
+	- diverging: A ← B → C
+		- A ←→ C transmission blocked if we know B
+	- converging: A → B ← C
+		- A ←→ C transmission
 
 Which features are used in metalearning? What are landmarking features?
 
@@ -2627,7 +3057,7 @@ Something about regularisations z-score and min-max. What are they, when they ar
 
 Something about explaining the epsilon-greedy selection for the k-armed Bandit Problem.
 
-# 2023-01-24
+# 2023-01-24 (1 left)
 
 A decision tree can be converted into a rule set.
 
@@ -2661,4 +3091,3 @@ Something about tabular methods
 Calculation of output size of convolution.
 
 Calculation of max pooling operation.
-
