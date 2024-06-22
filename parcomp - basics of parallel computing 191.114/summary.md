@@ -84,8 +84,8 @@ _latency_
 
 _speedup_
 
-- $S_a(n,p) = \frac{T_{\text{seq}}(n)}{T_{\text{par}}(n,p)}$ = absolute speedup
-- $S_r(n,p) = \frac{T_{\text{par}}(n, 1)}{T_{\text{par}}(n,p)}$ = relative speedup
+- $\large S_a(n,p) = \frac{T_{\text{seq}}(n)}{T_{\text{par}}(n,p)}$ = absolute speedup
+- $\large S_r(n,p) = \frac{T_{\text{par}}(n, 1)}{T_{\text{par}}(n,p)}$ = relative speedup
 - what difference does parallelization make?
 - where:
      - $n$ = input size
@@ -96,14 +96,14 @@ _speedup_
 
 _efficiency of parallelization_
 
-- $E(n,p) = \frac{T_{\text{seq}}(n)}{p \cdot T_{\text{par}}(n,p)} = \frac{1}{p} \cdot S_a(n,p)$
+- $\large E(n,p) = \frac{T_{\text{seq}}(n)}{p \cdot T_{\text{par}}(n,p)} = \frac{1}{p} \cdot S_a(n,p)$
 - what difference does each processor make?
 
 ![](assets/SCR-20240427-cciz.png)
 
 _amdahls law_
 
-- $S(n,p)=\frac{   {T_{\text{seq}}^*(n)}}{s \cdot {T_{\text{seq}}^*(n)}   +\frac{1-s}{p} \cdot {T_{\text{seq}}^*(n)}   }=\frac{1}{s+\frac{1-s}p}\leq\frac1s$
+- $\large S(n,p)=\frac{   {T_{\text{seq}}^*(n)}}{s \cdot {T_{\text{seq}}^*(n)}   +\frac{1-s}{p} \cdot {T_{\text{seq}}^*(n)}   }=\frac{1}{s+\frac{1-s}p}\leq\frac1s$
 - fix $n$, increase $p$, speedup converges to $1/s$
 - where:
      - $s \in [0;1]$ = sequential fraction
@@ -112,7 +112,7 @@ _amdahls law_
 
 _gustafson-barsis law_
 
-- $S(n,p) =\frac{s+p \cdot (1-s)}{s+(1-s)}=s+p \cdot (1-s)$
+- $\large S(n,p) =\frac{s+p \cdot (1-s)}{s+(1-s)}=s+p \cdot (1-s)$
 - because: $s + (1-s) = 1$
 - scale $n$ with $p$, but the runtime stays the same – but if the parallel load would have been executed sequentially, it would have taken $p$ times longer
 - improves amdahls law: the serial fraction doesn't limit speedup if the problem (workload) $n$ can scale with the number of $p$. in that case you can get more done in the same amount of time.
