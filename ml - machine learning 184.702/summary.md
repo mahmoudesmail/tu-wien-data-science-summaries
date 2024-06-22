@@ -178,7 +178,7 @@ types:
 	- ${\sum_i (p_i - a_i)^2} ~/~ {\sum_i (a_i - \bar{a})^2}$
 - root relative squared error RRSE
 	- $\sqrt{{\sum_i (p_i - a_i)^2} ~/~ {\sum_i (a_i - \bar{a})^2}}$
-- relative absolute error RSE
+- relative absolute error RAE
 	- ${\sum_i |p_i - a_i|} ~/~ {\sum_i |a_i - \bar{a}|}$
 - statistical correlation coefficient:
 	- ${S_{PA}} ~/~ {\sqrt{S_P \cdot S_A}}$
@@ -378,6 +378,7 @@ example:
 *learning network structure*
 
 - i. generate inital network
+	- start with an initial network structure – this could be an empty network (no edges), a naive Bayes structure (all nodes connected to a single parent node), a randomly generated one, one based on prior knowledge, etc.
 - ii. compute probabilities
 	- count occurences in all truth tables
 - iii. evaluate network
@@ -388,6 +389,7 @@ example:
 		- $\log (p(D|M)) - \alpha =\sum_j\sum_i p(N_i=v_i^j \mid Parents(N_i),M)$
 		- $\alpha$ - hyperparam to penalize network complexity
 - iv. search for related networks, repeat
+	- generate neighbors from the current network through local modifications like edge addition, deletion or reversal.
 
 search algorithms:
 
@@ -832,8 +834,11 @@ meta-learning = learning how to train learning algorithms
 
 *landmarking*
 
-- each model is an expert at a different kind of task - this is stored in the expertise-map
-- landmark-learner finds expert for each task
+- landmarkers = simple and fast algorithms (ie. naive bayes, 1nn, 1r, …)
+- landmarking features = performance of landmarkers
+- landmark learner = selects best performing landmarker
+- the best performing landmarker tells us something about the dataset
+- ie. linear classifier does well on linearly seperable data
 
 *hyperparameter optimization*
 
