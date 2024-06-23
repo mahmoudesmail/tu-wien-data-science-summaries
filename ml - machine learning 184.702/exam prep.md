@@ -1,5 +1,7 @@
 # 2024-01-23
 
+<!-- these are the exact questions from a leak -->
+
 **(1) question**: Suppose a convolutional neural network is trained on ImageNet dataset. This trained model is then given a completely white image as an input. The output probabilities for this input would be equal for all classes.
 
 answer (boolean): False
@@ -354,6 +356,461 @@ answer (open question): actions taken at $t_3$​, $t_5$​, and $t_6$​ are no
 	- $Q = [0.5, 1, 0, 0, 1]$
 - see: https://stats.stackexchange.com/questions/316911/how-to-understand-k-armed-bandit-example-from-suttons-rl-book-chapter-2 
 - see: https://github.com/Sagarnandeshwar/Bandit_Algorithms
+
+# 2023-10-20
+
+<!-- these are the exact questions from a leak -->
+
+**(1) question**: Usually state of the art AutoML systems use grid search to find best hyperparameters
+
+answer: False
+
+- the most common technique is bayesian optimization
+
+---
+
+**(2) question**: The $\varepsilon$-greedy action selection for the k-armed Bandit Problem does not try inferior action
+
+answer: False
+
+- exploration-exploitation tradeoff
+- exploitation = choose actions based on rewards (greedy)
+	- $A_t\doteq\arg\max_aQ_t(a)$
+- exploration = but occasionally also try new actions
+	- $\varepsilon$-greedy – try non optimal action with probability $\varepsilon$ 👈
+	- optimistic greedy – larger initial values (for stationary problems)
+	- upper confidence bound – adapt based on closeness to a max value:
+
+---
+
+**(3) question**: When k-nn is used for predicting numeric values the majority voting is applied
+
+answer: False
+
+- majority voting is for classification
+- the mean is for regression
+
+---
+
+**(4) question**: F-score is an important performance metric that is used for evaluating regression techniques
+
+answer: False
+
+- classification metric
+- f1 score: $2 \cdot \frac{\text{Prec} \cdot \text{Rec}}{\text{Prec} + \text{Rec}}$
+
+---
+
+**(5) question**: Chain Rule does not simplify calculation of probabilities in Bayesian Networks
+
+answer: False
+
+- this question isn't referring to the gradient chain-rule but the probability-theory chain-rule
+- $P(X_1, X_2, \ldots, X_n) = \prod P(X_i | \text{Parents}(X_i))$
+- it allows us to express the joint probability distribution of multiple variables as smaller conditional probability distributions
+
+---
+
+**(6) question**: “Off-the-shell” is a transfer learning technique that uses the output of layers from a deep-learning architecture as input for a shallow model
+
+answer: True
+
+- off-the-shelf = using pre-trained models or layers that are readily available without modification
+- one common approach in transfer learning is using the output of layers from a pre-trained deep learning model as input for a new model, which may be shallower
+
+---
+
+**(7) question**: A Perceptron with Soft Margin can solve the XOR-problem
+
+answer: True
+
+- the concept of a "Perceptron with Soft Margin" exists, but is not standard terminology in machine learning, and not taught in the lectures.
+	- see: https://cseweb.ucsd.edu/~yfreund/papers/LargeMarginsUsingPerceptron.pdf
+	- see: https://www.cs.cmu.edu/~avrim/ML10/lect0125.pdf
+- there seems to be a confusion or mix-up with concepts from Support Vector Machines (SVMs)
+- a SVM with a non-linear kernel can solve the XOR-problem by mapping the data to a higher dimensional space where it becomes linearly separable
+
+---
+
+**(8) question**: Back propagation is a method for training a Perceptron
+
+answer: False
+
+- we apply the chain rule to propagate the error to nodes from previous layers in a multi-layer-perceptron – not in a single unit
+
+---
+
+**(9) question**: Categorical data should be normalized before training a knn
+
+answer: True
+
+- correction: categorical features should be Z-score normalized after one-hot-encoding if you want to compute a distance in models such as knn.
+- categorical features should be one-hot encoded but not normalized post encoding.
+- normalizing them will destroy their meaning, as they are binary flags.
+
+---
+
+**(10) question**: LSTM is a form of Deep Neural Network
+
+answer: False
+
+- LSTM is a type of recurrent neural network – which can be part of deep learning models
+- it depends
+
+---
+
+**(11) question**: The computation of bagging can be easily parallelized
+
+answer: True
+
+- bagging (bootstrap aggegating) = parallel evaluation of independent models
+- boosting = sequential evaluation of models
+
+---
+
+**(12) question**: Tree pruning performed after training aims at decreasing the variance of the tree, while it can also decrease its performance on the train set
+
+answer: True
+
+- first part: the general goal of pruning is to decrease variance / increase generalizability - no matter whether done in the training or evaluation phase
+- second part: pruning improves generalizability, at the cost of reduced accuracy during training
+
+definitions
+
+- prepruning = pruning during training
+	- based on threshold for: samples in leaf, tree depth, information gain
+- pruning = pruning during evaluation
+	- reduced error pruning = replace subtree with majority-vote class, keep reasonable accuracy
+	- cost complexity pruning = generate competing trees, compare by: error divided by num of leafs
+	- pessimistic error pruning = traverse tree, remove redundancy
+
+---
+
+**(13) question**: In AdaBoost, the wights are randomly initialized
+
+answer: False
+
+- all training samples are assigned equal weights
+
+---
+
+**(14) question**: Consider a k-armed bandit problem with k=4 actions, denoted 1,2,3 and 4. Consider applying this problem to a bandit algorithm using epsilon-greedy action selection, sample-average action-value estimates, and initial estimates of Q1(a)=4 for all. Suppose the initial sequence of actions and reward is A1=1, R1=-2, A2=1, R2=2, A3=2, R3=2, A4=1, R4=-1, A5=2, R5=1. On some of these steps the epsilon case may have occurred, causing an action to be selected at random. On which time step this definitely occurred?
+
+- a) t2,t4
+- b) t3,t4
+- c) t2,t4
+- d) t1,t2
+
+answer: none of the above, we only know with certainty that $t_2, t_4, t_5$ were non-optimal
+
+- model:
+	- k-bandit algorithm (stationary reward probability distribution)
+	- epsilon-greedy action selection
+	- sample-average action-value estimates
+	- actions = $\{a_1, a_2, a_3, a_4\}$
+	- update step: $Q(A) \leftarrow Q(A) + \frac 1 {N(A)} \cdot \Big[R-Q(A)\Big]$
+- initial:
+	- $N = [0, 0, 0, 0, 0]$
+	- $Q = [4, 4, 4, 4]$
+- 1st step:  $\text{A: }a_1 \rightarrow \text{R: }-2$
+	- $N[1]$ = 1
+	- $Q[1]$ = 4 + 1/1 · (-2 - 4) = -2
+	- $N = [1, 0, 0, 0, 0]$
+	- $Q = [-2, 4, 4, 4]$
+- 2nd step:  $\text{A: }a_1 \rightarrow \text{R: }2$
+	- non-optimal step: $a_2$ had the highest expected value, with the lowest index 👈
+	- $N[1]$ = 2
+	- $Q[1]$ = -2 + 1/2 · (2 - (-2)) = 0
+	- $N = [2, 0, 0, 0, 0]$
+	- $Q = [0, 4, 4, 4]$
+- 3rd step:  $\text{A: }a_2 \rightarrow \text{R: }2$
+	- $N[2]$ = 1
+	- $Q[2]$ = 4 + 1/1 · (2 - 4) = 2
+	- $N = [2, 1, 0, 0, 0]$
+	- $Q = [0, 2, 4, 4]$
+- 4th step:  $\text{A: }a_1 \rightarrow \text{R: }-1$
+	- non-optimal step: $a_2$ had the highest expected value, with the lowest index 👈
+	- $N[1]$ = 3
+	- $Q[1]$ = 0 + 1/3 · (-1 - 0) = -0.3333
+	- $N = [3, 1, 0, 0, 0]$
+	- $Q = [-0.33, 2, 4, 4]$
+- 5th step:  $\text{A: }a_2 \rightarrow \text{R: }1$
+	- non-optimal step: $a_3$ had the highest expected value, with the lowest index 👈
+	- $N[2]$ = 2
+	- $Q[2]$ = 2 + 1/2 · (1 - 2) = 1.5
+	- $N = [3, 2, 0, 0, 0]$
+	- $Q = [-0.33, 1.5, 4, 4]$
+
+---
+
+**(15) question**: Which feature of the dataset would be selected by the 1R algorithm?
+
+| Instance | F1  | F2  | F3  | Class |
+| -------- | --- | --- | --- | ----- |
+| 1        | b   | y   | k   | +     |
+| 2        | c   | y   | s   | -     |
+| 3        | a   | n   | k   | +     |
+| 4        | b   | n   | k   | +     |
+| 5        | b   | y   | s   | -     |
+| 6        | a   | y   | s   | +     |
+| 7        | a   | n   | k   | +     |
+| 8        | a   | t   | s   | -     |
+
+- a) F1
+- b) F2
+- c) F3
+
+answer: c
+
+- we want to find the split with the least label-uncertainty
+- for each feature (dimension) we use the majority-vote of each unique value to predict and measure total num of errors
+- we then use the total num of errors to compare the feautres we should split on
+
+feature: F1
+
+- unique values: {a, b, c}
+- model:
+	- a (3x plus, 1x minus) → predict plus
+	- b (2x plus, 1x minus) → predict plus
+	- c (0x plus, 1x minus) → predict minus
+- evaluation:
+	- a wrong predictions: 1/4
+	- b wrong predictions: 1/3
+	- c wrong predictions: 0/1
+- absolute error rate = 2
+
+feature: F2
+
+- unique values: {y, n, t}
+- model:
+	- y (2x plus, 2x minus) → tie, so we randomly decide to predict minus
+	- n (2x plus, 0x minus) → predict plus
+	- t (0x plus, 1x minus) → predict minus
+- evaluation:
+	- y wrong predictions: 2/4
+	- b wrong predictions: 0/2
+	- t wrong predictions: 0/1
+- absolute error rate = 2
+
+feature: F3
+
+- unique values: {k, s}
+- model:
+	- k (3x plus, 0x minus) → predict plus
+	- s (1x plus, 3x minus) → predict minus
+- evaluation:
+	- k wrong predictions: 0/3
+	- s wrong predictions: 1/4
+- absolute error rate = 1
+
+conclusion:
+
+- since feature F3 has the lowest absolute error rate we use it's model (majority vote of each unique value) for our split
+- `if(F3 is k) predict plus else predict minus`
+
+---
+
+**(16) question**: Suppose that you would apply Naive Bayes algorithm (without using Laplace correction) in the dataset to predict the class of the last instances based on the first seven training instances. Which class would be predicted for this instance?
+
+| Instance | F1  | F2  | F3  | Class |
+| -------- | --- | --- | --- | ----- |
+| 1        | a   | y   | k   | -     |
+| 2        | c   | y   | s   | -     |
+| 3        | a   | y   | k   | +     |
+| 4        | b   | n   | k   | -     |
+| 5        | b   | y   | s   | -     |
+| 6        | a   | n   | s   | +     |
+| 7        | b   | n   | s   | -     |
+| 8        | a   | n   | s   | ?     |
+
+ - a) -
+ - b) +
+ - c) + OR -
+
+answer: b
+
+- see: https://stats.stackexchange.com/questions/417277/bayesian-formula-for-multiple-events/417278#417278
+- $p(A\mid BCD)=\frac{p(BCD\mid A) \cdot  p(A)}{p(BCD)}=\frac{p(B \mid A) \cdot p(C \mid A) \cdot p(D \mid A) \cdot p(A)}{p(BCD)}$
+- $p({+} \mid a, n, s) = \frac{p(a \mid +) \cdot p(n \mid +) \cdot p(s \mid +) \cdot p(+)}{p(a,n,s)} \propto p(a \mid +) \cdot p(n \mid +) \cdot p(s \mid +) \cdot p(+)$
+- $p({-} \mid a, n, s) = \frac{p(a \mid -) \cdot p(n \mid -) \cdot p(s \mid -) \cdot p(-)}{p(a,n,s)} \propto p(a \mid -) \cdot p(n \mid -) \cdot p(s \mid -) \cdot p(-)$
+- priors:
+	- $p(+)$ = 2/7
+	- $p(-)$ = 5/7
+- conditional likelihood for each feature value (+/-):
+	- $p(a \mid +)$ = 2/3
+	- $p(n \mid +)$ = 1/3
+	- $p(s \mid +)$ = 1/4
+	- $p(a \mid -)$ = 1/3
+	- $p(n \mid -)$ = 2/3
+	- $p(s \mid -)$ = 3/4
+- posterior probabilities:
+	- $p(+ \mid a,n,s) \propto$ 2/3 · 1/3 · 1/4 · 2/7 = 0.0158730159
+	- $p(- \mid a,n,s) \propto$ 1/3 · 2/3 · 3/4 · 5/7 = 0.119047619
+- because $p(+ \mid a,n,s) < p(- \mid a,n,s)$ we predict the last sample to be $+$
+
+---
+
+**(17) question**: Suppose that you learned this linear model for the dataset: 2+2F1+F2. Which RMSE does the training set have?
+
+| F1  | F2  | Target |
+| --- | --- | ------ |
+| 3   | 7   | 13     |
+| 5   | 2   | 14     |
+| 6   | 2   | 14     |
+| 5   | 5   | 17     |
+
+- a) 1.5
+- b) 3
+- c) 2
+- d) None
+
+answer: 1.4142
+
+- we compute the predictions with the formula $2 + 2 \cdot F_1 + F_2$ and compute the root mean squared error RMSE
+- $\text{err} = (15 - 13)^2 + (14 - 14)^2 + (16-14)^2 + (17-17)^2 = 8$ 
+- $n = 4$
+- $\text{RMSE} = \sqrt{\sum_i (p_i - a_i)^2 / n} = \sqrt{\frac{8}{4}} = 1.4142135624$
+
+| F1  | F2  | Target | Prediction         |
+| --- | --- | ------ | ------------------ |
+| 3   | 7   | 13     | 2 + 2 · 3 + 7 = 15 |
+| 5   | 2   | 14     | 2 + 2 · 5 + 2 = 14 |
+| 6   | 2   | 14     | 2 + 2 · 6 + 2 = 16 |
+| 5   | 5   | 17     | 2 + 2 · 5 + 5 = 17 |
+
+---
+
+**(18) question**: A dataset has missing values in both training and test sets. Which data processing is valid?
+
+- a) Remove samples with missing values only from the test set
+- b) Remove samples with missing values only from the train set
+- c) Remove samples with missing values from both train and test set
+- d) None of above
+
+answer: b
+
+- a) Remove samples with missing values only from the test set
+- c) Remove samples with missing values from both train and test set
+	- deletion of samples in the test-set is not an option
+	- adds bias, making it no longer representative of the real-world data the model will encounter
+- b) Remove samples with missing values only from the train set
+	- deletion of samples in the train-set is an option
+	- could lead to a mismatch between the training and test data distributions - you would need to find a strategy to deal with missing values during prediction
+
+---
+
+**(19) question**: Knn is very likely to overfit due to the curse of dimensionality. Which of the following options would you consider to handle such a problem?
+
+- a) Dimensionality reduction
+- b) Feature selection
+- c) Bootstrapping
+- d) One-hot Encoding
+- e) All of above
+- f) None of above
+
+answer: a, b
+
+- curse of dimensionality = when the dimensionality increases, the volume of the space increases so fast that the available data become sparse. in order to obtain a reliable result, the amount of data needed often grows exponentially with the dimensionality.
+- a) Dimensionality reduction
+	- features are dimensions
+	- feature selection is dimensionality reduction
+	- same as option b)
+- b) Feature selection
+	- reducing dimensionality and sparsity without information loss increases performance
+- c) Bootstrapping
+	- selecting random subsets of the dataset for training doesn't help with data sparsity
+- d) One-hot Encoding
+	- this would just map our data into a different representation, but the sparsity would remain
+
+---
+
+**(20) question**: SVM trained on 60% of data and tested on 40% of data has accuracy of 70%. RF trained on the same dataset, but with 80% training and 20% test data, has accuracy of 80%. Which classifier performs better?
+
+- a) SVM
+- b) RF
+- c) Can’t tell
+- d) None of above
+
+answer: c
+
+- we can't tell:
+	- different train-test splits:
+		- RF had more training data (80% vs. 60%), which could potentially lead to better performance.
+		- RF was tested on a smaller portion of data (20% vs. 40%), which might not be as representative of the overall dataset
+    - potential overfitting:
+		- the smaller test set used for RF, might be more prone to overfitting
+    - insufficient metrics:
+		- other metrics like precision, recall, F1-score, or ROC AUC would give us a better perspective
+	- no meta-data:
+		- we don't know about the nature of the data, class balance, or problem complexity, which could affect the performance of different algorithms
+- to be able to tell we would need:
+	- the same train-test split for both classifiers (ideally cross-validation to see consistency across different subsets)
+	- more metrics
+	- significance tests to make sure that it isn't by chance
+
+---
+
+**(21) question**: Which of the following are well-known CNN architectures?
+
+- a) LeNet
+- b) LSTM
+- c) ResNet
+- d) Reception
+- e) TeNet
+- f) None of above
+
+answer: a, c
+
+- LeNet = famous cnn architecture by yann lecun in 1998
+- LSTM = long short-term memory rnn architecture (not a cnn architecture)
+- ResNet = residual neural network, cnn architecture that helps with vanishing gradients
+- reception (meaningless)
+- tenet (meaningless)
+
+---
+
+**(22) question**: Which of the following techniques performs a similar operation as applying dropout of the input layer in a neural network?
+
+- a) Boosting
+- b) Bagging
+- c) Metalearning
+- d) None of these
+
+answer: d
+
+- none of these
+	- dropout randomly drops out neurons within a single network during training
+	- they all have very little in common with drouput
+- but conceptually
+	- dropout is conceptually more similar to bagging than boosting, given that it's trying to improve robustness through randomness
+	- we're introducting randomness by trying different neural network architectures
+	- we want reduce variance (overfitting), not bias
+
+---
+
+**(23) question**: In a neural network, which of the following techniques is used to deal with overfitting?
+
+- a) Dropout
+- b) Regularization
+- c) Batch normalization
+- d) Cross validation
+- e) All of the above
+- f) None of the above
+
+answer: a, b, c
+
+- prevents overfitting:
+	- Dropout
+		- randomly "dropping out" (i.e., temporarily removing) a certain percentage of neurons during training
+	- Regularization
+		- prevent overfitting by adding a penalty term to the loss function
+	- Batch Normalization
+		- normalizes the inputs to each layer, to reduce the dependence on specific neurons, has a regularizing effect
+- indirectly prevents overfitting:
+	- Cross Validation
+		- improves evaluation of generalizability which can help in choosing the right hyperparams
+		- cross-validation does not prevent overfitting, it helps detect overfitting – but comparing the performance of different models using cross-validation, you can choose models that are less likely to overfit
+		- see: https://stats.stackexchange.com/questions/9053/how-does-cross-validation-overcome-the-overfitting-problem
 
 # 2023-06-21
 
@@ -4340,264 +4797,3 @@ answer:
 
 - determining whether observed difference between two systems is by chance (like variations in data or randomness in algorithm)
 
-# 2023-10-20 – TODO
-
-**question**: Usually state of the art AutoML systems use grid search to find best hyperparameters
-
-answer: False
-
-- the most common technique is bayesian optimization
-
----
-
-**question**: The epsilon-greedy action selection for the k-armed bandit problem does not try inferior action
-
-answer: False
-
-- exploration-exploitation tradeoff
-- exploitation = choose actions based on rewards (greedy)
-	- $A_t\doteq\arg\max_aQ_t(a)$
-- exploration = but occasionally also try new actions
-	- $\varepsilon$-greedy – try non optimal action with probability $\varepsilon$ 👈
-	- optimistic greedy – larger initial values (for stationary problems)
-	- upper confidence bound – adapt based on closeness to a max value:
-
----
-
-**question**: When knn is used for predicting numeric values the majority voting is applied
-
-answer: False
-
-- majority voting is for classification
-- the mean is for regression
-
----
-
-**question**: F-score is an important performance metric that is used for evaluating regression techniques
-
-answer: False
-
-- classification metric
-- f1 score: $2 \cdot \frac{\text{Prec} \cdot \text{Rec}}{\text{Prec} + \text{Rec}}$
-
----
-
-**question**: Chain Rule does not simplify calculation of probabilities in Bayesian Networks
-
-answer: False
-
-- this question isn't referring to the gradient chain-rule but the probability-theory chain-rule
-- $P(X_1, X_2, \ldots, X_n) = \prod P(X_i | \text{Parents}(X_i))$
-- it allows us to express the joint probability distribution of multiple variables as smaller conditional probability distributions
-
----
-
-**question**: “Off-the-shell” is a transfer learning technique that uses the output of layers from a deep-learning architecture as input for a shallow model
-
-answer: True
-
-- off-the-shelf = using pre-trained models or layers that are readily available without modification
-- one common approach in transfer learning is using the output of layers from a pre-trained deep learning model as input for a new model, which may be shallower
-
----
-
-**question**: A Perceptron with Soft Margin can solve the XOR-problem
-
-answer: 
-
-- …….. not answered yet
-- see: https://cseweb.ucsd.edu/~yfreund/papers/LargeMarginsUsingPerceptron.pdf
-- see: https://www.cs.cmu.edu/~avrim/ML10/lect0125.pdf
-
----
-
-**question**: Back propagation is a method for training a Perceptron
-
-answer: False
-
-- we apply the chain rule to propagate the error to nodes from previous layers in a multi-layer-perceptron – not in a single unit
-
----
-
-**question**: Categorical data should be normalized before training a knn
-
-answer: True
-
-- correction: categorical features should be Z-score normalized after one-hot-encoding if you want to compute a distance in models such as knn.
-- categorical features should be one-hot encoded but not normalized post encoding.
-- normalizing them will destroy their meaning, as they are binary flags.
-
----
-
-**question**: LSTM is a form of Deep Neural Network
-
-answer: False
-
-- LSTM is a type of recurrent neural network – which can be part of deep learning models
-- it depends
-
----
-
-**question**: The computation of bagging can be easily parallelized
-
-answer: True
-
-- bagging (bootstrap aggegating) = parallel evaluation of independent models
-- boosting = sequential evaluation of models
-
----
-
-**question**: Tree pruning performed after training aims at decreasing the variance of the tree, while it can also decrease its performance on the train set
-
-answer: 
-
----
-
-**question**: In AdaBoost, the wights are randomly initialized
-
-answer: False
-
-- all training samples are assigned equal weights
-
----
-
-**question**: Consider a k-armed bandit problem with k=4 actions, denoted 1,2,3 and 4. Consider applying this problem to a bandit algorithm using epsilon-greedy action selection, sample-average action-value estimates, and initial estimates of Q1(a)=4 for all. Suppose the initial sequence of actions and reward is A1=1, R1=-2, A2=1, R2=2, A3=2, R3=2, A4=1, R4=-1, A5=2, R5=1. On some of these steps the epsilon case may have occurred, causing an action to be selected at random. On which time step this definitely occurred?
-
-- a) t2,t4
-- b) t3,t4
-- c) t2,t4
-- d) t1,t2
-
-answer: 
-
----
-
-**question**: Which feature of the dataset would be selected by the 1R algorithm?
-
-| Instance | F1  | F2  | F3  | Class |
-| -------- | --- | --- | --- | ----- |
-| 1        | b   | y   | k   | +     |
-| 2        | c   | y   | s   | -     |
-| 3        | a   | n   | k   | +     |
-| 4        | b   | n   | k   | +     |
-| 5        | b   | y   | s   | -     |
-| 6        | a   | y   | s   | +     |
-| 7        | a   | n   | k   | +     |
-| 8        | a   | t   | s   | -     |
-
-- a) F1
-- b) F2
-- c) F3
-
-answer: 
-
----
-
-**question**: Suppose that you would apply Naive Bayes algorithm (without using Laplace correction) in the dataset to predict the class of the last instances based on the first seven training instances. Which class would be predicted for this instance?
-
-| Instance | F1  | F2  | F3  | Class |
-| -------- | --- | --- | --- | ----- |
-| 1        | a   | y   | k   | -     |
-| 2        | c   | y   | s   | -     |
-| 3        | a   | y   | k   | +     |
-| 4        | b   | n   | k   | -     |
-| 5        | b   | y   | s   | -     |
-| 6        | a   | n   | s   | +     |
-| 7        | b   | n   | s   | -     |
-| 8        | a   | n   | s   | ?     |
-
- - a) -
- - b) +
- - c) + OR -
-
-answer: 
-
----
-
-**question**: Suppose that you learned this linear model for the dataset: 2+2F1+F2. Which RMSE does the training set have?
-
-| F1  | F2  | Target |
-| --- | --- | ------ |
-| 3   | 7   | 13     |
-| 5   | 2   | 14     |
-| 6   | 2   | 14     |
-| 5   | 5   | 17     |
-
--  a) 1.5
-- b) 3
-- c) 2
-- d) None
-
-answer: 
-
----
-
-**question**: A dataset has missing values in both training and test sets. Which data processing is valid?
-
-- a) Remove samples with missing values only from the test set
-- b) Remove samples with missing values only from the train set
-- c) Remove samples with missing values from both train and test set
-- d) None of above
-
-answer: 
-
----
-
-**question**: Knn is very likely to overfit due to the curse of dimensionality. Which of the following options would you consider to handle such a problem?
-
-- a) Dimensionality reduction
-- b) Feature selection
-- c) Bootstrapping
-- d) One-hot Encoding
-- e) All of above
-- f) None of above
-
-answer: 
-
----
-
-**question**: SVM trained on 60% of data and tested on 40% of data has accuracy of 70%. RF trained on the same dataset, but with 80% training and 20% test data, has accuracy of 80%. Which classifier performs better?
-
-- a) SVM
-- b) RF
-- c) Can’t tell
-- d) None of above
-
-answer: 
-
----
-
-**question**: Which of the following are well-known CNN architectures?
-
-- a) LeNet
-- b) LSTM
-- c) ResNet
-- d) Reception
-- e) TeNet
-- f) None of above
-
-answer: 
-
----
-
-**question**: Which of the following techniques performs a similar operation as applying dropout of the input layer in a neural network?
-
-- a) Boosting
-- b) Bagging
-- c) Metalearning
-- d) None of these
-
-answer: 
-
----
-
-**question**: In a neural network, which of the following techniques is used to deal with overfitting?
-
-- a) Dropout
-- b) Regularization
-- c) Batch normalization
-- d) Cross validation
-- e) All of the above
-- f) None of the above
-
-answer: 
