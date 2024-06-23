@@ -326,7 +326,7 @@ answer (open question): actions taken at $t_3$​, $t_5$​, and $t_6$​ are no
 	- $N = [1, 1, 0, 0, 0]$
 	- $Q = [2, \text-3, 0, 0, 0]$
 - 3rd step:  $\text{A: }a_2 \rightarrow \text{R: }2$
-	- non-optimal step: $a_1$ had the highest expected value 👈
+	- non-optimal step: $a_1$ had the highest expected value, with the lowest index 👈
 	- $N[2]$ = 2
 	- $Q[2]$ = -3 + 1/2 · (2 - (-3)) = -3 + 2.5 = -0.5
 		- or just (2-3)/2 = -0.5
@@ -339,14 +339,14 @@ answer (open question): actions taken at $t_3$​, $t_5$​, and $t_6$​ are no
 	- $N = [2, 2, 0, 0, 0]$
 	- $Q = [0.5, \text-0.5, 0, 0, 0]$
 - 5th step:  $\text{A: }a_2 \rightarrow \text{R: }4$
-	- non-optimal step: $a_1$ had the highest expected value 👈
+	- non-optimal step: $a_1$ had the highest expected value, with the lowest index 👈
 	- $N[2]$ = 3
 	- $Q[2]$ = -0.5 + 1/3 · (4 - (-0.5)) = 1
 		- or just (4+2-3)/3 = 1
 	- $N = [2, 3, 0, 0, 0]$
 	- $Q = [0.5, 1, 0, 0, 0]$
 - 6th step:  $\text{A: }a_5 \rightarrow \text{R: }3$
-	- non-optimal step: $a_2$ had the highest expected value 👈
+	- non-optimal step: $a_2$ had the highest expected value, with the lowest index 👈
 	- $N[5]$ = 1
 	- $Q[5]$ = 0 + 1/1 · (3 - 0) = 3
 		- or just 3/1 = 3
@@ -354,6 +354,457 @@ answer (open question): actions taken at $t_3$​, $t_5$​, and $t_6$​ are no
 	- $Q = [0.5, 1, 0, 0, 1]$
 - see: https://stats.stackexchange.com/questions/316911/how-to-understand-k-armed-bandit-example-from-suttons-rl-book-chapter-2 
 - see: https://github.com/Sagarnandeshwar/Bandit_Algorithms
+
+# 2023-06-21
+
+**question**: A recurrent Neural Network is well suited to process sequential input, if the size is not fixed
+
+answer: True
+
+- they're designed to handle sequential data of arbitrary length
+
+---
+
+**question**: Training time of knn depends on the chosen distance metric
+
+answer: False
+
+- there is no training-runtime for knn as it is a lazy learner = computation at prediction-step in $O(Nd)$
+- evaluation-runtime:
+	- evaluation runtime of KNN can depend on the chosen distance metric
+	- different distance metrics have varying computational costs
+
+---
+
+**question**: The paired t-test is used when testing for statistical significance of results obtained with holdout validation
+
+answer: True
+
+- paired t-tests are designed for comparing different model performances
+- we can't compare the same model on different folds
+- use-cases:
+	- comparing different models
+	- comparing the same model with different hyperparameters, data preprocessing techniques
+	- comparing different cross-validation strategies (ie. k-fold vs. leave-one-out) → helps considering data variability introduced by the different data folds
+
+---
+
+**question**: Decisions trees are learned by maximizing information gain
+
+answer: True
+
+- information-gain is just one of many ways to measure label-uncertainty:
+	- relative error rate
+	- aboslute error rate
+	- information gain
+	- ratio
+	- gini impurity
+
+---
+
+**question**: Decision trees can handle multi-class problems
+
+answer: True
+
+- decision-trees are binary trees but their leafs are not constrained to just two classes
+
+---
+
+**question**: Overfitting is more likely when the set of testing data is small
+
+answer: False
+
+- overfitting happens during the training phase, not the testing phase
+- but smaller training datasets are more prone to overfitting because it makes it harder for the model to learn patterns over memorizing the dataset
+
+---
+
+**question**: Random forests is boosting ensemble technique
+
+answer: False
+
+- bagging (bootstrap aggegating) = parallel evaluation of independent models → ie. random forests
+- boosting = sequential evaluation of models
+
+---
+
+**question**: The first model in Gradient Boosting is a zero rule model
+
+answer: True
+
+- the initial zero-rule model $F_0(x)$ can stand for any kind of simple rule-based classifier
+
+---
+
+**question**: In Bayesian Networks we assume that attributes are statistically independent given the class
+
+answer: False
+
+- the independence assumption is for naive bayes, not for bayesian networks:
+	- naive bayes assumes that all the features are conditionally independent between features (presence or absence of a particular feature does not depend on the presence or absence of any other feature) given the class variable.
+- general bayesian network captures the conditional dependencies between variables
+
+---
+
+**question**: If Naive Bayes is applied on a data set that contains also numeric attributes then a probability density function must always be used
+
+answer: True
+
+- assume normal distribution
+- use probability-density-function of normal distribution $f(x)$ for each value
+
+---
+
+**question**: Automated Machine Learning deals only with optimization of hyperparameters of algorithms
+
+answer: False
+
+- it deals both with algorithm selection (rice's framework, landmarking) and hyperparameter optimization (search algorithms)
+
+---
+
+**question**: Lasso regression cannot be used for feature selection
+
+answer: False
+
+- lasso = least absolute shrinkage and selection operator
+- embedded (supervised) feature selection = evaluate features during training
+	- used to regularize polynomial regression models
+
+---
+
+**question**: The mean absolute error (a performance metric used for regression) is less sensitive to outliers than MSE
+
+answer: True
+
+- MAE is generally less sensitive to outliers compared to metrics that measure the squared error
+- mean absolute error MAE: ${\sum_i |p_i - a_i|} / n$
+- mean squared error MSE: ${\sum_i (p_i - a_i)^2} / n$
+
+---
+
+**question**: K-armed bandit problem The problem: Consider a k-armed bandit problem with k = 4 actions, denoted 1, 2, 3, and 4. Consider applying to this problem a bandit algorithm using epsilon-greedy action selection, sample-average action-value estimates, and initial estimates of Q1(a) = 2, for all a. Suppose the initial sequence of actions and rewards is A1 = 1, R1 = -2, A2 = 2, R2 = 2, A3 = 1, R3 = 2, A4 = 2, R4 = -1, A5 = 3, R5 = 1. On some of these time steps the epsilon case may have occurred, causing an action to be selected at random. On which time step this definitely occurred?
+
+- a) t3, t5
+- b) t3, t4
+- c) t2, t5
+- d) t1, t2
+
+answer: none of the above, we only know with certainty that $t_3$ was non-optimal
+
+- model:
+	- k-bandit algorithm (stationary reward probability distribution)
+	- epsilon-greedy action selection
+	- sample-average action-value estimates
+	- actions = $\{a_1, a_2, a_3, a_4\}$
+	- update step: $Q(A) \leftarrow Q(A) + \frac 1 {N(A)} \cdot \Big[R-Q(A)\Big]$
+- initial:
+	- $N = [0,0,0,0]$
+	- $Q = [2,2,2,2]$
+- 1st step: $\text{A: }a_1 \rightarrow \text{R: }-2$
+	- $N[1]$ = 1
+	- $Q[1]$ = 2 + 1/1 · (-2 - 2) = -2
+	- $N = [1,0,0,0]$
+	- $Q = [-2,2,2,2]$
+- 2nd step: $\text{A: }a_2 \rightarrow \text{R: } 2$
+	- $N[2]$ = 1
+	- $Q[2]$  = 2 + 1/1 · (2 - 2) = 2
+	- $N = [1,1,0,0]$
+	- $Q = [-2,2,2,2]$
+- 3rd step: $\text{A: }a_1 \rightarrow \text{R: } 2$
+	- non-optimal step: $a_2$ had the highest expected value, with the lowest index 👈
+	- $N[1]$ = 2
+	- $Q[1]$ = -2 + 1/2 (2 - (-2)) = 0
+	- $N = [2,1,0,0]$
+	- $Q = [0,2,2,2]$
+- 4th step: $\text{A: }a_2 \rightarrow \text{R: } -1$
+	- $N[2]$ = 2
+	- $Q[2]$ = 2 + 1/2 · (-1 - 2) = 0.5
+	- $N = [2,2,0,0]$
+	- $Q = [0,0.5,2,2]$
+- 5th step: $\text{A: }a_3 \rightarrow \text{R: } 1$
+	- $N[3]$ = 1
+	- $Q[3]$ = 2 + 1/1 · (1 - 2) = 1
+	- $N = [2,2,1,0]$
+	- $Q = [0,0.5,1,2]$
+
+---
+
+**question**: 1R algorithm Problem: Which feature of the dataset below would be selected by the 1R algorithm?
+
+| Instance | F1  | F2  | F3  | Class |
+| -------- | --- | --- | --- | ----- |
+| 1        | b   | y   | k   | -     |
+| 2        | c   | y   | s   | -     |
+| 3        | a   | n   | k   | +     |
+| 4        | b   | n   | k   | +     |
+| 5        | b   | y   | s   | -     |
+| 6        | a   | y   | s   | +     |
+| 7        | a   | n   | k   | -     |
+| 8        | a   | t   | s   | -     |
+
+- a) F1
+- b) F2
+- c) F3
+
+answer: F2
+
+- we want to find the split with the least label-uncertainty
+- for each feature (dimension) we use the majority-vote of each unique value to predict and measure total num of errors
+- we then use the total num of errors to compare the feautres we should split on
+
+feature: F1
+
+- unique values: {a, b, c}
+- model:
+	- a (2x plus, 2x minus) → tie, so we randomly decide to predict minus
+	- b (1x plus, 2x minus) → predict minus
+	- c (0x plus, 1x minus) → predict minus
+- evaluation:
+	- a wrong predictions: 2/4
+	- b wrong predictions: 1/3
+	- c wrong predictions: 0/1
+- absolute error rate = 3
+
+feature: F2
+
+- unique values: {y, n, t}
+- model:
+	- y (1x plus, 3x minus) → predict minus
+	- n (2x plus, 1x minus) → predict plus
+	- t (0x plus, 1x minus) → predict minus
+- evaluation:
+	- y wrong predictions: 1/4
+	- n wrong predictions: 1/3
+	- t wrong predictions: 0/1
+- absolute error rate = 2
+
+feature: F3
+
+- unique values: {k, s}
+- model:
+	- k (2x plus, 3x minus) → predict minus
+	- s (1x plus, 3x minus) → predict minus
+- evaluation:
+	- k wrong predictions: 2/5
+	- s wrong precitions: 1/4
+- absolute error rate = 3
+
+conclusion
+
+- since feature F2 has the lowest absolute error rate we use it's model (majority vote of each unique value) for our split
+- `if(F2 is y or t) predict minus else if(F2 has other value) predict plus`
+
+---
+
+**question**: Naive Bayes algorithm Problem: Suppose that you would apply the Naive Bayes algorithm (without using Laplace correction) in the dataset below to predict the class of the last instances based on the first seven training instances. Which class would be predicted for this instance?
+
+| Instance | F1  | F2  | F3  | Class |
+| -------- | --- | --- | --- | ----- |
+| 1        | a   | y   | k   | -     |
+| 2        | c   | y   | s   | -     |
+| 3        | a   | y   | k   | +     |
+| 4        | b   | n   | k   | -     |
+| 5        | b   | y   | s   | -     |
+| 6        | a   | n   | s   | +     |
+| 7        | b   | n   | s   | -     |
+| 8        | a   | n   | s   | ?     |
+
+- a) -
+- b) +
+- c) + or -
+
+answer:
+
+- see: https://stats.stackexchange.com/questions/417277/bayesian-formula-for-multiple-events/417278#417278
+- $p(A\mid BCD)=\frac{p(BCD\mid A) \cdot  p(A)}{p(BCD)}=\frac{p(B \mid A) \cdot p(C \mid A) \cdot p(D \mid A) \cdot p(A)}{p(BCD)}$
+- $p({+} \mid a, n, s) = \frac{p(a \mid +) \cdot p(n \mid +) \cdot p(s \mid +) \cdot p(+)}{p(a,n,s)} \propto p(a \mid +) \cdot p(n \mid +) \cdot p(s \mid +) \cdot p(+)$
+- $p({-} \mid a, n, s) = \frac{p(a \mid -) \cdot p(n \mid -) \cdot p(s \mid -) \cdot p(-)}{p(a,n,s)} \propto p(a \mid -) \cdot p(n \mid -) \cdot p(s \mid -) \cdot p(-)$
+- priors:
+	- $p(+)$ = 2/7
+	- $p(-)$ = 5/7
+- conditional likelihood for each feature value (+/-):
+	- $p(a \mid +)$ = 2/3
+	- $p(n \mid +)$ = 1/3
+	- $p(s \mid +)$ = 1/4
+	- $p(a \mid -)$ = 1/3
+	- $p(n \mid -)$ = 2/3
+	- $p(s \mid -)$ = 3/4
+- posterior probabilities:
+	- $p(+ \mid a,n,s) \propto$ 2/3 · 1/3 · 1/4 · 2/7 = 0.0158730159
+	- $p(- \mid a,n,s) \propto$ 1/3 · 2/3 · 3/4 · 5/7 = 0.119047619
+- because $p(+ \mid a,n,s) < p(- \mid a,n,s)$ we predict the last sample to be $+$
+
+---
+
+**question**: RMSE Problem: Suppose that you learned this linear model for the dataset below: 2+F1+F2 – The RMSE of this model in this training set is:
+
+| F1  | F2  | Target |
+| --- | --- | ------ |
+| 3   | 7   | 12     |
+| 5   | 2   | 9      |
+| 6   | 2   | 10     |
+| 5   | 5   | 15     |
+
+ - a) 1
+ - b) 1/4
+ - c) 2
+ - d) 3
+ 
+answer: 
+
+- we compute the predictions with the formula $2 + F_1 + F_2$ and compute the root mean squared error RMSE
+- $\text{err} = (12-12)^2 + (9-9)^2 + (10-10)^2 + (15-12)^2 = 9$ 
+- $n = 4$
+- $\text{RMSE} = \sqrt{\sum_i (p_i - a_i)^2 / n} = \sqrt{\frac{9}{2}} = 2.1213203436$
+
+| F1  | F2  | Target | Prediction |
+| --- | --- | ------ | ---------- |
+| 3   | 7   | 12     | 12         |
+| 5   | 2   | 9      | 9          |
+| 6   | 2   | 10     | 10         |
+| 5   | 5   | 15     | 12         |
+
+---
+
+**question**: An MLP with three hidden layers and linear activation functions can be approximated by a Perceptron
+
+- a) Always
+- b) Sometimes
+- c) Never
+
+answer: Always
+
+- when multiple layers are stacked with linear activations, the overall transformation from input to output remains linear
+- this is because the composition of linear functions is still a linear function.
+- this can be expressed as: $f(Ax+b)=Cf(x)+d$
+- example:
+	- 1st layer: $y_1 = W_1 \cdot x + b_1$
+	- 2nd layer: $y_2 = W_2 \cdot y_1 + b_2$
+	- 3rd layer: $y_3 = W_3 \cdot y_2 + b_3$
+	- combined:
+		- $y_3 = W_3 \cdot (W_2 \cdot (W_1 \cdot x + b_1) + b_2) + b_3$
+		- $y_3 = (W_3 \cdot W_2 \cdot W_1) \cdot x + (W_3 \cdot W_2 \cdot b_1 + W_3 \cdot b_2 + b_3)$
+
+---
+
+**question**: An output of a convolutional layer is larger when … 
+
+- a1) Padding decreases
+- a2) Padding increases
+- b1) Stride decreases
+- b2) Stride increases
+
+answer: a2, b1 
+
+- $n\times n \circledast f\times f \Rightarrow \left\lfloor\frac{n+2p-f}{s}+1\right\rfloor\times\left\lfloor\frac{n+2p-f}{s}+1\right\rfloor$
+- where:
+	- $n$ = input
+	- $f$ = kernel filter
+	- $p$ = padding
+	- $s$ = stride
+- increasing the stride in the denominator decreases the output size
+- increasing the padding in the nominator increases the output size
+- we therefore have to increase the padding and decrease the stride to maximize the output size
+
+---
+
+**question**: Which approaches can help to improve the performance of a neural network?
+
+- a) Get more test data
+- b) Use holdout instead of cross-validation
+- c) Increase the number of training epochs
+- d) Add dropout for testing
+- e) Change the learning rate
+
+answer:
+
+- options a, b, d suggest improvements during evaluation and not training
+- c) Increase the number of training epochs ✅
+	- gives model more time to fit data
+	- can help if model is underfitting
+	- works best with early-stopping on some threshhold
+- e) Change the learning rate ✅
+	- adjusts speed of convergence in gradient descent
+	- high learning rate can lead to overshooting, while a low learning rate can cause the model to converge too slowly
+	- learning rate schedules or adaptive learning rates (e.g. Adam optimizer) can help
+
+---
+
+**question**: Which of the following classification methods uses majority voting?
+
+- a) k-NN
+- b) Decision Trees
+- c) Bayesian Networks
+- d) Random Forests
+- e) An ensemble of an SVM, Logistic Regression and an MLP with two hidden layers than outputs the prediction of the model with the highest confidence
+- f) All of the above
+- g) None of the above
+
+answer: 
+
+- a) k-NN ✅
+	- uses majority voting to predict based on $k$ closest neighbors
+- b) Decision Trees
+	- can use majority voting to find the split with the least label-uncertainty: for each feature (dimension) we use the majority-vote of each unique value to predict and measure total num of errors
+- c) Bayesian Networks
+	- it's possible in theory
+	- see: https://link.springer.com/chapter/10.1007/978-3-642-41184-7_23
+- d) Random Forests ✅
+	- decision tree in the forest makes a prediction, and the final prediction is determined by the majority vote of all trees
+- e) An ensemble of an SVM, Logistic Regression and an MLP with two hidden layers than outputs the prediction of the model with the highest confidence ✅
+	- ensembles use majority voting to decide
+
+---
+
+**question**: In this course, we briefly discussed a neural network architecture whose outputs are aimed at having the same values the same as their inputs. How is that architecture called?
+
+- a) Generative Adversarial Network
+- b) Autoencoder
+- c) Bayesian Network
+- d) Recurrent Neural Network
+- e) None of the above
+
+answer: autoencoder
+
+- encoder-decoder neural networks used for representation learning
+- first half: feature extractor
+	- learning an encoding function to compress data
+	- creates a latent representation / embedding
+	- dimensionality reduction: usually data has some kind of structure and only uses a lower dimensional subspace of the full possible dimensionality of the input space. the network must learn a function to remap data to a lower dimension based on the structure of the data
+- hidden layer: bottleneck
+	- the representation passed from the first half to the second half
+	- you have to regularize this layer to reduce dimensionality
+- second half: denoiser
+	- learning a decoding function to reconstruct the original input with minimal reconstruction error
+	- loss function: reconstruction error
+
+---
+
+**question**: Which of the following is a data augmentation method?
+
+- a) Image normalisation
+- b) SIFT
+- c) Max Pooling
+- d) Holdout method
+- e) Convolution
+- f) Cross Validation
+- g) All of the above
+- h) None of the above
+
+answer: None of the above
+
+- data augmentation = extend train-set by slightly modifying data (ie. flip, rotate, scale images, …)
+- Image normalisation:
+	- image processing technique
+	- changes the range of pixel intensity values
+- scale-invariant feature transform SIFT:
+	- image processing technique
+	- feature detection algorithm used for extracting features (keypoints, descriptors)
+- Max Pooling, Convolution:
+	- part of CNN architecture
+- Holdout method, Cross Validation:
+	- model evaluation technique
 
 # 2023-01-24
 
@@ -415,10 +866,12 @@ answer:
 	- Dropout
 		- randomly "dropping out" (i.e., temporarily removing) a certain percentage of neurons during training
 	- Batch Normalization
-		- normalizes the inputs to each layer, to reduce the dependence on specific neurons, has a regularizing effect 
-- doesn't prevent overfitting:
+		- normalizes the inputs to each layer, to reduce the dependence on specific neurons, has a regularizing effect
+- indirectly prevents overfitting:
 	- Cross Validation
 		- improves evaluation of generalizability which can help in choosing the right hyperparams
+		- cross-validation does not prevent overfitting, it helps detect overfitting – but comparing the performance of different models using cross-validation, you can choose models that are less likely to overfit
+		- see: https://stats.stackexchange.com/questions/9053/how-does-cross-validation-overcome-the-overfitting-problem
 
 ---
 
@@ -512,7 +965,7 @@ answer: True
 
 **question**: A softmax function in MLPs transforms the activation to a range of -1…1
 
-answer: True
+answer: False
 
 - softmax activation scales outputs to probabilities between 0 and 1
 
@@ -3519,8 +3972,9 @@ answer (open question):
 
 answer:
 
-- we need to identify the single attribute that can best predict the target
-- for each feature (dimension), calculate the number of correct predictions it makes on the training data
+- we want to find the split with the least label-uncertainty
+- for each feature (dimension) we use the majority-vote of each unique value to predict and measure total num of errors
+- we then use the total num of errors to compare the feautres we should split on
 
 attribute: Groups
 
@@ -3550,6 +4004,7 @@ attribute: Groups
 	- Predict 30 with ILS (1 correct)
 	- Predict 20 with ILS (1 correct)
 - accuracy: 12/12
+- relative error rate = 0/12
 
 attribute: Seq2
 
@@ -3561,6 +4016,7 @@ attribute: Seq2
 	- Predict NO with MC (4 out of 9 correct)
 	- Predict YES with MC (2 out of 3 correct)
 - accuracy: 6/12
+- relative error rate = 6/12
 
 attribute: DayBlocks
 
@@ -3574,6 +4030,7 @@ attribute: DayBlocks
 	- Predict 5 with MC (3 out of 5 correct)
 	- Predict 6 with ILS (4 out of 6 correct)
 - accuracy: 8/12
+- relative error rate = 2/12
 
 attribute: NightB
 
@@ -3587,6 +4044,7 @@ attribute: NightB
 	- Predict 4 with ILS (4 out of 5 correct)
 	- Predict 5 with ILS (2 out of 3 correct)
 - accuracy: 9/12
+- relative error rate = 3/12
 
 attribute: WorkB
 
@@ -3600,6 +4058,7 @@ attribute: WorkB
 	- Predict 5 with ILS (3 out of 4 correct)
 	- Predict 6 with ILS (1 correct)
 - accuracy: 8/12
+- relative error rate = 4/12
 
 attribute: DayOffB
 
@@ -3611,13 +4070,14 @@ attribute: DayOffB
 	- Predict 3 with MC (4 out of 8 correct)
 	- Predict 4 with MC (2 out of 4 correct)
 - accuracy: 6/12
+- relative error rate = 6/12
 
-selecting best feature:
+selecting the best feature:
 
-- the "Group" feature accuracy of 12/12
+- the "Group" feature has the lowest relative error rate
 - generated rule = `if (Groups = 9 or 11 or 13 or 7 or 29) then Algorithm = MC otherwise Algorithm = ILS
 
-classifying missing samples:
+predicting missing labels:
 
 - first test sample: Group = 24 → predicted label: ILS
 - second test sample: Group = 13 → predicted label: MC
@@ -3879,306 +4339,6 @@ answer:
 answer:
 
 - determining whether observed difference between two systems is by chance (like variations in data or randomness in algorithm)
-
-# 2023-06-21 – TODO
-
-**question**: A recurrent Neural Network is well suited to process sequential input, if the size is not fixed
-
-answer: True
-
-- they're designed to handle sequential data of arbitrary length
-
----
-
-**question**: Training time of knn depends on the chosen distance metric
-
-answer: False
-
-- there is no training-runtime for knn as it is a lazy learner = computation at prediction-step in $O(Nd)$
-- evaluation-runtime:
-	- evaluation runtime of KNN can depend on the chosen distance metric
-	- different distance metrics have varying computational costs
-
----
-
-**question**: The paired t-test is used when testing for statistical significance of results obtained with holdout validation
-
-answer: True
-
-- paired t-tests are designed for comparing different model performances
-- we can't compare the same model on different folds
-- use-cases:
-	- comparing different models
-	- comparing the same model with different hyperparameters, data preprocessing techniques
-	- comparing different cross-validation strategies (ie. k-fold vs. leave-one-out) → helps considering data variability introduced by the different data folds
-
----
-
-**question**: Decisions trees are learned by maximizing information gain
-
-answer: True
-
-- information-gain is just one of many ways to measure label-uncertainty:
-	- relative error rate
-	- aboslute error rate
-	- information gain
-	- ratio
-	- gini impurity
-
----
-
-**question**: Decision trees can handle multi-class problems
-
-answer: True
-
-- decision-trees are binary trees but their leafs are not constrained to just two classes
-
----
-
-**question**: Overfitting is more likely when the set of testing data is small
-
-answer: False
-
-- overfitting happens during the training phase, not the testing phase
-- but smaller training datasets are more prone to overfitting because it makes it harder for the model to learn patterns over memorizing the dataset
-
----
-
-**question**: Random forests is boosting ensemble technique
-
-answer: False
-
-- bagging (bootstrap aggegating) = parallel evaluation of independent models → ie. random forests
-- boosting = sequential evaluation of models
-
----
-
-**question**: The first model in Gradient Boosting is a zero rule model
-
-answer: True
-
-- the initial zero-rule model $F_0(x)$ can stand for any kind of simple rule-based classifier
-
----
-
-**question**: In Bayesian Networks we assume that attributes are statistically independent given the class
-
-answer: False
-
-- the independence assumption is for naive bayes, not for bayesian networks:
-	- naive bayes assumes that all the features are conditionally independent between features (presence or absence of a particular feature does not depend on the presence or absence of any other feature) given the class variable.
-- general bayesian network captures the conditional dependencies between variables
-
----
-
-**question**: If Naive Bayes is applied on a data set that contains also numeric attributes then a probability density function must always be used
-
-answer: True
-
-- assume normal distribution
-- use probability-density-function of normal distribution $f(x)$ for each value
-
----
-
-**question**: Automated Machine Learning deals only with optimization of hyperparameters of algorithms
-
-answer: False
-
-- it deals both with algorithm selection (rice's framework, landmarking) and hyperparameter optimization (search algorithms)
-
----
-
-**question**: Lasso regression cannot be used for feature selection
-
-answer: False
-
-- lasso = least absolute shrinkage and selection operator
-- embedded (supervised) feature selection = evaluate features during training
-	- used to regularize polynomial regression models
-
----
-
-**question**: The mean absolute error (a performance metric used for regression) is less sensitive to outliers than MSE
-
-answer: True
-
-- MAE is generally less sensitive to outliers compared to metrics that measure the squared error
-- mean absolute error MAE: ${\sum_i |p_i - a_i|} / n$
-- mean squared error MSE: ${\sum_i (p_i - a_i)^2} / n$
-
----
-
-**question**: K-armed bandit problem The problem: Consider a k-armed bandit problem with k = 4 actions, denoted 1, 2, 3, and 4. Consider applying to this problem a bandit algorithm using epsilon-greedy action selection, sample-average action-value estimates, and initial estimates of Q1(a) = 2, for all a. Suppose the initial sequence of actions and rewards is A1 = 1, R1 = -2, A2 = 2, R2 = 2, A3 = 1, R3 = 2, A4 = 2, R4 = -1, A5 = 3, R5 = 1. On some of these time steps the epsilon case may have occurred, causing an action to be selected at random. On which time step this definitely occurred?
-
-- a) t3, t5
-- b) t3, t4
-- c) t2, t5
-- d) t1, t2
-
-answer:
-
-- model:
-	- k-bandit algorithm (stationary reward probability distribution)
-	- epsilon-greedy action selection
-	- sample-average action-value estimates
-	- actions = $\{a_1, a_2, a_3, a_4\}$
-	- update step: $Q(A) \leftarrow Q(A) + \frac 1 {N(A)} \cdot \Big[R-Q(A)\Big]$
-- initial:
-	- $N = [0,0,0,0]$
-	- $Q = [2,2,2,2]$
-- 1st step: $\text{A: }a_1 \rightarrow \text{R: }-2$
-	- $N[1]$ = 1
-	- $Q[1]$  = 
-	- $N = [1,0,0,0]$
-	- $Q = [-2,2,2,2]$
-- 2nd step: $\text{A: }a_2 \rightarrow \text{R: } 2$
-- 3rd step: $\text{A: }a_1 \rightarrow \text{R: } 2$
-- 4th step: $\text{A: }a_2 \rightarrow \text{R: } -1$
-- 5th step: $\text{A: }a_3 \rightarrow \text{R: } 1$
-
-
-
-- askkdasl;dknasd
-	- non-optimal step: $a_2$ had the highest expected value 👈
-	- $N[5]$ = 1
-	- $Q[5]$ = 0 + 1/1 · (3 - 0) = 3
-	- $N = [2, 3, 0, 0, 1]$
-	- $Q = [0.5, 1, 0, 0, 1]$
-
-
----
-
-**question**: 1R algorithm Problem: Which feature of the dataset below would be selected by the 1R algorithm?
-
-| Instance | F1  | F2  | F3  | Class |
-| -------- | --- | --- | --- | ----- |
-| 1        | b   | y   | k   | -     |
-| 2        | c   | y   | s   | -     |
-| 3        | a   | n   | k   | +     |
-| 4        | b   | n   | k   | +     |
-| 5        | b   | y   | s   | -     |
-| 6        | a   | y   | s   | +     |
-| 7        | a   | n   | k   | -     |
-| 8        | a   | t   | s   | -     |
-
-- a) F1
-- b) F2
-- c) F3
-
-answer: 
-
----
-
-**question**: Naive Bayes algorithm Problem: Suppose that you would apply the Naive Bayes algorithm (without using Laplace correction) in the dataset below to predict the class of the last instances based on the first seven training instances. Which class would be predicted for this instance?
-
-| Instance | F1  | F2  | F3  | Class |
-| -------- | --- | --- | --- | ----- |
-| 1        | a   | y   | k   | -     |
-| 2        | c   | y   | s   | -     |
-| 3        | a   | y   | k   | +     |
-| 4        | b   | n   | k   | -     |
-| 5        | b   | y   | s   | -     |
-| 6        | a   | n   | s   | +     |
-| 7        | b   | n   | s   | -     |
-| 8        | a   | n   | s   | ?     |
-
-- a) -
-- b) +
-- c) + or -
-
-answer: 
-
----
-
-**question**: RMSE Problem: Suppose that you learned this linear model for the dataset below: 2+F1+F2 – The RMSE of this model in this training set is: Answer:
-
-| F1  | F2  | Target |
-| --- | --- | ------ |
-| 3   | 7   | 12     |
-| 5   | 2   | 9      |
-| 6   | 2   | 10     |
-| 5   | 5   | 15     |
-
- - a) 1
- - b) 1/4
- - c) 2
- - d) 3
- 
-answer: 
-
----
-
-**question**: An MLP with three hidden layers and linear activation functions can be approximated by a Perceptron
-
-- Always
-- Sometimes
-- Never
-
-answer: 
-
----
-
-**question**: An output of a convolutional layer is larger when … 
-
-- a) Padding decreases
-- b) Padding increases
-- c) Stride decreases
-- d) Stride increases
-
-answer: 
-
----
-
-**question**: Which approaches can help to improve the performance of a neural network?
-
-- a) Get more test data
-- b) Use holdout instead of cross-validation
-- c) Increase the number of training epochs
-- d) Add dropout for testing
-- e) Change the learning rate
-
-answer: 
-
----
-
-**question**: Which of the following classification methods uses majority voting?
-
-- a) k-NN
-- b) Decision Trees
-- c) Bayesian Networks
-- d) Random Forests
-- e) An ensemble of an SVM, Logistic Regression and an MLP with two hidden layers than outputs the prediction of the model with the highest confidence
-- f) All of the above
-- g) None of the above
-
-answer: 
-
----
-
-**question**: In this course, we briefly discussed a neural network architecture whose outputs are aimed at having the same values the same as their inputs. How is that architecture called?
-
-- a) Generative Adversarial Network
-- b) Autoencoder
-- c) Bayesian Network
-- d) Recurrent Neural Network
-- e) None of the above
-
-answer: 
-
----
-
-**question**: Which of the following is a data augmentation method?
-
-- a) Image normalisation
-- b) SIFT
-- c) Max Pooling
-- d) Holdout method
-- e) Convolution
-- f) Cross Validation
-- g) All of the above
-- h) None of the above
-
-answer: 
 
 # 2023-10-20 – TODO
 
