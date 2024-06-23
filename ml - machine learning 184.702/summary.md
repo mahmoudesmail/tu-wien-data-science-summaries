@@ -431,6 +431,13 @@ search algorithms:
 	- kernel must only have non-negative eigenvalues: $UDU^t=K,~U^tU=1$
 - can be also applied to kernel perceptron
 
+kernel examples:
+
+- linear: $K(x, y) = x^\intercal y$
+- polynomial: $K(x, y) = (x^\intercal y + c)^d$
+- radial basis function rbg: $K(x, y) = exp(-γ \cdot ||x - y||^2)$
+- sigmoid: $K(x, y) = tanh(\alpha \cdot x^\intercal y + c)$
+
 *linear svm*
 
 - the objective is a convex, quadratic function
