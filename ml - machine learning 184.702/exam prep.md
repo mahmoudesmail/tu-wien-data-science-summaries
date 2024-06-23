@@ -88,19 +88,27 @@ answer (boolean): False
 
 **(8) question**: Tree pruning performed after training aims at decreasing the variance of the tree, while it can also decrease its performance on the train set.
 
-answer (boolean): False
+answer (boolean): True
 
-- variance = overfitting, predictions are too noisy, not generalizing to test-set
-- if a model can generalize better it means that it has better performance on the test-set
+- first sentence: the general goal of pruning is to decrease variance / increase generalizability - no matter whether done in the training or evaluation phase
+- second sentence: pruning improves generalizability at the train set, at the cost of reduced accuracy during training
+
+definitions
+
+- prepruning = pruning during training
+	- based on threshold for: samples in leaf, tree depth, information gain
+- pruning = pruning during evaluation
+	- reduced error pruning = replace subtree with majority-vote class, keep reasonable accuracy
+	- cost complexity pruning = generate competing trees, compare by: error divided by num of leafs
+	- pessimistic error pruning = traverse tree, remove redundancy
 
 ---
 
 **(9) question**: Lasso regression cannot be used for feature extraction.
 
-answer (boolean): False
+answer (boolean): True
 
-- lasso = least absolute shrinkage and selection operator
-- used for feature selection
+- lasso = least absolute shrinkage and selection operator → used for feature selection
 - used to regularize polynomial regression models
 - but it can hypothetically also be indirectly used for feature-extraction by selecting a subset of the features with non-zero coefficients
 
@@ -294,44 +302,56 @@ answer (single choice): d)
 
 **question**: Consider a k-armed bandit problem with k=5 actions, denoted 1,2,3,4, and 5. Consider applying to this problem a bandit algorithm using epsilon-greedy action selection, sample-average action-value estimates, and initial estimates of Q1(a) = 0, for all a. Suppose the initial sequence of actions and rewards is A1 = 2, R1 = -3 (in the first time step t1 action 2 is selected and the reward for this action is -3), A2 = 1, R2 = 2, A3 = 2, R3 = 2, A4 = 1, R4 = -1, A5 = 2, R5 = 4, A6 = 5, R6 = 3. On some of these time steps the epsilon case may have occurred, causing an action to be selected at random. On which time steps did this definitely occur? On which time steps could this possibly have occurred?
 
-answer (open question): actions taken at $t_3$​, $t_5$​, and $t_6$​ are not greedy actions, indicating random selection might have occurred due to epsilon.
+answer (open question): actions taken at $t_3$​, $t_5$​, and $t_6$​ are not greedy actions, indicating that AT LEAST those were chosen randomly based on epsilon.
 
 - model:
-	- k-bandit algorithm (stationary reward probability distribution), epsilon-greedy action selection, sample-average action-value estimates
-	- 5 possible actions
-- steps:
-	- assume each index $Q[i]$ and $N[i]$ corresponds to action $a_i$
-	- take average of rewards observed so far on each update: $Q(A) \leftarrow Q(A) + \frac 1 {N(A)} \cdot \Big[R-Q(A)\Big]$
-	- initial:
-		- $N = [0, 0, 0, 0, 0]$
-		- $Q = [0, 0, 0, 0, 0]$
-	- 1st step: action 2 → reward -3
-		- $q_2$ = -3/1 = -3
-		- $N = [0, 1, 0, 0, 0]$
-		- $Q = [0, \text-3, 0, 0, 0]$
-	- 2nd step: action 1 → reward 2
-		- $q_1$ = 2/1 = 2
-		- $N = [1, 1, 0, 0, 0]$
-		- $Q = [2, \text-3, 0, 0, 0]$
-	- 3rd step: action 2 → reward 2
-		- this step wasn't optimal. action 1 had the highest expected value. 👈
-		- $q_2$ = (2-3)/2 = -0.5
-		- $N = [1, 2, 0, 0, 0]$
-		- $Q = [2, \text-0.5, 0, 0, 0]$
-	- 4th step: action 1 → reward -1
-		- $q_1$ = (2-1)/2 = 0.5
-		- $N = [2, 2, 0, 0, 0]$
-		- $Q = [0.5, \text-0.5, 0, 0, 0]$
-	- 5th step: action 2 → reward 4
-		- this step wasn't optimal. action 1 had the highest expected value. 👈
-		- $q_2$ = (4+2-3)/3 = 1
-		- $N = [2, 3, 0, 0, 0]$
-		- $Q = [0.5, 1, 0, 0, 0]$
-	- 6th step: action 5 → reward 3
-		- this step wasn't optimal. action 2 had the highest expected value. 👈
-		- $q_1$ = 3/1 = 3
-		- $N = [2, 3, 0, 0, 1]$
-		- $Q = [0.5, 1, 0, 0, 1]$
+	- k-bandit algorithm (stationary reward probability distribution)
+	- epsilon-greedy action selection
+	- sample-average action-value estimates
+	- actions = $\{a_1, a_2, a_3, a_4, a_5\}$
+	- update step: $Q(A) \leftarrow Q(A) + \frac 1 {N(A)} \cdot \Big[R-Q(A)\Big]$
+- initial:
+	- $N = [0, 0, 0, 0, 0]$
+	- $Q = [0, 0, 0, 0, 0]$
+- 1st step:  $\text{A: }a_2 \rightarrow \text{R: }-3$
+	- $N[2]$ = 1
+	- $Q[2]$ = 0 + 1/1 · (-3 - 0) = -3
+		- or just -3/1 = -3
+	- $N = [0, 1, 0, 0, 0]$
+	- $Q = [0, \text-3, 0, 0, 0]$
+- 2nd step:  $\text{A: }a_1 \rightarrow \text{R: }2$
+	- $N[1]$ = 1
+	- $Q[1]$ = 0 + 1/1 · (2 - 0) = 2
+		- or just 2/1 = 2
+	- $N = [1, 1, 0, 0, 0]$
+	- $Q = [2, \text-3, 0, 0, 0]$
+- 3rd step:  $\text{A: }a_2 \rightarrow \text{R: }2$
+	- non-optimal step: $a_1$ had the highest expected value 👈
+	- $N[2]$ = 2
+	- $Q[2]$ = -3 + 1/2 · (2 - (-3)) = -3 + 2.5 = -0.5
+		- or just (2-3)/2 = -0.5
+	- $N = [1, 2, 0, 0, 0]$
+	- $Q = [2, \text-0.5, 0, 0, 0]$
+- 4th step:  $\text{A: }a_1 \rightarrow \text{R: }-1$
+	- $N[1]$ = 2
+	- $Q[1]$ = 
+		- or just (2-1)/2 = 0.5
+	- $N = [2, 2, 0, 0, 0]$
+	- $Q = [0.5, \text-0.5, 0, 0, 0]$
+- 5th step:  $\text{A: }a_2 \rightarrow \text{R: }4$
+	- non-optimal step: $a_1$ had the highest expected value 👈
+	- $N[2]$ = 3
+	- $Q[2]$ = -0.5 + 1/3 · (4 - (-0.5)) = 1
+		- or just (4+2-3)/3 = 1
+	- $N = [2, 3, 0, 0, 0]$
+	- $Q = [0.5, 1, 0, 0, 0]$
+- 6th step:  $\text{A: }a_5 \rightarrow \text{R: }3$
+	- non-optimal step: $a_2$ had the highest expected value 👈
+	- $N[5]$ = 1
+	- $Q[5]$ = 0 + 1/1 · (3 - 0) = 3
+		- or just 3/1 = 3
+	- $N = [2, 3, 0, 0, 1]$
+	- $Q = [0.5, 1, 0, 0, 1]$
 - see: https://stats.stackexchange.com/questions/316911/how-to-understand-k-armed-bandit-example-from-suttons-rl-book-chapter-2 
 - see: https://github.com/Sagarnandeshwar/Bandit_Algorithms
 
@@ -3951,27 +3971,40 @@ answer: False
 
 ---
 
-**question**: If Naive Bayes is applied on a data set that contains also numeric attributes than a probability density function must always be used
+**question**: If Naive Bayes is applied on a data set that contains also numeric attributes then a probability density function must always be used
 
-answer: 
+answer: True
+
+- assume normal distribution
+- use probability-density-function of normal distribution $f(x)$ for each value
 
 ---
 
 **question**: Automated Machine Learning deals only with optimization of hyperparameters of algorithms
 
-answer: 
+answer: False
+
+- it deals both with algorithm selection (rice's framework, landmarking) and hyperparameter optimization (search algorithms)
 
 ---
 
 **question**: Lasso regression cannot be used for feature selection
 
-answer: 
+answer: False
+
+- lasso = least absolute shrinkage and selection operator
+- embedded (supervised) feature selection = evaluate features during training
+	- used to regularize polynomial regression models
 
 ---
 
 **question**: The mean absolute error (a performance metric used for regression) is less sensitive to outliers than MSE
 
-answer: 
+answer: True
+
+- MAE is generally less sensitive to outliers compared to metrics that measure the squared error
+- mean absolute error MAE: ${\sum_i |p_i - a_i|} / n$
+- mean squared error MSE: ${\sum_i (p_i - a_i)^2} / n$
 
 ---
 
@@ -3982,7 +4015,36 @@ answer:
 - c) t2, t5
 - d) t1, t2
 
-answer: 
+answer:
+
+- model:
+	- k-bandit algorithm (stationary reward probability distribution)
+	- epsilon-greedy action selection
+	- sample-average action-value estimates
+	- actions = $\{a_1, a_2, a_3, a_4\}$
+	- update step: $Q(A) \leftarrow Q(A) + \frac 1 {N(A)} \cdot \Big[R-Q(A)\Big]$
+- initial:
+	- $N = [0,0,0,0]$
+	- $Q = [2,2,2,2]$
+- 1st step: $\text{A: }a_1 \rightarrow \text{R: }-2$
+	- $N[1]$ = 1
+	- $Q[1]$  = 
+	- $N = [1,0,0,0]$
+	- $Q = [-2,2,2,2]$
+- 2nd step: $\text{A: }a_2 \rightarrow \text{R: } 2$
+- 3rd step: $\text{A: }a_1 \rightarrow \text{R: } 2$
+- 4th step: $\text{A: }a_2 \rightarrow \text{R: } -1$
+- 5th step: $\text{A: }a_3 \rightarrow \text{R: } 1$
+
+
+
+- askkdasl;dknasd
+	- non-optimal step: $a_2$ had the highest expected value 👈
+	- $N[5]$ = 1
+	- $Q[5]$ = 0 + 1/1 · (3 - 0) = 3
+	- $N = [2, 3, 0, 0, 1]$
+	- $Q = [0.5, 1, 0, 0, 1]$
+
 
 ---
 
