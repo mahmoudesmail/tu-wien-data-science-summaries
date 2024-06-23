@@ -835,7 +835,7 @@ answer: False
 
 **question**: The paired t-test is used when testing for statistical significance of results obtained with holdout validation
 
-answer: True
+answer: False
 
 - paired t-tests are designed for comparing different model performances
 - we can't compare the same model on different folds
@@ -1071,7 +1071,7 @@ conclusion
 - b) +
 - c) + or -
 
-answer:
+answer: b
 
 - see: https://stats.stackexchange.com/questions/417277/bayesian-formula-for-multiple-events/417278#417278
 - $p(A\mid BCD)=\frac{p(BCD\mid A) \cdot  p(A)}{p(BCD)}=\frac{p(B \mid A) \cdot p(C \mid A) \cdot p(D \mid A) \cdot p(A)}{p(BCD)}$
@@ -1108,7 +1108,7 @@ answer:
  - c) 2
  - d) 3
  
-answer: 
+answer: c
 
 - we compute the predictions with the formula $2 + F_1 + F_2$ and compute the root mean squared error RMSE
 - $\text{err} = (12-12)^2 + (9-9)^2 + (10-10)^2 + (15-12)^2 = 9$ 
@@ -1439,7 +1439,7 @@ answer: True
 
 **question**: The paired t-test is used when testing for statistical significance of results obtained with holdout validation
 
-answer: True
+answer: False
 
 - paired t-tests are designed for comparing different model performances
 - we can't compare the same model on different folds
@@ -1452,7 +1452,7 @@ answer: True
 
 **question**: The paired t-test is used when testing for statistical significance of results obtained with cross validation
 
-answer: True
+answer: False
 
 - paired t-tests are designed for comparing different model performances
 - we can't compare the same model on different folds
@@ -1494,8 +1494,9 @@ answer: False
 
 **question**: Support Vector Machines always finds a more optimal decision boundary (hyperplane) than Perceptrons
 
-answer: True
+answer: False
 
+- in most but not all cases
 - SVMs generally find more optimal and robust decision boundaries than basic perceptrons, especially for complex or noisy datasets - but there are exceptions
 - linearly seperable data:
 	- SVMs
@@ -1923,8 +1924,9 @@ answer: True
 
 **question**: SVMs always find a more optimal decision boundary (hyperplane) than Perceptrons
 
-answer: True
+answer: False
 
+- in most but not all cases
 - SVMs generally find more optimal and robust decision boundaries than basic perceptrons, especially for complex or noisy datasets - but there are exceptions
 - linearly seperable data:
 	- SVMs
@@ -1953,7 +1955,7 @@ answer: False
 
 **question**: Majority voting is not used when k-NN is applied for linear regression
 
-answer: False
+answer: True
 
 - majority voting is for classification
 - the mean is for regression
@@ -3522,7 +3524,7 @@ answer: False
 
 answer: False
 
-- the train step determines whether a model overfits or not, not the prediction / evaluation step
+- the train phase determines whether a model overfits or not, not the prediction / evaluation step
 - but a smaller test set can make it more difficult to reliably detect overfitting, 
 
 ---
@@ -3538,7 +3540,7 @@ answer: False
 
 **question:** Paired t-tests used for folds verification in holdout method (train/test split)
 
-answer: True
+answer: False
 
 - paired t-tests are designed for comparing different model performances
 - we can't compare the same model on different folds
@@ -3643,7 +3645,7 @@ answer: True
 
 **question**: Paired t-tests used for folds verification in holdout method (train/test split)
 
-answer: True
+answer: False
 
 - note: the folds meant here are the train/test splits in the holdout method
 - paired t-tests are designed for comparing different model performances
@@ -3751,7 +3753,7 @@ answer: True
 
 **question**: Paired T-tests used at folds verification?
 
-answer: True
+answer: False
 
 - note: the folds meant here are the train/test splits in the holdout method
 - paired t-tests are designed for comparing different model performances
@@ -3870,7 +3872,7 @@ answer: False
 
 **question**: paired t-tests are used when dealing with train/test splits
 
-answer: True
+answer: False
 
 - note: this question is referring to the holdout method
 - paired t-tests are designed for comparing different model performances
