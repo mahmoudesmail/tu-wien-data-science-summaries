@@ -646,6 +646,7 @@ algorithm:
 # rl: reinforcement learning
 
 - http://incompleteideas.net/book/RLbook2020.pdf
+- https://www.youtube.com/playlist?list=PLnn6VZp3hqNvRrdnMOVtgV64F_O-61C1D
 
 *rl - reinforcement learning*
 
