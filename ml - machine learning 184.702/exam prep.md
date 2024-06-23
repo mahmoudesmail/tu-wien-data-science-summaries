@@ -48,8 +48,8 @@ answer (boolean): True
 
 answer (boolean): False
 
-- gradient-boosting does not necessarily have to start with a decision stump (= decision tree with a single split).
-- the initial "one-rule model" can stand for any kind of simple rule-based classifier.
+- gradient-boosting does not necessarily have to start with a 1R-decision tree / decision stump (= decision tree with a single split).
+- the initial zero-rule model can stand for any kind of simple rule-based classifier.
 
 how it gradient boosting works:
 
@@ -80,7 +80,7 @@ answer (boolean): False
 
 answer (boolean): False
 
-- no - principal component analysis is unsupervised
+- principal component analysis is unsupervised
 - combines similar (correlated) attributes and creates new one
 - assuming we have labels before doing unsupervised feature selection, then they should be hidden
 
@@ -456,6 +456,449 @@ answer:
 - take the max. activation across small regions (ie. 2x2 regions in the the example below)
 
 - $\begin{bmatrix}   1 & (3) & (5) & -3 \\ -2 & (3) & 2 & -1 \\ 1 & 2 & -2 & (2) \\ -1 & (3) & -2 & 1  \end{bmatrix} \Rightarrow \begin{bmatrix}   3 & 5 \\ 3 & 2  \end{bmatrix}$
+
+# 2022-01-28
+
+**question**: Classification is a machine learning task where the target attribute is nominal
+
+answer: False
+
+- the datatype can also be ordinal
+- nominal = unique names
+- ordinal = also have order (sorting)
+
+---
+
+**question**: Decision trees can handle only binary classification problems
+
+answer: False
+
+- the tree can have multiple leaf nodes corresponding to different class labels
+- they can handle: binary classification, multi-class classification, regression problems
+
+---
+
+**question**: The error of a 1-NN classifier on the training set is 0
+
+answer: True
+
+- 1nn = 1-nearest neighbor
+- its nearest neighbor is itself, since the distance to itself is 0 (which is always the smallest possible distance)
+- therefore, every training point will be classified as its own class, resulting in perfect classification (0 error) on the training data
+- the 0 training error only applies to 1-NN. For k-NN with k > 1, there can be non-zero training error
+- see: https://stats.stackexchange.com/questions/367010/training-error-in-knn-classifier-when-k-1
+
+---
+
+**question**: A softmax function in MLPs transforms the activation to a range of -1…1
+
+answer: True
+
+- softmax activation scales outputs to probabilities between 0 and 1
+
+---
+
+**question**: Macro-averaging for classifier evaluation first calculates accuracy/precision/recall/… per class, before averaging across classes
+
+answer: True
+
+- i. calculate the metric independently for each class
+- ii. take the (optionally weighted) average of those per-class metrics across all classes
+
+---
+
+**question**: The paired t-test is used when testing for statistical significance of results obtained with holdout validation
+
+answer: True
+
+- paired t-tests are designed for comparing different model performances
+- we can't compare the same model on different folds
+- use-cases:
+	- comparing different models
+	- comparing the same model with different hyperparameters, data preprocessing techniques
+	- comparing different cross-validation strategies (ie. k-fold vs. leave-one-out) → helps considering data variability introduced by the different data folds
+
+---
+
+**question**: The paired t-test is used when testing for statistical significance of results obtained with cross validation
+
+answer: True
+
+- paired t-tests are designed for comparing different model performances
+- we can't compare the same model on different folds
+- use-cases:
+	- comparing different models
+	- comparing the same model with different hyperparameters, data preprocessing techniques
+	- comparing different cross-validation strategies (ie. k-fold vs. leave-one-out) → helps considering data variability introduced by the different data folds
+
+---
+
+**question**: In a dataset the entropy is lowest when all classes have the same amount of samples
+
+answer: False
+
+- $H(X) = - \sum_{i = 1}^n p(x_i) \cdot \log_{2}(p(x_i))$ = entropy
+- $p_i = k_i / N$ =  probability based on relative frequency
+- $k_i$ = category count
+- the total sample size may affect the precision of probability estimates, but does not directly factor into the entropy calculation itself
+- when all classes have an equal number of samples, this represents the maximum uncertainty or randomness in the dataset - you can't predict the class of a randomly selected sample with any confidence, because all classes are equally likely
+- as the distribution becomes more imbalanced (one class having more samples than the other), the entropy decreases - this is because you can predict the class of a random sample with more confidence
+
+---
+
+**question**: In a dataset the entropy is highest when all classes have the same amount of samples
+
+answer: True
+
+- see above
+
+---
+
+**question**: In AdaBoost, the weights are randomly initialised
+
+answer: False
+
+- all training samples are assigned equal weights
+
+---
+
+**question**: Support Vector Machines always finds a more optimal decision boundary (hyperplane) than Perceptrons
+
+answer: True
+
+- SVMs generally find more optimal and robust decision boundaries than basic perceptrons, especially for complex or noisy datasets - but there are exceptions
+- linearly seperable data:
+	- SVMs
+		- find the optimal hyperplane that maximizes the margin between classes
+		- generalize better (especialy with a soft margin)
+		- less sensitive to outliers and noise in train-data
+		- the objective is a convex, quadratic function with guaranteed bounds on generalization error
+	- perceptrons
+		- just find any hyperplane that separates the classes
+		- trained by optimizing a loss function that isn't guaranteed to converge to a global optimum
+- non-linearly seperable data:
+	- perceptrons can't find a boundary
+	- SVMs do, by using the kernel trick
+
+---
+
+**question**: Support Vector Machines with a linear kernel are particularly suitable for classification of very high dimensional, sparse data
+
+answer: True
+
+- high dimensional data = many features
+- sparse data = many feature values are zero (usually in high dimensional data)
+- advantages for high-dimensional data:
+	- data is more likely to be linearly seperable in high dimensions, so the linear kernel will suffice
+		- the "kernel trick" used by nonlinear kernels to implicitly map data to higher dimensions may not provide much additional benefit when the original data is already high-dimensional
+		- this is called "blessing of dimensionality": https://stats.stackexchange.com/questions/33437/is-it-true-that-in-high-dimensions-data-is-easier-to-separate-linearly
+	- linear kernels are a lot more efficient than non-linear kernels because they have a simpler feature space mapping (just a dot product)
+	- svms generalize well because they maximize the margin while regularizing for generalizability (accepting missclassificaitons in the soft-margin variant)
+- advantages for sparse data:
+	- svms only need to consider non-zero features in their computations
+
+---
+
+**question**: Support Vector Machines can by default only solve binary classification problems
+
+answer: True
+
+- but there are ways to extend SVMs to handle multi-class classification as well
+
+---
+
+**question**: If Naive Bayes is applied on a data set that contains also numeric attributes then a probability density function must always be used
+
+answer: True
+
+- assume normal distribution
+- use probability-density-function of normal distribution $f(x)$ for each value
+
+---
+
+**question**: Model based features used for metalearning are extracted directly from the data set
+
+answer: False
+
+- model-based features are typically learned from the model itself, not directly extracted from the dataset
+
+---
+
+**question**: Majority voting is not used when k-nn is applied for linear regression
+
+answer: True
+
+- majority voting is for classification
+- the mean is for regression
+
+---
+
+**question**: For the Monte Carlo method in reinforcement learning value estimates and policies are changed only on the completion of an episode
+
+answer: True
+
+- Monte Carlo methods learn from complete episodes (similar to batches)
+
+---
+
+**question**: Gradient descent is always more efficient than Normal Equation (analytical approach) for linear regression
+
+answer: False
+
+- an example from the slides: the analytical-solution to linear regression is slower than the iterative-solution through gradient descent
+- but in practice it depends on the problem size and for smaller datasets the analytical solution could be faster
+- see: https://datascience.stackexchange.com/a/14119/162429
+
+---
+
+**question**: Information gain is an unsupervised feature selection method
+
+answer: False
+
+- information gain is a supervised method because we're measuring can predict the target variable with the input features
+
+---
+
+**question**: Feature selection is primarly useful to improve the effectiveness of machine learning
+
+answer: True
+
+- feature selection / dimensionality reduction improves both:
+	- efficiency = resource (compute, memory) consumption during training or prediction
+	- effectivity = quality of prediction
+	- it does so by reducing redundance, noise
+- i guess that people mostly do it for effectivity - i don't know what the "primary" use-case should be
+
+---
+
+**question**: Ordinal data does not allow distances to be computed between data points
+
+answer: True
+
+- ordinal data has an order, but no scale that allows us to measure distances (like interval data does)
+
+---
+
+**question**: The first model in gradient boosting is a zero rule model
+
+answer: True
+
+- the initial zero-rule model $F_0(x)$ can stand for any kind of simple rule-based classifier
+
+---
+
+**question**: PCA is a supervised feature selection method
+
+answer: False
+
+- principal component analysis is unsupervised
+- combines similar (correlated) attributes and creates new one
+- assuming we have labels before doing unsupervised feature selection, then they should be hidden
+
+---
+
+**question**: Can kernel methods also be applied to the perceptron classifier (also discuss why or why not!)
+
+answer: True
+
+- kernel perceptron:
+	- $\hat{y}=\mathrm{sgn}\sum_i^n\alpha_iy_iK(\mathbf{x}_i,\mathbf{x}_j)$
+	- can learn non-linear decision boundaries
+	- replaces dot products in the original perceptron algorithm with kernel function evaluations
+	- implicitly maps the input data to a higher-dimensional feature space
+
+---
+
+**question**: What is polynomial regression? Which are advantages/disadvantages of polynomial regression compared to linear regression?
+
+answer:
+
+- $y = \sum_{i=0}^n w_i x^i + \varepsilon$
+- $\mathbf y = \mathbf X \mathbf \beta + \mathbf \varepsilon$
+- pros:
+	- can capture non-linear relationships, more complex decision boundaries than linear regression
+	- relatively simple, same concepts as linear regression
+	- fast to compute, useful for data exploration
+- cons:
+	- prone to overfitting with high degrees
+	- very sensitive to outliers
+	- requires more datapoints to fit well
+
+---
+
+**question**: When are two nodes in a Bayesian Network d-seperated?
+
+answer:
+
+- there must be at least one intermediate node
+- in the converging case, if B or any of its descendants are observed we can "explain away"
+- connection types:
+	- serial: A → B → C
+		- A → C transmission blocked if we know B
+	- diverging: A ← B → C
+		- A ←→ C transmission blocked if we know B
+	- converging: A → B ← C
+		- A ←→ C transmission
+
+---
+
+**question**: Which features are used in metalearning? What are landmarking features?
+
+answer: 
+
+- features used in metalearning:
+	- simple = frequency, …
+	- statistical = mean, std dev, correleation, skew, …
+	- information theoretic = entropy, mutual information, …
+	- model based = model properties like decision-tree depth, …
+	- landmarking features = performance of landmarkers
+- landmarking:
+	- landmarkers = simple and fast algorithms (ie. naive bayes, 1nn, 1r, …)
+	- landmarking features = performance of landmarkers
+	- landmark learner = selects best performing landmarker
+	- the best performing landmarker tells us something about the dataset
+	- ie. linear classifier do
+
+---
+
+**question**: What are the difference between micro and macro averaged performance measures? 
+
+answer: 
+
+- micro-averaging:
+	- = calculating the metric globally
+- macro-averaging:
+	- = calculating the metric for each class
+	- $\frac{1}{|C|} \sum_{i=1}^{|C|} w_i \cdot \text{metric}$
+	- weight can be based on cost of missclassifications
+	- equal importance to all classes, especially useful for imbalanced datasets
+
+---
+
+**question**: Given are 1000 observations, from which you want to train a decision tree. As pre-pruning the following parameters ares set: The minimum number of observations required to split a node is set to 200 - The minimum leaf size (number of observations) to 300 Then, what would be the maximum depth a decision tree can take (not counting the root node)? Explain you answer!
+
+answer:
+
+- all leaves have at least 300 samples
+- all internal-nodes have at least 200 samples
+- depth = 2
+- on each split / iteration from root-node we can only deduct 200 samples at most, otherwise the split is invalid – so the formula is $\lfloor \log_2(1000/200) \rfloor$ = 2
+
+```mermaid
+graph TD
+    A[Root: 1000] --> B[Node: 700]
+    A --> C[Leaf: 300]
+    B --> D[Leaf: 400]
+    B --> E[Leaf: 300]
+```
+
+---
+
+**question**: Describe a local search algorithm for Bayesian Network creation.
+
+answer:
+
+- search heuristics:
+	- hill climbing = choose best in neighborhood, until local optimum is reached
+	- tabu search = hill-climbing but some some neighbors are hidden
+	- simulated annealing = based on cooldown parameters
+	- genetic algorithm = initialize population, mutate, reproduce, evaluatie population.
+- hill climbing / local search heuristic:
+	- start with an initial network structure – this could be an empty network (no edges), a naive Bayes structure (all nodes connected to a single parent node), a randomly generated one, one based on prior knowledge, etc.
+	- choose a metric to evaluate networks
+	- until convergence to a local optimum:
+		- generate neighbors from the current network through local modifications like edge addition, deletion or reversal.
+		- score neighbors.
+
+---
+
+**question**: Goal and settings of classification. To what tasks does it relate and from which it differs in machine learning ?
+
+answer: 
+
+- goal:
+	- learn a model that can accurately predict the class label for new, unseen inputs - by mapping input features to discrete class labels
+	- use labeled training data (supervised ml)
+- settings:
+	- binary classification (2 classes) and multi-class classification (3+ classes)
+- related to / different from:
+	- unlike regression, classification predicts discrete categories rather than continuous values
+	- unlike clustering, classification uses labeled data and predefined classes
+	- unlike anomaly detection, classification assigns all inputs to known classes rather than identifying outliers
+
+---
+
+**question**: What methods are there for combatting overfitting in Neural Networks?
+
+answer: 
+
+- increasing train-data (data augmentation)
+- regularization (L1/L2 regularization)
+- dropout
+- early stopping
+- reducing model complexity (removing unnecessary layers, parameters, connections, units)
+- cross validation
+- ensemble methods
+- batch normalization (normalize layer activations for better generalization)
+- weight constraints (clipping weights)
+- transfer learning (knowledge distillation)
+- hyperparam tuning
+- reducing batch size
+
+---
+
+**question**: Describe 3 methods to compute the error in regression. (approximate question)
+
+answer: 
+
+- mean squared error MSE
+	- ${\sum_i (p_i - a_i)^2} / n$
+- root mean squared error RMSE
+	- $\sqrt{\sum_i (p_i - a_i)^2 / n}$
+- mean absolute error MAE
+	- ${\sum_i |p_i - a_i|} / n$
+- relative squared error RSE
+	- ${\sum_i (p_i - a_i)^2} / {\sum_i (a_i - \bar{a})^2}$
+- root relative squared error RRSE
+	- $\sqrt{{\sum_i (p_i - a_i)^2} / {\sum_i (a_i - \bar{a})^2}}$
+- relative absolute error RAE
+	- ${\sum_i |p_i - a_i|} / {\sum_i |a_i - \bar{a}|}$
+
+---
+
+**question**: difference between z-score and min-max, when to use which on which feature types
+
+answer: 
+
+- Z-score normalization:
+	- transforms the data to have a mean of 0 and a standard deviation of 1.
+	- keeps relative scale (range)
+	- doesn't keep the distribution
+	- can deal with positive and negative numbers.
+	- use-cases:
+		- algorithms that assume gaussian distributed data, like PCA or LD
+- min-max normalization:
+	- maps the data to a different range, typically 0;1.
+	- doesn't keep relative scale (range)
+	- keeps distribution
+	- outliers can skew the range.
+	- use-cases:
+		- algorithms that need a certain range like neural networksn
+- see: https://stats.stackexchange.com/questions/547446/z-score-vs-min-max-normalization
+
+---
+
+**question**: Explain the epsilon-greedy selection for the k-armed Bandit Problem.
+
+answer: 
+
+- exploration-exploitation tradeoff
+- exploitation = choose actions based on rewards (greedy)
+	- $A_t\doteq\arg\max_aQ_t(a)$
+- exploration = but occasionally also try new actions
+	- $\varepsilon$-greedy – try non optimal action with probability $\varepsilon$ 👈
+	- optimistic greedy – larger initial values (for stationary problems)
+	- upper confidence bound – adapt based on closeness to a max value:
 
 # 2021-12-07
 
@@ -1101,7 +1544,7 @@ answer: True
 
 **question:** Ordinal data does not allow distances to be computed between data points
 
-answer: False
+answer: True
 
 - ordinal data has an order, but no scale that allows us to measure distances (like interval data does)
 
@@ -1150,8 +1593,20 @@ answer: True
 
 answer: True
 
-- the "kernel trick" used by nonlinear kernels to implicitly map data to higher dimensions may not provide much additional benefit when the original data is already high-dimensional
-- linear kernels are simple and efficient
+- linear SVMs work well with high-dimensional, sparse data
+- high dimensional data = many fearures
+- sparse data = many feature values are zero (usually in high dimensional data)
+- linear seperability:
+	- data more likely to be linearly seperable in high dimensions (called "blessing of dimensionality")
+	- see: https://stats.stackexchange.com/questions/33437/is-it-true-that-in-high-dimensions-data-is-easier-to-separate-linearly
+- efficiency:
+	- they handle a large number of features with less overhead than some other algorithms.
+	- for high-dimensional data, linear kernels are often more efficient than non-linear kernels because they have a simpler feature space mapping (just a dot product)
+- working with sparse data:
+	- they only need to consider non-zero features in their computations
+- generalizability:
+	- by maximizing the margin
+	- regularizing with soft-margin
 
 ---
 
@@ -1488,19 +1943,19 @@ answer:
 - $p_i$ = predicted
 - $a_i$ = actual
 - mean squared error MSE
-	- ${\sum_i (p_i - a_i)^2} ~/~ n$
+	- ${\sum_i (p_i - a_i)^2} / n$
 	- emphasizes larger errors due to squaring
 	- differentiable, useful for optimization algorithms
 	- sensitive to outliers
 - root mean squared error RMSE
-	- $\sqrt{\sum_i (p_i - a_i)^2 ~/~ n}$
+	- $\sqrt{\sum_i (p_i - a_i)^2 / n}$
 	- used in regression problems, where large errors are undesirable
 	- provides error metric in the same unit as the target variable
 	- penalizes large errors more than small ones
 	- more sensitive to outliers than MAE
 	- assumes errors are unbiased and follow a normal distribution (derived from the maximum likelihood estimation under the assumption of normally distributed errors)
 - mean absolute error MAE
-	- ${\sum_i |p_i - a_i|} ~/~ n$
+	- ${\sum_i |p_i - a_i|} / n$
 	- provides a linear scale of error
 	- used in regression problems where outliers should have less impact
 	- robust to outliers
@@ -1508,28 +1963,28 @@ answer:
 	- does not penalize large errors as heavily as MSE/RMSE
 	- less popular than RMSE
 - relative squared error RSE
-	- ${\sum_i (p_i - a_i)^2} ~/~ {\sum_i (a_i - \bar{a})^2}$
+	- ${\sum_i (p_i - a_i)^2} / {\sum_i (a_i - \bar{a})^2}$
 	- normalizes error by the variance of actual values
 	- used for comparing models across different scales or units, is unitless
 	- can be misleading if the denominator is close to zero
 	- less intuitive to interpret than absolute error measures
 	- sensitive to outliers due to squaring
 - root relative squared error RRSE
-	- $\sqrt{{\sum_i (p_i - a_i)^2} ~/~ {\sum_i (a_i - \bar{a})^2}}$
+	- $\sqrt{{\sum_i (p_i - a_i)^2} / {\sum_i (a_i - \bar{a})^2}}$
 	- similar to RSE, but with a more intuitive scale due to square root
 	- still sensitive to outliers, though less than RSE
 	- less commonly used than other metrics
 - relative absolute error RAE
-	- ${\sum_i |p_i - a_i|} ~/~ {\sum_i |a_i - \bar{a}|}$
+	- ${\sum_i |p_i - a_i|} / {\sum_i |a_i - \bar{a}|}$
 	- provides a relative error measure without squaring
 	- used for comparing models across different scales, robust to outliers
 	- less emphasis on large errors compared to squared error measures
 - statistical correlation coefficient:
-	- ${S_{PA}} ~/~ {\sqrt{S_P \cdot S_A}}$
+	- ${S_{PA}} / {\sqrt{S_P \cdot S_A}}$
 	- where:
-		- $S_{PA} = {\sum_i(p_i-\overline{p})(a_i-\overline{a})} ~/~ {n-1}$
-		- $S_P = {\sum_i(p_i-\overline{p})^2} ~/~ {n-1}$
-		- $S_A = {\sum_i(a_i-\overline{a})^2} ~/~ {n-1}$
+		- $S_{PA} = {\sum_i(p_i-\overline{p})(a_i-\overline{a})} / {n-1}$
+		- $S_P = {\sum_i(p_i-\overline{p})^2} / {n-1}$
+		- $S_A = {\sum_i(a_i-\overline{a})^2} / {n-1}$
 	- assesses how well the predictions correlate with actual values
 	- scale-independent measure
 	- indicates both strength and direction of relationship
@@ -1851,13 +2306,16 @@ answer: False
 
 answer: True
 
-- the "kernel trick" used by nonlinear kernels to implicitly map data to higher dimensions may not provide much additional benefit when the original data is already high-dimensional
-- linear kernels are simple and efficient
-- kernel examples:
-	- linear: $K(x, y) = x^\intercal y$
-	- polynomial: $K(x, y) = (x^\intercal y + c)^d$
-	- radial basis function rbg: $K(x, y) = exp(-γ \cdot ||x - y||^2)$
-	- sigmoid: $K(x, y) = tanh(\alpha \cdot x^\intercal y + c)$
+- high dimensional data = many features
+- sparse data = many feature values are zero (usually in high dimensional data)
+- advantages for high-dimensional data:
+	- data is more likely to be linearly seperable in high dimensions, so the linear kernel will suffice
+		- the "kernel trick" used by nonlinear kernels to implicitly map data to higher dimensions may not provide much additional benefit when the original data is already high-dimensional
+		- this is called "blessing of dimensionality": https://stats.stackexchange.com/questions/33437/is-it-true-that-in-high-dimensions-data-is-easier-to-separate-linearly
+	- linear kernels are a lot more efficient than non-linear kernels because they have a simpler feature space mapping (just a dot product)
+	- svms generalize well because they maximize the margin while regularizing for generalizability (accepting missclassificaitons in the soft-margin variant)
+- advantages for sparse data:
+	- svms only need to consider non-zero features in their computations
 
 ---
 
@@ -1991,7 +2449,7 @@ answer: True
 
 **question:** Freezing layers means that their weights are only updated during fine-tuning
 
-answer:
+answer: False
 
 - the opposite is true
 - you freeze layers (mostly in earlier layers) to preserve learned features while fine-tuning others
@@ -2010,7 +2468,7 @@ answer: True
 
 **question:** There exists no Bayesian network where all instatiated nodes are not d-seperated after one node is instatiated.
 
-answer:
+answer: False
 
 - there can be networks where not all instantiated nodes are d-separated after one other node is instantiated
 - counter argument:
@@ -2021,7 +2479,7 @@ answer:
 
 **question:** Lasso can not be used for feature selection.
 
-answer:
+answer: False
 
 - lasso and ridge regulation are embedded feature selection algorithms
 - embedded (supervised) feature selection = evaluate features during training
@@ -2444,7 +2902,7 @@ answer:
 
 answer: True
 
-- it's not required but recommended
+- it's recommended but not required
 - definitions:
 	- euclidian distance: $d(\mathbf d, \mathbf p) = \sqrt{\sum_{i=1}^n (q_i - p_i)^2}$
 	- 1-hot-encoding = zero array with 1 bit flag for category
@@ -3305,13 +3763,37 @@ answer:
 - kernel trick = increase dimensionality of feature space, to make them linearly seperable by high-dimensional hyperplane
 - $K\in\mathbb{R}^{n\times n}$
 
+hard-margin svm
+
+- maximizes margin between outliers to place hyperplane and accuracy
+- overfits, doesn't generalize
+- idea:
+	- the distance between the two hyperplanes is $\frac{2}{||w||}$
+	- so to maximize it we need to minimize $||w||$
+- linear case:
+	- $\underset{w\in\mathbb{R}^D}{\text{argmin}}\quad\|w\|^2_2$
+	- while also $\forall i: (\mathbf{w}^\intercal \mathbf{x}_i) \geq 1$
+- non linear case:
+	- $\underset{w\in\mathbb{R}^D}{\text{argmin}}\quad c^\intercal K c$
+
+soft-margin svm
+
+- has a tolerance of $\xi$ to missclassifications
+- generalizes better
+- linear case:
+	- $\underset{w\in\mathbb{R}^D,\xi\in\mathbb{R}^n}{\text{argmin}}\quad\sum_{i=1}^n\xi_i + \nu\cdot\|w\|^2$
+	- while also $\forall i: (\mathbf{w}^\intercal \mathbf{x}_i) \geq 1 - \xi_i$
+	- where $\xi_i \geq 0$
+- non linear case:
+	- $\underset{w\in\mathbb{R}^D,\xi\in\mathbb{R}^n}{\text{argmin}}\quad\sum_{i=1}^n\xi_i + \nu\cdot\ c^\intercal K c$
+
 ---
 
 **question**: What re the advantages and disadvantages of SVMs?
 
 answer:
 
-- SVMs are great  high-dimensional data and non-linear classification
+- SVMs are great high-dimensional data and non-linear classification
 - but they can be computationally intensive, sensitive to parameter tuning, hard to interpret
 
 pros:
@@ -3378,379 +3860,24 @@ answer:
 
 - determining whether observed difference between two systems is by chance (like variations in data or randomness in algorithm)
 
-# 2022-01-28 – TODO
-
-**question**: Classification is a machine learning task where the target attribute is nominal
-
-answer: False
-
-- the datatype can also be ordinal
-- nominal = unique names
-- ordinal = also have order (sorting)
-
----
-
-**question**: Decision trees can handle only binary classification problems
-
-answer: False
-
-- the tree can have multiple leaf nodes corresponding to different class labels
-- they can handle: binary classification, multi-class classification, regression problems
-
----
-
-**question**: The error of a 1-NN classifier on the training set is 0
-
-answer: True
-
-- 1nn = 1-nearest neighbor
-- its nearest neighbor is itself, since the distance to itself is 0 (which is always the smallest possible distance)
-- therefore, every training point will be classified as its own class, resulting in perfect classification (0 error) on the training data
-- the 0 training error only applies to 1-NN. For k-NN with k > 1, there can be non-zero training error
-- see: https://stats.stackexchange.com/questions/367010/training-error-in-knn-classifier-when-k-1
-
----
-
-**question**: A softmax function in MLPs transforms the activation to a range of -1…1
-
-answer: True
-
-- softmax activation scales outputs to probabilities between 0 and 1
-
----
-
-**question**: Macro-averaging for classifier evaluation first calculates accuracy/precision/recall/… per class, before averaging across classes
-
-answer: True
-
-- i. calculate the metric independently for each class
-- ii. take the (optionally weighted) average of those per-class metrics across all classes
-
----
-
-**question**: The paired t-test is used when testing for statistical significance of results obtained with holdout validation
-
-answer: True
-
-- paired t-tests are designed for comparing different model performances
-- we can't compare the same model on different folds
-- use-cases:
-	- comparing different models
-	- comparing the same model with different hyperparameters, data preprocessing techniques
-	- comparing different cross-validation strategies (ie. k-fold vs. leave-one-out) → helps considering data variability introduced by the different data folds
-
----
-
-**question**: The paired t-test is used when testing for statistical significance of results obtained with cross validation
-
-answer: True
-
-- paired t-tests are designed for comparing different model performances
-- we can't compare the same model on different folds
-- use-cases:
-	- comparing different models
-	- comparing the same model with different hyperparameters, data preprocessing techniques
-	- comparing different cross-validation strategies (ie. k-fold vs. leave-one-out) → helps considering data variability introduced by the different data folds
-
----
-
-**question**: In a dataset the entropy is lowest when all classes have the same amount of samples
-
-answer: False
-
-- $H(X) = - \sum_{i = 1}^n p(x_i) \cdot \log_{2}(p(x_i))$ = entropy
-- $p_i = k_i / N$ =  probability based on relative frequency
-- $k_i$ = category count
-- the total sample size may affect the precision of probability estimates, but does not directly factor into the entropy calculation itself
-- when all classes have an equal number of samples, this represents the maximum uncertainty or randomness in the dataset - you can't predict the class of a randomly selected sample with any confidence, because all classes are equally likely
-- as the distribution becomes more imbalanced (one class having more samples than the other), the entropy decreases - this is because you can predict the class of a random sample with more confidence
-
----
-
-**question**: In a dataset the entropy is highest when all classes have the same amount of samples
-
-answer: True
-
-- see above
-
----
-
-**question**: In AdaBoost, the weights are randomly initialised
-
-answer: False
-
-- all training samples are assigned equal weights
-
----
-
-**question**: Support Vector Machines always finds a more optimal decision boundary (hyperplane) than Perceptrons
-
-answer: True
-
-- SVMs generally find more optimal and robust decision boundaries than basic perceptrons, especially for complex or noisy datasets - but there are exceptions
-- linearly seperable data:
-	- SVMs
-		- find the optimal hyperplane that maximizes the margin between classes
-		- generalize better (especialy with a soft margin)
-		- less sensitive to outliers and noise in train-data
-		- the objective is a convex, quadratic function with guaranteed bounds on generalization error
-	- perceptrons
-		- just find any hyperplane that separates the classes
-		- trained by optimizing a loss function that isn't guaranteed to converge to a global optimum
-- non-linearly seperable data:
-	- perceptrons can't find a boundary
-	- SVMs do, by using the kernel trick
-
----
-
-**question**: Support Vector Machines with a linear kernel are particularly suitable for classification of very high dimensional, sparse data
-
-answer: 
-
----
-
-**question**: Support Vector Machines can by default only solve binary classification problems
-
-answer: 
-
----
-
-**question**: If Naive Bayer is applied on a data set that contains also numeric attributes then a probability density function must always be used
-
-answer: 
-
----
-
-**question**: Model based features used for metaleanring are extracted directly from the data set
-
-answer: 
-
----
-
-**question**: Majority voting is not used when k-nn is applied for linear regression
-
-answer: 
-
-- majority voting is for classification
-- the mean is for regression
-
----
-
-**question**: For the Monte Carlo method in reinforcement learning value estimates and policies are changed only on the completion of an episode
-
-answer: 
-
----
-
-**question**: Gradient descent is always more efficient than Normal Equation (analytical approach) for linear regression
-
-answer: 
-
-- an example from the slides: the analytical-solution to linear regression is slower than the iterative-solution through gradient descent
-- but in practice it depends on the problem size and for smaller datasets the analytical solution could be faster
-- see: https://datascience.stackexchange.com/a/14119/162429
-
----
-
-**question**: Information gain is an unsupervised feature selection method
-
-answer: 
-
----
-
-**question**: Feature selection is primarly useful to improve the effectiveness of machine learning
-
-answer: 
-
----
-
-**question**: Ordinal data does not allow distances to be computed between data points
-
-answer: 
-
----
-
-**question**: The first model in gradient boosting is a zero rule model
-
-answer: 
-
----
-
-**question**: PCA is a supervised feature selection method
-
-answer: 
-
----
-
-**question**: Can kernel methods also be applied to the perceptron classifier (also discuss why or why not!)
-
-answer:
-
-- kernel perceptron:
-	- $\hat{y}=\mathrm{sgn}\sum_i^n\alpha_iy_iK(\mathbf{x}_i,\mathbf{x}_j)$
-	- can learn non-linear decision boundaries
-	- replaces dot products in the original perceptron algorithm with kernel function evaluations
-	- implicitly maps the input data to a higher-dimensional feature space
-
----
-
-**question**: What is polynomial regression? Which are advantages/disadvantages of polynomial regression compared to linear regression?
-
-answer: 
-
----
-
-**question**: When are two nodes in a Bayesian Network d-seperated?
-
-answer:
-
-- there must be at least one intermediate node
-- in the converging case, if B or any of its descendants are observed we can "explain away"
-- connection types:
-	- serial: A → B → C
-		- A → C transmission blocked if we know B
-	- diverging: A ← B → C
-		- A ←→ C transmission blocked if we know B
-	- converging: A → B ← C
-		- A ←→ C transmission
-
----
-
-**question**: Which features are used in metalearning? What are landmarking features?
-
-answer: 
-
-- features used in metalearning:
-	- simple = frequency, …
-	- statistical = mean, std dev, correleation, skew, …
-	- information theoretic = entropy, mutual information, …
-	- model based = model properties like decision-tree depth, …
-	- landmarking features = performance of landmarkers
-- landmarking:
-	- landmarkers = simple and fast algorithms (ie. naive bayes, 1nn, 1r, …)
-	- landmarking features = performance of landmarkers
-	- landmark learner = selects best performing landmarker
-	- the best performing landmarker tells us something about the dataset
-	- ie. linear classifier do
-
----
-
-**question**: What are the difference between micro and macro averaged performance measures? 
-
-answer: 
-
-- micro-averaging:
-	- = calculating the metric globally
-- macro-averaging:
-	- = calculating the metric for each class
-	- $\frac{1}{|C|} \sum_{i=1}^{|C|} w_i \cdot \text{metric}$
-	- weight can be based on cost of missclassifications
-	- equal importance to all classes, especially useful for imbalanced datasets
-
----
-
-**question**: Given are 1000 observations, from which you want to train a decision tree. As pre-pruning the following parameters ares set: - The minimum number of observations required to split a node is set to 200 - The minimum leaf size (number of observations) to 300 Then, what would be the maximum depth a decision tree can take (not counting the root node)? Explain you answer!
-
-answer: 
-
----
-
-**question**: Describe a local search algorithm for Bayesian Network creation.
-
-answer:
-
-- search heuristics:
-	- hill climbing = choose best in neighborhood, until local optimum is reached
-	- tabu search = hill-climbing but some some neighbors are hidden
-	- simulated annealing = based on cooldown parameters
-	- genetic algorithm = initialize population, mutate, reproduce, evaluatie population.
-- hill climbing / local search heuristic:
-	- start with an initial network structure – this could be an empty network (no edges), a naive Bayes structure (all nodes connected to a single parent node), a randomly generated one, one based on prior knowledge, etc.
-	- choose a metric to evaluate networks
-	- until convergence to a local optimum:
-		- generate neighbors from the current network through local modifications like edge addition, deletion or reversal.
-		- score neighbors.
-
----
-
-**question**: Goal and settings of classification. To what tasks does it relate and from which it differs in machine learning ?
-
-answer: 
-
-- goal:
-	- learn a model that can accurately predict the class label for new, unseen inputs - by mapping input features to discrete class labels
-	- use labeled training data (supervised ml)
-- settings:
-	- binary classification (2 classes) and multi-class classification (3+ classes)
-- related to / different from:
-	- unlike regression, classification predicts discrete categories rather than continuous values
-	- unlike clustering, classification uses labeled data and predefined classes
-	- unlike anomaly detection, classification assigns all inputs to known classes rather than identifying outliers
-
----
-
-**question**: What methods are there for combatting overfitting in Neural Networks?
-
-answer: 
-
-- increasing train-data (data augmentation)
-- regularization (L1/L2 regularization)
-- dropout
-- early stopping
-- reducing model complexity (removing unnecessary layers, parameters, connections, units)
-- cross validation
-- ensemble methods
-- batch normalization (normalize layer activations for better generalization)
-- weight constraints (clipping weights)
-- transfer learning (knowledge distillation)
-- hyperparam tuning
-- reducing batch size
-
----
-
-**question**: Describe 3 methods to compute the error in regression. (approximate question)
-
-answer: 
-
----
-
-**question**: difference between z-score and min-max, when to use which on which feature types
-
-answer: 
-
-- Z-score normalization:
-	- transforms the data to have a mean of 0 and a standard deviation of 1.
-	- keeps relative scale (range)
-	- doesn't keep the distribution
-	- can deal with positive and negative numbers.
-	- use-cases:
-		- algorithms that assume gaussian distributed data, like PCA or LD
-- min-max normalization:
-	- maps the data to a different range, typically 0;1.
-	- doesn't keep relative scale (range)
-	- keeps distribution
-	- outliers can skew the range.
-	- use-cases:
-		- algorithms that need a certain range like neural networksn
-- see: https://stats.stackexchange.com/questions/547446/z-score-vs-min-max-normalization
-
----
-
-**question**: Something about explaining the epsilon-greedy selection for the k-armed Bandit Problem.
-
-answer: 
-
 # 2023-06-21 – TODO
 
 **question**: A recurrent Neural Network is well suited to process sequential input, if the size is not fixed
 
-answer: 
+answer: True
+
+- they're designed to handle sequential data of arbitrary length
 
 ---
 
 **question**: Training time of knn depends on the chosen distance metric
 
-answer: 
+answer: False
+
+- there is no training-runtime for knn as it is a lazy learner = computation at prediction-step in $O(Nd)$
+- evaluation-runtime:
+	- evaluation runtime of KNN can depend on the chosen distance metric
+	- different distance metrics have varying computational costs
 
 ---
 
@@ -3769,37 +3896,58 @@ answer: True
 
 **question**: Decisions trees are learned by maximizing information gain
 
-answer: 
+answer: True
+
+- information-gain is just one of many ways to measure label-uncertainty:
+	- relative error rate
+	- aboslute error rate
+	- information gain
+	- ratio
+	- gini impurity
 
 ---
 
 **question**: Decision trees can handle multi-class problems
 
-answer: 
+answer: True
+
+- decision-trees are binary trees but their leafs are not constrained to just two classes
 
 ---
 
 **question**: Overfitting is more likely when the set of testing data is small
 
-answer: 
+answer: False
+
+- overfitting happens during the training phase, not the testing phase
+- but smaller training datasets are more prone to overfitting because it makes it harder for the model to learn patterns over memorizing the dataset
 
 ---
 
 **question**: Random forests is boosting ensemble technique
 
-answer: 
+answer: False
+
+- bagging (bootstrap aggegating) = parallel evaluation of independent models → ie. random forests
+- boosting = sequential evaluation of models
 
 ---
 
 **question**: The first model in Gradient Boosting is a zero rule model
 
-answer: 
+answer: True
+
+- the initial zero-rule model $F_0(x)$ can stand for any kind of simple rule-based classifier
 
 ---
 
 **question**: In Bayesian Networks we assume that attributes are statistically independent given the class
 
-answer: 
+answer: False
+
+- the independence assumption is for naive bayes, not for bayesian networks:
+	- naive bayes assumes that all the features are conditionally independent between features (presence or absence of a particular feature does not depend on the presence or absence of any other feature) given the class variable.
+- general bayesian network captures the conditional dependencies between variables
 
 ---
 
@@ -3974,19 +4122,29 @@ answer:
 
 **question**: Usually state of the art AutoML systems use grid search to find best hyperparameters
 
-answer: 
+answer: False
+
+- the most common technique is bayesian optimization
 
 ---
 
 **question**: The epsilon-greedy action selection for the k-armed bandit problem does not try inferior action
 
-answer: 
+answer: False
+
+- exploration-exploitation tradeoff
+- exploitation = choose actions based on rewards (greedy)
+	- $A_t\doteq\arg\max_aQ_t(a)$
+- exploration = but occasionally also try new actions
+	- $\varepsilon$-greedy – try non optimal action with probability $\varepsilon$ 👈
+	- optimistic greedy – larger initial values (for stationary problems)
+	- upper confidence bound – adapt based on closeness to a max value:
 
 ---
 
 **question**: When knn is used for predicting numeric values the majority voting is applied
 
-answer: 
+answer: False
 
 - majority voting is for classification
 - the mean is for regression
@@ -3995,19 +4153,29 @@ answer:
 
 **question**: F-score is an important performance metric that is used for evaluating regression techniques
 
-answer: 
+answer: False
+
+- classification metric
+- f1 score: $2 \cdot \frac{\text{Prec} \cdot \text{Rec}}{\text{Prec} + \text{Rec}}$
 
 ---
 
 **question**: Chain Rule does not simplify calculation of probabilities in Bayesian Networks
 
-answer: 
+answer: False
+
+- this question isn't referring to the gradient chain-rule but the probability-theory chain-rule
+- $P(X_1, X_2, \ldots, X_n) = \prod P(X_i | \text{Parents}(X_i))$
+- it allows us to express the joint probability distribution of multiple variables as smaller conditional probability distributions
 
 ---
 
 **question**: “Off-the-shell” is a transfer learning technique that uses the output of layers from a deep-learning architecture as input for a shallow model
 
-answer: 
+answer: True
+
+- off-the-shelf = using pre-trained models or layers that are readily available without modification
+- one common approach in transfer learning is using the output of layers from a pre-trained deep learning model as input for a new model, which may be shallower
 
 ---
 
@@ -4015,11 +4183,17 @@ answer:
 
 answer: 
 
+- …….. not answered yet
+- see: https://cseweb.ucsd.edu/~yfreund/papers/LargeMarginsUsingPerceptron.pdf
+- see: https://www.cs.cmu.edu/~avrim/ML10/lect0125.pdf
+
 ---
 
 **question**: Back propagation is a method for training a Perceptron
 
-answer: 
+answer: False
+
+- we apply the chain rule to propagate the error to nodes from previous layers in a multi-layer-perceptron – not in a single unit
 
 ---
 
@@ -4035,13 +4209,16 @@ answer: True
 
 **question**: LSTM is a form of Deep Neural Network
 
-answer: 
+answer: False
+
+- LSTM is a type of recurrent neural network – which can be part of deep learning models
+- it depends
 
 ---
 
 **question**: The computation of bagging can be easily parallelized
 
-answer:
+answer: True
 
 - bagging (bootstrap aggegating) = parallel evaluation of independent models
 - boosting = sequential evaluation of models
