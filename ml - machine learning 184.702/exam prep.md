@@ -442,11 +442,11 @@ answer: False
 
 **(9) question**: Categorical data should be normalized before training a knn
 
-answer: True
+answer: False
 
-- correction: categorical features should be Z-score normalized after one-hot-encoding if you want to compute a distance in models such as knn.
-- categorical features should be one-hot encoded but not normalized post encoding.
-- normalizing them will destroy their meaning, as they are binary flags.
+- you can't normalize categorical data, you have to encode them first
+- but should you one-hot encode your categorical features, you shouldn't z-score normalize them post-encoding
+- normalizing them will destroy their meaning, as they are binary flags in a zeroe'd out array
 
 ---
 
@@ -1424,7 +1424,7 @@ answer: True
 
 answer: False
 
-- softmax activation scales outputs to probabilities between 0 and 1
+- softmax activation scales outputs to probabilities between 0 and 1 (they should sum up to 1)
 
 ---
 
@@ -1865,11 +1865,11 @@ answer: True
 
 **question**: One-vs-all is an approach to solve multi-class problems for DTs
 
-answer: False
+answer: True
 
 - DT = decision tree
 - decision trees can naturally split data into multiple classes at each leaf node
-- they don't need this technique - but it's technically possible
+- they don't need this technique - but it's technically possible (so it is a valid approach)
 
 ---
 
@@ -3347,7 +3347,7 @@ answer:
 
 answer: True
 
-- softmax activation scales outputs to probabilities between 0 and 1
+- softmax activation scales outputs to probabilities between 0 and 1 (they should sum up to 1)
 
 ---
 
@@ -3525,7 +3525,7 @@ answer: False
 answer: False
 
 - the train phase determines whether a model overfits or not, not the prediction / evaluation step
-- but a smaller test set can make it more difficult to reliably detect overfitting, 
+- but a smaller test set can make it more difficult to reliably detect overfitting
 
 ---
 
