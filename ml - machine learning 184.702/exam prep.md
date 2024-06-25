@@ -452,10 +452,9 @@ answer: False
 
 **(10) question**: LSTM is a form of Deep Neural Network
 
-answer: False
+answer: True
 
-- LSTM is a type of recurrent neural network – which can be part of deep learning models
-- it depends
+- LSTM $\in$ recurrent neural networks RNNs $\in$ deep learning
 
 ---
 
@@ -501,7 +500,7 @@ answer: False
 - c) t2,t4
 - d) t1,t2
 
-answer: none of the above, we only know with certainty that $t_2, t_4, t_5$ were non-optimal
+answer: a
 
 - model:
 	- k-bandit algorithm (stationary reward probability distribution)
@@ -535,7 +534,6 @@ answer: none of the above, we only know with certainty that $t_2, t_4, t_5$ were
 	- $N = [3, 1, 0, 0, 0]$
 	- $Q = [-0.33, 2, 4, 4]$
 - 5th step:  $\text{A: }a_2 \rightarrow \text{R: }1$
-	- non-optimal step: $a_3$ had the highest expected value, with the lowest index 👈
 	- $N[2]$ = 2
 	- $Q[2]$ = 2 + 1/2 · (1 - 2) = 1.5
 	- $N = [3, 2, 0, 0, 0]$
@@ -637,16 +635,16 @@ answer: b
 	- $p(+)$ = 2/7
 	- $p(-)$ = 5/7
 - conditional likelihood for each feature value (+/-):
-	- $p(a \mid +)$ = 2/3
-	- $p(n \mid +)$ = 1/3
-	- $p(s \mid +)$ = 1/4
-	- $p(a \mid -)$ = 1/3
-	- $p(n \mid -)$ = 2/3
-	- $p(s \mid -)$ = 3/4
+	- $p(a \mid +)$ = 2/2
+	- $p(n \mid +)$ = 1/2
+	- $p(s \mid +)$ = 1/2
+	- $p(a \mid -)$ = 1/5
+	- $p(n \mid -)$ = 2/5
+	- $p(s \mid -)$ = 3/5
 - posterior probabilities:
-	- $p(+ \mid a,n,s) \propto$ 2/3 · 1/3 · 1/4 · 2/7 = 0.0158730159
-	- $p(- \mid a,n,s) \propto$ 1/3 · 2/3 · 3/4 · 5/7 = 0.119047619
-- because $p(+ \mid a,n,s) < p(- \mid a,n,s)$ we predict the last sample to be $+$
+	- $p(+ \mid a,n,s) \propto$ 2/2 · 1/2 · 1/2 · 2/7 = 0.0714285714
+	- $p(- \mid a,n,s) \propto$ 1/5 · 2/5 · 3/5 · 5/7 = 0.0342857143
+- because $p(+ \mid a,n,s) > p(- \mid a,n,s)$ we predict the last sample to be $+$
 
 ---
 
