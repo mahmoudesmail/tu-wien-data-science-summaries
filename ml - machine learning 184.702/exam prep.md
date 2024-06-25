@@ -46,12 +46,12 @@ answer (boolean): True
 
 ---
 
-**(5) question**: GradientBoosting for classification always starts with the one-rule model.
+**(5) question**: GradientBoosting for classification always starts with the one-rule model
 
 answer (boolean): False
 
 - gradient-boosting does not necessarily have to start with a 1R-decision tree / decision stump (= decision tree with a single split).
-- the initial zero-rule model can stand for any kind of simple rule-based classifier.
+- the initial **zero-rule model** can stand for any kind of simple rule-based classifier.
 
 how it gradient boosting works:
 
@@ -92,10 +92,11 @@ answer (boolean): False
 
 answer (boolean): True
 
-- first sentence: the general goal of pruning is to decrease variance / increase generalizability - no matter whether done in the training or evaluation phase
-- second sentence: pruning improves generalizability at the train set, at the cost of reduced accuracy during training
+- first sentence: the general goal of pruning is to decrease variance / increase generalizability
+- second sentence: pruning improves generalizability, at the cost of reduced accuracy during training
+- for both cases it doesn't matter whether the pruning is done during or after training
 
-definitions
+definitions:
 
 - prepruning = pruning during training
 	- based on threshold for: samples in leaf, tree depth, information gain
@@ -106,7 +107,7 @@ definitions
 
 ---
 
-**(9) question**: Lasso regression cannot be used for feature extraction.
+**(9) question**: Lasso regression cannot be used for feature extraction
 
 answer (boolean): True
 
@@ -270,11 +271,9 @@ answer (single choice): None of the above
 
 - data augmentation = extend train-set by slightly modifying data (ie. flip, rotate, scale images, …)
 - Image normalisation:
-	- image processing technique
 	- changes the range of pixel intensity values
 - scale-invariant feature transform SIFT:
-	- image processing technique
-	- feature detection algorithm used for extracting features (keypoints, descriptors)
+	- feature extraction technique (keypoints, descriptors)
 - Max Pooling, Convolution:
 	- part of CNN architecture
 - Holdout method, Cross Validation:
@@ -302,7 +301,7 @@ answer (single choice): d)
 
 ---
 
-**question**: Consider a k-armed bandit problem with k=5 actions, denoted 1,2,3,4, and 5. Consider applying to this problem a bandit algorithm using epsilon-greedy action selection, sample-average action-value estimates, and initial estimates of Q1(a) = 0, for all a. Suppose the initial sequence of actions and rewards is A1 = 2, R1 = -3 (in the first time step t1 action 2 is selected and the reward for this action is -3), A2 = 1, R2 = 2, A3 = 2, R3 = 2, A4 = 1, R4 = -1, A5 = 2, R5 = 4, A6 = 5, R6 = 3. On some of these time steps the epsilon case may have occurred, causing an action to be selected at random. On which time steps did this definitely occur? On which time steps could this possibly have occurred?
+**(24) question**: Consider a k-armed bandit problem with k=5 actions, denoted 1,2,3,4, and 5. Consider applying to this problem a bandit algorithm using epsilon-greedy action selection, sample-average action-value estimates, and initial estimates of Q1(a) = 0, for all a. Suppose the initial sequence of actions and rewards is A1 = 2, R1 = -3 (in the first time step t1 action 2 is selected and the reward for this action is -3), A2 = 1, R2 = 2, A3 = 2, R3 = 2, A4 = 1, R4 = -1, A5 = 2, R5 = 4, A6 = 5, R6 = 3. On some of these time steps the epsilon case may have occurred, causing an action to be selected at random. On which time steps did this definitely occur? On which time steps could this possibly have occurred?
 
 answer (open question): actions taken at $t_3$​, $t_5$​, and $t_6$​ are not greedy actions, indicating that AT LEAST those were chosen randomly based on epsilon.
 
@@ -411,7 +410,7 @@ answer: False
 
 ---
 
-**(6) question**: “Off-the-shell” is a transfer learning technique that uses the output of layers from a deep-learning architecture as input for a shallow model
+**(6) question**: "Off-the-shelf" is a transfer learning technique that uses the output of layers from a deep-learning architecture as input for a shallow model
 
 answer: True
 
@@ -422,13 +421,15 @@ answer: True
 
 **(7) question**: A Perceptron with Soft Margin can solve the XOR-problem
 
-answer: True
+answer: False
 
-- the concept of a "Perceptron with Soft Margin" exists, but is not standard terminology in machine learning, and not taught in the lectures.
+- probably a typo and they meant SVMs instead of perceptrons
+	- the concept of a "Perceptron with Soft Margin" exists, but is not standard terminology in machine learning, and not taught in the lectures.
 	- see: https://cseweb.ucsd.edu/~yfreund/papers/LargeMarginsUsingPerceptron.pdf
 	- see: https://www.cs.cmu.edu/~avrim/ML10/lect0125.pdf
-- there seems to be a confusion or mix-up with concepts from Support Vector Machines (SVMs)
-- a SVM with a non-linear kernel can solve the XOR-problem by mapping the data to a higher dimensional space where it becomes linearly separable
+- a standard SVM with just a soft margin cannot solve the XOR problem
+- it requires the use of the kernel trick with an appropriate kernel function (such as polynomial or RBF) to map the data into a higher-dimensional space where it becomes linearly separable
+- the soft margin concept, while useful in many SVM applications, is not the primary factor in solving the XOR problem specifically
 
 ---
 
@@ -444,9 +445,8 @@ answer: False
 
 answer: False
 
-- you can't normalize categorical data, you have to encode them first
-- but should you one-hot encode your categorical features, you shouldn't z-score normalize them post-encoding
-- normalizing them will destroy their meaning, as they are binary flags in a zeroe'd out array
+- you can't normalize categorical data, you have to encode it first
+- but should you one-hot encode your categorical features, you shouldn't z-score normalize them post-encoding, as normalizing them will destroy their meaning (they are binary flags in a zeroe'd out array)
 
 ---
 
@@ -471,10 +471,11 @@ answer: True
 
 answer: True
 
-- first part: the general goal of pruning is to decrease variance / increase generalizability - no matter whether done in the training or evaluation phase
-- second part: pruning improves generalizability, at the cost of reduced accuracy during training
+- first sentence: the general goal of pruning is to decrease variance / increase generalizability
+- second sentence: pruning improves generalizability, at the cost of reduced accuracy during training
+- for both cases it doesn't matter whether the pruning is done during or after training
 
-definitions
+definitions:
 
 - prepruning = pruning during training
 	- based on threshold for: samples in leaf, tree depth, information gain
@@ -485,7 +486,7 @@ definitions
 
 ---
 
-**(13) question**: In AdaBoost, the wights are randomly initialized
+**(13) question**: In AdaBoost, the weights are randomly initialized
 
 answer: False
 
@@ -740,7 +741,7 @@ answer: c
     - insufficient metrics:
 		- other metrics like precision, recall, F1-score, or ROC AUC would give us a better perspective
 	- no meta-data:
-		- we don't know about the nature of the data, class balance, or problem complexity, which could affect the performance of different algorithms
+		- we don't know about the nature of the data, class balance or problem complexity, which could affect the performance of different algorithms
 - to be able to tell we would need:
 	- the same train-test split for both classifiers (ideally cross-validation to see consistency across different subsets)
 	- more metrics
@@ -779,7 +780,7 @@ answer: d
 - none of these
 	- dropout randomly drops out neurons within a single network during training
 	- they all have very little in common with drouput
-- but conceptually
+- but theoretically
 	- dropout is conceptually more similar to bagging than boosting, given that it's trying to improve robustness through randomness
 	- we're introducting randomness by trying different neural network architectures
 	- we want reduce variance (overfitting), not bias
@@ -795,7 +796,7 @@ answer: d
 - e) All of the above
 - f) None of the above
 
-answer: a, b, c
+answer: e
 
 - prevents overfitting:
 	- Dropout
@@ -835,12 +836,7 @@ answer: False
 
 answer: False
 
-- paired t-tests are designed for comparing different model performances
-- we can't compare the same model on different folds
-- use-cases:
-	- comparing different models
-	- comparing the same model with different hyperparameters, data preprocessing techniques
-	- comparing different cross-validation strategies (ie. k-fold vs. leave-one-out) → helps considering data variability introduced by the different data folds
+- holdout validation usually involves a single split of data into training and test sets, which does not provide multiple paired samples required for a paired t-test
 
 ---
 
@@ -1299,8 +1295,9 @@ algorithm:
 
 **question**: A bayesian network is a directed cyclic graph.
 
-answer: True
+answer: False
 
+- bayesian networks are directed ACYCLIC graphs
 - edges represent conditional dependencies between variables in a way that avoids circular reasoning
 
 ---
@@ -1366,7 +1363,7 @@ answer:
 
 answer: 
 
-- $n\times n \circledast f\times f \Rightarrow \left\lfloor\frac{n+2p-f}{s}+1\right\rfloor\times\left\lfloor\frac{n+2p-f}{s}+1\right\rfloor$
+- $n\times n \circledast f \times f \Rightarrow \left\lfloor\frac{n+2p-f}{s}+1\right\rfloor\times\left\lfloor\frac{n+2p-f}{s}+1\right\rfloor$
 - where:
 	- $n$ = input
 	- $f$ = kernel filter
@@ -1439,25 +1436,17 @@ answer: True
 
 answer: False
 
-- paired t-tests are designed for comparing different model performances
-- we can't compare the same model on different folds
-- use-cases:
-	- comparing different models
-	- comparing the same model with different hyperparameters, data preprocessing techniques
-	- comparing different cross-validation strategies (ie. k-fold vs. leave-one-out) → helps considering data variability introduced by the different data folds
+- holdout validation usually involves a single split of data into training and test sets, which does not provide multiple paired samples required for a paired t-test
 
 ---
 
 **question**: The paired t-test is used when testing for statistical significance of results obtained with cross validation
 
-answer: False
+answer: True
 
-- paired t-tests are designed for comparing different model performances
-- we can't compare the same model on different folds
-- use-cases:
-	- comparing different models
-	- comparing the same model with different hyperparameters, data preprocessing techniques
-	- comparing different cross-validation strategies (ie. k-fold vs. leave-one-out) → helps considering data variability introduced by the different data folds
+- possible, although not ideal
+	- test assumes independence between samples, which is violated in cross-validation as the training sets overlap
+	- can lead to more false positives
 
 ---
 
@@ -1494,6 +1483,8 @@ answer: False
 
 answer: False
 
+answer is verified by prof: it says whether it **always** finds a better decision boundary
+
 - in most but not all cases
 - SVMs generally find more optimal and robust decision boundaries than basic perceptrons, especially for complex or noisy datasets - but there are exceptions
 - linearly seperable data:
@@ -1521,7 +1512,7 @@ answer: True
 	- data is more likely to be linearly seperable in high dimensions, so the linear kernel will suffice
 		- the "kernel trick" used by nonlinear kernels to implicitly map data to higher dimensions may not provide much additional benefit when the original data is already high-dimensional
 		- this is called "blessing of dimensionality": https://stats.stackexchange.com/questions/33437/is-it-true-that-in-high-dimensions-data-is-easier-to-separate-linearly
-	- linear kernels are a lot more efficient than non-linear kernels because they have a simpler feature space mapping (just a dot product)
+	- linear kernels are a **lot more efficient** than non-linear kernels because they have a simpler feature space mapping (just a dot product)
 	- svms generalize well because they maximize the margin while regularizing for generalizability (accepting missclassificaitons in the soft-margin variant)
 - advantages for sparse data:
 	- svms only need to consider non-zero features in their computations
@@ -1590,7 +1581,9 @@ answer: False
 
 **question**: Feature selection is primarly useful to improve the effectiveness of machine learning
 
-answer: True
+answer: False
+
+answer is verified by prof
 
 - feature selection / dimensionality reduction improves both:
 	- efficiency = resource (compute, memory) consumption during training or prediction
@@ -1644,6 +1637,8 @@ answer:
 
 - $y = \sum_{i=0}^n w_i x^i + \varepsilon$
 - $\mathbf y = \mathbf X \mathbf \beta + \mathbf \varepsilon$
+- short response: linear regression means "linearity in parameters" (ie. you shouldn't square the weights) – polynomial regression is a specific kind of linear regression
+- every polynomial regression is a linear regression
 - pros:
 	- can capture non-linear relationships, more complex decision boundaries than linear regression
 	- relatively simple, same concepts as linear regression
@@ -1741,7 +1736,7 @@ answer:
 
 ---
 
-**question**: Goal and settings of classification. To what tasks does it relate and from which it differs in machine learning ?
+**question**: Goal and settings of classification. To what tasks does it relate and from which it differs in machine learning?
 
 answer: 
 
@@ -1812,7 +1807,7 @@ answer:
 	- keeps distribution
 	- outliers can skew the range.
 	- use-cases:
-		- algorithms that need a certain range like neural networksn
+		- algorithms that need a certain range like neural networks
 - see: https://stats.stackexchange.com/questions/547446/z-score-vs-min-max-normalization
 
 ---
@@ -1841,7 +1836,7 @@ answer: True
 
 **question**: Categorical data should be normalized before training a k-NN
 
-answer: True
+answer: False
 
 - correction: categorical features should be Z-score normalized after one-hot-encoding if you want to compute a distance in models such as knn.
 - categorical features should be one-hot encoded but not normalized post encoding.
@@ -1867,7 +1862,7 @@ answer: True
 
 - DT = decision tree
 - decision trees can naturally split data into multiple classes at each leaf node
-- they don't need this technique - but it's technically possible (so it is a valid approach)
+- they don't need this technique - but it's technically a valid approach
 
 ---
 
@@ -1923,6 +1918,8 @@ answer: True
 **question**: SVMs always find a more optimal decision boundary (hyperplane) than Perceptrons
 
 answer: False
+
+answer verified by prof
 
 - in most but not all cases
 - SVMs generally find more optimal and robust decision boundaries than basic perceptrons, especially for complex or noisy datasets - but there are exceptions
@@ -2106,7 +2103,7 @@ answer:
 
 - ignoring missing values
 - imputation
-- treating missing as a separate category:
+- treating missing as a separate category
 - laplace smoothing (additive smoothing):
 	- P(feature|class) = (count(feature, class) + α) / (count(class) + α * |V|)
 
@@ -2150,6 +2147,8 @@ answer:
 
 - $y = \sum_{i=0}^n w_i x^i + \varepsilon$
 - $\mathbf y = \mathbf X \mathbf \beta + \mathbf \varepsilon$
+- short response: linear regression means "linearity in parameters" (ie. you shouldn't square the weights) – polynomial regression is a specific kind of linear regression
+- every polynomial regression is a linear regression
 - pros:
 	- can capture non-linear relationships, more complex decision boundaries than linear regression
 	- relatively simple, same concepts as linear regression
@@ -2246,7 +2245,7 @@ answer:
 
 # 2021-10-21
 
-**question:** Is ensamble boosting easily parallelizable
+**question:** Is ensemble boosting easily parallelizable
 
 answer: False
 
@@ -2412,16 +2411,16 @@ answer:
 
 answer:
 
-- perceptron
+- perceptron ❌
 	- can not achieve 0 error rate
 	- the xor function we want to fit is not linearly seperable
-- decision tree
+- decision tree ✅
 	- can achieve 0 error rate
 	- needs 2 splits to fit
-- svm
+- svm ✅
 	- can achieve 0 error rate (only with non linear kernel)
 	- by mapping the data to a higher dimensional space where it becomes linearly separable
-- 1-nearest neighbor
+- 1-nearest neighbor ✅
 	- can achieve 0 error rate
 	- memorizes all training points, to classify each point based on its nearest neighbor
 
@@ -2777,7 +2776,7 @@ answer:
 - pros of network:
 	- network can capture conditional dependencies between variables
 	- relaxed independence assumptions, which are often violated in real-world data
-		- naive bayes assumes that all the features are conditionally independent between features (presence or absence of a particular feature does not depend on the presence or absence of any other feature) given the class variable.
+		- naive bayes assumes that all the features are conditionally independent (not completely independent) between features (presence or absence of a particular feature does not depend on the presence or absence of any other feature) given the class variable.
 - cons of network:
 	- more expensive to compute
 	- more complex
@@ -2799,7 +2798,7 @@ answer:
 	- early stopping
 	- data augmentation
 	- ensemble training with diverse models
-	- simplifying model → simpler models are less likely to overfit as they focus on the most relevant aspects of the data.
+	- simplifying model → simpler models are less likely to overfit as they focus on the most relevant aspects of the data
 
 ---
 
@@ -2932,7 +2931,7 @@ answer:
 
 ---
 
-**question:** In which order should the steps be when training neural network with gradient descent (and 5 options listed, should be place in correct order):
+**question:** In which order should the steps be when training neural network with gradient descent (and 5 options listed, should be place in correct order)
 
 - Initialize weights and bias
 - Let input through the NN to get output
@@ -3242,7 +3241,7 @@ answer: True
 	- data is more likely to be linearly seperable in high dimensions, so the linear kernel will suffice
 		- the "kernel trick" used by nonlinear kernels to implicitly map data to higher dimensions may not provide much additional benefit when the original data is already high-dimensional
 		- this is called "blessing of dimensionality": https://stats.stackexchange.com/questions/33437/is-it-true-that-in-high-dimensions-data-is-easier-to-separate-linearly
-	- linear kernels are a lot more efficient than non-linear kernels because they have a simpler feature space mapping (just a dot product)
+	- linear kernels are a lot more **efficient** than non-linear kernels because they have a simpler feature space mapping (just a dot product)
 	- svms generalize well because they maximize the margin while regularizing for generalizability (accepting missclassificaitons in the soft-margin variant)
 - advantages for sparse data:
 	- svms only need to consider non-zero features in their computations
@@ -3330,6 +3329,8 @@ answer:
 
 - $y = \sum_{i=0}^n w_i x^i + \varepsilon$
 - $\mathbf y = \mathbf X \mathbf \beta + \mathbf \varepsilon$
+- short response: linear regression means "linearity in parameters" (ie. you shouldn't square the weights) – polynomial regression is a specific kind of linear regression
+- every polynomial regression is a linear regression
 - pros:
 	- can capture non-linear relationships, more complex decision boundaries than linear regression
 	- relatively simple, same concepts as linear regression
@@ -3407,7 +3408,7 @@ answer: False
 
 ---
 
-**question:** Lasso can not be used for feature selection.
+**question:** Lasso can not be used for feature selection
 
 answer: False
 
@@ -3489,6 +3490,8 @@ answer:
 
 - $y = \sum_{i=0}^n w_i x^i + \varepsilon$
 - $\mathbf y = \mathbf X \mathbf \beta + \mathbf \varepsilon$
+- short response: linear regression means "linearity in parameters" (ie. you shouldn't square the weights) – polynomial regression is a specific kind of linear regression
+- every polynomial regression is a linear regression
 - pros:
 	- can capture non-linear relationships, more complex decision boundaries than linear regression
 	- relatively simple, same concepts as linear regression
@@ -3540,12 +3543,7 @@ answer: False
 
 answer: False
 
-- paired t-tests are designed for comparing different model performances
-- we can't compare the same model on different folds
-- use-cases:
-	- comparing different models
-	- comparing the same model with different hyperparameters, data preprocessing techniques
-	- comparing different cross-validation strategies (ie. k-fold vs. leave-one-out) → helps considering data variability introduced by the different data folds
+- holdout validation usually involves a single split of data into training and test sets, which does not provide multiple paired samples required for a paired t-test
 
 ---
 
@@ -3645,13 +3643,7 @@ answer: True
 
 answer: False
 
-- note: the folds meant here are the train/test splits in the holdout method
-- paired t-tests are designed for comparing different model performances
-- we can't compare the same model on different folds
-- use-cases:
-	- comparing different models
-	- comparing the same model with different hyperparameters, data preprocessing techniques
-	- comparing different cross-validation strategies (ie. k-fold vs. leave-one-out) → helps considering data variability introduced by the different data folds
+- holdout validation usually involves a single split of data into training and test sets, which does not provide multiple paired samples required for a paired t-test
 
 ---
 
@@ -3676,7 +3668,7 @@ answer: False
 
 answer: False
 
-- correction: does the sequential minimal optimization SMO algorithm guarantuee that SVMs converge to the globally optimal solution?
+- correction: does the sequential minimal optimization SMO algorithm guarantee that SVMs converge to the globally optimal solution?
 - SMO = designed to solve the quadratic programming problem in SVMs
 	- iterative algorithm
 	- updates lagrange multipliers to minimize the quadratic programming (QP) problem
@@ -3754,12 +3746,7 @@ answer: True
 answer: False
 
 - note: the folds meant here are the train/test splits in the holdout method
-- paired t-tests are designed for comparing different model performances
-- we can't compare the same model on different folds
-- use-cases:
-	- comparing different models
-	- comparing the same model with different hyperparameters, data preprocessing techniques
-	- comparing different cross-validation strategies (ie. k-fold vs. leave-one-out) → helps considering data variability introduced by the different data folds
+- holdout validation usually involves a single split of data into training and test sets, which does not provide multiple paired samples required for a paired t-test
 
 ---
 
@@ -3830,16 +3817,16 @@ answer:
 
 **question**: when k-nn is used with 1-n encoding, min-max scaling is needed to perform euclidian distance
 
-answer: True
+answer: False
 
-- it's recommended but not required
+- it's recommended but not needed
 - definitions:
 	- euclidian distance: $d(\mathbf d, \mathbf p) = \sqrt{\sum_{i=1}^n (q_i - p_i)^2}$
 	- 1-hot-encoding = zero array with 1 bit flag for category
 	- min-max scaling = mapping to new range, typically 0;1
 - reasoning:
-	- after encoding the categorical features, you should normalize or scale all features.
-	- normalizing or scaling all features ensures that they contribute equally to the distance calculations and won't skew the results by their scale or representation.
+	- after encoding the categorical features, you should scale all features.
+	- scaling all features ensures that they contribute equally to the distance calculations and won't skew the results by their scale or representation.
 
 ---
 
@@ -3873,18 +3860,13 @@ answer: False
 answer: False
 
 - note: this question is referring to the holdout method
-- paired t-tests are designed for comparing different model performances
-- we can't compare the same model on different folds
-- use-cases:
-	- comparing different models
-	- comparing the same model with different hyperparameters, data preprocessing techniques
-	- comparing different cross-validation strategies (ie. k-fold vs. leave-one-out) → helps considering data variability introduced by the different data folds
+- holdout validation usually involves a single split of data into training and test sets, which does not provide multiple paired samples required for a paired t-test
 
 ---
 
 **question**: for k-nn categorical features should be normalized
 
-answer: True
+answer: False
 
 - correction: categorical features should be Z-score normalized after one-hot-encoding if you want to compute a distance in models such as knn.
 - categorical features should be one-hot encoded but not normalized post encoding.
