@@ -2,7 +2,7 @@
 
 ml = algorithms that fit data and make predictions
 
-- supervised = labeled data (clustering, anomaly detection, …) → classification
+- supervised = labeled data (clustering, anomaly detection, classification, regression, …)
 - unsupervised = unlabeled data (data-mining, …)
 - reinforcement learning = reward function
 
@@ -643,7 +643,7 @@ algorithm:
 - reconstruct input, generate representation in bottleneck
 - used for representaiton learning, dimensionality reduction
 
-# rl: reinforcement learning
+# rl - reinforcement learning
 
 - http://incompleteideas.net/book/RLbook2020.pdf
 - https://www.youtube.com/playlist?list=PLnn6VZp3hqNvRrdnMOVtgV64F_O-61C1D
