@@ -4,43 +4,56 @@ parallel computing = simultaneous use of compute
 
 _cluster_
 
-- contains multiple **nodes** / systems
-- common in high performance computing, where each node has many processors connected with high bandwidth communication networks
+- contains multiple nodes / **systems**
+- common in high performance computing
+- each node has many processors, connected with high bandwidth communication networks
 
 _mainboard / system_
 
-- a motherboard can have multiple **sockets** that each can house their own **CPU**
+- can have multiple **sockets**
+
+*socket*
+
+- slot that can hold multiple **cpus**
 
 _cpu_
 
-- https://stackoverflow.com/a/23795705/13045051
-- processor / processing unit → ambiguous term, some say that the cores are the processors
+- = central processing unit / processor
 - <100 parallel threads
-- can contain multiple **cores**
+- multicore machines contain multiple **cores**
 
 _gpu_
 
 - = graphics processing unit
 - can be integrated into the CPU or be a dedicated card (ie. PCI)
-- 1000+ parallel threads
+- hides latency with parallel execution
+- >1000 parallel threads
 - huge number of small **cores**
 
 _core_
 
-- smallest unit that can execute instructions
-- equivalent to a standalone single-core CPUs
-- contain: arithmetic logic unit ALU, floating point unit FPU, multiple levels of cache to hide memory access times, branch predictions etc.
-- synced with an interconnedction network
+- smallest unit that can execute instructions from main memory
+- equivalent to a standalone singlecore CPU
+- synced with an interconnection network
+- contain:
+	- arithmetic logic unit ALU
+	- floating point unit FPU
+	- multiple cache levels to hide memory latency, branch predictions etc.
+- instruction set:
+	- SIMD = single instruction, multiple data (vector operation)
+
+---
 
 _UMA / NUMA_
 
-- 2 types of multi-processor systems
+- 2 types of multiprocessor systems
 - based on how you place the main memory DRAM
 - a) uniform memory access
-     - = all CPUs access the same memory
+     - = all CPUs access the same memory simultaniously
 - b) non-uniform memory access
      - = each CPU might get access to a different memory at a different time
-     - happens when you place several CPUs on mainboard sockets
+     - happens when systems has multiple sockets
+     - most common
      - cache coherency is maintained
 
 _processes vs. threads_
@@ -60,10 +73,24 @@ _processes vs. threads_
 
 *levels of parallelism*
 
-- **parallelism at bit-level:** vector operations
-- **pipeline parallelism:** overlaps the execution of multiple instructions by dividing the execution process into stages (ie. MIPS). if there are no dependencies between instructions, this allows for a higher throughput of instructions executed per unit time.
-- **parallelism by multiple functional units:** modern processors are often multiple-issue processors, meaning they can execute multiple instructions simultaneously using independent functional units like ALUs (arithmetic logical unit), FPUs (floating-point unit), load/store units or branch units. this approach is also known as instruction-level parallelism (ILP).
-- **parallelism at process or thread level:** multiple cores on a single processor chip each with its own control flow. multiprocessing, multithreading.
+- parallelism at bit-level:
+	- vector operations
+- pipeline parallelism:
+	- overlaps the execution of multiple instructions by dividing the execution process into stages (ie. MIPS).
+	- if there are no dependencies between instructions, this allows for a higher throughput of instructions executed per unit time.
+- parallelism by multiple functional units:
+	- instruction-level parallelism ILP
+	- executing multiple instructions simultaneously using independent functional units like ALUs (arithmetic logical unit), FPUs (floating-point unit), load/store units or branch units.
+- parallelism at process or thread level:
+	- multiple cores on a single processor chip each with its own control flow.
+	- multiprocessing,
+	- multithreading.
+
+*scheduling*
+
+- static = fast, low overhead, can't deal with heterogenous workloads
+- dynamic = only for large tasks
+- workerpools = use chunk size based on workload
 
 # metrics
 
@@ -85,13 +112,14 @@ _latency_
 _speedup_
 
 - $\large S_a(n,p) = \frac{T_{\text{seq}}(n)}{T_{\text{par}}(n,p)}$ = absolute speedup
-- $\large S_r(n,p) = \frac{T_{\text{par}}(n, 1)}{T_{\text{par}}(n,p)}$ = relative speedup
+- $\large S_r(n,p) = \frac{T_{\text{par}}(n, 1)}{T_{\text{par}}(n,p)}$ = relative speedup (strong scaling)
+- $\large S(n,p) = \frac{p \cdot T_{\text{par}}(n, 1)}{T_{\text{par}}(p \cdot n,p)}$ = scaled speedup (weak scaling)
 - what difference does parallelization make?
 - where:
      - $n$ = input size
      - $p$ = number of processors
      - $T_{\text{par}}(n,p)$ = parallel runtime
-     - $T_{\text{seq}}(n)$ = sequential runtime
+     - $T_{\text{seq}}(n)$ = best sequential runtime
 - use the relative speedup when there isn't a sequential implementation
 
 _efficiency of parallelization_
@@ -101,34 +129,37 @@ _efficiency of parallelization_
 
 ![](assets/SCR-20240427-cciz.png)
 
-_amdahls law_
+*amdahls law (strong scaling)*
 
 - $\large S(n,p)=\frac{{T_{\text{seq}}^*(n)}}{s\cdot{T_{\text{seq}}^*(n)}+\frac{1-s}{p}\cdot{T_{\text{seq}}^*(n)}}=\frac{1}{s+\frac{1-s}{p}}\leq\frac{1}{s}$
-- fix $n$, increase $p$, speedup converges to $1/s$
 - where:
      - $s \in [0;1]$ = sequential fraction
      - $1 -s$ = parallel fraction that is perfectly parallelizable by $p$ processors
      - $T_{\text{seq}}^*(n)$ = best sequential runtime
+- strong scaling:
+	-  fix $n$, increase $p$
+	- ideally it should converge to $1/s$
+- intuition:
+	- speedup is bounded by sequential fraction
 
-_gustafson-barsis law_
+*gustafson-barsis law (weak scaling)*
 
 - $\large S(n,p) =\frac{s+p \cdot (1-s)}{s+(1-s)}=s+p \cdot (1-s)$
-- because: $s + (1-s) = 1$
-- scale $n$ with $p$, but the runtime stays the same – but if the parallel load would have been executed sequentially, it would have taken $p$ times longer
-- improves amdahls law: the serial fraction doesn't limit speedup if the problem (workload) $n$ can scale with the number of $p$. in that case you can get more done in the same amount of time.
-
-_strong vs. weak scaling_
-
-- strong scaling experiment → fix $n$, increase $p$
-- weak scaling experiment → scale $n$ with $p$ (keep problem size per core fixed)
-     - ideally the runtime should stay constant, the scaled speedup should be linear
-     - be careful with the fraction you scale $n$ with for each added $p$
+- where:
+	- $s + (1-s) = 1$
+- weak scaling:
+	- scale $n$ with $p$ (fix workload per core)
+	- ideally the runtime should stay constant, the scaled speedup should be linear
+	- find the right workload/core factor
+- intuition:
+	- speedup isn't bounded by sequantial fraction because the workload scales with the number of processors
+	- if the parallel load would have been executed sequentially, it would have taken $p$ times longer
 
 _cost_
 
 - cost:
      - $C = p \cdot T_{\text{par}}(p,n)$
-     - usage time of all $p$ processors (necessity for them to be available, but not necessarily utilized)
+     - time of processor availability
 - cost optimal:
      - $p \cdot T_{\text{par}}(p,n) \in O(T_{\text{seq}}(n))$
      - having the same asymptotic growth as the fastest-known sequential algorithm
@@ -137,11 +168,13 @@ _work_
 
 - work:
      - $W$
+     - time of processor utilization
      - number of instructions that are executed
 - work optimal:
      - $W \in O(T_{\text{seq}}(n))$
      - having the same asymptotic growth as the fastest-known sequential algorithm
      - means perfect load balancing between each of $p$
+
 
 # openmp
 
@@ -149,9 +182,9 @@ _work_
 #pragma omp directive-name [args...]
 ```
 
-paradigm: fork-join parallelism / single program multiple data SMPD.
-
-main flow is sequential and manages forking/joining of a "thread team" in a "parallel region".
+- fork-join parallelism / single program multiple data SMPD.
+- globally sequential, locally paralllel.
+- master-thread runs in parallel-region just like any other thread in "thread team"
 
 *directives overview*
 
@@ -160,7 +193,7 @@ main flow is sequential and manages forking/joining of a "thread team" in a "par
 - task constructs - independent tasks, similar to sections
 - single constructs - like `single`, where only one thread is working
 
-*"for" directive*
+*`for` directive*
 
 - eliminate loop-carried dependencies:
 	- read-after-write RAW: flow dependence
@@ -175,7 +208,7 @@ main flow is sequential and manages forking/joining of a "thread team" in a "par
 - can have conditions, ie. `if(<cond>)`
 - if loops are nested with no intermediary instructions, use `collapse(<depth>)`
 
-*"task" directive*
+*`task` directive*
 
 - mostly used for recursion inside a parallel section. distributed among threads in a thread-team.
 - `task shared(i)` - share intermediate results
@@ -185,6 +218,7 @@ main flow is sequential and manages forking/joining of a "thread team" in a "par
 *shared memory*
 
 - variables can be `shared` or `private` / `firstprivate` / `lastprivate`
+- private variables are local copies on each thread
 
 *static vs. dynamic load balancing*
 
@@ -200,14 +234,18 @@ main flow is sequential and manages forking/joining of a "thread team" in a "par
 *synchronization*
 
 - enable/disable barrier:
-	- `barrier` - barrier synchronization for all threads in team.
-	- `no wait` - disable barrier synchronization at the end of parallel region.
+	- `barrier` - barrier synchronization for all threads in team
+	- `no wait` - disable barrier synchronization at the end of parallel region
 - directive args:
 	- `reduction(<op>:var)` - use in a for-loop that works similar to `reduce()` in python
 	- `master` - only ran by master thread. no implicit barrier at the end.
-	- `single` - only ran by a single thread.
-	- `critical` - mutual exclusion in critical segment.
-	- `atomic` - mutual exclusion for a single instruction.
+	- `single` - only ran by a single thread
+	- `critical` - mutual exclusion in critical segment
+	- `atomic` - mutual exclusion, special hardware instructions
+- dependencies:
+	- `depend(in: var)` - consumer
+	- `depend(out: var)` - producer
+	- `depend(inout: var)` - consumer that also updates
 
 # optimization tricks
 
@@ -217,8 +255,7 @@ main flow is sequential and manages forking/joining of a "thread team" in a "par
 - the cache holds copies of chunks of data from MM as cache-lines/blocks
 - multicore systems that are cache-coherent have shared caches at some level
 - if a thread updates a cache-line, then the `dirty` flag gets set, which invalidates the cache from all other threads and forces them to load the most recent state from DRAM
-- by using a specific write
-- you can monitor cache misses on all levels with the `LIKWID` tool
+- by using a specific write you can monitor cache misses on all levels with the `LIKWID` tool
 
 example:
 
@@ -263,28 +300,28 @@ see: https://crd.lbl.gov/divisions/amcr/computer-science-amcr/par/research/roofl
 
 performance models help us estimate how fast code can run at most.
 
-we want to attain peak performance (FLOPs/s) but performance is limited by finite reuse of data and bandwidth.
+we want to attain peak performance (as FLOPs/s)
 
-- **compute limit**:
-	- = max GFLOPs/s for floating point operations per processor
-- **communication limit**:
-	- = max GB/s for memory bandwidth to read data from DRAM to CPU (stream bandwidth)
+- compute limit:
+	- = max GFLOPs/s as floating point operations per processor
+- communication limit:
+	- = max GB/s as memory bandwidth to read data from DRAM to CPU (stream bandwidth)
 - **arithmetic intensity AI**:
 	- = FLOPs/Bytes of kernel is its ratio of computation vs. traffic
-	- programs are kernels: they are thought of as "sequences of computational kernels". in example matrix-vector operations, FFT, Stencil, …
+	- programs are kernels: they are thought of as "sequences of computational kernels" - ie. matrix-vector operations, FFT, Stencil, …
 	- we want to know the performance of computational kernels
 	- use `LIKWID` to measure
 
 the fastest runtime in GFLOPs/s is bounded by the minimum of either:
 
-- **a) compute-bound**: the machine's max GFLOPs/s
-- **b) bandwidth-bound**: arithmetic intensity $\cdot$ the machine's max GB/s
+- a) compute-bound = the machine's max GFLOPs/s
+- b) bandwidth-bound = arithmetic intensity $\cdot$ the machine's max GB/s
 
 # cuda
 
 docs:
 
-- there are no emulators, you need an nvidia gpu to write cuda
+- there are no emulators, you need a nvidia gpu to write cuda
 - https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html
 - https://developer.nvidia.com/blog/cuda-refresher-cuda-programming-model/
 
@@ -312,18 +349,21 @@ docs:
 - **host** (cpu, memory) launches kernels on **device** (gpu, memory) and then copies results back to own memory
 - a device can run multiple kernels concurrently
 
-*cuda architecture*
+*cuda computer architecture*
 
-- based on: single instruction multiple thread SIMT
-- cuda core / streaming processor **SP** $\in$ streaming multiprocessor **SM** $\in$ **GPU**
-	- SP = one instruction per thread at a time. optimized for floating-point operations. have their own registers, shared memory, cache.
-	- warp = 32 threads in the SM, executing the same instruction at a same time, but on different data. smallest possible execution unit.
+- single instruction multiple thread SIMT
+- cuda core/streaming processor SP $\in$ streaming multiprocessor SM $\in$ GPU
+	- SP = one thread instruction at a time. optimized for floating-point operations. have their own registers, shared memory, cache.
+	- warp = group of 32 threads in the SM, executing the same instruction at a same time, but on different data. smallest possible execution unit.
 	- thread block = group of 1 to 64 warps
 	- scheduler/dispatcher = compute resource manager
+
+*cuda thread organization*
+
 - thread $\in$ thread block $\in$ kernel grid
-	- thread – ran on a single SP
-	- thread block – ran on a single SM
-	- kernel grid – ran on a single GPU
+	- thread = runs on a single SP
+	- thread block = runs on a single SM
+	- kernel grid = runs on a single GPU
 
 *memory*
 
@@ -336,6 +376,9 @@ docs:
 	- unified virtual addressing UVA
 	- accessible by host and device
 	- simpler code, but reduces performance
+- access pattern:
+	- make sure data is aligned (starts at 0 index)
+	- make sure data is calesced (contiguous)
 
 *syntax*
 
@@ -372,6 +415,6 @@ docs: https://www.mpi-forum.org/docs/mpi-3.1/
 *collective communication*
 
 - broadcast: `MPI_Bcast`
-- scatte, gather: `MPI_Scatter`, `MPI_Gather`
+- distribute and collect vector elems: `MPI_Scatter`, `MPI_Gather`
 - block until all receive: `MPI_Barrier`
 - reduce: `MPI_Reduce`, `MPI_Allreduce`
