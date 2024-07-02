@@ -322,6 +322,20 @@ answer:
 
 ---
 
+**question**: based on the trichromacy theory and the structure of the human eye, why might digital displays use red, green, and blue as their primary colors?
 
+- a) because these are the only colors humans can see
+- b) to match the three types of cone cells in the human eye
+- c) because these colors are the easiest to produce electronically
+- d) to maximize the range of reproducible colors
+
+answer:
+
+- a) false - humans don't just see the colors red, green, and blue.
+- b) true - to match the three types of cone cells in the human eye, the three types of cones in the human eye are sensitive to short (blue), medium (green), and long (r- d) wavelengths, which aligns with the rgb color model used in displays.
+- c) false - while this might be true, it's not the primary reason based on the information provided.
+- d) false - while this is a benefit, it's not the primary reason based on the trichromacy theory discussed in the slides.
+
+---
 
 # chapter 4
