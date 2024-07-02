@@ -130,6 +130,20 @@ answer:
 
 ---
 
+**question**: which of the following would be the MOST effective way to represent a 7-point likert scale (hint: ordinal data) in a visualization?
+
+- a) 7 different shapes
+- b) a continuous color gradient
+- c) 7 distinct positions on an axis
+- d) 7 different textures
+
+answer:
+
+- a) false - shapes are categorical but not inherently ordered.
+- b) false - a continuous gradient isn't suitable for discrete data.
+- c) true - position is highly effective for ordered and discrete data.
+- d) false - textures can show order but are less effective than position.
+
 
 # chapter 2
 
