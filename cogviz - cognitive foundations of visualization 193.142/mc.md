@@ -465,3 +465,33 @@ answer:
 - d) false - this would be an inappropriate use of a diverging scale, unrelated to color constancy.
 
 ---
+
+**question**: in a time-series visualization using color to represent change, how could "change blindness" be accidentally induced?
+
+- a) by using colors that are too similar for adjacent time periods
+- b) by using a diverging color scale instead of a sequential one
+- c) by using highly saturated colors throughout the visualization
+- d) by including too many data points in the time series
+
+answer:
+
+- a) true - low contrast / very similar / hard to distinguish colors between time periods could make changes hard to notice.
+- b) false - diverging color scales = hue based on whether values are above/below a threshold (ie. positive, negative) → the color scale type doesn't directly relate to change blindness, rather how easy to distinguish the colors are to guide the observers attention
+- c) false - saturation levels don't typically induce change blindness.
+- d) partially true - too many data points could make individual changes harder to notice - but it actually depends on the capacity or scalability of the visual channel
+
+---
+
+**question**: how might the principle of using color for "highlighting/emphasis" backfire in a complex, multi-variable visualization?
+
+- a) it could create unintended visual hierarchies
+- b) it might cause "attentional blink" in rapid data processing
+- c) it could lead to misinterpretation of data relationships
+- d) all of the above
+
+answer:
+
+- a) false - when graphical elements capture multiple variables at once, unintended emphasis is likelier
+- b) false - in complex visualizations, highlighted elements might cause viewers to miss subsequent important information. - this wasn't actually discussed in the lectures, but i found it interesting (see: https://en.wikipedia.org/wiki/Attentional_blink)
+- c) false - emphasis through color could suggest relationships between variables that don't actually exist.
+- d) true - all these issues could potentially occur when using color for emphasis in complex visualizations.
