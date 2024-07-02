@@ -416,5 +416,21 @@ answer:
 	- the afterimage is typically the opposite color on the opponent process channel.
 	- according to the opponent process theory, red and green are on opposite ends of one perceptual channel, so staring at red would produce a green afterimage.
 
+---
+
+**question**: if you were designing a color scale for a visualization that needed to represent both positive and negative values, which of the following approaches would likely be most effective?
+
+- a) a single-hue scale from light to dark
+- b) a rainbow scale
+- c) a diverging scale with different hues for positive and negative values
+- d) a grayscale
+
+answer:
+
+- a) false - this wouldn't effectively distinguish between positive and negative values.
+- b) false - rainbow scales are often criticized for being perceptually non-uniform and hard to interpret.
+- c) true - this would allow for clear distinction between positive and negative values while also showing magnitude.
+- d) false - while this could show magnitude, it wouldn't easily distinguish between positive and negative values.
 
 # chapter 4
+
