@@ -79,7 +79,28 @@ answer:
 	- aesthetic appeal is subjective and not a universal way to evaluate visualizations
 	- although research has shown that aesthetics can influence the perceived usability of data visualizations (see: https://www.researchgate.net/publication/4261021_The_Effect_of_Aesthetic_on_the_Usability_of_Data_Visualization)
 
+---
 
+**question**: why might inattentional blindness be particularly problematic for data visualization?
+
+- a) it prevents users from seeing preattentive features
+- b) it can cause users to miss important changes or patterns in the data
+- c) it reduces the effectiveness of color as a visual channel
+- d) it limits the number of visual queries a user can perform
+
+answer:
+
+ - a) false
+	 - preattentive feature perception isn't affected.
+- b) true
+	- users might miss important information if their attention is focused elsewhere.
+	- the attention of the observers must be guided to the most important graphical or symbolic elements.
+- c) false
+	- color perception isn't affected.
+- d) mostly false
+	- it doesn't directly limit the number of visual queries, but may affect their effectiveness.
+
+---
 
 # chapter 2
 
