@@ -434,3 +434,34 @@ answer:
 
 # chapter 4
 
+**question**: in a visualization using a diverging color scale to represent election data, what unexpected effect might occur if the midpoint is not carefully chosen?
+
+- a) voters may perceive a bias in the data presentation
+- b) color blind viewers will be unable to interpret the results
+- c) the scale will fail to show any meaningful differences
+- d) extreme values will be indistinguishable from each other
+
+answer:
+
+- a) true - an improperly chosen midpoint could make one party's results appear more dominant, creating a perceived bias.
+- b) false - color blindness issues are separate from midpoint selection.
+- c) false - the scale would still show differences, just potentially in a biased way.
+- d) false - extreme values would still be distinguishable, though potentially biased.
+
+---
+
+**question**: how might the principle of color constancy be exploited to create an optical illusion in a data visualization?
+
+- a) by using adjacent colors to make identical shades appear different
+- b) by employing highly saturated colors for small data points
+- c) by using a multi-hue sequential scale instead of a single-hue scale
+- d) by applying a diverging color scale to categorical data
+
+answer:
+
+- a) true - color constancy could make identical colors appear different when placed on different backgrounds.
+- b) false - this relates to the effect of size on color perception, not color constancy.
+- c) false - this is unrelated to color constancy.
+- d) false - this would be an inappropriate use of a diverging scale, unrelated to color constancy.
+
+---
