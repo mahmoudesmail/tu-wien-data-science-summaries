@@ -63,6 +63,23 @@ answer:
 
 ---
 
+**question**: when evaluating visualization designs, which of the following approaches are recommended?
+
+- a) explicitly identify the tasks the visualization is meant to help accomplish
+- b) consider the visual queries needed to answer specific questions
+- c) compare how easily different designs and visual channels support relevant visual queries
+- d) focus solely on the aesthetic appeal of the visualization
+
+answer:
+
+- a, b, c) true
+	- the evaluation of visualizations is essentially an information retrieval task
+	- the first step in evaluating visual designs is making tasks and the corresponding visual queries explicit, then considering the visual queries needed to answer specific questions and finally comparing how easily different designs support retrieving information for the given queries
+- d) false
+	- aesthetic appeal is subjective and not a universal way to evaluate visualizations
+	- although research has shown that aesthetics can influence the perceived usability of data visualizations (see: https://www.researchgate.net/publication/4261021_The_Effect_of_Aesthetic_on_the_Usability_of_Data_Visualization)
+
+
 
 # chapter 2
 
