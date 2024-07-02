@@ -43,6 +43,27 @@ answer:
 
 ---
 
+**question**: which of the following statements is true about how visual stimuli are processed by humans?
+
+- a) the fovea provides high-resolution vision in a small area, about the size of a thumbnail at arm's length.
+- b) visual processing occurs in stages, with early stages detecting low-level features like color and orientation in parallel and later stages.
+- c) saccadic eye movements allow us to rapidly sample information from different parts of a scene that get stitched together in our cognitive system.
+- d) attention plays a very important role in determining what visual information is retained and processed further.
+
+answer:
+
+- a) true
+	- the fovea is a small region of the retina with the highest density of cone cells, providing sharp central vision
+- b) true
+	- the visual system processes information hierarchically, from simple features to more complex representations
+- c) true
+	- saccades help us quickly scan a scene, with the brain integrating information from multiple fixations
+- d) true
+	- attention acts as a filter to select the most relevant information for further processing.
+
+---
+
+
 # chapter 2
 
 # chapter 3
