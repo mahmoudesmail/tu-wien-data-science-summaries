@@ -2,7 +2,7 @@ deadline: 10.7.
 
 similar to an extended master thesis proposal
 
-length: 4-5 pages in a template such as https://github.com/ieeevgtc/vgtc_conference_latex/releases
+length: 4-5 pages (template: https://github.com/ieeevgtc/vgtc_conference_latex/releases)
 
 topic:
 
