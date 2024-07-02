@@ -162,7 +162,6 @@ answer:
 
 ---
 
-
 **question**: which of the following statements about expressiveness in visualization is false?
 
 - a) expressiveness refers to what type of information a channel can represent
@@ -183,6 +182,31 @@ answer:
 	- position is generally considered the most versatile and expressive channel.
 
 # chapter 2
+
+**question**: which of the following are properties that describe the effectiveness of a visual channel?
+
+- a) accuracy
+- b) expressiveness
+- c) discriminability
+- d) salience
+
+answer:
+
+- a, c, d) true
+	- channel effectiveness can be understood as:
+		- accuracy (single) = accuracy in expressing magnitudes, quantity
+		- discriminability (single) = number of distinguishable values
+		- salience / pop-out (multiple) = attracting attention, standing out from redundancy
+		- seperability (multiple) = tuning attention, especially during conjunctive search (multiple channels used to encode at once)
+		- grouping (multiple) = grouping and pattern information
+			- gestalt laws = graphical objects grouped to create a pattern through: proximity, similarity, connection, enclosure, closure, continuity (some are stronger than others)
+- b) false
+	- effectiveness = how well a channel can express information.
+	- expressiveness = which types of information can be expressed by a channel (ie. quantitative, sequential, categorical data)
+
+---
+
+
 
 # chapter 3
 
