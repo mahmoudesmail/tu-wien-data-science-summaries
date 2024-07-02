@@ -234,7 +234,6 @@ answer:
 
 ---
 
-
 **question**: according to stevens' power law, which visual channel would likely lead to the most accurate perception of quantitative differences?
 
 - a) area of circles
@@ -495,3 +494,51 @@ answer:
 - b) false - in complex visualizations, highlighted elements might cause viewers to miss subsequent important information. - this wasn't actually discussed in the lectures, but i found it interesting (see: https://en.wikipedia.org/wiki/Attentional_blink)
 - c) false - emphasis through color could suggest relationships between variables that don't actually exist.
 - d) true - all these issues could potentially occur when using color for emphasis in complex visualizations.
+
+**question**: in designing a visualization for a global audience, which unexpected factor might influence your color choices beyond cultural associations and color blindness considerations?
+
+- a) the average age of your target audience
+- b) the most common digital device used in each region
+- c) the predominant climate of each geographical area
+- d) the level of air pollution in major cities
+
+answer:
+
+- a) true - age can affect color perception, with older adults often having difficulty distinguishing certain colors.
+- b) partially true - different devices may display colors differently, affecting perception.
+- c) false - climate doesn't directly affect color perception in visualization design.
+- d) false - while air pollution can affect visibility, it's not a consideration in digital visualization design.
+
+---
+
+**question**: how might the concept of "discriminability" in color scales be challenged when designing a visualization meant to be viewed on both mobile devices and large projection screens?
+
+- a) mobile devices may not accurately reproduce subtle color differences
+- b) projection screens may wash out certain colors, reducing contrast
+- c) viewing distance may affect the perception of color differences
+- d) all of the above
+
+answer:
+
+- a) false - mobile screens may have limited color reproduction capabilities.
+- b) false - projection systems often have lower contrast ratios, affecting color perception.
+- c) false - viewing distance can affect the ability to distinguish between similar colors.
+- d) correct - all of these factors can challenge color discriminability across different viewing scenarios.
+
+---
+
+**question**: in a multi-layered visualization, how might the strategic use of gray inadvertently create an accessibility issue?
+
+- a) it may reduce contrast for viewers with low vision
+- b) it could create confusion for color blind users
+- c) it might unintentionally emphasize less important information
+- d) it could make the visualization appear outdated
+
+answer:
+
+- a) true - overuse of gray could reduce overall contrast, making it difficult for low vision users.
+- b) partially true - depending on the shades used, it could potentially cause issues for some color blind users.
+- c) true - if not used carefully, gray elements might draw more attention than intended.
+- d) false - the use of gray doesn't inherently make a visualization look outdated.
+
+---
