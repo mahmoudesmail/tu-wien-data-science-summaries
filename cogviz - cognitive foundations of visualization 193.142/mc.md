@@ -144,6 +144,21 @@ answer:
 - c) true - position is highly effective for ordered and discrete data.
 - d) false - textures can show order but are less effective than position.
 
+---
+
+**question**: how might understanding the concept of "visual queries" impact visualization design?
+
+- a) it would lead to designs with more preattentive features
+- b) it would encourage designs that support specific user tasks
+- c) it would result in visualizations with higher data density
+- d) it would promote the use of more color in visualizations
+
+answer:
+
+- a) false - it's possible but not a definite outcome
+- b) true - it changes how we evaluate visualizations and optimizes for supporting users in their tasks
+- c) false - higher data density isn't always the goal of understanding visual queries
+- d) false - color use isn't directly related to understanding visual queries
 
 # chapter 2
 
