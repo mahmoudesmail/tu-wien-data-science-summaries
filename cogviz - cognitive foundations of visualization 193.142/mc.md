@@ -306,6 +306,22 @@ answer:
 
 # chapter 3
 
+**question**: which of the following color spaces would be most appropriate for creating a visualization that needs to represent subtle differences in color intensity across a wide range of hues?
+
+- a) rgb
+- b) hsv
+- c) cie lab
+- d) hcl
+
+answer:
+
+- a) false - rgb is not perceptually uniform and is difficult to use for specifying colors intuitively.
+- b) false - hsv is intuitive but not perceptually uniform, making it unsuitable for representing subtle differences.
+- c) false - while cie lab is perceptually uniform, it's not as intuitive to use as hcl.
+- d) true - hcl combines perceptual uniformity with intuitive use, making it ideal for representing subtle differences across various hues.
+
+---
+
 
 
 # chapter 4
