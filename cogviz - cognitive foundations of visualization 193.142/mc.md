@@ -220,7 +220,6 @@ answer:
 
 ---
 
-
 **question**: based on the gestalt laws, which visualization technique would likely be LEAST effective for grouping related data points?
 
 - a) using a common color for related points in a scatter plot
@@ -236,7 +235,77 @@ answer:
 ---
 
 
+**question**: according to stevens' power law, which visual channel would likely lead to the most accurate perception of quantitative differences?
+
+- a) area of circles
+- b) length of bars
+- c) angle of pie chart slices
+- d) color saturation
+
+answer:
+
+- a, c, d) false - these channels tend to result in under-estimateion or over-estimation of quantities.
+- b) true - length typically has an exponent close to 1 in stevens' power law, leading to more accurate perception.
+
+---
+
+**question**: which visualization technique would be LEAST suitable for representing data with high cardinality (many distinct values)?
+
+- a) a heat map using color intensity
+- b) a scatter plot using position
+- c) a bar chart using length
+- d) a bubble chart using size
+
+answer:
+
+- a, b) false - heat maps and scatter plots can represent many distinct values effectively.
+- c) false - bar charts can handle moderately high cardinality.
+- d) true - size (area) has limited discriminability and is least suitable for high cardinality data as once the bubbles representing magnitude grow large enough they usually start overlapping.
+
+---
+
+**question**: based on the principle of visual separability, which pair of channels would be most difficult for visualization observers to perceive independently?
+
+- a) color and shape
+- b) size and position
+- c) orientation and texture
+- d) width and height of rectangles
+
+answer:
+
+- a, b, c)  false - these pairs are generally separable and can be perceived independently.
+- d) true - width and height of rectangles are integral dimensions and difficult to perceive separately.
+
+---
+
+**question**: which gestalt principle is most likely being violated in a node-link diagram where strongly related nodes are positioned far apart?
+
+- a) similarity
+- b) closure
+- c) proximity
+- d) continuity
+
+answer:
+
+- a, b, d) false - these pairs don't have anything to do with the spacial layout of data.
+- c) true - the principle of proximity is violated when strongly related nodes are far apart.
+
+---
+
+**question**: based on the concept of salience / pop-out, which technique would be LEAST effective for highlighting important data points in a crowded scatter plot?
+
+- a) increasing the size of important points
+- b) changing the color of important points to red, while changing others to gray-scale
+- c) enclosing important points in a contour
+- d) slightly increasing the opacity of important points
+
+answer: 
+
+- a, b, c) false - these techniques effectively increase salience and draw attention.
+- d) true - a slight increase in opacity is subtle and would likely be the least effective for highlighting points in a crowded plot.
 
 # chapter 3
+
+
 
 # chapter 4
