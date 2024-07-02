@@ -206,7 +206,19 @@ answer:
 
 ---
 
+**question**: in a conjunctive visual search task, which combination would likely be the slowest for viewers to process?
 
+- a) red circles among blue circles and red squares
+- b) large blue shapes among small blue shapes and large red shapes
+- c) parallel lines among perpendicular lines of various colors
+- d) smiling face emojis among frowning face emojis of various colors
+
+answer:
+
+- a, b, d) false - these combine pre-attentive features that can be processed quickly.
+- c) true - neither line orientation nor color alone distinguishes the target, requiring serial search.
+
+---
 
 # chapter 3
 
