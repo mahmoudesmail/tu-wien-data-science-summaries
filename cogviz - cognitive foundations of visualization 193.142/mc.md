@@ -220,6 +220,23 @@ answer:
 
 ---
 
+
+**question**: based on the gestalt laws, which visualization technique would likely be LEAST effective for grouping related data points?
+
+- a) using a common color for related points in a scatter plot
+- b) enclosing related points within a contour line
+- c) connecting related points with lines
+- d) spacing related points slightly farther apart than unrelated points
+
+answer:
+
+- a, b, c) false - basic principles: similarity, enclosure and connection.
+- d) true - increased spacing contradicts the proximity principle and would likely be least effective for grouping.
+
+---
+
+
+
 # chapter 3
 
 # chapter 4
