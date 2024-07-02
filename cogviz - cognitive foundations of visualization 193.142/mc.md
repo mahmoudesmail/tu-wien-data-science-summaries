@@ -542,3 +542,19 @@ answer:
 - d) false - the use of gray doesn't inherently make a visualization look outdated.
 
 ---
+
+**question**: in designing a categorical color scale for a global brand, how might trademark laws unexpectedly influence your color choices?
+
+- a) certain color combinations might be protected by competing brands
+- b) some cultures may have legal restrictions on the use of certain colors
+- c) international color standards may limit available choices
+- d) printer ink availability could restrict usable colors
+
+answer:
+
+- a) correct - some brands have trademarked specific colors or color combinations.
+- b) false - while cultural associations are important, there are generally no legal restrictions on colors.
+- c) false - international color standards don't typically limit color choices in this way.
+- d) false - printer ink availability doesn't generally affect digital color choices for branding.
+
+---
