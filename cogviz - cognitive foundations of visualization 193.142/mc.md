@@ -114,6 +114,23 @@ answer:
 
 ---
 
+**question**:  which of the following is NOT a characteristic of low-level vision processing in areas v1 and v2 of the brain?
+
+- a) parallel processing
+- b) detection of complex semantic meanings
+- c) tuning to specific visual properties
+- d) rapid, unconscious processing
+
+answer:
+
+- a) false - characteristic of v1 and v2 processing.
+- b) true - complex semantic processing occurs in higher-level brain areas, not v1 and v2.
+- c) false - characteristic of v1 and v2 processing (they're called tunable properties)
+- d) false - characteristic of v1 and v2 processing.
+
+---
+
+
 # chapter 2
 
 # chapter 3
