@@ -370,5 +370,51 @@ answer:
 
 ---
 
+**question**: if you were designing a visualization for people with red-green color blindness, which of the following strategies would be LEAST effective?
+
+- a) using a blue to yellow color scale
+- b) employing patterns in addition to colors
+- c) utilizing variations in lightness
+- d) relying on red and green hues to encode critical information
+
+answer:
+
+- a) false - this would be effective as blue-yellow is a different perceptual channel from red-green.
+- b) false - this would be an effective strategy to convey information beyond color.
+- c) false - variations in lightness would be perceivable regardless of color blindness.
+- d) true - this would be the least effective strategy, as people with red-green color blindness would struggle to distinguish these hues.
+
+---
+
+**question**: in the context of color perception, why might the fovea be particularly important for detailed color vision?
+
+- a) it contains only rod cells
+- b) it has a higher density of cone cells
+- c) it is where the optic nerve connects to the retina
+- d) it is the only part of the eye sensitive to color
+
+answer:
+
+- a) false - the fovea actually contains primarily cone cells, not rod cells.
+- b) true - the fovea has a much higher density of cone cells, which are responsible for color vision and detailed sight.
+- c) false - this describes the blind spot, not the fovea.
+- d) false - while the fovea is crucial for detailed color vision, other parts of the retina are also sensitive to color.
+
+---
+
+**question**: based on the opponent process theory, which of the following afterimage effects would you expect to see after staring at a bright red object for an extended period?
+
+- a) a red afterimage
+- b) a green afterimage
+- c) a blue afterimage
+- d) a yellow afterimage
+
+answer:
+
+- a, c, d) false
+- b) true
+	- the afterimage is typically the opposite color on the opponent process channel.
+	- according to the opponent process theory, red and green are on opposite ends of one perceptual channel, so staring at red would produce a green afterimage.
+
 
 # chapter 4
