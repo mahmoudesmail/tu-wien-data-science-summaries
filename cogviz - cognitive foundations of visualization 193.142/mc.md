@@ -306,22 +306,6 @@ answer:
 
 # chapter 3
 
-**question**: which of the following color spaces would be most appropriate for creating a visualization that needs to represent subtle differences in color intensity across a wide range of hues?
-
-- a) rgb
-- b) hsv
-- c) cie lab
-- d) hcl
-
-answer:
-
-- a) false - rgb is not perceptually uniform and is difficult to use for specifying colors intuitively.
-- b) false - hsv is intuitive but not perceptually uniform, making it unsuitable for representing subtle differences.
-- c) false - while cie lab is perceptually uniform, it's not as intuitive to use as hcl.
-- d) true - hcl combines perceptual uniformity with intuitive use, making it ideal for representing subtle differences across various hues.
-
----
-
 **question**: based on the trichromacy theory and the structure of the human eye, why might digital displays use red, green, and blue as their primary colors?
 
 - a) because these are the only colors humans can see
@@ -337,5 +321,54 @@ answer:
 - d) false - while this is a benefit, it's not the primary reason based on the trichromacy theory discussed in the slides.
 
 ---
+
+**question**: in a visualization of disease prevalence changes over time, you notice it's difficult to distinguish between positive and negative changes. what might be the underlying issue?
+
+- a) the color space used is not perceptually uniform
+- b) the visualization is using too many colors
+- c) the color encoding doesn't account for the sign of the change
+- d) the monitor's color calibration is incorrect
+
+answer:
+
+- a) false - could be an issue but not the primary problem.
+- b) false - the number of colors wasn't mentioned as an issue.
+- c) true - the color encoding doesn't account for the sign of the change. diverging color scales could be helpful.
+- d) false - possible, but this wouldn't affect all viewers.
+
+---
+
+**question**: based on the opponent process theory, which of the following color combinations would be IMPOSSIBLE for humans to perceive?
+
+- a) reddish-orange
+- b) yellowish-green
+- c) bluish-red
+- d) greenish-red
+
+answer:
+
+- a) false - possible color combination.
+- b) false - possible color combination.
+- c) false - this would be an unconventional way to describe purple.
+- d) true - according to the opponent process theory, we never describe colors as reddish-green or greenish-red, as these are opposite ends of the same perceptual channel.
+
+---
+
+**question**: if you were designing a color picker for artists, which color space would be most appropriate to use?
+
+- a) rgb
+- b) hsv
+- c) cie lab
+- d) hcl
+
+answer:
+
+- a) false - rgb is not intuitive for specifying colors.
+- b) true - hsv is very intuitive and natural for specifying colors, making it ideal for artists who think in terms of hue, saturation, and value.
+- c) false - while perceptually uniform, cie lab is not as intuitive as hsv for artistic purposes.
+- d) false - while hcl is both uniform and relatively intuitive, hsv is more commonly used and understood by artists.
+
+---
+
 
 # chapter 4
