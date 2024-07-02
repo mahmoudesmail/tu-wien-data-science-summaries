@@ -160,6 +160,28 @@ answer:
 - c) false - higher data density isn't always the goal of understanding visual queries
 - d) false - color use isn't directly related to understanding visual queries
 
+---
+
+
+**question**: which of the following statements about expressiveness in visualization is false?
+
+- a) expressiveness refers to what type of information a channel can represent
+- b) a channel that can express quantities can always express categories
+- c) color hue is expressive for categorical data but not for quantitative data
+- d) position is generally the most expressive channel for most types of data
+
+answer:
+
+- a) true
+	- this is the definition
+- b) false
+	- channels suited for quantities aren't always good for categories.
+- c) true
+	- color hue is indeed better for categories than quantities
+	- a multi-hue sequential color scale improves discriminability because we span a larger volume of the color space
+- d) true
+	- position is generally considered the most versatile and expressive channel.
+
 # chapter 2
 
 # chapter 3
