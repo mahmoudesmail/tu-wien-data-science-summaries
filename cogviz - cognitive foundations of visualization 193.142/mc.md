@@ -21,6 +21,28 @@ answer:
 
 ---
 
+**question**: which of the following statements best describes the concept of visual channel expressiveness in data visualization?
+
+- a) how well a human can carry out a task with a given visual representation
+- b) the number of data points that can be displayed using a particular visual channel
+- c) the potential for channel mismatch when encoding data inappropriately
+- d) the type of information that can or cannot be expressed with a channel
+
+answer: 
+
+- a) false
+	- this is describing effectiveness, not expressiveness.
+	- effectiveness = how well a channel can express information.
+	- expressiveness = which types of information can be expressed by a channel (ie. quantitative, sequential, categorical data)
+- b) false
+	- this is describing capacity or scalability, not expressiveness.
+- c) true
+	- a channel mismatch happens when data is encoded using the wrong channel, leading to misinterpretation / unintended implications
+- d) true
+	- based definition from lecture: "Expressiveness is about the type of information that can or can't be expressed by a channel."
+
+---
+
 # chapter 2
 
 # chapter 3
