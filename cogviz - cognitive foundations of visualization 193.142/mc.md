@@ -52,14 +52,10 @@ answer:
 
 answer:
 
-- a) true
-	- the fovea is a small region of the retina with the highest density of cone cells, providing sharp central vision
-- b) true
-	- the visual system processes information hierarchically, from simple features to more complex representations
-- c) true
-	- saccades help us quickly scan a scene, with the brain integrating information from multiple fixations
-- d) true
-	- attention acts as a filter to select the most relevant information for further processing.
+- a) true - the fovea is a small region of the retina with the highest density of cone cells, providing sharp central vision
+- b) true - the visual system processes information hierarchically, from simple features to more complex representations
+- c) true - saccades help us quickly scan a scene, with the brain integrating information from multiple fixations
+- d) true - attention acts as a filter to select the most relevant information for further processing.
 
 ---
 
@@ -99,6 +95,22 @@ answer:
 	- color perception isn't affected.
 - d) mostly false
 	- it doesn't directly limit the number of visual queries, but may affect their effectiveness.
+
+---
+
+**question**: which of the following is not a valid reason for why humans perceive they have full awareness of their visual field despite only seeing a small portion in high resolution?
+
+- a) saccadic eye movements
+- b) attention-driven perception
+- c) the world acting as its own memory
+- d) the fovea expanding under cognitive load
+
+answer:
+
+- a) true - saccadic movements allow rapid sampling of the visual field
+- b) true - attention helps focus on relevant information
+- c) true - the world acts as an external memory store
+- d) false - the fovea does not expand under cognitive load
 
 ---
 
