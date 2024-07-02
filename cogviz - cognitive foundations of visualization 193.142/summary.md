@@ -82,7 +82,7 @@ when designing, guide the attention of the viewer such that they can achieve the
 - https://www.statcan.gc.ca/en/data-science/network/data-visualizations
 - accuracy (single)
 	- = accuracy in expressing magnitudes, quantity
-	- psychophysics = perceived intensity vs. actual intensity, can be overestimated/underestimated, each stimuli follows power law but slight variations → also applies to different visual channels
+	- psychophysics = perceived intensity vs. actual intensity, can be overestimated/underestimated, each stimuli follows power law but with slight variations → also applies to different visual channels
 	- sometimes you want to trade off accurarcy for scalability (information density in graph)
 - discriminability (single)
 	- = number of distinguishable values
