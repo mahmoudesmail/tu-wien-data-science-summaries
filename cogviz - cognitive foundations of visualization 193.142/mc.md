@@ -558,3 +558,17 @@ answer:
 - d) false - printer ink availability doesn't generally affect digital color choices for branding.
 
 ---
+
+**question**: how might the use of a multi-hue sequential color scale unexpectedly aid in data compression for large datasets?
+
+- a) it could allow for more efficient color encoding of data points
+- b) it might enable the use of fewer data points without loss of information
+- c) it could facilitate better data clustering algorithms
+- d) it might improve the speed of data transmission
+
+answer:
+
+- a) true - multi-hue scales can potentially encode more information per pixel than single-hue scales → it improves discriminability because we span a larger volume of the color space.
+- b) partially true - it could potentially allow for some data reduction while maintaining overall trends.
+- c) false - doesn't make sense
+- d) false - doesn't make sense
