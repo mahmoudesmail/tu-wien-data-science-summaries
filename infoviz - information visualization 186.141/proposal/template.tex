@@ -130,12 +130,9 @@
 % similar to an extended master thesis proposal
 % length: 4-5 pages
 
-\section{Introduction}
+\section{Introduction} % introduction / general conditions / motivation: which user group / research question do you want to find a solution for. you can define this freely, but you should motivate why the topic is relevant.
 
-% Einleitung / Rahmenbedingungen / Motivation:
-% für welche Benutzergruppe / Fragestellungen möchten Sie eine Lösung finden. Das können Sie beliebig festlegen, aber Sie sollten motivieren warum das Thema relevant ist.
-
-% motivation
+% why this is relevant
 
 Effective visualization of temporal graphs can reveal valuable insights such as patterns, trends, and anomalies that might otherwise remain hidden in raw data. This allows researchers, analysts, and decision-makers to quickly grasp evolving relationships, identify critical points of change, and make data-driven decisions.
 
@@ -152,78 +149,28 @@ As a practical example this paper explores various techniques for interactive vi
 One specific type of temporal graph that has gained prominence is the bipartite graph. \textbf{Bipartite} graphs or bigraphs consist of two distinct sets of nodes, with connections only existing between nodes from different sets, but not within the same set. If the two subsets have equal cardinality (balanced bigraph) and each node in one subset is connected to every node in the other subset, the graph is called a complete bigraph \cite{diestel2012graph}. These graphs are particularly useful for modeling relationships between two different types of entities, such as public authorities and their advertising expenditures.
 Due to their scale and complexity, time-dependent and bipartite graphs can be challenging to visualize effectively. To make sense of the Media Transparency Database Austria, which contains thousands of entries over multiple years, we need to design scalable and \textbf{interactive visualizations} that allow users to explore the data, for example, by filtering, zooming, and selecting specific time periods or entities.
 
-The ``Media Transparency Database Austria'' \cite{dataset} is a public repository that records the advertising expenses of public authorities in Austria. This database serves as a tool for transparency (based on the Austrian § 34 Transparenzdatenbankgesetz 2012 TDBG), allowing citizens and researchers to track how public funds are spent on advertising across various media outlets. It provides a rich dataset that can be represented as both a time-dependent and bipartite graph structure. By visualizing this data \textendash{} although not the focus of this paper \textendash{} we can gain insights into how public authorities allocate advertising budgets, which media outlets receive the most funding and how these relationships evolve over time and across different entities.
+The ``Media Transparency Database Austria'' \cite{dataset} is a public repository that records the advertising expenses of public authorities in Austria. This database serves as a tool for transparency (based on the Austrian § 34 Transparenzdatenbankgesetz 2012 TDBG), allowing citizens and researchers to track how public funds are spent on advertising across various media outlets. It provides a rich dataset that can be represented as both a time-dependent and bipartite graph structure. By visualizing this data \textendash{} although not the focus of this paper \textendash{} we can gain insights into how public authorities allocate advertising budgets, which media outlets receive the most / least funding, how both the political and media landscapes evolve over time and mutually influence each other.
 
 \medskip
 
-% goal / research questions
+% goal
 
-aksldnakjsdnaklndkjsndaksjnd
-
-By applying time-dependent and bipartite graph visualizations to the Media Transparency Database, we can uncover valuable insights. For instance, we can observe 
-how advertising spending patterns change over time, which public authorities are the biggest advertisers, and which media outlets receive the most funding.
-
-% for example to understand how advertising activities change after changes in government and how the media landscape changes over time.
-
-This survey paper aims to explore various techniques and approaches for designing interactive visualizations of time-dependent and bipartite graphs. We will examine different methods for representing temporal data, strategies for layouting bipartite relationships, and ways to combine these approaches effectively.
-
-Throughout this paper, we will focus on creating clear, uncluttered overviews while maximizing information content[3]. We will also discuss techniques for handling large-scale data, as the Media Transparency Database likely contains thousands of entries over multiple years.
-
-By the end of this survey, readers will have a comprehensive understanding of how to design effective interactive visualizations for time-dependent and bipartite graphs, using the Media Transparency Database Austria as a practical and relevant example.
-
-Existing visualization methods often struggle with large-scale, temporal bipartite data. Our research aims to address these limitations through:
-
-1. Scalable visualization techniques for large datasets
-2. Hierarchical aggregation and clustering methods
-3. Intuitive user interface design
-4. Integration of time series visualization
-
-The goal is to create accessible, insightful visualizations for both experts and non-experts. Our findings will contribute to information visualization research and provide tools for analyzing public spending on advertising in Austria.
+This paper aims to combine state-of-the-art techniques and approaches for designing interactive visualizations of time-dependent and bipartite graphs to propose a final design for the ``Media Transparency Database Austria''. We will focus on clear, uncluttered overviews while maximizing information content and propose a design that allows users to interact with the data intuitively. Additionally, we will consider how our proposed visualization could be evaluated and what results we expect to achieve.
 
 
 
 
+\section{Related Work} % which solutions exist, what are their strengths and weaknesses, how suitable are they for the data characteristics of the Media Transparency Database
 
 
+% Existing visualization methods often struggle with large-scale, temporal bipartite data. Our research aims to address these limitations through:
 
+% 1. Scalable visualization techniques for large datasets
+% 2. Hierarchical aggregation and clustering methods
+% 3. Intuitive user interface design
+% 4. Integration of time series visualization
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-\section{Related Work}
-
-% welche Lösungen gibt es, was sind ihre Stärken und Schwächen bzw. wie passend sind sie für die Datencharakteristika der Medientransparenzdatenbank
+% The goal is to create accessible, insightful visualizations  will contribute to information visualization research and provide tools for analyzing public spending on advertising in Austria.
 
 
 % horizon graphs
@@ -236,13 +183,10 @@ The goal is to create accessible, insightful visualizations for both experts and
 % [4] https://www.semanticscholar.org/paper/9c455b697f3dcf1b5876e80961558d2a37e27c1c
 % [5] https://www.semanticscholar.org/paper/8cdb4c4a3a9cfd04c04b3844955ddac9323b1bfd
 
-
-
 % [2] https://www.semanticscholar.org/paper/de72a42b914735fc54702c903bd010516524bafc
 % [3] https://arxiv.org/abs/2302.06286
 % [4] https://www.semanticscholar.org/paper/58c63dd15a1e90a0ad71fae47084d32503bf24a4
 % [5] https://www.semanticscholar.org/paper/5a05d02e69359333cdf408cd73ceb498157a0ebe
-
 
 % [Waldner et al., 2020]: https://users.cg.tuwien.ac.at/~waldner/bicflows/
 % https://www.cvast.tuwien.ac.at/topics/media-transparency-dashboard
@@ -256,19 +200,18 @@ The goal is to create accessible, insightful visualizations for both experts and
 % https://ieeexplore.ieee.org/document/1261490
 
 
-\section{Visual Encoding and Interaction Design}
 
-% welche Lösung würden Sie vorschlagen (Beschreibung und evtl. Skizze sind ausreichend!); bitte begründen Sie Ihre Wahl; Sie können hier auch ein bestehendes Konzept aus der Related Work auswählen oder adaptieren, mit entsprechender Begründung.
 
-\section{Implementation}
 
-% wie würden Sie die Lösung technisch umsetzen und welche Herausforderungen erwarten Sie dabei
 
-% Design Justification / Hypothesis Building (part of research process)
 
-\section{Evaluation}
 
-% Wie würden Sie evaluieren, dass Ihre vorgeschlagene Lösung "gut" ist (plus: wie definieren Sie "gut"?). Was sind die erwarteten Ergebnisse?
+
+\section{Visual Encoding and Interaction Design} % which visual encoding and interaction design would you suggest for the Media Transparency Database (a description and possibly a sketch are sufficient); please justify your choice; you can also choose an existing concept from the Related Work and adapt it, with appropriate justification.
+
+\section{Implementation} % how would you technically implement the visualization solution and what challenges would you expect – Design Justification / Hypothesis Building (part of research process)
+
+\section{Evaluation} % how would you evaluate that your proposed solution is "good" (plus: how do you define "good"?). What are the expected results?
 
 
 
