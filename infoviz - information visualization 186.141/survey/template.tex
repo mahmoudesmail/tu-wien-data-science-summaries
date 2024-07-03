@@ -82,18 +82,7 @@
 % \and Martha Stewart\thanks{e-mail: martha.stewart@marthastewart.com}\\ %
 %      \parbox{1.4in}{\scriptsize \centering Martha Stewart Enterprises \\ Microsoft Research}}
 
-% -----------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
+% --------------------------------------------------------------------------------------------------
 
 % \teaser{
 %   \centering
@@ -102,29 +91,165 @@
 %   \label{fig:teaser}
 % }
 
-\abstract{
-    Here's my abstract
-}
-\keywords{Radiosity, global illumination, constant time.}
-
-%% Copyright space is enabled by default as required by guidelines.
-%% It is disabled by the 'review' option or via the following command:
+% \abstract{
+%   write the abstract when you're done with the paper
+% }
+% \keywords{Here are some keywords}
+  
 \nocopyrightspace
-
+  
 \begin{document}
-
+  
 \maketitle
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% deadline: 10.7.
+% similar to an extended master thesis proposal
+% length: 4-5 pages
+
 \section{Introduction}
+
+This survey paper explores the interactive visualization design of graphs with two specific properties: time-dependency and bipartite structure. Time-dependent graphs represent how data changes over time, allowing us to observe patterns, trends, and anomalies across different time periods. Bipartite graphs, on the other hand, represent relationships between two distinct sets of entities, with connections only existing between nodes from different groups (not within the same group).
+
+We use the ``Media Transparency Database Austria'' \cite{dataset} as a practical example to illustrate these concepts. This public repository records advertisement expenses of public authorities in Austria, providing a rich source of information about how government bodies allocate their advertising budgets over time and across different media outlets.
+
+
+
+
+
+
+
+
+
+
+
+Time-dependent graphs are visual representations that show how data changes over time[1]. They allow us to observe patterns, trends, and anomalies across different time periods. These graphs are particularly useful for analyzing dynamic systems or processes that evolve over time.
+
+Bipartite graphs, on the other hand, represent relationships between two distinct sets of entities[3]. In a bipartite graph, nodes are divided into two groups, and connections only exist between nodes from different groups. This type of graph is ideal for visualizing interactions or associations between two categories of data.
+
+The Media Transparency Database Austria is a public repository that records advertisement expenses of public authorities in Austria. This database provides a rich source of information about how government bodies allocate their advertising budgets over time and across different media outlets.
+
+Interactive visualization enhances the exploration of such complex datasets. It allows users to dynamically adjust the display, filter data, and zoom in on specific areas of interest[2]. This interactivity enables deeper insights and more efficient data analysis.
+
+By applying time-dependent and bipartite graph visualizations to the Media Transparency Database, we can uncover valuable insights. For instance, we can observe how advertising spending patterns change over time, which public authorities are the biggest advertisers, and which media outlets receive the most funding.
+
+This survey paper aims to explore various techniques and approaches for designing interactive visualizations of time-dependent and bipartite graphs. We will examine different methods for representing temporal data, strategies for layouting bipartite relationships, and ways to combine these approaches effectively.
+
+Throughout this paper, we will focus on creating clear, uncluttered overviews while maximizing information content[3]. We will also discuss techniques for handling large-scale data, as the Media Transparency Database likely contains thousands of entries over multiple years.
+
+By the end of this survey, readers will have a comprehensive understanding of how to design effective interactive visualizations for time-dependent and bipartite graphs, using the Media Transparency Database Austria as a practical and relevant example.
+
+Citations:
+[1] https://www.semanticscholar.org/paper/de72a42b914735fc54702c903bd010516524bafc
+[2] https://www.semanticscholar.org/paper/d1c0933bb3f45274e968d0fc095f7a4ac36c17ee
+[3] https://pubmed.ncbi.nlm.nih.gov/30130217/
+[4] https://www.semanticscholar.org/paper/9c455b697f3dcf1b5876e80961558d2a37e27c1c
+[5] https://www.semanticscholar.org/paper/8cdb4c4a3a9cfd04c04b3844955ddac9323b1bfd
+
+
+
+
+
+
+
+
+Data visualization is crucial for understanding complex relationships. Time-dependent bipartite graphs represent evolving connections between two distinct entity sets. These graphs are powerful but challenging to visualize effectively.
+
+This research focuses on developing interactive visualization techniques for time-dependent bipartite graphs. We use the Media Transparency Database Austria as our case study. This database records advertising expenditures from Austrian public authorities to media companies over time.
+
+Existing visualization methods often struggle with large-scale, temporal bipartite data. Our research aims to address these limitations through:
+
+1. Scalable visualization techniques for large datasets
+2. Hierarchical aggregation and clustering methods
+3. Intuitive user interface design
+4. Integration of time series visualization
+
+The goal is to create accessible, insightful visualizations for both experts and non-experts. Our findings will contribute to information visualization research and provide tools for analyzing public spending on advertising in Austria.
+
+
+
+
+
+\subsection{Time-dependent bipartite graphs}
+
+
+
+
+
+
+
+
+% https://www.statistik.at/en/services/tools/services/transparency-database-evaluations
+
+
+% Interactive Visualization design of time-dependent and bipartite graphs using the example of the Media Transparency Database Austria.
+
+
+
+
+
+
+
+
+
+= a public database of advertisement expenses of public authorities in Austria
+
+
+
+
+
+
+% Time dependency of graphs -> Time dependency is interesting - for example to understand how advertising activities change after changes in government and how the media landscape changes over time.
+
+% Bipartite graph = a graph where the vertices can be divided into two disjoint sets such that all edges connect a vertex in one set to a vertex in another set
+
+% Thousands of nodes + time-dependency?
+
+% horizon graphs
+
+
+
 
 % Einleitung / Rahmenbedingungen / Motivation:
 
 % für welche Benutzergruppe / Fragestellungen möchten Sie eine Lösung finden. Das können Sie beliebig festlegen, aber Sie sollten motivieren warum das Thema relevant ist.
 
-
 \section{Related Work}
 
 % welche Lösungen gibt es, was sind ihre Stärken und Schwächen bzw. wie passend sind sie für die Datencharakteristika der Medientransparenzdatenbank
+
+% [Waldner et al., 2020]: https://users.cg.tuwien.ac.at/~waldner/bicflows/
+% https://www.cvast.tuwien.ac.at/topics/media-transparency-dashboard
+% https://users.cg.tuwien.ac.at/~waldner/bicflows/bicflows_steinboeck_bdva2018.pdf
+% https://www.vrvis.at/publications/pdfs/PB-VRVis-2020-058.pdf
+% https://informs-sim.org/wsc03papers/090.pdf
+% https://www.sciencedirect.com/science/article/pii/S2590118420300198
+% https://lliquid.github.io/homepage/files/draft_vis18_bico.pdf
+% https://www.researchgate.net/publication/4053779_Visualization_methods_for_time-dependent_data_-_An_overview
+% https://link.springer.com/chapter/10.1007/978-3-642-02577-8_89
+% https://ieeexplore.ieee.org/document/1261490
+
 
 \section{Visual Encoding and Interaction Design}
 
@@ -133,6 +258,8 @@
 \section{Implementation}
 
 % wie würden Sie die Lösung technisch umsetzen und welche Herausforderungen erwarten Sie dabei
+
+% Design Justification / Hypothesis Building (part of research process)
 
 \section{Evaluation}
 
@@ -143,26 +270,6 @@
 
 
 
-% deadline: 10.7.
-% similar to an extended master thesis proposal
-% title: "Interactive Visualization of Time-Dependent Bipartite Graphs"
-% length: 4-5 pages
-% 
-% - Visualisierungsdesign von Bipartiten Graphen am Beispiel der Medientransparenzdatenbank: https://www.rtr.at/medien/was_wir_tun/medientransparenz/VeroeffentlichteDaten/veroeffentlichungen.de.html
-% 
-% - Design Justification / Hypothesis Building
-% 
-% - Zeitabhängigkeit von Graphen -> Die Zeitabhängigkeit ist interessant - etwa um zu verstehen wie sich die Werbeaktivitäten nach Regierungswechseln ändern und wie sich die Medienlandschaft über die Zeit ändert.
-% 
-% ----
-
-% Media Transparency Database Austria = Public database of advertisement expenses of public authorities in Austria
-
-% Bipartite graph = a graph where the vertices can be divided into two disjoint sets such that all edges connect a vertex in one set to a vertex in another set
-
-% Thousands of nodes + time-dependency?
-
-% [Waldner et al., 2020]
 
 
 
@@ -183,7 +290,29 @@
 
 
 
-% -----------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% --------------------------------------------------------------------------------------------------
 
 
 %% \section{Introduction} %for journal use above \firstsection{..} instead
