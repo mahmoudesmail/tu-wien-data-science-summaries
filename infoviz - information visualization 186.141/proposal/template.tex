@@ -1,7 +1,7 @@
 % $Id: template.tex 11 2007-04-03 22:25:53Z jpeltier $
 
 \documentclass{vgtc}                          % final (conference style)
-% \documentclass[review]{vgtc}                 % review
+% \documentclass[review]{vgtc}                % review
 %\documentclass[widereview]{vgtc}             % wide-spaced review
 %\documentclass[preprint]{vgtc}               % preprint
 %\documentclass[electronic]{vgtc}             % electronic version
@@ -84,6 +84,48 @@
 
 % --------------------------------------------------------------------------------------------------
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 % \teaser{
 %   \centering
 %   \includegraphics[width=\linewidth]{CypressView}
@@ -116,23 +158,11 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
 % deadline: 10.7.
 % similar to an extended master thesis proposal
 % length: 4-5 pages
 
 \section{Introduction} % introduction / general conditions / motivation: which user group / research question do you want to find a solution for. you can define this freely, but you should motivate why the topic is relevant.
-
-% why this is relevant
 
 Effective visualization of temporal graphs can reveal valuable insights such as patterns, trends, and anomalies that might otherwise remain hidden in raw data. This allows researchers, analysts, and decision-makers to quickly grasp evolving relationships, identify critical points of change, and make data-driven decisions.
 
@@ -140,8 +170,6 @@ In the context of global warming, multi-temporal scale visualizations of carbon 
 These examples demonstrate how temporal graph visualizations compress temporal network data into intuitive representations. And as the volume and complexity of temporal data continue to grow across various domains, the development and application of effective visualization techniques for temporal graphs will likely become increasingly important.
 
 \medskip
-
-% definitions
 
 As a practical example this paper explores various techniques for interactive visualization of time-dependent and bipartite graphs, using the ``Media Transparency Database Austria'' \cite{dataset}.
 
@@ -153,9 +181,18 @@ The ``Media Transparency Database Austria'' \cite{dataset} is a public repositor
 
 \medskip
 
-% goal
-
 This paper aims to combine state-of-the-art techniques and approaches for designing interactive visualizations of time-dependent and bipartite graphs to propose a final design for the ``Media Transparency Database Austria''. We will focus on clear, uncluttered overviews while maximizing information content and propose a design that allows users to interact with the data intuitively. Additionally, we will consider how our proposed visualization could be evaluated and what results we expect to achieve.
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -170,23 +207,13 @@ This paper aims to combine state-of-the-art techniques and approaches for design
 % 3. Intuitive user interface design
 % 4. Integration of time series visualization
 
+
+
+
+
 % The goal is to create accessible, insightful visualizations  will contribute to information visualization research and provide tools for analyzing public spending on advertising in Austria.
 
-
 % horizon graphs
-
-% https://www.semanticscholar.org/paper/Interactive-exploration-of-large-time-dependent-Waldner-Steinb%C3%B6ck/a540758ed137bdfaf20aa5b41c64c66c4c61cb38
-
-% [1] https://www.semanticscholar.org/paper/de72a42b914735fc54702c903bd010516524bafc
-% [2] https://www.semanticscholar.org/paper/d1c0933bb3f45274e968d0fc095f7a4ac36c17ee
-% [3] https://pubmed.ncbi.nlm.nih.gov/30130217/
-% [4] https://www.semanticscholar.org/paper/9c455b697f3dcf1b5876e80961558d2a37e27c1c
-% [5] https://www.semanticscholar.org/paper/8cdb4c4a3a9cfd04c04b3844955ddac9323b1bfd
-
-% [2] https://www.semanticscholar.org/paper/de72a42b914735fc54702c903bd010516524bafc
-% [3] https://arxiv.org/abs/2302.06286
-% [4] https://www.semanticscholar.org/paper/58c63dd15a1e90a0ad71fae47084d32503bf24a4
-% [5] https://www.semanticscholar.org/paper/5a05d02e69359333cdf408cd73ceb498157a0ebe
 
 % [Waldner et al., 2020]: https://users.cg.tuwien.ac.at/~waldner/bicflows/
 % https://www.cvast.tuwien.ac.at/topics/media-transparency-dashboard
@@ -198,6 +225,24 @@ This paper aims to combine state-of-the-art techniques and approaches for design
 % https://www.researchgate.net/publication/4053779_Visualization_methods_for_time-dependent_data_-_An_overview
 % https://link.springer.com/chapter/10.1007/978-3-642-02577-8_89
 % https://ieeexplore.ieee.org/document/1261490
+% https://www.semanticscholar.org/paper/Interactive-exploration-of-large-time-dependent-Waldner-Steinb%C3%B6ck/a540758ed137bdfaf20aa5b41c64c66c4c61cb38
+% https://www.semanticscholar.org/paper/de72a42b914735fc54702c903bd010516524bafc
+% https://www.semanticscholar.org/paper/d1c0933bb3f45274e968d0fc095f7a4ac36c17ee
+% https://pubmed.ncbi.nlm.nih.gov/30130217/
+% https://www.semanticscholar.org/paper/9c455b697f3dcf1b5876e80961558d2a37e27c1c
+% https://www.semanticscholar.org/paper/8cdb4c4a3a9cfd04c04b3844955ddac9323b1bfd
+% https://www.semanticscholar.org/paper/de72a42b914735fc54702c903bd010516524bafc
+% https://arxiv.org/abs/2302.06286
+% https://www.semanticscholar.org/paper/58c63dd15a1e90a0ad71fae47084d32503bf24a4
+% https://www.semanticscholar.org/paper/5a05d02e69359333cdf408cd73ceb498157a0ebe
+
+
+
+
+
+
+
+
 
 
 
@@ -209,7 +254,37 @@ This paper aims to combine state-of-the-art techniques and approaches for design
 
 \section{Visual Encoding and Interaction Design} % which visual encoding and interaction design would you suggest for the Media Transparency Database (a description and possibly a sketch are sufficient); please justify your choice; you can also choose an existing concept from the Related Work and adapt it, with appropriate justification.
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \section{Implementation} % how would you technically implement the visualization solution and what challenges would you expect – Design Justification / Hypothesis Building (part of research process)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \section{Evaluation} % how would you evaluate that your proposed solution is "good" (plus: how do you define "good"?). What are the expected results?
 
