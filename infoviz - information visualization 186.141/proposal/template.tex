@@ -184,25 +184,37 @@ This paper aims to combine state-of-the-art techniques and approaches for design
 
 
 
-
-
 \section{Related Work} % which solutions exist, what are their strengths and weaknesses, how suitable are they for the data characteristics of the Media Transparency Database
 
-% what are the strengths and weaknesses of this approach to an interactive visualization of time-dependent and bipartite graphs? how suitable is this approach for the data characteristics of the "Media Transparency Database Austria"?
+% what are the strengths and weaknesses of this approach to an interactive visualization of time-dependent and bipartite graphs? how suitable is this approach for the data characteristics of the "Media Transparency Database Austria"? don't use bullet points.
 
 In this section, we will explore existing solutions for visualizing time-dependent and bipartite graphs, focusing on their strengths, weaknesses and suitability for the MT dataset.
 
-\subsection{Jüttner et al. - Media Transparency}
-
-Jüttner et al. \cite{Jttner2017MediaTI} present an interactive visualization approach specifically designed for the MT dataset that directly addresses our unique challenges.
+\paragraph{Jüttner et al.} \cite{Jttner2017MediaTI} present an interactive visualization approach specifically designed for the MT dataset that directly addresses our unique challenges.
 They describe a visualization approach in which different aspects of the data are simultaneously presented through interactive and interlinked sub-visualizations, called views. These multiple views work in concert, all showing different aspects of the same data and being updated in sync when users interact with any of them. This is commonly referred to as a ``multiple coordinated views'' or \textit{``coordinated multiple views'' (CMV)} \cite{roberts2007state} visualization and aligns well with the popular design principle of ``Eyes beat memory'' by Tamara Munzner. This principle suggests that users can more effectively understand data when they can see it, rather than having to remember it from a previous view. Their visualization concept provides both broad overviews (i.e. overall spending patterns) and detailed insights (i.e. drill down into specific actors or time periods). It consists of elements, including an overview bar chart, an alphabetically ordered, searchable list of actors, a tree-like graph displaying connections between selected actors and detailed bar charts showing quarterly spending and media-specific expenses.
 
-This ability to interactively filter data, search for specific actors, and update charts based on user selections is a great strength of their approach. It allows users to explore the data in a non-linear fashion, focusing on specific aspects of the data that interest them. This interactivity is particularly useful for investigative journalists or researchers looking to uncover patterns or anomalies in media spending.
+This ability to interactively filter data, search for specific actors, and update charts based on user selections is a great strength of their approach. It allows users to explore the data in a non-linear fashion, focusing on specific aspects of the data that interest them.
 
-However, the approach also has some limitations. The authors acknowledge performance issues especially on startup, as the system needs to load and process a large amount of data into the web browser before rendering the visualizations. This could potentially hinder user experience, especially for users with slower internet connections or less powerful devices. Additionally, the lack of advanced features like brushing, zooming, and direct comparison tools for actors and time spans, as mentioned by the authors, represents a missed opportunity for more sophisticated data analysis.
+However, the approach also has some limitations. The authors acknowledge performance issues especially on startup as their web-based \texttt{d3.js} implementation doesn't scale well with the given dataset size. This could potentially hinder user experience, especially for users with slower internet connections or less powerful devices. Additionally, the lack of advanced features like brushing, zooming, and direct comparison tools for actors and time spans, as mentioned by the authors, represents a missed opportunity for more sophisticated data analysis.
 
 In conclusion while Jüttner et al.'s approach provides a solid foundation through its coordinated multiple views design, it doesn't leverage the temporal and bipartite nature of the data to its full potential.
 
+\medskip
+
+After some research, we found that Jüttner et al.'s work was part of a student project at the University of Vienna in 2016 WS \cite{univie10} before being published in 2017. This context is important to note as it suggests that other students might have also worked on similar projects during that time. By modifying the URL suffix of the original project, we were able to find several other student projects from the same year that also explored the MT dataset and used interactive CMV visualizations that allow to drill down into the data, but each with unique approaches and interesting insights. Two of these projects, in particular, caught our attention.
+
+\medskip
+
+One project \cite{univie03} used a bundled edge graph to provide a detailed view of individual transactions between entities, a packed bubble chart and treemap to provide overviews of the highest transactions and relative proportions and a line chart that allows users to see trends over time. Additionally each graph would highlight connections on mouseover in the bundled edge graph.
+
+Notable weaknesses however include the lack of cross-filtering between the bundled edge graph and the other visualizations, requiring users to apply filters separately. This can be cumbersome and potentially confusing. The default view can also be overwhelming due to the large amount of data, making it initially difficult for users to gain clear insights. Performance issues with loading large datasets using \texttt{d3.js}, particularly in the bundled edge graph, are another weakness. Also the decision to display nodes as circles without text descriptions when there are more than 250 nodes is a compromise that may not be ideal for all use cases.
+
+\medskip
+
+Another project \cite{univie07}. 
+
+
+% http://vda.univie.ac.at/Teaching/Vis/16w/Final_Report/07.pdf ->  Sankey Diagram
 
 
 
@@ -218,10 +230,6 @@ In conclusion while Jüttner et al.'s approach provides a solid foundation throu
 % https://users.cg.tuwien.ac.at/~waldner/bicflows/bicflows_steinboeck_bdva2018.pdf
 % https://github.com/complexity-science-hub/dynamic_bicflows
 % https://www.semanticscholar.org/paper/Interactive-exploration-of-large-time-dependent-Waldner-Steinb%C3%B6ck/a540758ed137bdfaf20aa5b41c64c66c4c61cb38
-
-% http://vda.univie.ac.at/Teaching/Vis/16w/Final_Report/03.pdf
-% http://vda.univie.ac.at/Teaching/Vis/16w/Final_Report/10.pdf
-% http://vda.univie.ac.at/Teaching/Vis/16w/Final_Report/07.pdf
 
 
 
@@ -258,20 +266,6 @@ In conclusion while Jüttner et al.'s approach provides a solid foundation throu
 \section{Visual Encoding and Interaction Design} % which visual encoding and interaction design would you suggest for the Media Transparency Database (a description and possibly a sketch are sufficient); please justify your choice; you can also choose an existing concept from the Related Work and adapt it, with appropriate justification.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 \section{Implementation} % how would you technically implement the visualization solution and what challenges would you expect – Design Justification / Hypothesis Building (part of research process)
 
 % horizon graphs
@@ -282,19 +276,6 @@ In conclusion while Jüttner et al.'s approach provides a solid foundation throu
 % 2. Hierarchical aggregation and clustering methods
 % 3. Intuitive user interface design
 % 4. Integration of time series visualization
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 \section{Evaluation} % how would you evaluate that your proposed solution is "good" (plus: how do you define "good"?). What are the expected results?
