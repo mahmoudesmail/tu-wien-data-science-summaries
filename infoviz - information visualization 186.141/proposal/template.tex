@@ -72,7 +72,7 @@
 \author{Yahya Jabary\thanks{e-mail:yahya.jabary@tuwien.ac.at} %
 % \and Manuela Waldner,\thanks{e-mail:manuela.waldner@tuwien.ac.at} %
 \and Manuela Waldner\thanks{e-mail:manuela.waldner@tuwien.ac.at}}
-\affiliation{\scriptsize Vienna University of Technology }
+\affiliation{\scriptsize TU Wien, Austria}
 
 %% Author and Affiliation (multiple authors with multiple affiliations)
 % \author{Roy G. Biv\thanks{e-mail: roy.g.biv@aol.com}\\ %
@@ -122,10 +122,6 @@
 
 
 
-
-
-
-
 % \teaser{
 %   \centering
 %   \includegraphics[width=\linewidth]{CypressView}
@@ -133,24 +129,19 @@
 %   \label{fig:teaser}
 % }
 
-% \abstract{
-%   write the abstract when you're done with the paper
-% }
-\keywords{Interactive Visualization, Temporal Graphs, Bipartite Graphs, Transparency Database}
+\abstract{
+    This paper explores novel techniques for visualizing temporal bigraphs, with a specific focus on the ``Media Transparency Database Austria''. Established in 2012 by Austrian law, this dataset records quarterly advertising expenditures of governmental organizations across various media outlets. Our study aims to develop an effective, interactive visualization that allows users to explore patterns, trends and anomalies.
+    
+    We survey state-of-the-art approaches for visualizing dynamic graphs, including animated node-link diagrams, timeline-based representations and hybrid techniques. Building on these methods, we propose a novel interactive visualization that combines temporal bigraph representations. Our design aims to provide both clear overviews and detailed analysis capabilities, allowing users to explore the evolution of advertising expenditures over time and the relationships between public entities and media outlets.
+    We discuss potential evaluation strategies for assessing the effectiveness of our visualization and outline expected outcomes. This work contributes to the field of dynamic graph visualization while demonstrating its practical application in government transparency and policy analysis.
+}
+\keywords{Interactive Visualization, Temporal Graphs, Bipartite Graphs, Media Transparency, Public Policy, Government Spending}
   
 \nocopyrightspace
   
 \begin{document}
   
 \maketitle
-
-% \noindent\hfil\rule{0.2\textwidth}{.4pt}\hfil
-% \medskip
-% \bigskip
-
-
-
-
 
 
 
@@ -175,13 +166,13 @@ As a practical example this paper explores various techniques for interactive vi
 
 \textbf{Time-dependent} graphs or temporal graphs are structures that evolve over time, with nodes and edges changing as time progresses. These graphs are crucial for representing dynamic systems and processes that unfold chronologically. They allow us to observe patterns, trends, and changes in relationships between entities over different time periods \cite{Waldner2020InteractiveEO}.
 One specific type of temporal graph that has gained prominence is the bipartite graph. \textbf{Bipartite} graphs or bigraphs consist of two distinct sets of nodes, with connections only existing between nodes from different sets, but not within the same set. If the two subsets have equal cardinality (balanced bigraph) and each node in one subset is connected to every node in the other subset, the graph is called a complete bigraph \cite{diestel2012graph}. These graphs are particularly useful for modeling relationships between two different types of entities, such as public authorities and their advertising expenditures.
-Due to their scale and complexity, time-dependent and bipartite graphs can be challenging to visualize effectively. To make sense of the Media Transparency Database Austria, which contains thousands of entries over multiple years, we need to design scalable and \textbf{interactive visualizations} that allow users to explore the data, for example, by filtering, zooming, and selecting specific time periods or entities.
+Due to their scale and complexity, time-dependent and bipartite graphs can be challenging to visualize effectively. To make sense of the ``Media Transparency Database Austria'', which contains thousands of entries over multiple years, we need to design scalable and \textbf{interactive visualizations} that allow users to explore the data, for example, by filtering, zooming, and selecting specific time periods or entities.
 
-The ``Media Transparency Database Austria'' \cite{dataset} is a public repository that records the advertising expenses of public authorities in Austria. This database serves as a tool for transparency (based on the Austrian § 34 Transparenzdatenbankgesetz 2012 TDBG), allowing citizens and researchers to track how public funds are spent on advertising across various media outlets. It provides a rich dataset that can be represented as both a time-dependent and bipartite graph structure. By visualizing this data \textendash{} although not the focus of this paper \textendash{} we can gain insights into how public authorities allocate advertising budgets, which media outlets receive the most / least funding, how both the political and media landscapes evolve over time and mutually influence each other.
+The ``Media Transparency Database Austria'' \cite{dataset} or \textbf{MT dataset} for short is a public repository that records the advertising expenses of public authorities in Austria. This database serves as a tool for transparency (based on the Austrian § 34 Transparenzdatenbankgesetz 2012 TDBG), allowing citizens and researchers to track how public funds are spent on advertising across various media outlets. It provides a rich dataset that can be represented as both a time-dependent and bipartite graph structure. By visualizing this data \textendash{} although not the focus of this paper \textendash{} we can gain insights into how public authorities allocate advertising budgets, which media outlets receive the most / least funding, how both the political and media landscapes evolve over time and mutually influence each other. This information can be used to evaluate the effectiveness of public advertising campaigns, identify potential biases and inform public policy decisions.
 
 \medskip
 
-This paper aims to combine state-of-the-art techniques and approaches for designing interactive visualizations of time-dependent and bipartite graphs to propose a final design for the ``Media Transparency Database Austria''. We will focus on clear, uncluttered overviews while maximizing information content and propose a design that allows users to interact with the data intuitively. Additionally, we will consider how our proposed visualization could be evaluated and what results we expect to achieve.
+This paper aims to combine state-of-the-art techniques and approaches for designing interactive visualizations of time-dependent and bipartite graphs to propose a final design for the MT dataset. We will focus on clear, uncluttered overviews while maximizing information content and propose a design that allows users to interact with the data intuitively. Additionally, we will consider how our proposed visualization could be evaluated and what results we expect to achieve.
 
 
 
@@ -197,52 +188,20 @@ This paper aims to combine state-of-the-art techniques and approaches for design
 
 \section{Related Work} % which solutions exist, what are their strengths and weaknesses, how suitable are they for the data characteristics of the Media Transparency Database
 
-In this section, we will explore existing solutions for visualizing time-dependent and bipartite graphs, focusing on their strengths, weaknesses, and suitability for the ``Media Transparency Database Austria''.
+% what are the strengths and weaknesses of this approach to an interactive visualization of time-dependent and bipartite graphs? how suitable is this approach for the data characteristics of the "Media Transparency Database Austria"?
 
+In this section, we will explore existing solutions for visualizing time-dependent and bipartite graphs, focusing on their strengths, weaknesses and suitability for the MT dataset.
 
+\subsection{Jüttner et al. - Media Transparency}
 
-% Based on the search results and the query, I can provide information about interactive visualization of time-dependent bipartite graphs for the Austrian Daten Medientransparenz (Media Transparency Data). While there isn't a paper that exactly matches all aspects of the query, I can combine relevant information from the available sources.
+Jüttner et al. \cite{Jttner2017MediaTI} present an interactive visualization approach specifically designed for the MT dataset that directly addresses our unique challenges.
+They describe a visualization approach in which different aspects of the data are simultaneously presented through interactive and interlinked sub-visualizations, called views. These multiple views work in concert, all showing different aspects of the same data and being updated in sync when users interact with any of them. This is commonly referred to as a ``multiple coordinated views'' or \textit{``coordinated multiple views'' (CMV)} \cite{roberts2007state} visualization and aligns well with the popular design principle of ``Eyes beat memory'' by Tamara Munzner. This principle suggests that users can more effectively understand data when they can see it, rather than having to remember it from a previous view. Their visualization concept provides both broad overviews (i.e. overall spending patterns) and detailed insights (i.e. drill down into specific actors or time periods). It consists of elements, including an overview bar chart, an alphabetically ordered, searchable list of actors, a tree-like graph displaying connections between selected actors and detailed bar charts showing quarterly spending and media-specific expenses.
 
-% The most relevant paper to this query is "Media Transparency-An Interactive Visualization of Advertisement Money Flows between Governmental Organizations and Austrian Media Companies"[4]. This paper directly addresses the visualization of Austrian media transparency data, which is the focus of the query.
+This ability to interactively filter data, search for specific actors, and update charts based on user selections is a great strength of their approach. It allows users to explore the data in a non-linear fashion, focusing on specific aspects of the data that interest them. This interactivity is particularly useful for investigative journalists or researchers looking to uncover patterns or anomalies in media spending.
 
-% Key points from this paper include:
+However, the approach also has some limitations. The authors acknowledge performance issues especially on startup, as the system needs to load and process a large amount of data into the web browser before rendering the visualizations. This could potentially hinder user experience, especially for users with slower internet connections or less powerful devices. Additionally, the lack of advanced features like brushing, zooming, and direct comparison tools for actors and time spans, as mentioned by the authors, represents a missed opportunity for more sophisticated data analysis.
 
-% 1. In 2012, the Austrian Parliament passed a law requiring governmental organizations to disclose their expenses for advertisements in different media[4].
-
-% 2. Since Q3/2014, the Rundfunk und Telekom Regulierungs GmbH (RTR) publishes quarterly notifications containing data about these expenses[4].
-
-% 3. The project aimed to develop new visualization methods for this dataset to enable faster and easier processing of the information[4].
-
-% 4. The target audience for this visualization tool includes journalists, politically interested individuals, and people working in related sectors who want to investigate governmental expenses in media companies[4].
-
-% 5. The final application allows users to explore the dataset interactively and offers a search function to quickly find specific actors and their expenses or revenues over the years[4].
-
-% While this paper doesn't explicitly mention bipartite graphs, the nature of the data (relationships between governmental organizations and media companies) lends itself well to a bipartite graph representation.
-
-% To address the time-dependent aspect of the query, we can draw insights from other papers that deal with temporal data visualization:
-
-% 1. The LISA 4D project demonstrates the integration of temporal information from Sentinel-2 satellite data into the Land Information System Austria (LISA)[6]. This project analyzes different types of changes over time, including state changes, cyclic changes, and conditional changes.
-
-% 2. The paper on visual analysis of dynamic protein cavities[7] presents methods for interactive visualization of time-dependent data, including the use of 2D graphs for quantitative time-dependent analysis and tracking of features over time.
-
-% Combining these approaches, an interactive visualization system for the Austrian Daten Medientransparenz could potentially include:
-
-% 1. A bipartite graph representation showing connections between governmental organizations and media companies.
-% 2. Time-slider or animation features to show how these relationships change over quarters or years.
-% 3. Interactive elements allowing users to filter by time period, organization, or media company.
-% 4. Quantitative time-dependent graphs showing trends in advertising spending over time.
-% 5. Search functionality for quick access to specific entities and their historical data.
-
-% Such a system would enable users to explore patterns and trends in governmental advertising spending across different media outlets over time, supporting transparency and facilitating investigative journalism and research.
-
-% Citations:
-% [1] https://www.semanticscholar.org/paper/520b856a47e108552f9177dfbd09663a3938b9b2
-% [2] https://www.semanticscholar.org/paper/19f0bd707a04fd3687ee3791cc4a1ea71bdebc99
-% [3] https://www.semanticscholar.org/paper/4ba448d9817681ee9cb018c08e479b8c10014c1d
-% [4] https://www.semanticscholar.org/paper/74ad6473338a32dc022da63f4cafb33ac4d998ca
-% [5] https://www.semanticscholar.org/paper/0ffd8bda6585c356ff7bb4fe8e29ee9be1e00a63
-% [6] https://www.semanticscholar.org/paper/fc461eaa156fd35cb273fe0e5c20c0b334b1aff7
-% [7] https://www.semanticscholar.org/paper/853778df2b840926dd0082c476c3af805dc3f01c
+In conclusion while Jüttner et al.'s approach provides a solid foundation through its coordinated multiple views design, it doesn't leverage the temporal and bipartite nature of the data to its full potential.
 
 
 
@@ -255,22 +214,21 @@ In this section, we will explore existing solutions for visualizing time-depende
 
 
 
+% https://publik.tuwien.ac.at/files/publik_253289.pdf
+% https://www.cvast.tuwien.ac.at/topics/media-transparency-dashboard
+% https://ipi.media/austria-greater-transparency-for-public-advertising-to-media-needed/
+
+% http://vda.univie.ac.at/Teaching/Vis/16w/Final_Report/03.pdf
+% http://vda.univie.ac.at/Teaching/Vis/16w/Final_Report/10.pdf
+% http://vda.univie.ac.at/Teaching/Vis/16w/Final_Report/07.pdf
 
 
 
 
 
 
-% Existing visualization methods often struggle with large-scale, temporal bipartite data. Our research aims to address these limitations through:
-
-% 1. Scalable visualization techniques for large datasets
-% 2. Hierarchical aggregation and clustering methods
-% 3. Intuitive user interface design
-% 4. Integration of time series visualization
 
 
-
-% horizon graphs
 
 % [Waldner et al., 2020]: https://users.cg.tuwien.ac.at/~waldner/bicflows/
 % https://www.cvast.tuwien.ac.at/topics/media-transparency-dashboard
@@ -328,6 +286,14 @@ In this section, we will explore existing solutions for visualizing time-depende
 
 \section{Implementation} % how would you technically implement the visualization solution and what challenges would you expect – Design Justification / Hypothesis Building (part of research process)
 
+% horizon graphs
+
+% Existing visualization methods often struggle with large-scale, temporal bipartite data. Our research aims to address these limitations through:
+
+% 1. Scalable visualization techniques for large datasets
+% 2. Hierarchical aggregation and clustering methods
+% 3. Intuitive user interface design
+% 4. Integration of time series visualization
 
 
 
