@@ -190,7 +190,9 @@ This paper aims to combine state-of-the-art techniques and approaches for design
 
 In this section, we will explore existing solutions for visualizing time-dependent and bipartite graphs, focusing on their strengths, weaknesses and suitability for the MT dataset.
 
-\paragraph{Jüttner et al.} \cite{Jttner2017MediaTI} present an interactive visualization approach specifically designed for the MT dataset that directly addresses our unique challenges.
+\subsection{Student Projects at the University of Vienna}
+
+Jüttner et al. \cite{Jttner2017MediaTI} present an interactive visualization approach specifically designed for the MT dataset that directly addresses our unique challenges.
 They describe a visualization approach in which different aspects of the data are simultaneously presented through interactive and interlinked sub-visualizations, called views. These multiple views work in concert, all showing different aspects of the same data and being updated in sync when users interact with any of them. This is commonly referred to as a ``multiple coordinated views'' or \textit{``coordinated multiple views'' (CMV)} \cite{roberts2007state} visualization and aligns well with the popular design principle of ``Eyes beat memory'' by Tamara Munzner. This principle suggests that users can more effectively understand data when they can see it, rather than having to remember it from a previous view. Their visualization concept provides both broad overviews (i.e. overall spending patterns) and detailed insights (i.e. drill down into specific actors or time periods). It consists of elements, including an overview bar chart, an alphabetically ordered, searchable list of actors, a tree-like graph displaying connections between selected actors and detailed bar charts showing quarterly spending and media-specific expenses.
 
 This ability to interactively filter data, search for specific actors, and update charts based on user selections is a great strength of their approach. It allows users to explore the data in a non-linear fashion, focusing on specific aspects of the data that interest them.
@@ -211,10 +213,18 @@ Notable weaknesses however include the lack of cross-filtering between the bundl
 
 \medskip
 
-Another project \cite{univie07}. 
+Another project \cite{univie07} took a different approach, aiming for simplicity and information density. 
+They used a matrix view to show the relationships between entities and media outlets. The project also included a stacked bar chart to show the distribution of spending across media outlets and a timeline view to show spending trends over time. The matrix view in particular is a unique, effective and compact way to visualize bipartite relationships, providing a clear and information-dense representation of the data.
+
+The reliance on basic chart types however limits the ability to show more complex relationships or patterns in the data which may be appropriate for a general audience but could limit its utility for expert users. The stacked bar charts can be difficult to interpret precisely. The matrix view, while information-dense, may be overwhelming for some users.
+
+\subsection{TU 1}
+
+\subsection{TU 2}
 
 
-% http://vda.univie.ac.at/Teaching/Vis/16w/Final_Report/07.pdf ->  Sankey Diagram
+
+
 
 
 
