@@ -187,14 +187,14 @@ This paper aims to combine state-of-the-art techniques and approaches for design
 
 \section{Related Work} % which solutions exist, what are their strengths and weaknesses, how suitable are they for the data characteristics of the Media Transparency Database
 
-% what are the strengths and weaknesses of this approach to an interactive visualization of time-dependent and bipartite graphs? how suitable is this approach for the data characteristics of the "Media Transparency Database Austria"? don't use bullet points.
+% which visualization techniques does this paper suggest? what are the strengths and weaknesses of the suggested visualization techniques for the ``Media Transparency Database Austria'' dataset? are the techniques suitable for time-dependent and bipartite graphs in general? don't use bullet points. keep it short. write for a information visualization survey paper.
 
 In this section, we will explore existing solutions for visualizing time-dependent and bipartite graphs, focusing on their strengths, weaknesses and suitability to the MT dataset.
-We can maximize suitability by focusing on existing research on our dataset, as they directly address our unique challenges. Fortunately the MT dataset has been a very popular choice for information visualization research in Austria starting from its inception in 2011.
+We can maximize suitability by focusing on existing research on our dataset, as they directly address our unique challenges. Fortunately the MT dataset has been a very popular choice for information visualization research in Austria starting from its inception in 2011. We will look at the relevant projects and papers in a chronological order (starting from the oldest) to understand the dialogue between them and how they have evolved over time.
 
-\subsection{Medientransparenz Project (2015 - 2024)}
+\subsection{Medientransparenz Projects (2013)}
 
-In 2015, students at the Applied University of Joanneum were the first to work on the MT Dataset \cite{medtrans}, which eventually evolved into the \href{https://visualisierung.medientransparenz.rtr.at/}{Medientransparenz project} \textendash{} the most comprehensive and up-to-date visualization of the MT Dataset. This project represents the cumulative effort of over 12 students' course projects and master theses over the past 13 years, coordinated by Peter Salhofer. With generous funding from the Austrian government, it led to a direct collaboration with the Austrian Regulatory Authority for Broadcasting and Telecommunications (RTR) and the Austrian Communications Authority (KommAustria), who are responsible for the MT Dataset \cite{dataset}.
+In 2013, students at the Applied University of Joanneum were the first to work on the MT Dataset \cite{medtrans}, which eventually evolved into the \href{https://visualisierung.medientransparenz.rtr.at/}{Medientransparenz project} \textendash{} the most comprehensive and up-to-date visualization of the MT Dataset. This project represents the cumulative effort of over 12 students' course projects and master theses over the past 11 years, coordinated by Peter Salhofer. With generous funding from the Austrian government, it led to a direct collaboration with the Austrian Regulatory Authority for Broadcasting and Telecommunications (RTR) and the Austrian Communications Authority (KommAustria), who are responsible for the MT Dataset \cite{dataset}.
 
 On January 23 2024, this collaboration resulted in the project being forked into the \href{https://visualisierung.medientransparenz.rtr.at/home}{official Medientransparenz project}, maintained by the RTR. The official Medientransparenz project is a restricted version of the original, featuring a different color palette and a limited set of features and datasets due to legal constraints applicable to KommAustria/RTR. For example, they are only permitted to visualize data from 2020 onwards. However, the original project remains unconstrained, actively maintained, and is self-described as a ``Community Edition with extended data and functionality'', which will be the focus of our analysis and the one we will refer to as the Medientransparenz project from now on.
 
@@ -205,9 +205,25 @@ The ``Overview'' page shows multiple views, accessible by scrolling. Each view p
 The ``Top Values'' page presents a complex hierarchical dataset using a modified pie chart structure, commonly referred to as a sunburst diagram or multilevel pie chart. A configuration tab on top of the page allows the user to select whether they're interested in advertising spending or subsidies, funders or recipients, the cut-off rank and year as well as the different geographical regions.
 The design employs a radial layout to display hierarchical data, with the innermost ring representing the highest level of the hierarchy and subsequent outer rings showing more granular subcategories. However, it also demonstrates the challenges of presenting dense, multilevel information in a static, two-dimensional format which pose challenges in terms of readability and immediate comprehension. The use of color coding aids in category differentiation, but the large number of segments and varying text orientations may require significant cognitive effort from the viewer to fully interpret the data relationships, especially as the symbols overlap. Fortunately a tooltip and highlight feature is available to provide additional information on hover.
 
-The third and final page, ``Flows'', has a very similar filter configuration to the ``Top Values'' page, but instead of a sunburst diagram it uses a sankey diagram, a type of flow visualization that represents the distribution and flow of resources or information from one set of values to another. In this case the flow of money from funders to recipients, with the width of the lines representing the amount of money transferred. The user can filter the data by year, region, and type of spending. This kind of visualization is excellent for bipartite graphs for obvious reasons, but it can be difficult to interpret for users unfamiliar with the concept \textendash{} but it scales well and a tooltip is available to provide additional information on hover to help resolve visual ambiguities. But although the sankey diagram is almost perfect for bipartite graphs, it is not ideal for time-dependent graphs, as it doesn't show the evolution of the data over time and requires the user to manually change the year to see the changes. At this points it also worth noting that although the sunburst diagram was prefered to the sankey diagram in the project maintained by the RTR and KommAustria due to its more intuitive nature, it is unable to capture the relationships in a bipartite graph as well as the sankey diagram can. The reason for this is unclear.
+The third and final page, ``Flows'', has a very similar filter configuration to the ``Top Values'' page, but instead of a sunburst diagram it uses a sankey diagram, a type of flow visualization that represents the distribution and flow of resources or information from one set of values to another. In this case the flow of money from funders to recipients, with the width of the lines representing the amount of money transferred. Additionally they're great for temporal data, as they can show how the relationships between entities change over time. The user can filter the data by year, region, and type of spending. This kind of visualization is excellent for bipartite graphs for obvious reasons, but it can be difficult to interpret for users unfamiliar with the concept \textendash{} but it scales well and a tooltip is available to provide additional information on hover to help resolve visual ambiguities.
+
+At this points it also worth noting that although the sunburst diagram was prefered to the sankey diagram in the project maintained by the RTR and KommAustria due to its more intuitive nature, it is unable to capture the relationships in a bipartite graph as well as the sankey diagram can. The reason for this is unclear.
 
 In conclusion this project provides a solid foundation for visualizing the MT dataset, with a focus on providing clear overviews and detailed insights. However, the lack of a direct comparison tool for actors and time spans, represents a missed opportunity for more sophisticated data analysis.
+
+\subsection{VISAR \& CVAST Projects (2016 - present)}
+
+In 2016, Alexander Rind and Wolfgang Aigner et al. collaborated on two highly relevant papers. The first paper was published in March 2016 with the VISVAR team from the university of Stuttgart \cite{aigner2016visual}. Later that year, in November, they teamed up again, this time including David Pfahler as on of the co-authors, to explore media transparency using multiple views \cite{rind2016exploring}, this time with the CVAST team. This collaboration sparked Pfahler's interest in the subject, leading him to pursue it further in his master's thesis. In 2019, Pfahler completed his thesis ``Visualizing High-Dimensional Data with Hierarchically Aggregated Subsets'' \cite{pfahlerflexible}, supervised by Eduard Gröller,building upon the foundations laid in his earlier work with Rind and Aigner. Although not directly related to the MT dataset, Pfahler's work is highly relevant as it explores the challenges of visualizing high-dimensional data, a common issue in the context of temporal and bipartite graphs.
+
+\medskip
+
+The VISVAR project ``Visual Exploration of Media Transparency for Data Journalists: Problem Characterization and Abstraction'' \cite{aigner2016visual} describes the data structure and some basic statistical analysis, it does not propose or evaluate specific visualization methods. It doesn't explore more advanced techniques that could handle the complexity of time-dependent bipartite graphs. Instead it suggests conducting interviews with data journalists to understand their needs and then categorizing tasks using established frameworks like Munzner's what-why-how and the Data-User-Task Design Triangle. Although a step in the right direction, it isn't relevant for our purposes.
+
+\medskip
+
+The CVAST project ``Exploring Media Transparency With Multiple Views'' \cite{rind2016exploring} implemented by Alexander Rind and David Pfahler \cite{gitmtdb2} proposes a visualization using multiple coordinated views. The main techniques include bar charts for temporal and categorical aggregations, histograms for distributions, data tables with sparklines for details and a chord diagram for flows between entities. The chord diagram is an interesting alternative to the sankey diagram proposed in the Medientransparenz project, since they excel at displaying interconnections in a circular layout, making them ideal for showing bidirectional relationships and complex networks. Additionally they can also be combined with the previously suggested sunburst diagram, in a so called hybrid ``sunburst-chord'' diagram. Sankey diagrams on the other hand are better suited for visualizing directional flows and transitions between stages or categories, with the ability to clearly depict the magnitude of flow using weighted links.
+
+The overall strengths of this paper include providing multi-granular views, interactivity and explorative analysis. However, the high information density by combining multiple abstract views probably doesn't scale well, especially without the ability to inspect a smaller more detailed subset of the data. The chord diagram in particular can be difficult to interpret for users unfamiliar with the concept.
 
 \subsection{VDA Student Projects (2017)}
 
@@ -219,8 +235,6 @@ This ability to interactively filter data, search for specific actors, and updat
 However, the approach also has some limitations. The authors acknowledge performance issues especially on startup as their web-based \texttt{d3.js} implementation doesn't scale well with the given dataset size. This could potentially hinder user experience, especially for users with slower internet connections or less powerful devices. Additionally, the lack of advanced features like brushing, zooming, and direct comparison tools for actors and time spans, as mentioned by the authors, represents a missed opportunity for more sophisticated data analysis.
 
 In conclusion while Jüttner et al.'s approach provides a solid foundation through its coordinated multiple views design, it doesn't leverage the temporal and bipartite nature of the data to its full potential.
-
-\medskip
 
 After some research, we found that Jüttner et al.'s work was part of a student project at the University of Vienna in 2016 WS \cite{univie10} before being published in 2017. This context is important to note as it suggests that other students might have also worked on similar projects during that time. By modifying the URL suffix of the original project, we were able to find several other student projects from the same year that also explored the MT dataset and used interactive CMV visualizations that allow to drill down into the data, but each with unique approaches and interesting insights. We also learned that the deadlines for these projects were on the 21st of January 2017, which is why they were all published around the same time. Two of these projects, in particular, caught our attention.
 
@@ -237,34 +251,18 @@ They used a matrix view to show the relationships between entities and media out
 
 The reliance on basic chart types however limits the ability to show more complex relationships or patterns in the data which may be appropriate for a general audience but could limit its utility for expert users. The stacked bar charts can be difficult to interpret precisely. The matrix view, while information-dense, may be overwhelming for some users.
 
-
-
-% -------- GROUP 1: Rind and Pfahler (2016 - 2020)
-
-% Visual Exploration of Media Transparency for Data Journalists: Problem Characterization and Abstraction (mar 2016)
-% Christina Stoiber, Alexander Rind, Wolfgang Aigner, Julian Ausserhofer
-% - https://research.fhstp.ac.at/content/download/89494/file/2016_FFH_VALiD_Niederer.pdf
-% - https://www.researchgate.net/publication/299600746_Visual_Exploration_of_Media_Transparency_for_Data_Journalists_Problem_Characterization_and_Abstraction
-
-% Exploring Media Transparency With Multiple Views (24-11-2016)
-% Alexander Rind, David Pfahler, Christina Niederer, Wolfgang Aigner
-% - https://repositum.tuwien.at/handle/20.500.12708/56612 🔥
-% - https://www.semanticscholar.org/paper/Exploring-Media-Transparency-With-Multiple-Views-Rind-Pfahler/bc8bec240e0165f7ee78b95b0fb9922b5ad9e594
-% https://www.researchgate.net/publication/311518692_Exploring_Media_Transparency_With_Multiple_Views
-% - https://www.cvast.tuwien.ac.at/topics/media-transparency-dashboard
-% - https://github.com/VALIDproject/mtdb2 -> coded by Alexander Rind, David Pfahler
-
-% Visualisierung hochdimensionaler Daten mit hierarchischer Gruppierung von Teilmengen (2019)
-% David Pfahler, Eduard Gröller
-% - https://repositum.tuwien.at/handle/20.500.12708/4512 🔥
-% - master thesis: https://publik.tuwien.ac.at/files/publik_282788.pdf
-
-% -------- GROUP 2: Steinböck (2018 - 2020)
+\subsection{Dynamic BiCFlows (2018 - 2020)}
 
 % Casual Visual Exploration of Large Bipartite Graphs Using Hierarchical Aggregation and Filtering (October 2018)
 % Daniel Steinböck, Eduard Gröller, Waldner
 % - https://repositum.tuwien.at/handle/20.500.12708/57540 🔥
 % - https://www.semanticscholar.org/paper/Casual-Visual-Exploration-of-Large-Bipartite-Graphs-Steinb%C3%B6ck-Gr%C3%B6ller/9d2696229f95673c0d445b3506ffa1265b01ccb7
+
+% (Dynamic BiCFlows) Immersive Analytics of Large Dynamic Networks via Overview and Detail Navigation (2019)
+% Wolfgang Knecht, Johannes Sorger (Complexity Science Hub Vienna) -> Created by Daniel Steinböck at TU Wien, extended by Wolfgang Knecht and Johannes Sorger at the Complexity Science Hub Vienna
+% - https://repositum.tuwien.at/handle/20.500.12708/57887 🔥
+% - https://users.cg.tuwien.ac.at/~waldner/bicflows/
+% - https://github.com/complexity-science-hub/dynamic_bicflows
 
 % Interactive exploration of large time-dependent bipartite graphs (2020)
 % Daniel Steinböck, Eduard Gröller, Waldner
@@ -272,15 +270,7 @@ The reliance on basic chart types however limits the ability to show more comple
 % - https://www.cg.tuwien.ac.at/research/publications/2020/waldner-2020-tbg/
 % - https://www.semanticscholar.org/paper/Interactive-exploration-of-large-time-dependent-Waldner-Steinb%C3%B6ck/a540758ed137bdfaf20aa5b41c64c66c4c61cb38
 
-% -------- GROUP 3: Algorithms Paper from Complexity lab (2019)
-
-% Immersive Analytics of Large Dynamic Networks via Overview and Detail Navigation (2019)
-% Wolfgang Knecht, Johannes Sorger (Complexity Science Hub Vienna)
-% - https://repositum.tuwien.at/handle/20.500.12708/57887 🔥
-% - https://users.cg.tuwien.ac.at/~waldner/bicflows/
-% - https://github.com/complexity-science-hub/dynamic_bicflows
-
-% -------- GROUP 4: Unger (2020)
+\subsection{Unger (2020)}
 
 % Interactive visual exploration of large bipartite graphs using firework plots -> not directly related but similar concepts
 % - https://repositum.tuwien.at/handle/20.500.12708/1114 🔥
@@ -314,6 +304,8 @@ The reliance on basic chart types however limits the ability to show more comple
 
 
 \section{Visual Encoding and Interaction Design} % which visual encoding and interaction design would you suggest for the Media Transparency Database (a description and possibly a sketch are sufficient); please justify your choice; you can also choose an existing concept from the Related Work and adapt it, with appropriate justification.
+
+Sun Chord diagram
 
 
 \section{Implementation} % how would you technically implement the visualization solution and what challenges would you expect – Design Justification / Hypothesis Building (part of research process)
