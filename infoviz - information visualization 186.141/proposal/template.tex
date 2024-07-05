@@ -130,7 +130,7 @@
 % }
 
 \abstract{
-    This paper explores novel techniques for visualizing temporal bigraphs, with a specific focus on the ``Media Transparency Database Austria''. Established in 2012 by Austrian law, this dataset records quarterly advertising expenditures of governmental organizations across various media outlets. Our study aims to develop an effective, interactive visualization that allows users to explore patterns, trends and anomalies.
+    This paper explores novel techniques for visualizing temporal bigraphs, with a specific focus on the ``Media Transparency Database Austria''. Established in 2011 by Austrian law, this dataset records quarterly advertising expenditures of governmental organizations across various media outlets. Our study aims to develop an effective, interactive visualization that allows users to explore patterns, trends and anomalies.
     
     We survey state-of-the-art approaches for visualizing dynamic graphs, including animated node-link diagrams, timeline-based representations and hybrid techniques. Building on these methods, we propose a novel interactive visualization that combines temporal bigraph representations. Our design aims to provide both clear overviews and detailed analysis capabilities, allowing users to explore the evolution of advertising expenditures over time and the relationships between public entities and media outlets.
     We discuss potential evaluation strategies for assessing the effectiveness of our visualization and outline expected outcomes. This work contributes to the field of dynamic graph visualization while demonstrating its practical application in government transparency and policy analysis.
@@ -168,7 +168,8 @@ As a practical example this paper explores various techniques for interactive vi
 One specific type of temporal graph that has gained prominence is the bipartite graph. \textbf{Bipartite} graphs or bigraphs consist of two distinct sets of nodes, with connections only existing between nodes from different sets, but not within the same set. If the two subsets have equal cardinality (balanced bigraph) and each node in one subset is connected to every node in the other subset, the graph is called a complete bigraph \cite{diestel2012graph}. These graphs are particularly useful for modeling relationships between two different types of entities, such as public authorities and their advertising expenditures.
 Due to their scale and complexity, time-dependent and bipartite graphs can be challenging to visualize effectively. To make sense of the ``Media Transparency Database Austria'', which contains thousands of entries over multiple years, we need to design scalable and \textbf{interactive visualizations} that allow users to explore the data, for example, by filtering, zooming, and selecting specific time periods or entities.
 
-The ``Media Transparency Database Austria'' \cite{dataset} or \textbf{MT dataset} for short is a public repository that records the advertising expenses of public authorities in Austria. This database serves as a tool for transparency (based on the Austrian § 34 Transparenzdatenbankgesetz 2012 TDBG), allowing citizens and researchers to track how public funds are spent on advertising across various media outlets. It provides a rich dataset that can be represented as both a time-dependent and bipartite graph structure. By visualizing this data \textendash{} although not the focus of this paper \textendash{} we can gain insights into how public authorities allocate advertising budgets, which media outlets receive the most / least funding, how both the political and media landscapes evolve over time and mutually influence each other. This information can be used to evaluate the effectiveness of public advertising campaigns, identify potential biases and inform public policy decisions.
+The ``Media Transparency Database Austria'' \cite{dataset} or \textbf{MT dataset} for short is a public repository that records the advertising expenses of public authorities in Austria. The MT dataset has gained popularity in Austria due to its role in increasing transparency around the use of taxpayers' money for advertisements. Following allegations of misuse, the Austrian National Council passed the "Media Transparency Act" in 2011, requiring public institutions and certain companies to report their media expenditure quarterly. This legislation aims to make information easily accessible to citizens, thereby promoting open government initiatives and enhancing public accountability.
+It provides a rich dataset that can be represented as both a time-dependent and bipartite graph structure. By visualizing this data \textendash{} although not the focus of this paper \textendash{} we can gain insights into how public authorities allocate advertising budgets, which media outlets receive the most / least funding, how both the political and media landscapes evolve over time and mutually influence each other. This information can be used to evaluate the effectiveness of public advertising campaigns, identify potential biases and inform public policy decisions.
 
 \medskip
 
@@ -188,9 +189,26 @@ This paper aims to combine state-of-the-art techniques and approaches for design
 
 % what are the strengths and weaknesses of this approach to an interactive visualization of time-dependent and bipartite graphs? how suitable is this approach for the data characteristics of the "Media Transparency Database Austria"? don't use bullet points.
 
-In this section, we will explore existing solutions for visualizing time-dependent and bipartite graphs, focusing on their strengths, weaknesses and suitability for the MT dataset.
+In this section, we will explore existing solutions for visualizing time-dependent and bipartite graphs, focusing on their strengths, weaknesses and suitability to the MT dataset.
+We can maximize suitability by focusing on existing research on our dataset, as they directly address our unique challenges. Fortunately the MT dataset has been a very popular choice for information visualization research in Austria starting from it's inception in 2011.
 
-\subsection{Student Projects at the University of Vienna}
+\subsection{Medientransparenz Project (2015 - 2024)}
+
+Students at the applied university of Joanneum were the first to work on the MT Dataset back in 2015 \cite{medtrans} which later evolved into what is now known as the \href{https://visualisierung.medientransparenz.rtr.at/}{Medientransparenz project} \textendash{} the most comprehensive and up-to-date visualization of the MT dataset.
+This project is the result of the cumulative effort of over 12 students' course projects and master theses over the past 13 years, orchestrated by Peter Salhofer. It received generous funding from the Austrian government and ultimately lead to a direct collaboration with the Austrian regulatory authority for broadcasting and telecommunications (RTR) and the Austrian communications authority (KommAustria) who are responsible for the MT dataset \cite{dataset}. On the 23rd of January 2024 this collaboration also lead to this project being forked into the \href{https://visualisierung.medientransparenz.rtr.at/home}{official Medientransparenz project}, maintained by the RTR.
+The official Medientransparenz project is a restricted version of the original project, featuring a different color palette and a limited set of features and datasets due to legal restrictions that apply to KommAustria/RTR. For instance, they are only allowed to publish data beginning from 2020 onwards. The original project, however, is still available and self described as a ``Community Edition with extended data and functionality'' and will be the focus of our analysis.
+
+The Medientransparenz project is a web application using a vertical tab as a navigation menu on the left side of the screen.
+
+
+
+
+
+
+
+
+
+\subsection{VDA Student Projects (2016)}
 
 Jüttner et al. \cite{Jttner2017MediaTI} present an interactive visualization approach specifically designed for the MT dataset that directly addresses our unique challenges.
 They describe a visualization approach in which different aspects of the data are simultaneously presented through interactive and interlinked sub-visualizations, called views. These multiple views work in concert, all showing different aspects of the same data and being updated in sync when users interact with any of them. This is commonly referred to as a ``multiple coordinated views'' or \textit{``coordinated multiple views'' (CMV)} \cite{roberts2007state} visualization and aligns well with the popular design principle of ``Eyes beat memory'' by Tamara Munzner. This principle suggests that users can more effectively understand data when they can see it, rather than having to remember it from a previous view. Their visualization concept provides both broad overviews (i.e. overall spending patterns) and detailed insights (i.e. drill down into specific actors or time periods). It consists of elements, including an overview bar chart, an alphabetically ordered, searchable list of actors, a tree-like graph displaying connections between selected actors and detailed bar charts showing quarterly spending and media-specific expenses.
@@ -223,6 +241,10 @@ The reliance on basic chart types however limits the ability to show more comple
 
 
 
+% https://www.medien-transparenz.at/home
+% https://www.medien-transparenz.at/impress -> history
+
+
 
 
 
@@ -230,21 +252,29 @@ The reliance on basic chart types however limits the ability to show more comple
 % Casual Visual Exploration of Large Bipartite Graphs Using Hierarchical Aggregation and Filtering
 % - https://www.semanticscholar.org/paper/Casual-Visual-Exploration-of-Large-Bipartite-Graphs-Steinb%C3%B6ck-Gr%C3%B6ller/9d2696229f95673c0d445b3506ffa1265b01ccb7
 
+
+
 % code v1: (???)
 % code v2: Wolfgang Knecht, Johannes Sorger (Complexity Science Hub Vienna)
 % - https://users.cg.tuwien.ac.at/~waldner/bicflows/
 % - https://github.com/complexity-science-hub/dynamic_bicflows (Sep 3, 2019 and May 31, 2022)
-% code v3: David Pfahler, Alexander Rind (Aug 6, 2018)
-% - https://www.cvast.tuwien.ac.at/topics/media-transparency-dashboard
-% - https://github.com/VALIDproject/mtdb2
+
 
 
 % Interactive exploration of large time-dependent bipartite graphs
 % - https://www.semanticscholar.org/paper/Interactive-exploration-of-large-time-dependent-Waldner-Steinb%C3%B6ck/a540758ed137bdfaf20aa5b41c64c66c4c61cb38
 
 
+
+
+% code v3: David Pfahler, Alexander Rind (Aug 6, 2018)
+% - https://www.cvast.tuwien.ac.at/topics/media-transparency-dashboard
+% - https://github.com/VALIDproject/mtdb2
+% - master thesis: https://publik.tuwien.ac.at/files/publik_282788.pdf
+
+
+
 % Exploring Media Transparency With Multiple Views
-% - https://publik.tuwien.ac.at/files/publik_253289.pdf
 % - https://www.semanticscholar.org/paper/Exploring-Media-Transparency-With-Multiple-Views-Rind-Pfahler/bc8bec240e0165f7ee78b95b0fb9922b5ad9e594
 
 
@@ -263,7 +293,6 @@ The reliance on basic chart types however limits the ability to show more comple
 % other stuff:
 % it's smarter to just look at references from waldner's papers instead of trying to find new ones
 
-% https://www.medien-transparenz.at/home
 
 % https://ieeexplore.ieee.org/document/1261490
 % https://www.semanticscholar.org/paper/Multiscale-Visualization-and-Exploration-of-Large-Pezzotti-Fekete/0eb4fe74e30e91b4c80f565a30577b26ffdd3003
