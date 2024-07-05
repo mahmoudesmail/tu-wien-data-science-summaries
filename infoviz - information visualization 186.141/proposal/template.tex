@@ -1,16 +1,10 @@
 % $Id: template.tex 11 2007-04-03 22:25:53Z jpeltier $
 
-\documentclass{vgtc}                          % final (conference style)
-% \documentclass[review]{vgtc}                % review
-%\documentclass[widereview]{vgtc}             % wide-spaced review
-%\documentclass[preprint]{vgtc}               % preprint
-%\documentclass[electronic]{vgtc}             % electronic version
-
+\documentclass{vgtc}
 \graphicspath{{figures/}{pictures/}{images/}{./}} % where to search for the images
 
 \usepackage{times}                     % we use Times as the main font
 \renewcommand*\ttdefault{txtt}         % a nicer typewriter font
-
 \usepackage{tabu}                      % only used for the table example
 \usepackage{booktabs}                  % only used for the table example
 \usepackage{lipsum}                    % used to generate placeholder text
@@ -24,14 +18,14 @@
 \title{Interactive Visualization of Time-Dependent Bipartite Graphs}
 
 %% Author and Affiliation (single author).
-% \author{Yahya Jabary\thanks{e-mail:yahya.jabary@tuwien.ac.at}}
-% \affiliation{\scriptsize TU Wien}
+\author{Yahya Jabary\thanks{e-mail:yahya.jabary@tuwien.ac.at}}
+\affiliation{\scriptsize TU Wien}
 
 %% Author and Affiliation (multiple authors with single affiliations).
-\author{Yahya Jabary\thanks{e-mail:yahya.jabary@tuwien.ac.at} %
+% \author{Yahya Jabary\thanks{e-mail:yahya.jabary@tuwien.ac.at} %
 % \and Manuela Waldner,\thanks{e-mail:manuela.waldner@tuwien.ac.at} %
-\and Manuela Waldner\thanks{e-mail:manuela.waldner@tuwien.ac.at}}
-\affiliation{\scriptsize TU Wien, Austria}
+% \and Manuela Waldner\thanks{e-mail:manuela.waldner@tuwien.ac.at}}
+% \affiliation{\scriptsize TU Wien, Austria}
 
 %% Author and Affiliation (multiple authors with multiple affiliations)
 % \author{Roy G. Biv\thanks{e-mail: roy.g.biv@aol.com}\\ %
@@ -62,12 +56,6 @@
   
 \maketitle
 
-
-
-
-
-
-
 % deadline: 10.7.
 % similar to an extended master thesis proposal
 % length: 4-5 pages
@@ -94,19 +82,7 @@ It provides a rich dataset that can be represented as both a time-dependent and 
 
 This paper aims to combine state-of-the-art techniques and approaches for designing interactive visualizations of time-dependent and bipartite graphs to propose a final design for the MT dataset. We will focus on clear, uncluttered overviews while maximizing information content and propose a design that allows users to interact with the data intuitively. Additionally, we will consider how our proposed visualization could be evaluated and what results we expect to achieve.
 
-
-
-
-
-
-
-
-
-
-
 \section{Related Work} % which solutions exist, what are their strengths and weaknesses, how suitable are they for the data characteristics of the Media Transparency Database
-
-% which visualization techniques does this paper suggest? what are the strengths and weaknesses of the suggested visualization techniques for the ``Media Transparency Database Austria'' dataset? are the techniques suitable for time-dependent and bipartite graphs in general? don't use bullet points. keep it short. write for a information visualization survey paper.
 
 In this section, we will explore existing solutions for visualizing time-dependent and bipartite graphs, focusing on their strengths, weaknesses and suitability to the MT dataset.
 We can maximize suitability by focusing on existing research on our dataset, as they directly address our unique challenges. Fortunately the MT dataset has been a very popular choice for information visualization research in Austria starting from its inception in 2011. We will look at the relevant projects and papers in a chronological order (starting from the oldest) to understand the dialogue between them and how they have evolved over time.
@@ -170,40 +146,40 @@ They used a matrix view to show the relationships between entities and media out
 
 The reliance on basic chart types however limits the ability to show more complex relationships or patterns in the data which may be appropriate for a general audience but could limit its utility for expert users. The stacked bar charts can be difficult to interpret precisely. The matrix view, while information-dense, may be overwhelming for some users.
 
-\subsection{Dynamic BiCFlows (2018 - 2020)}
+\subsection{Dynamic BiCFlows (2018 - 2019)}
+
+In 2018, Steinböck et al. \cite{Steinbck2018CasualVE} laid the foundation for the ``Dynamic BiCFlows'' project, which was improved upon in 2019 by Wolfgang Knecht and Johannes Sorger from the Complexity Science Hub Vienna \cite{sorger2019immersive} and launched in 2020. All of these projects were co-supervised by Manuela Waldner from TU Wien, with her most recent thesis supervision on bipartite graphs occurring in 2020 on ``Interactive exploration of large time-dependent bipartite graphs [...]'' \cite{unger2020interactive}. Her research group has been at the forefront of bipartite graph visualization in Austria.
+
+% which visualization techniques does this paper suggest? what are the strengths and weaknesses of the suggested visualization techniques for the ``Media Transparency Database Austria'' dataset? are the techniques suitable for time-dependent and bipartite graphs in general? don't use bullet points. write for an information visualization paper.
+
+\medskip
+
+The first mentioned paper by Steinböck et al. from 2018 \cite{Steinbck2018CasualVE} proposes a technique called ``BiCFlows'' that combines hierarchical aggregation through biclustering with filtering in adjacent lists. The key idea is to use biclustering to group nodes into meaningful clusters, which are then visualized as adjacent vertical lists. Users can interactively drill down into clusters to reveal more details. The hierarchical aggregation helps reveal patterns and relationships that may not be apparent when looking at individual nodes. The authors found that users spent more time exploring the data and discovered more unexpected insights compared to a baseline filtering-only approach. However users also perceived it as more complex than the simpler filtering interface, at least initially. The evaluation showed that users typically only drilled down one or two hierarchy levels, potentially missing some of the lower-ranked nodes and relationships. The clustering approach may also not always produce meaningful groupings, especially if there is low modularity in the data. Additionally, the biclustering algorithm can be computationally expensive for very large graphs, potentially limiting scalability and also does not have explicit support for temporal aspects. For time-dependent bipartite graphs, additional visual encodings or interaction techniques may be needed to convey temporal patterns and changes over time.
+
+\medskip
+
+The paper by Knecht and Sorger from 2019 \cite{sorger2019immersive} isn't optimized for the MT dataset. It proposes an immersive virtual reality (VR) approach for visualizing and exploring large dynamic networks. The key visualization technique suggested is a dual-perspective system that combines an exocentric overview of the entire network with an egocentric detail view that allows users to immerse themselves within the network structure. This first-person view enables detailed inspection of dense areas and discovery of connections that may be obscured in the overview. The paper also proposes temporal navigation controls to explore the network's evolution over time. For the overview, the paper suggests rendering the network as a 3D node-link diagram using a force-directed layout. Nodes are represented as spheres of varying sizes, while edges are shown as tubes, with arrows indicating directionality. This provides a familiar representation that expert users can easily relate to conventional 2D network visualizations.
+For the MT dataset the overview would allow analysts to quickly identify key players and overall spending patterns. The detail view could be particularly useful for exploring complex relationships between government entities and media companies that may be difficult to discern in a 2D layout. The temporal navigation would enable tracking of spending trends over time. However, the VR approach may not be suitable for all users, especially those without access to VR hardware or who are not comfortable with immersive environments. The dual-perspective system may also require additional cognitive effort to switch between views, potentially slowing down the analysis process.
+
+\medskip
+
+The second mentioned paper by Steinböck et al. from 2020 \cite{Waldner2020InteractiveEO} 
 
 
+This paper proposes a novel visualization technique called Dynamic Bipartite Cluster Flows (Dynamic BiCFlows) for exploring large time-dependent bipartite graphs. The technique combines hierarchical aggregation and filtering to visualize the data as linked lists with nested time series. 
+
+For the Media Transparency Database Austria dataset, Dynamic BiCFlows offers several strengths. It allows users to gradually drill down from an overview to detailed levels, revealing connections between legal entities and media organizations at different granularities. The hierarchical aggregation helps manage the scale of the dataset, which contains thousands of nodes and edges. The nested time series visualizations enable users to observe temporal patterns in advertising expenditures over different time periods. The interactive exploration capabilities, including drill-down, filtering, and details-on-demand, encourage users to spend more time exploring the data and discover unexpected insights.
+
+However, the technique also has some limitations for this dataset. The user study revealed that participants found BiCFlows more complex to use initially compared to a simple filtering approach. The hierarchical aggregation may obscure some smaller entities or transactions that users might be interested in finding directly. Additionally, the biclustering approach used for aggregation may not always produce meaningful groupings that align with users' mental models of the data.
+
+In terms of general applicability to time-dependent bipartite graphs, Dynamic BiCFlows shows promise. The technique is designed to scale to thousands of nodes and edges, making it suitable for large datasets. The combination of biclustering and time series clustering provides flexibility in exploring both structural and temporal aspects of bipartite graphs. The linked list visualization with nested time series offers an intuitive way to represent bipartite relationships and their evolution over time.
+
+However, the effectiveness of the technique may depend on the specific characteristics of the dataset. Graphs with low modularity may result in less meaningful clusters and more visual clutter. The time series clustering approach assumes that temporal patterns are an important aspect of the data, which may not always be the case for all time-dependent bipartite graphs.
+
+Overall, Dynamic BiCFlows presents an innovative approach to visualizing large time-dependent bipartite graphs, offering a balance between overview and detail. While it shows particular strengths for datasets like the Media Transparency Database Austria, its general applicability to other time-dependent bipartite graphs warrants further investigation across diverse domains and data characteristics.
 
 
-
-\cite{Steinbck2018CasualVE}
-% Casual Visual Exploration of Large Bipartite Graphs Using Hierarchical Aggregation and Filtering (October 2018)
-% Daniel Steinböck, Eduard Gröller, Waldner
-% https://repositum.tuwien.at/handle/20.500.12708/57540
-
-\cite{sorger2019immersive}
-% (Dynamic BiCFlows) Immersive Analytics of Large Dynamic Networks via Overview and Detail Navigation (2019)
-% Wolfgang Knecht, Johannes Sorger (Complexity Science Hub Vienna) -> Created by Daniel Steinböck at TU Wien, extended by Wolfgang Knecht and Johannes Sorger at the Complexity Science Hub Vienna
-% https://repositum.tuwien.at/handle/20.500.12708/57887
-
-\cite{Waldner2020InteractiveEO}
-% Interactive exploration of large time-dependent bipartite graphs (2020)
-% Daniel Steinböck, Eduard Gröller, Waldner
-% https://repositum.tuwien.at/handle/20.500.12708/141146
-
-\cite{unger2020interactive}
-% Interactive visual exploration of large bipartite graphs using firework plots -> not directly related but about bipartite graphs
-% - https://repositum.tuwien.at/handle/20.500.12708/1114
-
-
-
-
-
-
-
-
-
-
+The vertical length of the flow nodes distorts the timeseries, making it difficult to compare the flow values across different time periods.
 
 
 
@@ -225,12 +201,7 @@ The reliance on basic chart types however limits the ability to show more comple
 
 \section{Visual Encoding and Interaction Design} % which visual encoding and interaction design would you suggest for the Media Transparency Database (a description and possibly a sketch are sufficient); please justify your choice; you can also choose an existing concept from the Related Work and adapt it, with appropriate justification.
 
-Sun Chord diagram
-
-Horizon Graphs
-
-
-\section{Implementation} % how would you technically implement the visualization solution and what challenges would you expect – Design Justification / Hypothesis Building (part of research process)
+Next we will build upon the existing research to propose a novel visualization technique for the MT dataset.
 
 % Existing visualization methods often struggle with large-scale, temporal bipartite data. Our research aims to address these limitations through:
 
@@ -239,6 +210,13 @@ Horizon Graphs
 % 3. Intuitive user interface design
 % 4. Integration of time series visualization
 
+https://dl.acm.org/doi/abs/10.1145/3544548.3581119
+
+"Sunburst-Chord" or "Hierarchical Edge Bundling" diagram
+
+Horizon Graphs
+
+\section{Implementation} % how would you technically implement the visualization solution and what challenges would you expect – Design Justification / Hypothesis Building (part of research process)
 
 \section{Evaluation} % how would you evaluate that your proposed solution is "good" (plus: how do you define "good"?). What are the expected results?
 
