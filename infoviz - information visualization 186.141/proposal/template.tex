@@ -97,10 +97,10 @@ The Medientransparenz project is a single-page web-application based on Google's
 
 The ``Overview'' page shows multiple views, accessible by scrolling. Each view provides access to 3 different visualizations of the same data subset by click on the corresponding icons: Line charts, bar charts and stacked bar charts. The goal of all these views is to provide a high-level overview of the data, showing the total spending of all entities over time, per type of spending. The default view is the bar chart displaying multiple color encoded bars per year, to enable the user to i.e. compare the advertising vs. funding related spendings. As you progress through the views, the subcategories of the data are further broken down, allowing for more detailed insights. 
 
-The ``Top Values'' page presents a complex hierarchical dataset using a modified pie chart structure, commonly referred to as a sunburst diagram or multilevel pie chart. A configuration tab on top of the page allows the user to select whether they're interested in advertising spending or subsidies, funders or recipients, the cut-off rank and year as well as the different geographical regions.
+The ``Top Values'' page presents a complex hierarchical dataset using a modified pie chart structure, commonly referred to as a \textbf{sunburst diagram} or multilevel pie chart. A configuration tab on top of the page allows the user to select whether they're interested in advertising spending or subsidies, funders or recipients, the cut-off rank and year as well as the different geographical regions.
 The design employs a radial layout to display hierarchical data, with the innermost ring representing the highest level of the hierarchy and subsequent outer rings showing more granular subcategories. However, it also demonstrates the challenges of presenting dense, multilevel information in a static, two-dimensional format which pose challenges in terms of readability and immediate comprehension. The use of color coding aids in category differentiation, but the large number of segments and varying text orientations may require significant cognitive effort from the viewer to fully interpret the data relationships, especially as the symbols overlap. Fortunately a tooltip and highlight feature is available to provide additional information on hover.
 
-The third and final page, ``Flows'', has a very similar filter configuration to the ``Top Values'' page, but instead of a sunburst diagram it uses a sankey diagram, a type of flow visualization that represents the distribution and flow of resources or information from one set of values to another. In this case the flow of money from funders to recipients, with the width of the lines representing the amount of money transferred. Additionally they're great for temporal data, as they can show how the relationships between entities change over time. The user can filter the data by year, region, and type of spending. This kind of visualization is excellent for bipartite graphs for obvious reasons, but it can be difficult to interpret for users unfamiliar with the concept \textendash{} but it scales well and a tooltip is available to provide additional information on hover to help resolve visual ambiguities.
+The third and final page, ``Flows'', has a very similar filter configuration to the ``Top Values'' page, but instead of a sunburst diagram it uses a \textbf{sankey diagram}, a type of flow visualization that represents the distribution and flow of resources or information from one set of values to another. In this case the flow of money from funders to recipients, with the width of the lines representing the amount of money transferred. Additionally they're great for temporal data, as they can show how the relationships between entities change over time. The user can filter the data by year, region, and type of spending. This kind of visualization is excellent for bipartite graphs for obvious reasons, but it can be difficult to interpret for users unfamiliar with the concept \textendash{} but it scales well and a tooltip is available to provide additional information on hover to help resolve visual ambiguities.
 
 At this points it also worth noting that although the sunburst diagram was prefered to the sankey diagram in the project maintained by the RTR and KommAustria due to its more intuitive nature, it is unable to capture the relationships in a bipartite graph as well as the sankey diagram can. The reason for this is unclear.
 
@@ -116,7 +116,7 @@ The VISVAR project ``Visual Exploration of Media Transparency for Data Journalis
 
 \medskip
 
-The CVAST project ``Exploring Media Transparency With Multiple Views'' \cite{rind2016exploring} implemented by Alexander Rind and David Pfahler \cite{gitmtdb2} proposes a visualization using multiple coordinated views. The main techniques include bar charts for temporal and categorical aggregations, histograms for distributions, data tables with sparklines for details and a chord diagram for flows between entities. The chord diagram is an interesting alternative to the sankey diagram proposed in the Medientransparenz project, since they excel at displaying interconnections in a circular layout, making them ideal for showing bidirectional relationships and complex networks. Additionally they can also be combined with the previously suggested sunburst diagram, in a so called hybrid ``sunburst-chord'' diagram. Sankey diagrams on the other hand are better suited for visualizing directional flows and transitions between stages or categories, with the ability to clearly depict the magnitude of flow using weighted links.
+The CVAST project ``Exploring Media Transparency With Multiple Views'' \cite{rind2016exploring} implemented by Alexander Rind and David Pfahler \cite{gitmtdb2} proposes a visualization using \textbf{multiple coordinated views}. The main techniques include bar charts for temporal and categorical aggregations, histograms for distributions, data tables with sparklines for details and a chord diagram for flows between entities. The \textbf{chord diagram} is an interesting alternative to the sankey diagram proposed in the Medientransparenz project, since they excel at displaying interconnections in a circular layout, making them ideal for showing bidirectional relationships and complex networks. Additionally they can also be combined with the previously suggested sunburst diagram, in a so called hybrid sunburst-chord diagram. Sankey diagrams on the other hand are better suited for visualizing directional flows and transitions between stages or categories, with the ability to clearly depict the magnitude of flow using weighted links.
 
 The overall strengths of this paper include providing multi-granular views, interactivity and explorative analysis. However by providing 7 dense visualizations on a single page, the authors risk overwhelming the user with information. The chord diagram in particular can be difficult to interpret for users unfamiliar with the concept. A single ``hide'' button for all visualizations followed by a soft animation is a missed opportunity to reduce the sensory overload.
 
@@ -163,41 +163,11 @@ For the MT dataset the overview would allow analysts to quickly identify key pla
 
 \medskip
 
-The second mentioned paper by Steinböck et al. from 2020 \cite{Waldner2020InteractiveEO} 
+The second mentioned paper by Steinböck et al. from 2020 \cite{Waldner2020InteractiveEO} proposes a technique called Dynamic Bipartite Cluster Flows (Dynamic BiCFlows) that can scale with large time-dependent bipartite graphs with thousands of nodes and edges. It combines hierarchical aggregation and filtering to visualize the data as linked lists with nested time series.
 
+It has many features such as filtering, details-on-demand and drill down that encourage exploration and gaining new and perhaps unexpected insights through interactivity, it manages the scale of the dataset through hierarchical aggregation and enables the observation of temporal patterns embedded into individual nodes of the sankey diagram. It's worth noting that the embedded timeseries graphs are subject to distortion and therefore aren't suitable for comparing flow values across different time periods. Additionally hierarchical aggregation may obscure some smaller entities or transactions that users might be interested in finding directly and can be overwhelming when compared to a simpler filtering approach based on a conducted user study.
 
-This paper proposes a novel visualization technique called Dynamic Bipartite Cluster Flows (Dynamic BiCFlows) for exploring large time-dependent bipartite graphs. The technique combines hierarchical aggregation and filtering to visualize the data as linked lists with nested time series. 
-
-For the Media Transparency Database Austria dataset, Dynamic BiCFlows offers several strengths. It allows users to gradually drill down from an overview to detailed levels, revealing connections between legal entities and media organizations at different granularities. The hierarchical aggregation helps manage the scale of the dataset, which contains thousands of nodes and edges. The nested time series visualizations enable users to observe temporal patterns in advertising expenditures over different time periods. The interactive exploration capabilities, including drill-down, filtering, and details-on-demand, encourage users to spend more time exploring the data and discover unexpected insights.
-
-However, the technique also has some limitations for this dataset. The user study revealed that participants found BiCFlows more complex to use initially compared to a simple filtering approach. The hierarchical aggregation may obscure some smaller entities or transactions that users might be interested in finding directly. Additionally, the biclustering approach used for aggregation may not always produce meaningful groupings that align with users' mental models of the data.
-
-In terms of general applicability to time-dependent bipartite graphs, Dynamic BiCFlows shows promise. The technique is designed to scale to thousands of nodes and edges, making it suitable for large datasets. The combination of biclustering and time series clustering provides flexibility in exploring both structural and temporal aspects of bipartite graphs. The linked list visualization with nested time series offers an intuitive way to represent bipartite relationships and their evolution over time.
-
-However, the effectiveness of the technique may depend on the specific characteristics of the dataset. Graphs with low modularity may result in less meaningful clusters and more visual clutter. The time series clustering approach assumes that temporal patterns are an important aspect of the data, which may not always be the case for all time-dependent bipartite graphs.
-
-Overall, Dynamic BiCFlows presents an innovative approach to visualizing large time-dependent bipartite graphs, offering a balance between overview and detail. While it shows particular strengths for datasets like the Media Transparency Database Austria, its general applicability to other time-dependent bipartite graphs warrants further investigation across diverse domains and data characteristics.
-
-
-The vertical length of the flow nodes distorts the timeseries, making it difficult to compare the flow values across different time periods.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+But overall in terms of general applicability to time-dependent bipartite graphs, Dynamic BiCFlows shows promise. The linked list visualization with nested time series offers an intuitive way to represent bipartite relationships and their evolution over time.
 
 \section{Visual Encoding and Interaction Design} % which visual encoding and interaction design would you suggest for the Media Transparency Database (a description and possibly a sketch are sufficient); please justify your choice; you can also choose an existing concept from the Related Work and adapt it, with appropriate justification.
 
