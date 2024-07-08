@@ -88,3 +88,8 @@
 
 - flip: https://www.idena.io/flip-challenge
 - lab42: https://lab42.global/arc/
+
+*inspiring researchers*
+
+- gautam kamath: https://scholar.google.com/citations?user=MK6zHkYAAAAJ&hl=en
+- nils lukas: https://scholar.google.com/citations?user=fmlEab4AAAAJ&hl=en
