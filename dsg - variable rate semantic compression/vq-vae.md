@@ -1,4 +1,4 @@
-overview: https://lilianweng.github.io/posts/2018-08-12-vae/
+> overview: https://lilianweng.github.io/posts/2018-08-12-vae/
 
 *ae - autoencoder*
 
