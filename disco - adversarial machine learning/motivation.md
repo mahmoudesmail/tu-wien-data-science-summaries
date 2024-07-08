@@ -6,7 +6,7 @@
 - https://80000hours.org/2023/04/why-were-adding-information-security-to-our-list-of-priority-career-paths/
 - high impact field of research
 
-*security applications of ML*
+*cybersecurity applications of ml*
 
 - https://en.wikipedia.org/wiki/Applications_of_artificial_intelligence
 - https://www.securityhq.com/blog/debunking-the-myths-how-machine-learning-ml-benefits-cyber-security/
@@ -54,7 +54,7 @@
 		- ii) security violation: supply malicious data that gets classified as legitimate. malicious data supplied during training can cause legitimate data to be rejected after training.
 		- iii) specificity: targeted attack for intrusion/disruption or indiscriminate attack to cause general chaos.
 
-*industry statements*
+*mlsec in the industry*
 
 - https://www.robustintelligence.com/ai-application-security
 - https://huggingface.co/blog/hugging-face-wiz-security-blog
