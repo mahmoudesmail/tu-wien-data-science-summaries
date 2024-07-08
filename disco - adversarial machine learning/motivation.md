@@ -83,3 +83,8 @@
 - https://github.com/stratosphereips/awesome-ml-privacy-attacks?tab=readme-ov-file
 - https://github.com/DeepSpaceHarbor/Awesome-AI-Security?tab=readme-ov-file
 - https://github.com/trailofbits/awesome-ml-security?tab=readme-ov-file
+
+*challenges*
+
+- flip: https://www.idena.io/flip-challenge
+- lab42: https://lab42.global/arc/
