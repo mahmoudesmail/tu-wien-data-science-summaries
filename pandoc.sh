@@ -1,8 +1,8 @@
 # convert markdown to pdf
 
+# install pandoc
 brew install --verbose --debug mactex
 brew install pandoc
-
 sudo tlmgr update --self
 sudo tlmgr install texliveonfly
 sudo tlmgr install xelatex
