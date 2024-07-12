@@ -86,7 +86,11 @@ based on vector quantization:
 *vq-vae-2 - vector quantized variational autoencoder*
 
 - https://arxiv.org/pdf/1906.00446 (original paper)
--  two-level hierarchical vq-vae combined with a self-attention autoregressive model
+- two-level hierarchical vq-vae combined with a self-attention autoregressive model
+- stage 1: vq-vae training
+	- separates local patterns (i.e., texture) from global information (i.e., object shapes)
+- stage 2: prior training
+	- learns a prior over the latent discrete codebook, so that we sample from it and generate images
 
 *vq-gan - vector quantized generative adversarial networks*
 
