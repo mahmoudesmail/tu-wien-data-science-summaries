@@ -87,7 +87,6 @@ based on vector quantization:
 *vq-vae 2 - vector quantized variational autoencoder*
 
 - https://arxiv.org/pdf/1906.00446 (original paper)
-- implementation: https://github.com/lucidrains/vector-quantize-pytorch
 - ...
 
 *vq-gan - vector quantized generative adversarial networks*
