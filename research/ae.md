@@ -53,7 +53,7 @@
 
 *quantization*
 
-- https://arxiv.org/abs/2309.15505
+- https://arxiv.org/abs/2309.15505 (replacing vector quantization with scalar quantization)
 - vector quantization
 	- https://en.wikipedia.org/wiki/Vector_quantization
 - scalar quantization
