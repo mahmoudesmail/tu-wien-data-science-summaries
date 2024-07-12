@@ -58,6 +58,7 @@
 - https://avdnoord.github.io/homepage/vqvae/
 - https://www.youtube.com/watch?v=GgX_6Ce41-c
 - https://www.youtube.com/watch?v=_GD18kRQk0A
+- https://www.youtube.com/watch?v=3sGcIMQGBLM
 - learns a discrete latent variable by the encoder, since discrete representations may be a more natural fit for problems like language, speech, reasoning, etc.
 - the prior distribution is learned (as a categorical distribution) instead of being static (ie. a fixed normal distribution) after the discrete random variables are found
 - components:
@@ -82,8 +83,9 @@
 - implementation: https://github.com/lucidrains/vector-quantize-pytorch
 - ...
 
-*vq-gan - *
+*vq-gan - vector quantized generative adversarial networks*
 
 - https://arxiv.org/pdf/2012.09841 (original paper)
 - https://compvis.github.io/taming-transformers/
 - https://github.com/CompVis/taming-transformers
+- https://www.youtube.com/watch?v=wcqLFDXaDO8
