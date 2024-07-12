@@ -51,14 +51,6 @@
 			- $\mathcal{L}_{\text{recons}}$ = reconstruction error
 			- $\mathcal{L}_{\text{KL}}$ = kullback–leibler divergence that regularizes to make sure that latent space has desirable properties
 
-*quantization*
-
-- https://arxiv.org/abs/2309.15505 (replacing vector quantization with scalar quantization)
-- vector quantization
-	- https://en.wikipedia.org/wiki/Vector_quantization
-- scalar quantization
-- network quantization
-
 *vq-vae - vector quantized variational autoencoder*
 
 - https://arxiv.org/pdf/1711.00937 (original paper)
@@ -95,4 +87,3 @@
 - https://arxiv.org/pdf/2012.09841 (original paper)
 - https://compvis.github.io/taming-transformers/
 - https://github.com/CompVis/taming-transformers
-
