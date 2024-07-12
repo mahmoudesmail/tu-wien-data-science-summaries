@@ -1,4 +1,8 @@
-> overview: https://lilianweng.github.io/posts/2018-08-12-vae/
+> overview compression: https://arxiv.org/pdf/2406.06446
+
+# autoencoders
+
+> overview autoencoders: https://lilianweng.github.io/posts/2018-08-12-vae/
 
 *ae - autoencoder*
 
@@ -73,3 +77,7 @@
 			- reconstruction loss
 			- VQ loss = L2 error between the embedding space and the encoder outputs
 			- commitment loss = regularization to make encoder output more stable in quantization
+
+# signal processing
+
+*vq - vector quantization*
