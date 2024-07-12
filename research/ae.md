@@ -1,8 +1,6 @@
-> overview compression: https://arxiv.org/pdf/2406.06446
-
-# autoencoders
-
 > overview autoencoders: https://lilianweng.github.io/posts/2018-08-12-vae/
+> 
+> overview compression: https://arxiv.org/pdf/2406.06446
 
 *ae - autoencoder*
 
@@ -53,6 +51,14 @@
 			- $\mathcal{L}_{\text{recons}}$ = reconstruction error
 			- $\mathcal{L}_{\text{KL}}$ = kullback–leibler divergence that regularizes to make sure that latent space has desirable properties
 
+*quantization*
+
+- https://arxiv.org/abs/2309.15505
+- vector quantization
+	- https://en.wikipedia.org/wiki/Vector_quantization
+- scalar quantization
+- network quantization
+
 *vq-vae - vector quantized variational autoencoder*
 
 - https://arxiv.org/pdf/1711.00937 (original paper)
@@ -78,6 +84,15 @@
 			- VQ loss = L2 error between the embedding space and the encoder outputs
 			- commitment loss = regularization to make encoder output more stable in quantization
 
-# signal processing
+*vq-vae 2 - vector quantized variational autoencoder*
 
-*vq - vector quantization*
+- https://arxiv.org/pdf/1906.00446 (original paper)
+- implementation: https://github.com/lucidrains/vector-quantize-pytorch
+- ...
+
+*vq-gan - *
+
+- https://arxiv.org/pdf/2012.09841 (original paper)
+- https://compvis.github.io/taming-transformers/
+- https://github.com/CompVis/taming-transformers
+
