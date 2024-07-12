@@ -63,7 +63,7 @@
 		- $E(\mathbf x) = \mathbf z_e$
 	- **representation**:
 		- $\text{Quantize}(E(\mathbf x)) = \text{Quantize}(\mathbf z_e) = \mathbf{z}_q(\mathbf x) = e_k$
-		- vector quantization VQ = mapping $K$-dimensional vectors into a finite set of predefined codebook-vectors
+		- vector quantization VQ = mapping $K$-dimensional vectors into a finite set of predefined **codebook-vectors**
 			- the nearest neighbor is chosen (ie. lowest euclidian distance)
 			- $e_i$ where $i \in [1;K]$ = latent embedding space, codebook-vectors
 	- **decoder**:
@@ -73,4 +73,3 @@
 			- reconstruction loss
 			- VQ loss = L2 error between the embedding space and the encoder outputs
 			- commitment loss = regularization to make encoder output more stable in quantization
-	
