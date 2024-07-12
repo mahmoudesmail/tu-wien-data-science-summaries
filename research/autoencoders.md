@@ -1,4 +1,4 @@
-> overview autoencoders: https://lilianweng.github.io/posts/2018-08-12-vae/
+> overview autoencoders: https://lilianweng.github.io/posts/2018-08-12-vae/ 🔥
 > 
 > overview compression: https://arxiv.org/pdf/2406.06446
 
@@ -97,5 +97,5 @@ based on vector quantization:
 - https://arxiv.org/pdf/2012.09841 (original paper)
 - https://compvis.github.io/taming-transformers/
 - https://github.com/CompVis/taming-transformers
-- https://www.youtube.com/watch?v=wcqLFDXaDO8
+- https://www.youtube.com/watch?v=wcqLFDXaDO8 🔥
 - vq-gan = vq-vae + gan
