@@ -11,3 +11,4 @@
 	- map floats to integers
 - network quantization
 	- https://www.youtube.com/watch?v=tFmQj7W4qlk
+ 	- using approximated activation functions
