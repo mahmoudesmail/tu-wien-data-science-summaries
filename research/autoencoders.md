@@ -86,7 +86,7 @@ based on vector quantization:
 *vq-vae-2 - vector quantized variational autoencoder*
 
 - https://arxiv.org/pdf/1906.00446 (original paper)
-- ...
+-  two-level hierarchical vq-vae combined with a self-attention autoregressive model
 
 *vq-gan - vector quantized generative adversarial networks*
 
