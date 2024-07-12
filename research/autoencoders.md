@@ -61,6 +61,11 @@
 - https://www.youtube.com/watch?v=3sGcIMQGBLM
 - learns a discrete latent variable by the encoder, since discrete representations may be a more natural fit for problems like language, speech, reasoning, etc.
 - the prior distribution is learned (as a categorical distribution) instead of being static (ie. a fixed normal distribution) after the discrete random variables are found
+- vector quantization:
+	- https://en.wikipedia.org/wiki/Vector_quantization
+ 	- https://www.youtube.com/watch?v=Xt9S74BHsvc
+ 	- classic lossy compression technique for signal processing
+  	- chooses a set of points to represent a larger set of points, data points are represented by the index of their closest centroid → data points are represented by the index of their closest centroid (very similar to kmeans)
 - components:
 	- **encoder**:
 		- $E(\mathbf x) = \mathbf z_e$
