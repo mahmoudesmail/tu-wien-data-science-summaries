@@ -84,7 +84,7 @@ based on vector quantization:
 - classic lossy compression technique for signal processing
 - chooses a set of points to represent a larger set of points, data points are represented by the index of their closest centroid → data points are represented by the index of their closest centroid (very similar to kmeans)
 
-*vq-vae 2 - vector quantized variational autoencoder*
+*vq-vae-2 - vector quantized variational autoencoder*
 
 - https://arxiv.org/pdf/1906.00446 (original paper)
 - ...
