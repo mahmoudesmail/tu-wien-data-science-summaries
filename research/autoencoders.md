@@ -98,3 +98,4 @@ based on vector quantization:
 - https://compvis.github.io/taming-transformers/
 - https://github.com/CompVis/taming-transformers
 - https://www.youtube.com/watch?v=wcqLFDXaDO8
+- vq-gan = vq-vae + gan
