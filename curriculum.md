@@ -18,8 +18,9 @@ _about the curriculum_
 	     - the 'extension' part has an arbitrary number of courses, that you're allowed to do 18 ECTS from at most
 
 <br>
+
 |                                                                | ECTS   | has exam |
-| :------------------------------------------------------------- | :----- | :------- |
+| :------------------------------------------------------------- | :----- | -------- |
 | **Semester 1**                                                 |        |          |
 | VU Data-oriented Programming Paradigms (fds/fd)                | 3.0    |          |
 | VU Experiment Design for Data Science (fds/fd)                 | 3.0    | ✅        |
@@ -62,7 +63,6 @@ _about the curriculum_
 | Thesis Diploma thesis                                          | 27.0   |          |
 | Final exam Final board exam                                    | 1.5    |          |
 | –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– | Σ 30.0 |          |
-
 
 <br>
 
