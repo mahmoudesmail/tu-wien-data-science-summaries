@@ -65,3 +65,102 @@ _about the curriculum_
 | ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––    | Σ 30.0 |
 
 🔥 = has an exam
+
+<br>
+
+# electives
+
+
+|                                                                    | ECTS |
+| :----------------------------------------------------------------- | :--- |
+| **FDS module**                                                     |      |
+| VU Advanced Cryptography                                           | 6.0  |
+| VU Communicating Data                                              | 3.0  |
+| VU Data Center Operations                                          | 3.0  |
+| UE Data Stewardship                                                | 3.0  |
+| VU Computational Social Science                                    | 3.0  |
+| VU Digital Humanism                                                | 3.0  |
+| VU Internet Security                                               | 3.0  |
+| VU Organizational Aspects of IT-Security                           | 3.0  |
+| VU Software Security                                               | 3.0  |
+| VU Sustainability in Computer Science                              | 3.0  |
+| VU Systems and Applications Security                               | 6.0  |
+| VU User Research Methods                                           | 3.0  |
+| PR User Research Methods                                           | 3.0  |
+| –––––––––––––––––––––––––––––––––––––––––––––––––––––––––          |      |
+| **MLS module**                                                     |      |
+| VU Advanced Learning Methods                                       | 3.0  |
+| VU Advanced Modeling and Simulation                                | 3.0  |
+| VU Advanced Reinforcement Learning                                 | 3.0  |
+| VU AI/ML in the Era of Climate Change                              | 4.0  |
+| VU AKNUM Reinforcement Learning                                    | 6.0  |
+| VU Algorithmic Social Choice                                       | 6.0  |
+| VU Applied Deep Learning                                           | 3.0  |
+| VO Bayesian Statistics                                             | 3.0  |
+| UE Bayesian Statistics                                             | 2.0  |
+| VU Bayesian Statistics                                             | 5.0  |
+| VU Business Intelligence                                           | 6.0  |
+| VU Crypto Asset Analytics                                          | 3.0  |
+| VU Deep Learning for Visual Computing                              | 3.0  |
+| VU General Regression Models                                       | 5.0  |
+| VO General Regression Models                                       | 3.0  |
+| UE General Regression Models                                       | 2.0  |
+| VU Generative AI                                                   | 3.0  |
+| VU Intelligent Audio and Music Analysis                            | 4.5  |
+| VO Introduction to Statistical Inference                           | 4.5  |
+| UE Introduction to Statistical Inference                           | 2.0  |
+| VU Machine Learning for Visual Computing                           | 4.5  |
+| VU Mathematical Programming                                        | 3.0  |
+| VU Modeling and Simulation                                         | 3.0  |
+| VU Modelling and Simulation in Health Technology Assessment        | 3.0  |
+| VO Multivariate Statistics                                         | 4.5  |
+| UE Multivariate Statistics                                         | 1.5  |
+| VU Probabilistic Programming and AI                                | 6.0  |
+| VU Problem Solving and Search in Artificial Intelligence           | 3.0  |
+| VU Security, Privacy and Explainability in Machine Learning        | 3.0  |
+| VU Self-Organizing Systems                                         | 4.5  |
+| VU Similarity Modeling 1                                           | 3.0  |
+| VU Similarity Modeling 2                                           | 3.0  |
+| VU Social Network Analysis                                         | 3.0  |
+| VU Theoretical Foundations and Research Topics in Machine Learning | 3.0  |
+| –––––––––––––––––––––––––––––––––––––––––––––––––––––––––          |      |
+| **BDHPC module**                                                   |      |
+| VU Algorithmic Geometry                                            | 4.5  |
+| VU Algorithmics                                                    | 6.0  |
+| VO Analysis 2                                                      | 3.0  |
+| UE Analysis 2                                                      | 4.5  |
+| VU Approximation Algorithms                                        | 3.0  |
+| VU Complexity Analysis                                             | 3.0  |
+| VU Database Theory                                                 | 3.0  |
+| VU Fixed-Parameter Algorithms and Complexity                       | 4.5  |
+| VU Frontiers of Algorithms and Complexity                          | 3.0  |
+| VU GPU Architectures and Computing                                 | 6.0  |
+| VU Graph Drawing Algorithms                                        | 4.5  |
+| VU Hands-On Cloud Native                                           | 6.0  |
+| VU Heuristic Optimization Techniques                               | 4.5  |
+| VU High Performance Computing                                      | 4.5  |
+| VO Nonlinear Optimization                                          | 3.0  |
+| UE Nonlinear Optimization                                          | 2.0  |
+| VU Optimization in Transport and Logistics                         | 3.0  |
+| VU Structural Decompositions and Algorithms                        | 3.0  |
+| VU Advanced Multiprocessor Programming                             | 4.5  |
+| VU Randomized Algorithms                                           | 3.0  |
+| –––––––––––––––––––––––––––––––––––––––––––––––––––––––––          |      |
+| **VAST module**                                                    |      |
+| VO Deductive Databases                                             | 3.0  |
+| VU Description Logics and Ontologies                               | 3.0  |
+| VU Document Analysis                                               | 3.0  |
+| UE Information Visualization                                       | 1.5  |
+| VU KBS for Business Informatics                                    | 6.0  |
+| VU Knowledge-based Systems                                         | 6.0  |
+| VU Knowledge Graphs                                                | 3.0  |
+| VO Medical Image Processing                                        | 3.0  |
+| UE Medical Image Processing                                        | 3.0  |
+| VU Natural Language Processing and Information Extraction          | 3.0  |
+| VO Processing of Declarative Knowledge                             | 3.0  |
+| VU Research Topics in Natural Language Processing                  | 3.0  |
+| VU Real-time Visualization                                         | 3.0  |
+| VU Semantic Technologies                                           | 3.0  |
+| VU Semi-Automatic Information and Knowledge Systems                | 3.0  |
+| VU Visual Data Science                                             | 3.0  |
+| VU Visualization 2                                                 | 4.5  |
