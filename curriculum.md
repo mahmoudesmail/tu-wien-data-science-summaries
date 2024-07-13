@@ -37,7 +37,7 @@ _about the curriculum_
 | VO Cognitive Foundations of Visualization (vast/fd) 🔥            | 3.0    |
 | ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––    | Σ 18.0 |
 | **Electives**                                                     |        |
-| … 6-24 ECTS from each module                                      |        |
+| … at least 2 modules, each 6-24 ECTS                              |        |
 | a) fds module                                                     |        |
 | ├─── VU Data Acquisition and Survey Methods                       | 3.0    |
 | └─── VO Data Stewardship 🔥                                       | 3.0    |
