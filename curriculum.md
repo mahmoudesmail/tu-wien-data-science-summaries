@@ -17,7 +17,7 @@ _about the curriculum_
 	     - the 'core' part has 2 courses (6 ECTS in total) that you must do together, as a prerequisite for the 'extension' part
 	     - the 'extension' part has an arbitrary number of courses, that you're allowed to do 18 ECTS from at most
 
-<br>
+# mandatory
 
 |                                                                | ECTS   | exam |
 | :------------------------------------------------------------- | :----- | ---- |
