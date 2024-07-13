@@ -38,16 +38,16 @@ _about the curriculum_
 | ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––    | Σ 18.0 |
 | **Electives**                                                     |        |
 | … at least 2 modules, each 6-24 ECTS                              |        |
-| a) fds module                                                     |        |
+| a) FDS module                                                     |        |
 | ├─── VU Data Acquisition and Survey Methods                       | 3.0    |
 | └─── VO Data Stewardship 🔥                                       | 3.0    |
-| b) mls module                                                     |        |
+| b) MLS module                                                     |        |
 | ├─── VU Recommender Systems 🔥                                    | 3.0    |
 | └─── VU Statistical Simulation and Computer Intensive Methods     | 3.0    |
-| c) bdhpc module                                                   |        |
+| c) BDHPC module                                                   |        |
 | ├─── VU Basics of Parallel Computing 🔥                           | 3.0    |
 | └─── VU Efficient Programs                                        | 3.0    |
-| d) vast module                                                    |        |
+| d) VAST module                                                    |        |
 | ├─── VU Advanced Information Retrieval 🔥                         | 3.0    |
 | └─── UE Design and Evaluation of Visualisations                   | 3.0    |
 | ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––    | Σ 36.0 |
