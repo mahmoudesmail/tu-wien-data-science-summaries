@@ -1,5 +1,3 @@
-# convert markdown to pdf
-
 # install pandoc
 brew install --verbose --debug mactex
 brew install pandoc
@@ -17,7 +15,7 @@ sudo tlmgr install enumitem
 sudo tlmgr install rsfs
 sudo tlmgr install geometry
 
-# run
+# run pandoc
 pandoc --read=markdown --write=latex --pdf-engine=xelatex \
   --variable geometry:margin=5mm \
   --variable fontsize:10pt \
