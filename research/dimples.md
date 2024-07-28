@@ -110,3 +110,4 @@ reproduction:
 related papers:
 
 - https://arxiv.org/pdf/2403.04493 (quantifying realism)
+- https://arxiv.org/pdf/1703.00810 (information theory)
