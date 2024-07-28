@@ -1,4 +1,4 @@
-> |Lu, J., Yang, X., & Wang, X. (2024). Unsegment Anything by Simulating Deformation. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (pp. 24294-24304). https://arxiv.org/pdf/2404.02585
+> Lu, J., Yang, X., & Wang, X. (2024). Unsegment Anything by Simulating Deformation. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (pp. 24294-24304). https://arxiv.org/pdf/2404.02585
 
 *SAM - segment anything model*
 
