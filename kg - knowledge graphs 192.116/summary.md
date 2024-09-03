@@ -4,6 +4,7 @@
 
 simplified: a graph database with reasoning functionality.
 
+- https://neo4j.com/docs/graph-data-science/current/machine-learning/machine-learning/
 - $KG = (D, K; g, l, r)$
 - where:
 	- $D$ = data
