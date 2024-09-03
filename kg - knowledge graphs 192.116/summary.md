@@ -2,7 +2,7 @@
 
 *knowledge graphs*
 
-simplified: a (graph) database with reasoning functionality.
+simplified: a graph database with reasoning functionality.
 
 - $KG = (D, K; g, l, r)$
 - where:
