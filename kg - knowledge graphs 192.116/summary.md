@@ -1,10 +1,10 @@
+> neo4j offers kg functionality right out the box: https://neo4j.com/docs/graph-data-science/current/introduction/
+
 # introduction
 
 *knowledge graphs*
 
 simplified: a graph database with reasoning functionality.
-
-see: https://neo4j.com/docs/graph-data-science/current/introduction/
 
 - $KG = (D, K; g, l, r)$
 - where:
