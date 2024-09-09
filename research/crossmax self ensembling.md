@@ -52,7 +52,7 @@ benefits:
 	- robust accuracy is 17-fold larger than standard ensembling in L8/255
 	- mean / median in ensembles aren't robust to outliers that can be exploited by fooling a single model
 	- vickery is designed to incentivize truthful bidding
-	- we choose the $k$th highest prediction per class
+	- we choose the k-th highest prediction per class
 
 *results*
 
