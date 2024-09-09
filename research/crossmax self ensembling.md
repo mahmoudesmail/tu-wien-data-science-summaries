@@ -2,10 +2,6 @@
 > 
 > results (no code): https://paperswithcode.com/paper/ensemble-everything-everywhere-multi-scale/review/
 
-> goodheart: "Any observed statistical regularity will tend to collapse once pressure is placed upon it for control purposes"
-> 
-> Charles Goodhart. Problems of monetary management: The u.k. experience. In Anthony S. Courakis, editor, Inflation, Depression, and Economic Policy in the West, page 116. Barnes and Noble Books, Totowa, New Jersey, 1981. ISBN 0-389-20144-8.
-
 *motivation*
 
 - advx are bad for robustness, reliability and alignment of deep neural networks.
@@ -69,6 +65,10 @@ benefits:
 	- +9% gain on CIFAR-100
 
 # footnotes
+
+> goodheart: "Any observed statistical regularity will tend to collapse once pressure is placed upon it for control purposes"
+> 
+> Charles Goodhart. Problems of monetary management: The u.k. experience. In Anthony S. Courakis, editor, Inflation, Depression, and Economic Policy in the West, page 116. Barnes and Noble Books, Totowa, New Jersey, 1981. ISBN 0-389-20144-8.
 
 multi-resolution input representations:
 
