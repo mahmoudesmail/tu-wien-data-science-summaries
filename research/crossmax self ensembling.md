@@ -81,6 +81,7 @@ multi-resolution input representations:
 self ensembling:
 
 - https://arxiv.org/abs/2401.04727
+- https://arxiv.org/pdf/2208.02851 (self ensembling vit)
 
 adversarial decorrelation:
 
@@ -92,4 +93,3 @@ related:
 - https://arxiv.org/pdf/2404.09349 (robustness limits)
 - https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10634483
 - https://arxiv.org/abs/1810.00069 (advx survey)
-
