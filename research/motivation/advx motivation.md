@@ -1,5 +1,3 @@
-fun fact:
-
-adversarial examples started out of perturbations in computational geometry.
-
-madry was essentially using the same tricks in 2013 when he started off.
+> *fun fact:*
+>
+> adversarial examples initially started out of perturbations in computational geometry when introduced by madry in 2013.
