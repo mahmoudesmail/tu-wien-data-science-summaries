@@ -64,6 +64,8 @@ _about the curriculum_
 | Final exam Final board exam                                    | 1.5    |      |
 | –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– | Σ 30.0 |      |
 
+<!--
+
 # electives
 
 |                                                                    | ECTS |
@@ -159,3 +161,5 @@ _about the curriculum_
 | VU Semi-Automatic Information and Knowledge Systems                | 3.0  |
 | VU Visual Data Science                                             | 3.0  |
 | VU Visualization 2                                                 | 4.5  |
+
+-->
