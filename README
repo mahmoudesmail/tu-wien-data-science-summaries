@@ -14,10 +14,13 @@ i'd appreciate a star ⭐️ if you find them useful
   )  |  \  `.___________|/
   `--'   `--'
 
-github sometimes struggles to render math in markdown.
-when that's the case use:
+github sometimes struggles to render math in markdown. when that's the case use:
 
 - obsidian: https://obsidian.md/
 - stackedit: https://stackedit.io/app
 - mathpix: https://mathpix.com/markdown-to-latex
 - pandoc: https://www.pandoc.org/
+
+for my undergrad summaries check out:
+
+- https://github.com/sueszli/tu-wien-summaries
