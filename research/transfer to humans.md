@@ -47,6 +47,10 @@ in depth:
 
 # footnote
 
+related:
+
+- https://www.nature.com/articles/s41467-023-40499-0
+
 paper presentation:
 
 - https://www.youtube.com/watch?v=UgsmV2cCO44
