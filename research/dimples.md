@@ -88,6 +88,10 @@ visualizations:
 
 - https://github.com/odeliamel/Dimpled-Manifold-Model?tab=readme-ov-file
 
+counter example paper:
+
+- https://aisecure-workshop.github.io/amlcvpr2021/cr/27.pdf
+
 paper explaination by yannic kilcher:
 
 - https://www.youtube.com/watch?v=k_hUdZJNzkU 🔥
