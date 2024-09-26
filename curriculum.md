@@ -39,19 +39,19 @@ here are the mandatory courses
 | VO Cognitive Foundations of Visualization (vast/fd)            | 3.0    |      |
 | –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– | Σ 18.0 |      |
 | **Electives** (at least 2 modules)                             |        |      |
-| (1) FDS module                                                 |        |      |
+| (a) FDS module                                                 |        |      |
 | ├── VU Data Acquisition and Survey Methods                     | 3.0    |      |
 | ├── VO Data Stewardship                                        | 3.0    |      |
 | └── ...                                                        | ≤18.0  |      |
-| (2) MLS module                                                 |        |      |
+| (b) MLS module                                                 |        |      |
 | ├── VU Recommender Systems                                     | 3.0    |      |
 | ├── VU Statistical Simulation and Computer Intensive Methods   | 3.0    |      |
 | └── ...                                                        | ≤18.0  |      |
-| (3) BDHPC module                                               |        |      |
+| (c) BDHPC module                                               |        |      |
 | ├── VU Basics of Parallel Computing                            | 3.0    |      |
 | ├── VU Efficient Programs                                      | 3.0    |      |
 | └── ...                                                        | ≤18.0  |      |
-| (4) VAST module                                                |        |      |
+| (d) VAST module                                                |        |      |
 | ├── VU Advanced Information Retrieval                          | 3.0    |      |
 | ├── UE Design and Evaluation of Visualisations                 | 3.0    |      |
 | └── ...                                                        | ≤18.0  |      |
