@@ -19,36 +19,36 @@ _about the curriculum_
 
 # mandatory
 
-|                                                                | ECTS   | has exam |
-| :------------------------------------------------------------- | :----- | -------- |
-| **Semester 1**                                                 |        |          |
-| VU Data-oriented Programming Paradigms (fds/fd)                | 3.0    |          |
-| VU Experiment Design for Data Science (fds/fd)                 | 3.0    | ✅        |
-| VU Advanced Methods for Regression and Classification (mls/fd) | 4.5    | ✅        |
-| VU Machine Learning (mls/fd)                                   | 4.5    | ✅        |
-| VU Semantic Systems (vast/fd)                                  | 3.0    | ✅        |
+|                                                                | ECTS   | done |
+| :------------------------------------------------------------- | :----- | ---- |
+| **Semester 1**                                                 |        |      |
+| VU Data-oriented Programming Paradigms (fds/fd)                | 3.0    |      |
+| VU Experiment Design for Data Science (fds/fd)                 | 3.0    |    |
+| VU Advanced Methods for Regression and Classification (mls/fd) | 4.5    |         |
+| VU Machine Learning (mls/fd)                                   | 4.5    |         |
+| VU Semantic Systems (vast/fd)                                  | 3.0    |         |
 | VU Interdisciplinary Lecture Series on Data Science (dsa)      | 1.0    |          |
 | –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– | Σ 19.0 |          |
 | **Semester 2**                                                 |        |          |
 | VU Statistical Computing (fds/fd)                              | 3.0    |          |
-| VU Advanced Database Systems (bdhpc/fd)                        | 6.0    | ✅        |
+| VU Advanced Database Systems (bdhpc/fd)                        | 6.0    |         |
 | VU Data-intensive Computing (bdhpc/fd)                         | 3.0    |          |
-| VO Information Visualization (vast/fd)                         | 3.0    | ✅        |
-| VO Cognitive Foundations of Visualization (vast/fd)            | 3.0    | ✅        |
+| VO Information Visualization (vast/fd)                         | 3.0    |         |
+| VO Cognitive Foundations of Visualization (vast/fd)            | 3.0    |         |
 | –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– | Σ 18.0 |          |
 | **Electives**                                                  |        |          |
 | … at least 2 modules, each 6-24 ECTS                           |        |          |
 | a) FDS module                                                  |        |          |
 | ├─── VU Data Acquisition and Survey Methods                    | 3.0    |          |
-| └─── VO Data Stewardship                                       | 3.0    | ✅        |
+| └─── VO Data Stewardship                                       | 3.0    |         |
 | b) MLS module                                                  |        |          |
-| ├─── VU Recommender Systems                                    | 3.0    | ✅        |
+| ├─── VU Recommender Systems                                    | 3.0    |         |
 | └─── VU Statistical Simulation and Computer Intensive Methods  | 3.0    |          |
 | c) BDHPC module                                                |        |          |
-| ├─── VU Basics of Parallel Computing                           | 3.0    | ✅        |
+| ├─── VU Basics of Parallel Computing                           | 3.0    |         |
 | └─── VU Efficient Programs                                     | 3.0    |          |
 | d) VAST module                                                 |        |          |
-| ├─── VU Advanced Information Retrieval                         | 3.0    | ✅        |
+| ├─── VU Advanced Information Retrieval                         | 3.0    |         |
 | └─── UE Design and Evaluation of Visualisations                | 3.0    |          |
 | –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– | Σ 36.0 |          |
 | **Free electives, transferable skills**                        |        |          |
