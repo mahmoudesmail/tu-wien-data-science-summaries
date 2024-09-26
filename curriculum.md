@@ -40,21 +40,21 @@ here are the mandatory courses
 | –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– | Σ 18.0 |      |
 | **Electives** (at least 2 modules)                             |        |      |
 | (1) FDS module                                                 |        |      |
-| ├─── VU Data Acquisition and Survey Methods                    | 3.0    |      |
-| ├─── VO Data Stewardship                                       | 3.0    |      |
-| └─── ...                                                       | ≤18.0  |      |
+| ├── VU Data Acquisition and Survey Methods                     | 3.0    |      |
+| ├── VO Data Stewardship                                        | 3.0    |      |
+| └── ...                                                        | ≤18.0  |      |
 | (2) MLS module                                                 |        |      |
-| ├─── VU Recommender Systems                                    | 3.0    |      |
-| ├─── VU Statistical Simulation and Computer Intensive Methods  | 3.0    |      |
-| └─── ...                                                       | ≤18.0  |      |
+| ├── VU Recommender Systems                                     | 3.0    |      |
+| ├── VU Statistical Simulation and Computer Intensive Methods   | 3.0    |      |
+| └── ...                                                        | ≤18.0  |      |
 | (3) BDHPC module                                               |        |      |
-| ├─── VU Basics of Parallel Computing                           | 3.0    |      |
-| ├─── VU Efficient Programs                                     | 3.0    |      |
-| └─── ...                                                       | ≤18.0  |      |
+| ├── VU Basics of Parallel Computing                            | 3.0    |      |
+| ├── VU Efficient Programs                                      | 3.0    |      |
+| └── ...                                                        | ≤18.0  |      |
 | (4) VAST module                                                |        |      |
-| ├─── VU Advanced Information Retrieval                         | 3.0    |      |
-| ├─── UE Design and Evaluation of Visualisations                | 3.0    |      |
-| └─── ...                                                       | ≤18.0  |      |
+| ├── VU Advanced Information Retrieval                          | 3.0    |      |
+| ├── UE Design and Evaluation of Visualisations                 | 3.0    |      |
+| └── ...                                                        | ≤18.0  |      |
 | –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– | Σ 36.0 |      |
 | **Free electives, transferable skills**                        |        |      |
 | … pick from course catalogue                                   | 9.0    |      |
