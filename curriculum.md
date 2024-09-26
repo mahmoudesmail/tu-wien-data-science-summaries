@@ -19,8 +19,6 @@
 
 # mandatory
 
-here are the mandatory courses
-
 |                                                                | ECTS   | done |
 | :------------------------------------------------------------- | :----- | :--- |
 | **Semester 1**                                                 |        |      |
