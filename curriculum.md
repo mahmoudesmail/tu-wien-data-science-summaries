@@ -16,6 +16,7 @@
      - you must pick at least 2 specializations, each made of a 'core' and an 'extension' part:
 	     - the 'core' part has 2 courses (6 ECTS in total) that you must do together, as a prerequisite for the 'extension' part
 	     - the 'extension' part has an arbitrary number of courses, that you're allowed to do 18 ECTS from at most
+- once you've done all courses and your thesis you're eligible for the final exam / defense
 
 # mandatory
 
