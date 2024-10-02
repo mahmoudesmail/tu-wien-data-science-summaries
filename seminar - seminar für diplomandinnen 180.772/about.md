@@ -5,7 +5,7 @@ once you enroll you can stay in this course throughout multiple terms.
 goals:
 
 - proposal presentation (proposal must be approved by supervisor first)
-- finished thesis presentation (this can be skipped under special circumstances)
+- finished thesis presentation (can be skipped under special circumstances)
 
 tuwel page:
 
