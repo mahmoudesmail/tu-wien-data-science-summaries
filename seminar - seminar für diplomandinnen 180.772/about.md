@@ -1,3 +1,5 @@
+once you enroll you can stay in this course throughout multiple terms.
+
 goals:
 
 - presenting proposal (proposal must be approved by supervisor first)
