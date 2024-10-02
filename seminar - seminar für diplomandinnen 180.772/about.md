@@ -1,12 +1,20 @@
+# thesis seminar
+
 once you enroll you can stay in this course throughout multiple terms.
 
 goals:
 
-- presenting proposal (proposal must be approved by supervisor first)
-- presenting finished thesis (this can be skipped under special circumstances)
-- thesis defense (can only be done if courses + thesis have already been completed)
+- proposal presentation (proposal must be approved by supervisor first)
+- finished thesis presentation (this can be skipped under special circumstances)
 
 tuwel page:
 
 - last winter semester tuwel: https://tuwel.tuwien.ac.at/course/view.php?id=58295
 - password: `Seminar4Master`
+
+# defense
+
+defense deadlines:
+
+- can only be done if courses + thesis have already been completed
+- https://informatics.tuwien.ac.at/study-services/dates/
