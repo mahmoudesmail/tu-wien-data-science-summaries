@@ -1,7 +1,8 @@
 goals:
 
 - presenting proposal (proposal must be approved by supervisor first)
-- presenting finished thesis (can be skipped under special circumstances)
+- presenting finished thesis (this can be skipped under special circumstances)
+- thesis defense (can only be done if courses + thesis have already been completed)
 
 tuwel page:
 
