@@ -9,7 +9,7 @@ goals:
 
 tuwel page:
 
-- last winter semester tuwel: https://tuwel.tuwien.ac.at/course/view.php?id=58295
+- tuwel: https://tuwel.tuwien.ac.at/course/view.php?id=58295
 - password: `Seminar4Master`
 
 # thesis defense
