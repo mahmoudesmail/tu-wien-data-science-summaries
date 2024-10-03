@@ -17,4 +17,4 @@ tuwel page:
 defense deadlines:
 
 - can only be done if courses + thesis have already been completed
-- https://informatics.tuwien.ac.at/study-services/dates/
+- submission deadlines: https://informatics.tuwien.ac.at/study-services/dates/
