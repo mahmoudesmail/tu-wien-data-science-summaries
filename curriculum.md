@@ -18,7 +18,7 @@
 	     - the 'extension' part has an arbitrary number of courses, that you're allowed to do 18 ECTS from at most
 - once you're finished with all courses and your thesis you're eligible for the final exam / defense
 
-# mandatory
+# mandatory courses
 
 |                                                                | ECTS   |
 | :------------------------------------------------------------- | :----- |
