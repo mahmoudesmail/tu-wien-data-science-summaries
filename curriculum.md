@@ -63,7 +63,7 @@
 | … pick from course catalogue                                   | 9.0    |
 | –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– | Σ 9.0  |
 | **Thesis**                                                     |        |
-| SE Seminar for Master Students in Data Science                 | 1.5    |
+| SE Seminar for Master Students in Data Science (multiple terms)| 1.5    |
 | Thesis, Diploma thesis                                         | 27.0   |
 | Final exam / Defense, Final board exam                         | 1.5    |
 | –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––– | Σ 30.0 |
